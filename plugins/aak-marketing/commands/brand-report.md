@@ -4,6 +4,8 @@ description: Generate a report whose design is "cloned" from a brand's website, 
 
 # /brand-report - Brand-Styled Report
 
+> **Output tooling** (not a strategy step): a variant of `/report` that clones a brand's visual style from its website before rendering the PDF.
+
 Use this workflow to produce a report that visually matches a company's brand, given only their website URL.
 
 ## "One-prompt" flow

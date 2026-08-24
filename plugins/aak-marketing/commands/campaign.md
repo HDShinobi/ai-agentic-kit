@@ -41,7 +41,7 @@ Define the campaign basics:
 
 ## Step 3: Content Creation
 
-Create campaign assets:
+Create campaign assets (for any single asset, you can run `/aak-marketing:content` to go brief→research→outline→write→optimize):
 
 1. **Landing pages**: Design and copy
 2. **Ad creative**: Images, videos, copy

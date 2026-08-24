@@ -4,6 +4,8 @@ description: Workflow to create professional PDF reports from HTML/Markdown.
 
 # /report - Professional PDF Report
 
+> **Output tooling** (not a strategy step): formats existing content into a PDF. It's the deliverable stage for workflows like `/analyze` and `/campaign`.
+
 Use this workflow to turn marketing content, analysis results, or proposals into a high-quality PDF file.
 
 ## Step 1: Pick a report type
