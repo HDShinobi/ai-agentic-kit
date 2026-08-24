@@ -1,5 +1,8 @@
 ---
+name: marketing-strategist
 description: Overall marketing strategy orchestrator that coordinates all marketing activities.
+tools: Read, Grep, Glob, Bash, Write
+model: inherit
 ---
 
 # Marketing Strategist Agent

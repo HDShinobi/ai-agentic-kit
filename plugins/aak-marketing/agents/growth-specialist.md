@@ -1,5 +1,8 @@
 ---
+name: growth-specialist
 description: Growth hacking and user acquisition specialist.
+tools: Read, Grep, Glob, Bash, Write
+model: inherit
 ---
 
 # Growth Specialist Agent

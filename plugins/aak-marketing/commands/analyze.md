@@ -4,6 +4,8 @@ description: Marketing analytics and performance analysis workflow.
 
 # /analyze - Marketing Analytics Workflow
 
+> **Lead agent:** this workflow is driven by the `analytics-specialist` agent (this plugin) — delegate the phases below to it, pulling in other marketing agents/skills as noted.
+
 Follow this workflow to analyze marketing performance.
 
 ## Step 1: Define Scope

@@ -1,5 +1,8 @@
 ---
+name: content-creator
 description: Content creation specialist for all marketing content types.
+tools: Read, Grep, Glob, Write, Edit
+model: inherit
 ---
 
 # Content Creator Agent

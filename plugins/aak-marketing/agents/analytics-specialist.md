@@ -1,5 +1,8 @@
 ---
+name: analytics-specialist
 description: Marketing data analysis and performance insights specialist.
+tools: Read, Grep, Glob, Bash, Write
+model: inherit
 ---
 
 # Analytics Specialist Agent

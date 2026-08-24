@@ -4,6 +4,8 @@ description: Content creation workflow for any marketing content type.
 
 # /content - Content Creation Workflow
 
+> **Lead agent:** this workflow is driven by the `content-creator` agent (this plugin) — delegate the phases below to it, pulling in other marketing agents/skills as noted.
+
 Follow this workflow to create marketing content.
 
 ## Step 1: Content Brief

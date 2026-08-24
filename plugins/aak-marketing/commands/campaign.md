@@ -4,6 +4,8 @@ description: Create a comprehensive marketing campaign from strategy to executio
 
 # /campaign - Create Marketing Campaign
 
+> **Lead agent:** this workflow is driven by the `marketing-strategist` agent (this plugin) — delegate the phases below to it, pulling in other marketing agents/skills as noted.
+
 Follow this workflow to create a marketing campaign.
 
 ## Step 1: Campaign Brief

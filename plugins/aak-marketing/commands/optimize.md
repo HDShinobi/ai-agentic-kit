@@ -4,6 +4,8 @@ description: Conversion rate optimization workflow.
 
 # /optimize - Conversion Optimization Workflow
 
+> **Lead agent:** this workflow is driven by the `growth-specialist` agent (this plugin) — delegate the phases below to it, pulling in other marketing agents/skills as noted.
+
 Follow this workflow to optimize conversion rates.
 
 ## Step 1: Identify Target
