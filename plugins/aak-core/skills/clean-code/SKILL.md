@@ -197,3 +197,32 @@ File to edit: UserService.ts
 > 🔴 **VIOLATION:** Auto-fixing without asking = Not allowed.
 > 🔴 **Rule:** Always READ output → SUMMARIZE → ASK → then fix.
 
+
+---
+
+## Universal standards (folded from ag-kit `universal-rules` + `code-rules`)
+
+These are the concrete, always-applicable standards. (The dispatcher/agent-routing and always-on protocol prose from the original rules is intentionally dropped — it duplicated and fought native selection.)
+
+### Language handling
+- When the user's prompt is not in English: understand it, and **respond in the user's language**.
+- **Code, identifiers, and comments stay in English.**
+
+### Code / testing / performance / safety
+- **Code:** concise, direct, self-documenting. No over-engineering, no speculative abstraction.
+- **Testing:** mandatory. Follow the testing pyramid (Unit > Integration > E2E) and the AAA (Arrange-Act-Assert) pattern.
+- **Performance:** measure first; meet current Core Web Vitals where relevant.
+- **Infra/Safety:** verify secrets are not committed; treat deployment as a staged, verified process.
+
+### Plan-first for non-trivial work (4 phases)
+1. **Analysis** — research and clarifying questions (ask before assuming when anything material is unclear).
+2. **Planning** — a short `{task-slug}.md` task breakdown.
+3. **Solutioning** — architecture/design decisions (no code yet).
+4. **Implementation** — code + tests.
+
+### Final-check order
+When asked to "run the final checks," run the project's own tooling in this priority order and fix blockers before proceeding:
+
+1. **Security** → 2. **Lint / static analysis** → 3. **Schema** (if a DB changed) → 4. **Tests** → 5. **UX / accessibility** (if UI changed) → 6. **SEO** (if pages changed) → 7. **Performance / E2E** (before deploy).
+
+A task is not finished until the relevant checks pass. Use each domain plugin's own tooling when that plugin is enabled (see the audit-script table above); otherwise run the repository's configured commands.

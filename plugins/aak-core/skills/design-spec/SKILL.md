@@ -18,7 +18,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep
 
 ## When to produce a DESIGN.md
 
-This is a **hard gate** for UI work (see `.agents/rules/design-rules.md`): before writing components, pages, or styles, a `DESIGN.md` must exist at the project root. If absent, create it first from the brief; if present, read it and conform.
+This is a **hard gate** for UI work (see the "DESIGN.md gate" section at the end of this skill): before writing components, pages, or styles, a `DESIGN.md` must exist at the project root. If absent, create it first from the brief; if present, read it and conform.
 
 The token block converts cleanly to/from `tokens.json`, Figma variables, and Tailwind theme config — so it is the bridge between design intent and code.
 
@@ -181,3 +181,21 @@ Accessibility-first: high contrast, generous touch targets.
 3. **Write `DESIGN.md` at the project root** — tokens first, then rationale prose.
 4. Build UI strictly against the tokens. Descriptive names in prose must map to token names.
 5. Keep DESIGN.md in sync when the visual language changes — it stays the source of truth.
+
+---
+
+## DESIGN.md gate (folded from ag-kit `design-rules`)
+
+> **Hard gate for all UI work.** Before writing or editing UI (components, pages, styles — web or mobile), a **`DESIGN.md` must exist at the project root.**
+
+1. **Check** for `DESIGN.md` at the project root.
+2. **If missing:** infer the design direction from the brief, then **create `DESIGN.md` first** (tokens + rationale) using this skill's format. Do not write UI code until it exists.
+3. **If present:** READ it and build strictly against its tokens. Descriptive names in prose map to token names.
+4. **Keep it in sync** when the visual language changes — it is the single source of truth.
+
+> Exception: none for net-new UI. A genuinely trivial tweak to existing UI (one button color, a spacing nudge) may proceed if a `DESIGN.md` already governs the project.
+
+**Design craft lives in the design skills/agents, not here.** For the aesthetic rules (no-default-purple, no template layouts, anti-cliché, deep design-thinking):
+
+- Web UI/UX → the `frontend-design` skill and, if `aak-frontend` is enabled, its `frontend-specialist` agent.
+- Mobile UI/UX → the `mobile-design` skill and, if `aak-frontend` is enabled, its `mobile-developer` agent.
