@@ -11,18 +11,16 @@ $ARGUMENTS
 
 ## Task
 
-This command adds features or makes updates to existing application.
+This command adds features or makes updates to an existing application. It is **self-contained**: it depends only on `aak-core`, and uses other plugins only when enabled.
 
 ### Steps:
 
 1. **Understand Current State**
-   - Load project state with `python .agents/scripts/session_manager.py info`
-   - Understand existing features, tech stack
+   - Re-read project state inline: run `git status` and list the project tree to see existing files; inspect `package.json`/manifest and config to infer the tech stack and features.
+   - If `aak-quality` is enabled, you may use its `code-archaeologist` agent for a deeper read of an unfamiliar codebase.
 
 2. **Plan Changes**
-   - Determine what will be added/changed
-   - Detect affected files
-   - Check dependencies
+   - Determine what will be added/changed; detect affected files; check dependencies.
 
 3. **Present Plan to User** (for major changes)
    ```
@@ -30,17 +28,17 @@ This command adds features or makes updates to existing application.
    - New files: admin routes, components, and access control
    - Updates: navigation, auth middleware
    - Scope: moderate (touches auth + routing)
-   
+
    Should I start?"
    ```
 
 4. **Apply**
-   - Call relevant agents
-   - Make changes
-   - Test
+   - Make the changes (delegate to enabled-plugin specialists where useful; otherwise do it inline).
+   - Test with the project's own test command.
+   - If `aak-legacy` is enabled, you may use its `verify-changes` skill to prove the change works.
 
 5. **Update Preview**
-   - Hot reload or restart
+   - Hot reload / restart, or `/aak-backend:preview` if `aak-backend` is enabled.
 
 ---
 

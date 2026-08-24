@@ -1,7 +1,7 @@
 ---
 name: app-builder
 description: Main application building orchestrator. Creates full-stack applications from natural language requests. Determines project type, selects tech stack, coordinates agents. When creating a new full-stack application from scratch, selecting tech stack, or scaffolding project structure. Use with /create workflow.
-allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Agent
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Task
 ---
 
 # App Builder - Application Building Orchestrator
@@ -45,15 +45,17 @@ Quick-start scaffolding for new projects. **Read the matching template only!**
 
 ---
 
-## 🔗 Related Agents
+## 🔗 Related Agents (delegate via the Task tool only when their plugin is enabled)
 
-| Agent | Role |
-|-------|------|
-| `project-planner` | Task breakdown, dependency graph |
-| `frontend-specialist` | UI components, pages |
-| `backend-specialist` | API, business logic |
-| `database-architect` | Schema, migrations |
-| `devops-engineer` | Deployment, preview |
+Coordinate these specialists **only if their plugin is enabled**; otherwise perform the role inline. Never assume a cross-plugin agent exists.
+
+| Agent | Role | Plugin |
+|-------|------|--------|
+| `project-planner` | Task breakdown, dependency graph | `aak-legacy` |
+| `frontend-specialist` | UI components, pages | `aak-frontend` |
+| `backend-specialist` | API, business logic | `aak-backend` |
+| `database-architect` | Schema, migrations | `aak-backend` |
+| `devops-engineer` | Deployment, preview | `aak-backend` |
 
 ---
 
