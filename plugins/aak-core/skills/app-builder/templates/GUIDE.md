@@ -1,9 +1,3 @@
----
-name: templates
-description: Project scaffolding templates for new applications. Use when creating new projects from scratch. Contains 13 templates for various tech stacks.
-allowed-tools: Read, Glob, Grep
----
-
 # Project Templates
 
 > Quick-start templates for scaffolding new projects.

@@ -1,9 +1,3 @@
----
-name: vr-ar
-description: VR/AR development principles. Comfort, interaction, performance requirements.
-allowed-tools: Read, Write, Edit, Glob, Grep
----
-
 # VR/AR Development
 
 > Immersive experience principles.
