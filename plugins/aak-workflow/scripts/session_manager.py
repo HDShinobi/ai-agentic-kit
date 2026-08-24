@@ -5,7 +5,7 @@ Session Manager - AG Kit
 Analyzes project state, detects tech stack, tracks file statistics, and provides
 a summary of the current session.
 
-Usage (invoke via python3 through the aak-legacy plugin):
+Usage (invoke via python3 through the aak-workflow plugin):
     python3 "${CLAUDE_PLUGIN_ROOT}/scripts/session_manager.py" status [path]
     python3 "${CLAUDE_PLUGIN_ROOT}/scripts/session_manager.py" info [path]
 """

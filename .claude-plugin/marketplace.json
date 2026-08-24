@@ -44,9 +44,9 @@
       "description": "Game development."
     },
     {
-      "name": "aak-legacy",
-      "source": "./plugins/aak-legacy",
-      "description": "ag-kit classic workflow bundle (off by default)."
+      "name": "aak-workflow",
+      "source": "./plugins/aak-workflow",
+      "description": "Process & orchestration layer (methodology skills + /orchestrate /coordinate). Skip if you use superpowers."
     }
   ]
 }

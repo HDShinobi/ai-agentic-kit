@@ -35,7 +35,7 @@ This command adds features or makes updates to an existing application. It is **
 4. **Apply**
    - Make the changes (delegate to enabled-plugin specialists where useful; otherwise do it inline).
    - Test with the project's own test command.
-   - If `aak-legacy` is enabled, you may use its `verify-changes` skill to prove the change works.
+   - If `aak-workflow` is enabled, you may use its `verify-changes` skill to prove the change works.
 
 5. **Update Preview**
    - Hot reload / restart, or `/aak-backend:preview` if `aak-backend` is enabled.

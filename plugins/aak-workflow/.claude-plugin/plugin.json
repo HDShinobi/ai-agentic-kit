@@ -1,0 +1,10 @@
+{
+  "name": "aak-workflow",
+  "version": "0.1.0",
+  "description": "AI Agentic Kit — process & orchestration layer: planning, debugging, testing, verification methodology + multi-agent orchestration. Skip if you run the superpowers stack (it covers the same ground).",
+  "author": {
+    "name": "HDShinobi"
+  },
+  "homepage": "https://github.com/HDShinobi/ai-agentic-kit",
+  "license": "MIT"
+}

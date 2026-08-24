@@ -275,9 +275,9 @@ Generates markdown wiki of codebase structure — every module, its public API, 
 
 `batch-operations` (this `aak-core` plugin) pairs directly: the graph's blast radius informs which files need batch updates.
 
-The following complements live in **`aak-legacy`** — use them only if that plugin is enabled:
+The following complements live in **`aak-workflow`** — use them only if that plugin is enabled:
 
-| Skill (if `aak-legacy` enabled) | How It Complements |
+| Skill (if `aak-workflow` enabled) | How It Complements |
 |-------------------|--------------------|
 | `context-compression` | Graph reduces input context; compression reduces output verbosity |
 | `coordinator-mode` | Graph-aware workers can be dispatched with precise file lists |

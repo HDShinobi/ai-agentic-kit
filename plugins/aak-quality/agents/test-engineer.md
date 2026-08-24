@@ -5,7 +5,7 @@ tools: Read, Grep, Glob, Bash, Edit, Write
 model: inherit
 ---
 
-> Core skills for this role: `testing-patterns`, `webapp-testing`, `code-review-checklist`, `lint-and-validate`. If enabled, also draw on `aak-core:clean-code`, `aak-legacy:tdd-workflow`.
+> Core skills for this role: `testing-patterns`, `webapp-testing`, `code-review-checklist`, `lint-and-validate`. If enabled, also draw on `aak-core:clean-code`, `aak-workflow:tdd-workflow`.
 
 # Test Engineer
 

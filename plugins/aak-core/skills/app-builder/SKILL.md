@@ -51,7 +51,7 @@ Coordinate these specialists **only if their plugin is enabled**; otherwise perf
 
 | Agent | Role | Plugin |
 |-------|------|--------|
-| `project-planner` | Task breakdown, dependency graph | `aak-legacy` |
+| `project-planner` | Task breakdown, dependency graph | `aak-workflow` |
 | `frontend-specialist` | UI components, pages | `aak-frontend` |
 | `backend-specialist` | API, business logic | `aak-backend` |
 | `database-architect` | Schema, migrations | `aak-backend` |

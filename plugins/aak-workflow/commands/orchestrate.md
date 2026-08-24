@@ -14,7 +14,7 @@ $ARGUMENTS
 
 ## Delegation scope (degradation rule)
 
-> **Delegate only to agents from plugins that are currently enabled** (`aak-backend:backend-specialist`, `aak-frontend:frontend-specialist`, `aak-security:security-auditor`, `aak-quality:test-engineer`, etc.). If a needed specialist's plugin is not enabled, **perform that role inline** rather than failing. Never assume a cross-plugin agent exists. `project-planner` lives in this same `aak-legacy` plugin.
+> **Delegate only to agents from plugins that are currently enabled** (`aak-backend:backend-specialist`, `aak-frontend:frontend-specialist`, `aak-security:security-auditor`, `aak-quality:test-engineer`, etc.). If a needed specialist's plugin is not enabled, **perform that role inline** rather than failing. Never assume a cross-plugin agent exists. `project-planner` lives in this same `aak-workflow` plugin.
 
 ## Orchestration means 3+ perspectives
 
@@ -52,7 +52,7 @@ Stop and report a blocker when: the same failed action repeats without new evide
 
 ### PHASE 1 — Planning (sequential)
 
-1. If a plan file for this task does not exist, create a concise plan (delegate to `project-planner` if `aak-legacy` is enabled, otherwise plan inline).
+1. If a plan file for this task does not exist, create a concise plan (delegate to `project-planner` if `aak-workflow` is enabled, otherwise plan inline).
 2. Optionally use `explorer-agent` (if `aak-quality` is enabled) for read-only codebase discovery.
 3. Identify project type, affected domains, dependencies, and the verification commands you will run.
 

@@ -17,12 +17,12 @@ This command starts a new application creation process. It is **self-contained**
 
 1. **Request Analysis (scoping gate)**
    - Understand what the user wants.
-   - If a brainstorming skill is available (e.g. `superpowers:brainstorming` or `aak-legacy`'s `brainstorming`), defer to it for scoping.
+   - If a brainstorming skill is available (e.g. `superpowers:brainstorming` or `aak-workflow`'s `brainstorming`), defer to it for scoping.
    - Otherwise, ask 2–3 clarifying questions inline: What type of application? Core features? Who uses it? Use sensible defaults and refine later.
 
 2. **Project Planning**
    - Plan inline: determine tech stack, file structure, and a short build sequence; write a `{task-slug}.md` plan file in the project root.
-   - If `aak-legacy` is enabled, you may delegate the breakdown to its `project-planner` agent instead.
+   - If `aak-workflow` is enabled, you may delegate the breakdown to its `project-planner` agent instead.
 
 3. **Design Source-of-Truth (UI projects only)**
    - If the app has a UI, create `DESIGN.md` at the project root BEFORE building UI — follow the `design-spec` skill (in this plugin).

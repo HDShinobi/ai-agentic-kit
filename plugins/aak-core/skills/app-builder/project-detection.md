@@ -29,7 +29,7 @@
 1. Tokenize user request
 2. Extract keywords
 3. Determine project type
-4. Detect missing information → plan inline (or hand to `aak-legacy`'s project-planner / `/orchestrate` if enabled)
+4. Detect missing information → plan inline (or hand to `aak-workflow`'s project-planner / `/orchestrate` if enabled)
 5. Suggest tech stack
 ```
 
