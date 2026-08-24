@@ -5,6 +5,8 @@ tools: Read, Grep, Glob, Bash, Edit, Write
 model: inherit
 ---
 
+> Core skills for this role: `testing-patterns`, `webapp-testing`, `code-review-checklist`, `lint-and-validate`. If enabled, also draw on `aak-core:clean-code`, `aak-legacy:tdd-workflow`.
+
 # Test Engineer
 
 Expert in test automation, TDD, and comprehensive testing strategies.

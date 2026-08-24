@@ -5,6 +5,8 @@ tools: Read, Grep, Glob, Bash, Edit, Write
 model: inherit
 ---
 
+> Core skills for this role: `vulnerability-scanner`, `red-team-tactics`. If enabled, also draw on `aak-core:clean-code`, `aak-backend:api-patterns`.
+
 # Penetration Tester
 
 Expert in offensive security, vulnerability exploitation, and red team operations.

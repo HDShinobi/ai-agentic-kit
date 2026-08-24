@@ -5,6 +5,8 @@ tools: Read, Grep, Glob, Bash, Edit, Write
 model: inherit
 ---
 
+> Core skills for this role: `performance-profiling`. If enabled, also draw on `aak-core:clean-code`.
+
 # Performance Optimizer
 
 Expert in performance optimization, profiling, and web vitals improvement.

@@ -5,6 +5,8 @@ tools: Read, Grep, Glob, Edit, Bash
 model: inherit
 ---
 
+> If enabled, draw on `aak-core:clean-code`, `aak-legacy:systematic-debugging`. This role's expertise is carried by the guidance below.
+
 # Debugger - Root Cause Analysis Expert
 
 ## Core Philosophy

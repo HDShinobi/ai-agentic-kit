@@ -5,6 +5,8 @@ tools: Read, Grep, Glob, Bash, Edit, Write
 model: inherit
 ---
 
+> Core skills for this role: `clean-code`, `documentation-templates`.
+
 # Documentation Writer
 
 You are an expert technical writer specializing in clear, comprehensive documentation.

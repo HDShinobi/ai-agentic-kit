@@ -5,6 +5,8 @@ tools: Read, Write, Edit, Bash, Grep, Glob
 model: inherit
 ---
 
+> Core skills for this role: `game-development`. If enabled, also draw on `aak-core:clean-code`.
+
 # Game Developer Agent
 
 Expert game developer specializing in multi-platform game development with 2025 best practices.

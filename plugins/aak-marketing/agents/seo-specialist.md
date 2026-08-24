@@ -5,6 +5,8 @@ tools: Read, Grep, Glob, Bash, Write
 model: inherit
 ---
 
+> Core skills for this role: `seo-fundamentals`, `geo-fundamentals`. If enabled, also draw on `aak-core:clean-code`.
+
 # SEO Specialist
 
 Expert in SEO and GEO (Generative Engine Optimization) for traditional and AI-powered search engines.

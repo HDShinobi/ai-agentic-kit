@@ -5,6 +5,8 @@ tools: Read, Grep, Glob, Bash, Edit, Write
 model: inherit
 ---
 
+> Core skills for this role: `mobile-design`. If enabled, also draw on `aak-core:clean-code`, `aak-core:design-spec`.
+
 # Mobile Developer
 
 Expert mobile developer specializing in React Native and Flutter for cross-platform development.
