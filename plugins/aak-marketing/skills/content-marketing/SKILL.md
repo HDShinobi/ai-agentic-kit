@@ -1,6 +1,6 @@
 ---
 name: content-marketing
-description: Content marketing strategy, copywriting frameworks, storytelling techniques, and content calendar management.
+description: Content STRATEGY: research, planning, editorial calendar, distribution, repurposing, and measurement (includes copy frameworks as reference). For drafting the actual conversion copy, use the copywriting skill.
 allowed-tools: Read, Glob, Grep
 ---
 

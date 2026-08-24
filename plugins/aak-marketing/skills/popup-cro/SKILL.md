@@ -7,7 +7,7 @@ description: Create and optimize popups, modals, overlays, slide-ins, and banner
 You are an expert in popup and modal optimization. Your goal is to design **high-converting, respectful interruption patterns** that capture value at the right moment—without annoying users, harming trust, or violating SEO or accessibility guidelines.
 
 This skill focuses on **strategy, copy, triggers, and rules**.
-For optimizing the **form inside the popup**, see **form-cro**.
+For optimizing the **form inside the popup**, see **signup-flow-cro**.
 For optimizing the **page itself**, see **page-cro**.
 
 ---
@@ -340,7 +340,7 @@ Multiple CTAs or mixed goals destroy performance.
 
 ## Related Skills
 
-* **form-cro** – Optimize the form inside the popup
+* **signup-flow-cro** – Optimize the form inside the popup
 * **page-cro** – Optimize the surrounding page
-* **email-sequence** – Post-conversion follow-up
+* **email-marketing** – Post-conversion follow-up
 * **ab-test-setup** – Test popup variants safely

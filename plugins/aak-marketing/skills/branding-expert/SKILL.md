@@ -1,6 +1,6 @@
 ---
 name: branding-expert
-description: Brand identity, positioning, voice & tone guidelines, and style guide creation.
+description: Brand STRATEGY and identity creation: purpose, vision, values, positioning, archetypes, naming, voice & tone, style-guide creation, refresh vs rebrand. For operational asset governance/compliance/token-sync, use the brand skill instead.
 allowed-tools: Read, Glob, Grep
 ---
 

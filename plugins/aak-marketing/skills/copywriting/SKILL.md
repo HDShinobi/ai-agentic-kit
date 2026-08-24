@@ -1,6 +1,6 @@
 ---
 name: copywriting
-description: Write rigorous, conversion-focused marketing copy for landing pages and emails. Enforces brief confirmation and strict no-fabrication rules.
+description: EXECUTION skill for writing rigorous, conversion-focused copy (landing pages, emails, ads) with mandatory brief confirmation and strict no-fabrication rules. For content strategy/planning/calendar, use content-marketing.
 ---
 
 # Copywriting

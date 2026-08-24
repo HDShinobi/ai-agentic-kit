@@ -338,7 +338,7 @@ If you need more context:
 ## Related Skills
 
 - **marketing-ideas**: For additional launch tactics (#22 Product Hunt, #23 Early Access Referrals)
-- **email-sequence**: For launch and onboarding email sequences
+- **email-marketing**: For launch and onboarding email sequences
 - **page-cro**: For optimizing launch landing pages
 - **marketing-psychology**: For psychology behind waitlists and exclusivity
 - **programmatic-seo**: For comparison pages mentioned in post-launch

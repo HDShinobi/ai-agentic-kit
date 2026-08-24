@@ -1,12 +1,25 @@
 ---
 name: conversion-optimization
-description: CRO principles, A/B testing, landing page optimization, and user experience improvements.
+description: CRO entry point & method — research, hypothesis, prioritization (ICE/PIE), and A/B testing that apply across ALL surfaces. Routes surface-specific work to the specialized CRO skills. Use this to start any conversion problem or run the experiment process; use the specialized skill for a specific surface.
 allowed-tools: Read, Glob, Grep
 ---
 
 # Conversion Optimization
 
-> Systematically improve conversion rates through testing and optimization.
+> The CRO **entry point**: it owns the cross-surface *method* (research → hypothesis → prioritize → test → analyze) and routes surface-specific playbooks to the specialized CRO skills.
+
+## Route to the right CRO skill
+
+Pick the specialized skill for the surface being optimized; use this skill for the shared research/experiment/prioritization method that spans all of them.
+
+| Surface being optimized | Use skill |
+|-------------------------|-----------|
+| An individual marketing page (home, landing, pricing, feature, blog) | **`page-cro`** |
+| Popups / modals / slide-in banners | **`popup-cro`** |
+| Signup / registration / trial-activation flow | **`signup-flow-cro`** |
+| Post-signup onboarding / activation / first-run | **`onboarding-cro`** |
+| In-product paywall / upgrade / feature-gate | **`paywall-upgrade-cro`** |
+| Cross-surface method, or you're not sure which surface yet | **this skill** (below) |
 
 ---
 

@@ -291,6 +291,27 @@ Provide affiliates with:
 - [ ] FAQ and objection handling
 - [ ] Payment terms and schedule
 
+### Commission Rate Benchmarks
+
+| Industry | Typical Rate |
+|----------|--------------|
+| **Digital products** | 30-50% |
+| **SaaS** | 20-40% recurring |
+| **E-commerce** | 5-15% |
+| **Finance** | $50-$200 CPA |
+| **Travel** | 5-10% |
+
+### Affiliate Networks
+
+| Network | Best For | Commission Type |
+|---------|----------|-----------------|
+| **Amazon Associates** | Physical products | 1-10% |
+| **ShareASale** | E-commerce, diverse | Varies |
+| **CJ Affiliate** | Enterprise brands | Varies |
+| **Impact** | SaaS, subscription | Varies |
+| **PartnerStack** | B2B SaaS | Recurring |
+| **Rakuten** | Retail, travel | Varies |
+
 ---
 
 ## Viral Coefficient & Modeling
@@ -596,7 +617,7 @@ If you need more context:
 ## Related Skills
 
 - **launch-strategy**: For launching referral program effectively
-- **email-sequence**: For referral nurture campaigns
+- **email-marketing**: For referral nurture campaigns
 - **marketing-psychology**: For understanding referral motivation
 - **analytics-tracking**: For tracking referral attribution
 - **pricing-strategy**: For structuring rewards relative to LTV
