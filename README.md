@@ -8,7 +8,7 @@ Salvaged from [ag-kit](https://github.com/vudovn/ag-kit) © vudovn (MIT): its do
 
 ```bash
 # once per machine
-/plugin marketplace add hoangdvh/ai-agentic-kit
+/plugin marketplace add HDShinobi/ai-agentic-kit
 # per project — enable only what you need
 /plugin install aak-core@ai-agentic-kit
 /plugin install aak-backend@ai-agentic-kit
