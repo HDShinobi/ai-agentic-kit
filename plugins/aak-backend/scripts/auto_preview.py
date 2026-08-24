@@ -19,7 +19,7 @@ import argparse
 import subprocess
 from pathlib import Path
 
-# State lives under the project's .claude/ dir (created if needed), never .agents/.
+# State lives under the project's .claude/ dir (created if needed).
 STATE_DIR = Path(os.environ.get("CLAUDE_PROJECT_DIR", os.getcwd())) / ".claude"
 STATE_DIR.mkdir(parents=True, exist_ok=True)
 PID_FILE = STATE_DIR / "preview.pid"

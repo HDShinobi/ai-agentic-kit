@@ -73,8 +73,9 @@ effort: [low | medium | high]
 
 ### Step 3: Place the Skill
 ```
-.agents/skills/[skill-name]/SKILL.md
+<plugin>/skills/[skill-name]/SKILL.md
 ```
+(In a Claude Code plugin, skills live under the plugin's `skills/` directory; nested skills are not discovered — one level only.)
 
 ### Step 4: Verify
 - [ ] Frontmatter has all required fields (name, description, when_to_use)
@@ -106,7 +107,7 @@ Before finalizing a new skill:
 
 | Check | Criteria |
 |---|---|
-| **Uniqueness** | No existing skill covers this (grep `.agents/skills/`) |
+| **Uniqueness** | No existing skill covers this (grep the plugins' `skills/` dirs) |
 | **Reusability** | Useful across multiple projects, not just one |
 | **Completeness** | Has overview, when to use, protocol, verification |
 | **Frontmatter** | All required fields present and accurate |

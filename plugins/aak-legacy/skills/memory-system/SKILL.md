@@ -18,7 +18,7 @@ The Memory System provides **persistent, searchable memory** that survives acros
 
 ## First-run seeding
 
-On first use, if `${CLAUDE_PROJECT_DIR}/.claude/memory/` does not yet exist, seed it by copying the starter templates shipped with this plugin from `${CLAUDE_PLUGIN_ROOT}/templates/memory/` into `${CLAUDE_PROJECT_DIR}/.claude/memory/`, then proceed. Never write memory under `.agents/`.
+On first use, if `${CLAUDE_PROJECT_DIR}/.claude/memory/` does not yet exist, seed it by copying the starter templates shipped with this plugin from `${CLAUDE_PLUGIN_ROOT}/templates/memory/` into `${CLAUDE_PROJECT_DIR}/.claude/memory/`, then proceed. Keep all memory under the project .claude/ dir.
 
 ## Architecture
 

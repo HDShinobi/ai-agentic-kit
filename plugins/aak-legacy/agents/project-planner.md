@@ -303,57 +303,32 @@ Before assigning agents, determine project type:
 > 🔴 **DO NOT mark project complete until ALL scripts pass.**
 > 🔴 **ENFORCEMENT: You MUST execute these Python scripts!**
 
-> 💡 **Script paths are relative to `.agents/` directory**
+> 💡 **Run each domain's audit through the plugin that owns it — only if that plugin is enabled. There is no single cross-plugin `verify_all` script; drive the priority order yourself and fall back to the project's own commands when a plugin is not enabled.**
 
-#### 1. Run All Verifications (RECOMMENDED)
+#### 1. Run verifications in priority order
 
-```bash
-# SINGLE COMMAND - Runs all checks in priority order:
-python .agents/scripts/verify_all.py . --url http://localhost:3000
+Walk this order, delegating each domain check to its plugin's skill/agent when enabled, otherwise using the repository's own tooling:
 
-# Priority Order:
-# P0: Security Scan (vulnerabilities, secrets)
-# P1: Color Contrast (WCAG AA accessibility)
-# P1.5: UX Audit (Psychology laws, Fitts, Hick, Trust)
-# P2: Touch Target (mobile accessibility)
-# P3: Lighthouse Audit (performance, SEO)
-# P4: Playwright Tests (E2E)
-```
+- **P0 Security** — if `aak-security` is enabled, run its `vulnerability-scanner`; else the project's SAST/secret scan.
+- **P0 Lint & Types** — `npm run lint && npx tsc --noEmit` (or the project's equivalents); `aak-quality`'s `lint-and-validate` if enabled.
+- **P1 Accessibility / UX** — if `aak-frontend` is enabled, run its `frontend-design` UX/a11y audit; else the project's a11y linter.
+- **P2 Mobile touch targets** — if `aak-frontend` is enabled, run its `mobile-design` audit.
+- **P3 Lighthouse / performance & SEO** — if `aak-quality` is enabled, run its `performance-profiling`; else `lighthouse` CLI.
+- **P4 E2E** — if `aak-quality` is enabled, run its `webapp-testing` (Playwright) runner; else the project's E2E command.
 
-#### 2. Or Run Individually
-
-```bash
-# P0: Lint & Type Check
-npm run lint && npx tsc --noEmit
-
-# P0: Security Scan
-python .agents/skills/vulnerability-scanner/scripts/security_scan.py .
-
-# P1: UX Audit
-python .agents/skills/frontend-design/scripts/ux_audit.py .
-
-# P3: Lighthouse (requires running server)
-python .agents/skills/performance-profiling/scripts/lighthouse_audit.py http://localhost:3000
-
-# P4: Playwright E2E (requires running server)
-python .agents/skills/webapp-testing/scripts/playwright_runner.py http://localhost:3000 --screenshot
-```
-
-#### 3. Build Verification
+#### 2. Build Verification
 ```bash
 # For Node.js projects:
 npm run build
 # → IF warnings/errors: Fix before continuing
 ```
 
-#### 4. Runtime Verification
+#### 3. Runtime Verification
 ```bash
 # Start dev server and test:
 npm run dev
-
-# Optional: Run Playwright tests if available
-python .agents/skills/webapp-testing/scripts/playwright_runner.py http://localhost:3000 --screenshot
 ```
+If `aak-quality` is enabled, run its `webapp-testing` Playwright runner against the dev URL for a screenshot/E2E pass.
 
 #### 4. Rule Compliance (Manual Check)
 - [ ] No purple/violet hex codes

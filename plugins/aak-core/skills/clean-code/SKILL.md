@@ -141,27 +141,24 @@ File to edit: UserService.ts
 
 > 🔴 **CRITICAL:** Each agent runs ONLY their own skill's scripts after completing work.
 
-### Agent → Script Mapping
+### Domain audit scripts (each ships with the skill that owns it)
 
-| Agent | Script | Command |
-|-------|--------|---------|
-| **frontend-specialist** | UX Audit | `python .agents/skills/frontend-design/scripts/ux_audit.py .` |
-| **frontend-specialist** | A11y Check | `python .agents/skills/frontend-design/scripts/accessibility_checker.py .` |
-| **backend-specialist** | API Validator | `python .agents/skills/api-patterns/scripts/api_validator.py .` |
-| **mobile-developer** | Mobile Audit | `python .agents/skills/mobile-design/scripts/mobile_audit.py .` |
-| **database-architect** | Schema Validate | `python .agents/skills/database-design/scripts/schema_validator.py .` |
-| **security-auditor** | Security Scan | `python .agents/skills/vulnerability-scanner/scripts/security_scan.py .` |
-| **seo-specialist** | SEO Check | `python .agents/skills/seo-fundamentals/scripts/seo_checker.py .` |
-| **seo-specialist** | GEO Check | `python .agents/skills/geo-fundamentals/scripts/geo_checker.py .` |
-| **performance-optimizer** | Lighthouse | `python .agents/skills/performance-profiling/scripts/lighthouse_audit.py <url>` |
-| **test-engineer** | Test Runner | `python .agents/skills/testing-patterns/scripts/test_runner.py .` |
-| **test-engineer** | Playwright | `python .agents/skills/webapp-testing/scripts/playwright_runner.py <url>` |
-| **Any agent** | Lint Check | `python .agents/skills/lint-and-validate/scripts/lint_runner.py .` |
-| **Any agent** | Type Coverage | `python .agents/skills/lint-and-validate/scripts/type_coverage.py .` |
-| **Any agent** | i18n Check | `python ${CLAUDE_PLUGIN_ROOT}/skills/i18n-localization/scripts/i18n_checker.py .` |
+Each audit script lives inside its owning skill, which usually sits in **another plugin**. Because `${CLAUDE_PLUGIN_ROOT}` resolves to the invoking plugin only, you cannot call another plugin's script by path. Instead: **run a domain's audit only if that plugin is enabled** (invoke it through that plugin's skill/agent), and **otherwise fall back to the project's own equivalent command**. Only the i18n check ships in this same `aak-core` plugin.
 
-> ❌ **WRONG:** `test-engineer` running `ux_audit.py`
-> ✅ **CORRECT:** `frontend-specialist` running `ux_audit.py`
+| Domain | Owning skill · plugin | If plugin enabled | Fallback |
+|--------|-----------------------|-------------------|----------|
+| UX / A11y audit | `frontend-design` · `aak-frontend` | run its UX/accessibility audit | project's a11y linter |
+| API validation | `api-patterns` · `aak-backend` | run its API validator | project's API/contract tests |
+| Mobile audit | `mobile-design` · `aak-frontend` | run its mobile audit | platform linters |
+| Schema validate | `database-design` · `aak-backend` | run its schema validator | migration/ORM checks |
+| Security scan | `vulnerability-scanner` · `aak-security` | run its security scan | project's SAST/audit |
+| SEO / GEO check | `seo-fundamentals` / `geo-fundamentals` · `aak-marketing` | run its checker | manual SEO review |
+| Lighthouse / perf | `performance-profiling` · `aak-quality` | run its Lighthouse audit | `lighthouse` CLI |
+| Test / Playwright | `testing-patterns` / `webapp-testing` · `aak-quality` | run its runner | project's `test` command |
+| Lint / type coverage | `lint-and-validate` · `aak-quality` | run its lint/type check | project's linter/type-checker |
+| i18n check | `i18n-localization` · **`aak-core`** (this plugin) | `python3 "${CLAUDE_PLUGIN_ROOT}/skills/i18n-localization/scripts/i18n_checker.py" .` | — |
+
+> Each domain runs its **own** audit — e.g. the UX audit belongs to the frontend role, not the test role.
 
 ---
 

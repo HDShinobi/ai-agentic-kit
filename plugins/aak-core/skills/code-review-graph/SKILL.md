@@ -273,12 +273,15 @@ Generates markdown wiki of codebase structure — every module, its public API, 
 
 ### Complementary Skills
 
-| AG Kit Skill | How It Complements |
+`batch-operations` (this `aak-core` plugin) pairs directly: the graph's blast radius informs which files need batch updates.
+
+The following complements live in **`aak-legacy`** — use them only if that plugin is enabled:
+
+| Skill (if `aak-legacy` enabled) | How It Complements |
 |-------------------|--------------------|
 | `context-compression` | Graph reduces input context; compression reduces output verbosity |
 | `coordinator-mode` | Graph-aware workers can be dispatched with precise file lists |
 | `verify-changes` | After graph-informed review, verify changes via execution |
-| `batch-operations` | Graph's blast radius informs which files need batch updates |
 
 ### Recommended Session Architecture
 
