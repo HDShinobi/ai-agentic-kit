@@ -26,7 +26,7 @@ allowed-tools: Read, Glob, Grep
 > Before asking questions, check if past context exists:
 
 ```
-0. CHECK MEMORY — Does .agents/memory/MEMORY.md exist?
+0. CHECK MEMORY — Does ${CLAUDE_PROJECT_DIR}/.claude/memory/MEMORY.md exist?
    → YES: Read index. Apply relevant past decisions silently.
           Skip questions already answered in memory.
    → NO: Proceed with standard Socratic Gate.
@@ -35,7 +35,7 @@ allowed-tools: Read, Glob, Grep
 ### 🚫 MANDATORY: 3 Questions Before Implementation
 
 1. **STOP** - Do NOT start coding
-2. **CHECK** - Read `.agents/memory/` for past context on this topic
+2. **CHECK** - Read `${CLAUDE_PROJECT_DIR}/.claude/memory/` for past context on this topic
 3. **ASK** - Minimum 3 questions (skip any already answered via memory):
    - 🎯 Purpose: What problem are you solving?
    - 👥 Users: Who will use this?

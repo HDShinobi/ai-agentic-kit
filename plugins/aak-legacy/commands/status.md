@@ -82,6 +82,7 @@ Show current project and agent status.
 
 ## Technical
 
-Status uses these scripts:
-- `python .agents/scripts/session_manager.py status`
-- `python .agents/scripts/auto_preview.py status`
+Status uses this plugin's own script:
+- `python3 "${CLAUDE_PLUGIN_ROOT}/scripts/session_manager.py" status`
+
+For preview status: if `aak-backend` is enabled, run `/aak-backend:preview` (its `status` action). Do not call another plugin's script by path — `${CLAUDE_PLUGIN_ROOT}` resolves to this plugin only.

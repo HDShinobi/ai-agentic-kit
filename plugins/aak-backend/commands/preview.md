@@ -72,11 +72,11 @@ Which one? (default: 1)
 
 ## Technical
 
-Auto preview uses `auto_preview.py` script:
+Auto preview uses this plugin's `auto_preview.py` script (state is written under `${CLAUDE_PROJECT_DIR}/.claude/`):
 
 ```bash
-python .agents/scripts/auto_preview.py start [port]
-python .agents/scripts/auto_preview.py stop
-python .agents/scripts/auto_preview.py status
+python3 "${CLAUDE_PLUGIN_ROOT}/scripts/auto_preview.py" start [port]
+python3 "${CLAUDE_PLUGIN_ROOT}/scripts/auto_preview.py" stop
+python3 "${CLAUDE_PLUGIN_ROOT}/scripts/auto_preview.py" status
 ```
 

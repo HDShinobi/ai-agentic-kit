@@ -25,13 +25,13 @@ Use the `memory-system` skill to save information:
 ```
 CONTEXT:
 - User wants to remember: $ARGUMENTS
-- Memory location: .agents/memory/
+- Memory location: ${CLAUDE_PROJECT_DIR}/.claude/memory/
 
 WORKFLOW:
 1. CLASSIFY the information type: user | feedback | project | reference
-2. CHECK if relevant topic file exists in .agents/memory/
+2. CHECK if relevant topic file exists in ${CLAUDE_PROJECT_DIR}/.claude/memory/
 3. SAVE to appropriate topic file (create if needed)
-4. UPDATE .agents/memory/MEMORY.md index with one-line pointer
+4. UPDATE ${CLAUDE_PROJECT_DIR}/.claude/memory/MEMORY.md index with one-line pointer
 5. CONFIRM to user what was saved
 
 RULES:
@@ -50,7 +50,7 @@ RULES:
 [OK] Saved to memory
 
 Type: [user/feedback/project/reference]
-File: .agents/memory/[topic-file].md
+File: ${CLAUDE_PROJECT_DIR}/.claude/memory/[topic-file].md
 Entry: [one-line summary of what was saved]
 
 This will be available in future sessions.
