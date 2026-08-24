@@ -74,9 +74,7 @@ Avoid generic AI-generated aesthetics like overused font families (Inter, Roboto
 
 ## Examples
 
-| Project | Description | Links |
-|---------|-------------|-------|
-| **JupViec Automation** | Content marketing automation presentation for JupViec.vn. | [HTML](examples/n8n-jupviec-automation.html), [PPTX](examples/n8n-jupviec-automation.pptx) |
+Build decks from the style presets in `references/STYLE_PRESETS.md` and the HTML template in `references/html-template.md`. Use the `extract-pptx` / `export-pptx` scripts to convert between HTML and PPTX.
 
 ---
 

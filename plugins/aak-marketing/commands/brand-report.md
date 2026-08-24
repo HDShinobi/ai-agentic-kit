@@ -1,44 +1,40 @@
 ---
-description: Workflow tạo báo cáo tự động bằng cách "clone" phong cách từ website thương hiệu.
+description: Generate a report whose design is "cloned" from a brand's website, from just a URL.
 ---
 
-# /brand-report - Báo cáo Theo Phong cách Thương hiệu
+# /brand-report - Brand-Styled Report
 
-Sử dụng workflow này khi bạn muốn tạo một báo cáo có thiết kế y hệt một công ty nào đó chỉ bằng cách cung cấp URL website của họ.
+Use this workflow to produce a report that visually matches a company's brand, given only their website URL.
 
-## Quy trình "One-Prompt" Tự động
+## "One-prompt" flow
 
-Bạn chỉ cần cung cấp thông tin theo mẫu:
-> "Chạy /brand-report cho dữ liệu trong file [tên_file] theo style của website [địa_chỉ_url]"
+Provide the request in this shape:
+> "Run /brand-report for the data in [file] using the style of [website URL]"
 
-### Các bước AI sẽ thực hiện tự động:
+### Steps the AI performs:
 
-1.  **Crawl Thương hiệu**: dùng một browser tool có sẵn (`chrome-devtools` MCP, `playwright` MCP, hoặc `ego-browser`) truy cập website để lấy:
-    - Logo chính thức.
-    - Bảng màu đặc trưng (màu Primary, Secondary).
-    - Font chữ và phong cách thiết kế (Dark/Light mode).
+1.  **Crawl the brand**: use an available browser tool (`chrome-devtools` MCP, `playwright` MCP, or `ego-browser`) to visit the site and extract:
+    - The official logo.
+    - The signature palette (primary, secondary colors).
+    - Fonts and design style (dark / light mode).
 
-2.  **Thiết kế Layout**: áp dụng thông tin trên vào một hệ thống thiết kế báo cáo đồng bộ — dùng skill `ui-ux-pro-max` nếu có, hoặc skill `brand`/`frontend-design`.
+2.  **Design the layout**: apply the above into a coherent report design system — use the `ui-ux-pro-max` skill, or the `brand` / `frontend-design` skills.
 
-3.  **Xử lý Dữ liệu**: Đọc file text của bạn và chuyển đổi thành các block nội dung chuyên nghiệp (biểu đồ, bảng, callout).
+3.  **Process the data**: read the input file and convert it into professional content blocks (charts, tables, callouts).
 
-4.  **Xuất bản PDF**: Dùng skill `minimax-pdf` (trong chính plugin này) để render kết quả cuối cùng ra file PDF chất lượng cao.
+4.  **Render the PDF**: use the `minimax-pdf` skill (this plugin) to render the final high-quality PDF.
 
-## Ví dụ thực tế
+## Example
 
 **Input**:
 - File: `marketing_results_q1.txt`
 - Website: `https://www.tesla.com`
 
-**Kết quả**: AI sẽ tạo một báo cáo PDF với:
-- Logo Tesla ở trang bìa.
-- Tông màu đỏ/đen/trắng đặc trưng của Tesla.
-- Font chữ hiện đại, tối giản.
-- Các biểu đồ được render theo màu của thương hiệu.
+**Result**: a PDF report with Tesla's logo on the cover, its signature red/black/white palette, a modern minimal typeface, and charts rendered in the brand colors.
 
 ## Skills / tools used
 
 - This command orchestrates the steps above directly (no external orchestrator skill needed).
 - `minimax-pdf` skill — PDF rendering (this plugin)
 - A browser tool — crawl brand (chrome-devtools / playwright / ego-browser)
-- `ui-ux-pro-max` (if available) or `brand` / `frontend-design` — design system
+- `ui-ux-pro-max` or `brand` / `frontend-design` — design system

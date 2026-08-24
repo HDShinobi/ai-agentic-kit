@@ -70,102 +70,36 @@ Create campaign assets:
 - Tracking setup
 - Results report
 
-## Step 6: Presentation Builder (Optional)
+## Step 6: Presentation Builder (optional)
 
-Ask the user: **"Bạn có muốn tạo file thuyết trình HTML cho campaign này không?"**
+Ask the user whether they want an HTML presentation deck for this campaign. If yes:
 
-If YES, follow these steps:
+### 6.1 Build the deck
+Use the **`frontend-slides` skill** (this plugin) to build a single-file HTML presentation:
+- Slide-based navigation (arrow keys + click), progress bar, mobile swipe.
+- All CSS inline (no external dependencies); pick fonts that render the content's language correctly.
+- Slides: title, goals & KPIs, audience, key messaging, channels, timeline, content plan, success metrics, next steps.
+- Save to `docs/campaign-presentation.html`.
 
-### 6.1 Build HTML Presentation
+### 6.2 Preview locally
+Open the file in a browser (`open` / `xdg-open` / `start` depending on OS), or serve the `docs/` folder with `python3 -m http.server`.
 
-Use the `ui-ux-pro-max` skill to create a stunning HTML presentation:
+### 6.3 Share (optional)
+To share, deploy the static HTML to any static host the user already uses (e.g. GitHub Pages, Netlify, Vercel), or send the file directly. Only expose a local tunnel with the user's explicit consent — do not open the user's machine to the public by default.
 
-1. Create a single-file HTML presentation with:
-   - Modern dark theme with gradient accents
-   - Slide-based navigation (arrow keys + click)
-   - Progress bar
-   - Touch/swipe support for mobile
-   - All CSS inline (no external dependencies)
-   - **Font selection**: Use Vietnamese-friendly fonts like `Inter`, `Be Vietnam Pro`, or `Roboto` if the content is in Vietnamese to avoid broken characters.
+## Step 7: Automated video production (optional)
 
-2. Content slides should include:
-   - Title slide with campaign name
-   - Goals & KPIs
-   - Target audience
-   - Key messaging
-   - Marketing channels
-   - Timeline
-   - Content plan
-   - Success metrics
-   - CTA / Next steps
+Ask the user whether they want automated video ads (TikTok / Reels / Meta). If yes, use the **`video-automation`** and **`remotion-best-practices`** skills (this plugin):
+- Take a natural-language brief (e.g. "a 9:16 TikTok promoting feature X, neon style" or "a 16:9 and a 9:16 cut of this campaign").
+- Build the Remotion composition, preview locally (the skill provides the dev-server command), then render to MP4 (the skill checks for FFmpeg and installs it if missing).
+- Define your own composition IDs per format (e.g. one for 16:9, one for 9:16) — do not reuse example IDs from other projects.
 
-3. Save to `docs/campaign-presentation.html`
+## Skills used
 
-### 6.2 Preview Locally
-
-Open the presentation in browser:
-
-```bash
-# macOS
-open docs/campaign-presentation.html
-
-# Linux
-xdg-open docs/campaign-presentation.html
-
-# Windows
-start docs/campaign-presentation.html
-```
-
-### 6.3 Deploy to Internet (Optional)
-
-Ask the user: **"Bạn có muốn đẩy lên internet để chia sẻ không?"**
-
-If YES, use nport to create a public URL:
-
-```bash
-# Install nport if not installed
-npm install -g nport
-
-# Start a local server and expose it
-npx serve docs -l 3000 &
-nport 3000 -s <campaign-name>
-```
-
-This will create a public URL like: `https://<campaign-name>.nport.link`
-
-**Note**: The tunnel remains active for ~4 hours. Perfect for sharing presentations in meetings!
-
-## Step 7: Automated Video Production (Optional)
-
-Ask the user: **"Bạn có muốn tạo video ad tự động cho campaign này không? (TikTok/Reels/Meta)"**
-## Bước 7: Sản xuất Video Tự động (Tùy chọn) ✨
-Dành cho người dùng không rành kỹ thuật, Agent sẽ lo toàn bộ khâu code.
-
-### 7.1 Cách yêu cầu Agent
-Mầy chỉ cần đưa yêu cầu bằng ngôn ngữ tự nhiên. Ví dụ:
-- *"Clone cái landing page này thành video Facebook: [URL]"*
-- *"Tạo một video TikTok giới thiệu tính năng X, phong cách neon, có hoa rơi."*
-- *"Làm một bản 16:9 và một bản 9:16 cho chiến dịch Tết."*
-
-### 7.2 Xem Preview (Cực dễ)
-Sau khi Agent code xong, mầy chỉ cần mở link Localhost mà Agent cung cấp (thường là `http://localhost:3000`).
-- Nhấn **Space** để xem.
-- Kéo thanh Timeline để soi từng frame.
-
-### 7.3 Xuất Video (Render)
-Khi đã ưng ý, mầy chỉ cần bảo Agent: *"Xuất mp4 cho tao"*. 
-- Agent sẽ tự động kiểm tra FFmpeg.
-- Nếu thiếu, Agent sẽ hướng dẫn mầy chạy: `brew install ffmpeg`.
-- Sau đó Agent sẽ tự chạy lệnh render và mở file video lên cho mầy.
-
-**Composition ID mầy cần biết:**
-- Video Facebook (16:9): `JupViecTetAd`
-- Video TikTok/Reels (9:16): `JupViecTetAd916` hoặc `JupViecTikTokAd`
-
-## Skills Used
-
-- social-media-expert
-- email-marketing
-- analytics-marketing
-- ui-ux-pro-max
-- video-automation
+- `content-marketing`, `copywriting` — messaging & asset copy (Step 3)
+- `page-cro` / `conversion-optimization` — landing pages (Step 3)
+- `email-marketing` — nurture sequences (Step 3)
+- `social-media-expert` — social content (Step 3)
+- `analytics-marketing` — tracking & measurement (Steps 4–5)
+- `frontend-slides` — presentation deck (Step 6)
+- `video-automation`, `remotion-best-practices` — video ads (Step 7)
