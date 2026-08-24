@@ -34,3 +34,39 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+------------------------------------------------------------------------------
+aak-marketing — additional third-party sources
+------------------------------------------------------------------------------
+
+Many skills, agents, and workflows in `plugins/aak-marketing/` are adapted from
+the following upstream projects. Each is credited here; their license terms
+apply to the adapted portions.
+
+- antigravity-marketing (https://github.com/nguyenphp/antigravity-marketing),
+  Copyright (c) NguyenPHP, MIT (as declared in the project's package.json and
+  README). Source of most marketing skills, the 4 marketing agents, and the
+  /campaign, /content, /optimize, /analyze, /report, /brand-report workflows.
+
+- ClaudeKit (https://claudekit.cc / https://github.com/mrgoonie/claudekit-skills),
+  by claudekit. Source of the `brand` and `banner-design` skills. Both were
+  adapted to run standalone (the `brand` token-sync script was made
+  self-contained; `banner-design` image/screenshot steps were repointed to
+  available image-generation and browser tools).
+
+- MiniMax-AI/skills (https://github.com/MiniMax-AI/skills), Copyright (c) 2026
+  MiniMax, MIT. Source of the `minimax-pdf` skill (styled, local PDF generation).
+
+- Remotion Dev Skills (https://github.com/remotion-dev/skills), by Remotion.
+  Source of `remotion-best-practices`, `video-automation`, `tutorial-video-expert`.
+
+- vibeship-spawner-skills, Apache License 2.0. Source of the
+  `viral-generator-builder` skill. Under Apache-2.0, this notice preserves the
+  attribution; see the upstream project for the full license text.
+
+- Antigravity Awesome Skills (https://github.com/sickn33/antigravity-awesome-skills),
+  community-contributed. Origin of several patterns (e.g. `marketing-ideas`,
+  the CRO-suite skills, `programmatic-seo`) as bundled via antigravity-marketing.
+
+Where an upstream skill shipped a placeholder/stub library (marketing-ideas,
+marketing-psychology), the missing content was authored fresh for this project.

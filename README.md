@@ -2,7 +2,7 @@
 
 A broad Claude Code agent toolkit distributed as **one marketplace of eight domain plugins** (prefix `aak-`). Install the marketplace once, then **enable only the slices a given project needs** — breadth is the point; what you don't need, you simply don't enable.
 
-Salvaged from [ag-kit](https://github.com/vudovn/ag-kit) © vudovn (MIT): its domain knowledge — **19 specialist agents, 47 skills, 13 command workflows** — is migrated into native Claude Code plugins, with the Antigravity-specific plumbing rewritten (native safety hook, main-thread orchestration, self-contained commands) or dropped.
+Salvaged from [ag-kit](https://github.com/vudovn/ag-kit) © vudovn (MIT) and expanded with a deep marketing suite adapted from several open-source skill sets (see [NOTICE](NOTICE)). The Antigravity-specific plumbing is rewritten (native safety hook, main-thread orchestration, self-contained commands) or dropped. Current totals across the 8 plugins: **23 agents, 87 skills, 19 command workflows**.
 
 ## Install
 
@@ -27,7 +27,7 @@ Local dev without publishing: `claude --plugin-dir ./plugins/aak-core`, then `/r
 | **aak-frontend** | Frontend · design · mobile | frontend-specialist, mobile-developer | frontend-architecture, frontend-design, nextjs-react-expert, tailwind-patterns, web-design-guidelines, mobile-design | — |
 | **aak-security** | Offensive + defensive security | security-auditor, penetration-tester | vulnerability-scanner, red-team-tactics | — |
 | **aak-quality** | Test · debug · review · performance | debugger, test-engineer, qa-automation-engineer, performance-optimizer, code-archaeologist, explorer-agent | testing-patterns, webapp-testing, code-review-checklist, performance-profiling, lint-and-validate | — |
-| **aak-marketing** | SEO · GEO · content | seo-specialist | seo-fundamentals, geo-fundamentals | — |
+| **aak-marketing** | Full marketing: SEO/GEO · CRO · content · email · growth · analytics · brand · video (42 skills) | marketing-strategist, content-creator, growth-specialist, analytics-specialist, seo-specialist | conversion-optimization, page-cro, signup-flow-cro, keyword-research-deep, programmatic-seo, analytics-marketing, email-marketing, content-marketing, launch-strategy, brand, minimax-pdf | `/campaign`, `/content`, `/optimize`, `/analyze`, `/report`, `/brand-report` |
 | **aak-game** | Game development | game-developer | game-development (router → 10 platform guides) | — |
 | **aak-legacy** | ag-kit classic bundle (**off by default**) | project-planner | brainstorming, systematic-debugging, tdd-workflow, plan-writing, verify-changes, parallel-agents, coordinator-mode, memory-system, … | `/brainstorm`, `/plan`, `/debug`, `/verify`, `/test`, `/status`, `/orchestrate`, `/coordinate`, `/remember` |
 

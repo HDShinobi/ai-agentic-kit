@@ -1,15 +1,52 @@
 {
   "name": "ai-agentic-kit",
-  "owner": { "name": "HDShinobi", "url": "https://github.com/HDShinobi" },
-  "metadata": { "description": "AI Agentic Kit — a broad Claude Code agent toolkit; enable the slices you need." },
+  "owner": {
+    "name": "HDShinobi",
+    "url": "https://github.com/HDShinobi"
+  },
+  "metadata": {
+    "description": "AI Agentic Kit — a broad Claude Code agent toolkit; enable the slices you need."
+  },
   "plugins": [
-    { "name": "aak-core",      "source": "./plugins/aak-core",      "description": "Foundation: architecture, scaffolding, code-review, safety hook." },
-    { "name": "aak-backend",   "source": "./plugins/aak-backend",   "description": "Backend, data, API, devops, shell." },
-    { "name": "aak-frontend",  "source": "./plugins/aak-frontend",  "description": "Frontend, design, mobile." },
-    { "name": "aak-security",  "source": "./plugins/aak-security",  "description": "Offensive + defensive security." },
-    { "name": "aak-quality",   "source": "./plugins/aak-quality",   "description": "Test, debug, review, performance." },
-    { "name": "aak-marketing", "source": "./plugins/aak-marketing", "description": "SEO, GEO, content." },
-    { "name": "aak-game",      "source": "./plugins/aak-game",      "description": "Game development." },
-    { "name": "aak-legacy",    "source": "./plugins/aak-legacy",    "description": "ag-kit classic workflow bundle (off by default)." }
+    {
+      "name": "aak-core",
+      "source": "./plugins/aak-core",
+      "description": "Foundation: architecture, scaffolding, code-review, safety hook."
+    },
+    {
+      "name": "aak-backend",
+      "source": "./plugins/aak-backend",
+      "description": "Backend, data, API, devops, shell."
+    },
+    {
+      "name": "aak-frontend",
+      "source": "./plugins/aak-frontend",
+      "description": "Frontend, design, mobile."
+    },
+    {
+      "name": "aak-security",
+      "source": "./plugins/aak-security",
+      "description": "Offensive + defensive security."
+    },
+    {
+      "name": "aak-quality",
+      "source": "./plugins/aak-quality",
+      "description": "Test, debug, review, performance."
+    },
+    {
+      "name": "aak-marketing",
+      "source": "./plugins/aak-marketing",
+      "description": "Full marketing suite: SEO/GEO, CRO, content, email, growth, analytics, brand, video."
+    },
+    {
+      "name": "aak-game",
+      "source": "./plugins/aak-game",
+      "description": "Game development."
+    },
+    {
+      "name": "aak-legacy",
+      "source": "./plugins/aak-legacy",
+      "description": "ag-kit classic workflow bundle (off by default)."
+    }
   ]
 }
