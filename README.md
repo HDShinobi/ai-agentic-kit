@@ -16,6 +16,23 @@ Salvaged from [ag-kit](https://github.com/vudovn/ag-kit) © vudovn (MIT) and exp
 
 Commands and skills are **namespaced** per plugin — e.g. `/aak-core:create`, `/aak-backend:deploy`. The `aak-workflow` plugin holds the process methodology **skills** (systematic-debugging, tdd-workflow, plan-writing, …) plus multi-agent orchestration; **skip installing it if you run the `superpowers` stack**, since those skills cover the same ground. The process **commands** (`/plan`, `/brainstorm`, `/debug`, `/verify`, `/test`) live in the active `aak-core`/`aak-quality` plugins and are self-contained (they defer to `superpowers` skills when present, otherwise run inline).
 
+### Recommended install
+
+**If you already run the [superpowers](https://github.com/obra/superpowers) stack** (or any brainstorm/plan/debug/verify/test skill set): install `aak-core` + the domain plugins you need, and **do NOT install `aak-workflow`**. You still get the process **commands** (`/plan`, `/brainstorm`, `/debug`, `/verify`, `/test` — they defer to your superpowers skills), with **zero skill-selection collisions**, because the overlapping methodology *skills* live only in `aak-workflow`.
+
+```bash
+/plugin install aak-core@ai-agentic-kit          # always — foundation + safety hook
+/plugin install aak-backend@ai-agentic-kit        # pick the domains you need
+/plugin install aak-frontend@ai-agentic-kit
+/plugin install aak-marketing@ai-agentic-kit
+# ...aak-security / aak-quality / aak-game as needed
+# aak-workflow: SKIP (superpowers already covers its methodology skills)
+```
+
+**If you do NOT run superpowers** and want a full self-contained process layer: also install `aak-workflow` for the methodology skills + orchestration.
+
+> Rule of thumb: **always install `aak-core`** (foundation + the only safety hook). Add `aak-workflow` **only** when you have no superpowers-style stack.
+
 Local dev without publishing: `claude --plugin-dir ./plugins/aak-core`, then `/reload-plugins`.
 
 ## Plugin catalog
