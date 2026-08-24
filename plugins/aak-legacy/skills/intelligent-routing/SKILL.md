@@ -235,9 +235,9 @@ User: "Add mobile support to the web app"
 
 ### With Workspace Rules
 
-- **Priority**: Workspace rules (`.agents/rules/`) > intelligent-routing
-- If a workspace rule specifies explicit routing, follow it
-- Intelligent routing is the DEFAULT when no explicit rule exists
+- **Priority**: explicit user/project instructions > intelligent-routing
+- If the user or a project convention specifies explicit routing, follow it
+- Intelligent routing is the DEFAULT when no explicit instruction exists
 
 ## Testing the System
 
@@ -305,7 +305,7 @@ still mention agents explicitly with `@agent-name` if you prefer.
 
 ### Enable Debug Mode (for development)
 
-Add to a workspace rule file (`.agents/rules/`) temporarily:
+Note the routing decision inline in your working notes temporarily:
 
 ```markdown
 ## DEBUG: Intelligent Routing
@@ -332,4 +332,4 @@ Show selection reasoning:
 
 ---
 
-**Next Steps**: Integrate this skill into the workspace rules (`.agents/rules/request-routing.md`).
+**Next Steps**: Apply this skill's routing heuristics directly when coordinating work.
