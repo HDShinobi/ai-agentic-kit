@@ -74,7 +74,13 @@ Avoid generic AI-generated aesthetics like overused font families (Inter, Roboto
 
 ## Examples
 
-Build decks from the style presets in `references/STYLE_PRESETS.md` and the HTML template in `references/html-template.md`. Use the `extract-pptx` / `export-pptx` scripts to convert between HTML and PPTX.
+A worked example deck ships under `examples/` — study it to see the output this skill produces, then adapt (do not reuse its branding as-is):
+
+| Example | Description | Files |
+|---------|-------------|-------|
+| Content-marketing automation deck | A finished single-file HTML deck + its PPTX export, demonstrating layout, presets, and the HTML↔PPTX round-trip. | [HTML](examples/n8n-jupviec-automation.html), [PPTX](examples/n8n-jupviec-automation.pptx) |
+
+Build new decks from the style presets in `references/STYLE_PRESETS.md` and the HTML template in `references/html-template.md`; use the `extract-pptx` / `export-pptx` scripts to convert between HTML and PPTX.
 
 ---
 
