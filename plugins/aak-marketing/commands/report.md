@@ -1,10 +1,10 @@
 ---
-description: Turn marketing content, analysis, or proposals into a professional, print-ready PDF report.
+description: Workflow to create professional PDF reports from HTML/Markdown.
 ---
 
 # /report - Professional PDF Report
 
-Use this workflow to turn marketing content, analysis results, or proposals into a high-quality PDF, using the `minimax-pdf` skill (this plugin).
+Use this workflow to turn marketing content, analysis results, or proposals into a high-quality PDF file.
 
 ## Step 1: Pick a report type
 Choose a preset for the right design:
@@ -25,15 +25,15 @@ Choose a preset for the right design:
 2. **Cover image** — provide a path or a description for the cover.
 
 ## Step 4: Generate the PDF
-Use the `minimax-pdf` skill to render:
+Use the `minimax-pdf` tool to render:
 1. Assemble the data into `content.json`.
-2. Run the generation command (see the skill).
-3. Verify the output (`out.pdf`).
+2. Run the report-generation command.
+3. Verify the output file (`out.pdf`).
 
 ## Output
-- A professional, print-ready PDF for clients or stakeholders.
-- Styled cover, auto table of contents, and refined layout.
+- A professional PDF, ready to print or send to clients.
+- A report with a nice cover, auto table of contents, and refined layout.
 
-## Skills used
-- `minimax-pdf` — PDF generation (this plugin)
-- An image-analysis skill (optional) — only if you need to analyze a cover image; use whatever vision/image skill is available in your environment.
+## Skills Used
+- minimax-pdf
+- vision-analysis (if you need to analyze the cover image)

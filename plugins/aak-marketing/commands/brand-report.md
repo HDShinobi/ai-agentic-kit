@@ -18,7 +18,7 @@ Provide the request in this shape:
     - The signature palette (primary, secondary colors).
     - Fonts and design style (dark / light mode).
 
-2.  **Design the layout**: apply the above into a coherent report design system — use the `ui-ux-pro-max` skill, or the `brand` / `frontend-design` skills.
+2.  **Design the layout**: apply the above into a coherent report design system — use the `ui-ux-pro-max` skill (if available), or the `brand` / `frontend-design` skills.
 
 3.  **Process the data**: read the input file and convert it into professional content blocks (charts, tables, callouts).
 
@@ -37,4 +37,4 @@ Provide the request in this shape:
 - This command orchestrates the steps above directly (no external orchestrator skill needed).
 - `minimax-pdf` skill — PDF rendering (this plugin)
 - A browser tool — crawl brand (chrome-devtools / playwright / ego-browser)
-- `ui-ux-pro-max` or `brand` / `frontend-design` — design system
+- `ui-ux-pro-max` (if available) or `brand` / `frontend-design` — design system
