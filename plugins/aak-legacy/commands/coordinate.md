@@ -18,20 +18,24 @@ $ARGUMENTS
 
 ---
 
+## Delegation scope (degradation rule)
+
+> **Delegate only to agents from plugins that are currently enabled** (`aak-backend:backend-specialist`, `aak-frontend:frontend-specialist`, `aak-security:security-auditor`, etc.). If a needed specialist's plugin is not enabled, **perform that role inline** rather than failing. Never assume a cross-plugin agent exists.
+
 ## Task
 
-Use the `orchestrator` agent with this context:
+You run on the main thread — coordinate workers yourself using the **Task tool** (this command *is* the coordinator; there is no separate coordination subagent). Follow the `coordinator-mode` skill loaded above.
 
 ```
 CONTEXT:
 - User Request: $ARGUMENTS
 - Mode: COORDINATOR (advanced orchestration)
-- Skill: Load coordinator-mode skill for patterns
+- Skill: coordinator-mode (loaded from this plugin)
 
 WORKFLOW:
 1. DECOMPOSE the request into worker subtasks
 2. CLASSIFY each subtask: Research | Implementation | Verification
-3. DISPATCH workers (parallel for reads, sequential for writes)
+3. DISPATCH workers via the Task tool (parallel for reads, sequential for writes)
 4. SYNTHESIZE results — don't copy-paste, add insight
 5. VERIFY completeness before reporting to user
 
@@ -41,6 +45,7 @@ RULES:
 3. Never write "based on your findings, fix it" — prove YOU understood
 4. Start with 2-3 workers, add more after synthesis if needed
 5. Research before implementation — ALWAYS
+6. Delegate only to enabled-plugin agents; otherwise do the role inline
 ```
 
 ---
