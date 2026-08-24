@@ -125,11 +125,66 @@ PLFS = (5 + 5 + 4 + 5) − 2 = 17 (cap at 15)
 > The following models are **reference material**.
 > Only a subset should ever be activated at once.
 
-### (Foundational Thinking Models, Buyer Psychology, Persuasion, Pricing Psychology, Design Models, Growth Models)
+> Browse by group, pick the few that fit the specific behavior you're trying to change, then score each with the PLFS before applying. Every application must pass the ethics gate (no dark patterns, no false scarcity, no hidden defaults).
 
-✅ **Library unchanged**
-✅ **Your original content preserved in full**
-*(All models from your provided draft remain valid and included)*
+### A. Foundational thinking
+1. **Jobs-to-be-Done** — people "hire" a product for a job; market the progress, not the features.
+2. **Value = perceived benefit − perceived cost** — raise perceived benefit or lower perceived (money, time, effort, risk) cost.
+3. **Expectancy-value** — motivation ≈ expectancy of success × value of outcome; reduce doubt and raise stakes.
+4. **Fogg Behavior Model** — behavior = Motivation × Ability × Prompt; the cheapest lever is usually Ability (reduce friction).
+5. **Peak-end rule** — people judge an experience by its peak and its end; engineer both.
+
+### B. Buyer psychology & decision biases
+6. **Anchoring** — the first number seen frames all later judgments (pricing, discounts).
+7. **Loss aversion** — losses hurt ~2× more than equivalent gains; frame around what's lost by not acting (honestly).
+8. **Endowment effect** — people value what they already "own"; free trials and personalization create ownership.
+9. **Default effect** — most people keep the pre-selected option; make the best-for-them choice the default (ethically).
+10. **Paradox of choice** — too many options paralyze; curate and recommend.
+11. **Hyperbolic discounting** — immediate rewards beat delayed ones; surface fast value ("aha in minutes").
+12. **Social proof** — people follow similar others; show relevant logos, counts, and peer testimonials.
+13. **Authority** — credible experts/certifications raise trust; cite real credentials only.
+14. **Bandwagon / herd** — "join 10,000 teams" works when the number is real and relevant.
+15. **Zeigarnik effect** — unfinished tasks nag; progress bars and incomplete checklists pull completion.
+16. **Commitment & consistency** — small yeses lead to bigger ones; progressive commitment in signup.
+17. **Framing effect** — "95% fat-free" vs "5% fat"; frame the same fact toward the desired (truthful) reading.
+18. **Availability heuristic** — vivid, recent examples feel more probable; lead with concrete stories.
+
+### C. Persuasion & messaging
+19. **Cialdini's six** — reciprocity, commitment, social proof, authority, liking, scarcity — as ethical guides.
+20. **Reciprocity** — give real value first (tools, content); goodwill returns.
+21. **Message awareness levels** — match copy to unaware → problem → solution → product → most-aware.
+22. **Feature → Benefit → Outcome** — always ladder features up to the human outcome.
+23. **Story/narrative transportation** — a customer-as-hero narrative lowers resistance.
+24. **Curiosity gap** — open a loop the reader needs to close (headlines, subject lines) — then pay it off.
+25. **Concreteness** — specific numbers and vivid detail beat vague claims.
+
+### D. Pricing psychology
+26. **Decoy effect** — a deliberately worse option makes the target tier look better.
+27. **Center-stage / anchoring tiers** — position the target plan as the visually anchored "recommended."
+28. **Charm pricing** — $49 vs $50 where appropriate; test, don't assume.
+29. **Price = quality signal** — too-cheap can lower perceived value; price to positioning.
+30. **Bundling & unbundling** — bundle to raise perceived value; unbundle to lower entry friction.
+31. **Pain-of-paying reduction** — annual billing, credits, and framing reduce transaction pain.
+
+### E. Design & UX models
+32. **Hick's Law** — more choices = slower decisions; reduce options at decision points.
+33. **Fitts's Law** — bigger, closer targets are faster to hit; make primary CTAs prominent.
+34. **Miller's Law (7±2)** — chunk information; don't overload working memory.
+35. **Von Restorff (isolation)** — the distinct item is remembered; make the key action stand out.
+36. **Aesthetic-usability effect** — attractive design is perceived as more usable; polish builds trust.
+37. **Cognitive load** — minimize extraneous load so attention goes to the decision.
+38. **Serial position** — first and last items are best recalled; place key points there.
+
+### F. Growth & retention models
+39. **Hook model** — trigger → action → variable reward → investment builds habits.
+40. **Network effects** — value grows with users; design for invites and shared artifacts.
+41. **AARRR funnel** — acquisition, activation, retention, referral, revenue as a diagnostic lens.
+42. **Variable reward** — unpredictable positive outcomes sustain engagement (use sparingly, honestly).
+43. **IKEA effect** — effort invested increases attachment; let users build/customize.
+44. **Sunk-cost (ethical use)** — surface accumulated value to reduce churn, never to trap.
+45. **Reciprocal referral** — people share when both sides benefit and the ask is well-timed.
+
+> Reference material — do not dump all of this. Select the 2–4 models that map to the target behavior, **score each with the PLFS**, apply only those that clear the ethics gate, and state the model you used.
 
 ---
 
