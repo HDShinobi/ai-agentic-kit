@@ -1,0 +1,10 @@
+{
+  "name": "aak-game",
+  "version": "0.1.0",
+  "description": "AI Agentic Kit — game development.",
+  "author": {
+    "name": "hoangdvh"
+  },
+  "homepage": "https://github.com/hoangdvh/ai-agentic-kit",
+  "license": "MIT"
+}

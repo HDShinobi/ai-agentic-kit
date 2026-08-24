@@ -1,0 +1,10 @@
+{
+  "name": "aak-security",
+  "version": "0.1.0",
+  "description": "AI Agentic Kit — offensive + defensive security.",
+  "author": {
+    "name": "hoangdvh"
+  },
+  "homepage": "https://github.com/hoangdvh/ai-agentic-kit",
+  "license": "MIT"
+}

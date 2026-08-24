@@ -1,0 +1,10 @@
+{
+  "name": "aak-core",
+  "version": "0.1.0",
+  "description": "AI Agentic Kit — foundation: architecture, scaffolding, code-review, safety hook.",
+  "author": {
+    "name": "hoangdvh"
+  },
+  "homepage": "https://github.com/hoangdvh/ai-agentic-kit",
+  "license": "MIT"
+}

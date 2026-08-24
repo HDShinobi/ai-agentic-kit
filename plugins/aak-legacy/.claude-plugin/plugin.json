@@ -1,0 +1,10 @@
+{
+  "name": "aak-legacy",
+  "version": "0.1.0",
+  "description": "AI Agentic Kit — ag-kit classic workflow bundle (off by default).",
+  "author": {
+    "name": "hoangdvh"
+  },
+  "homepage": "https://github.com/hoangdvh/ai-agentic-kit",
+  "license": "MIT"
+}

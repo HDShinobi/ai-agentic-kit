@@ -1,0 +1,10 @@
+{
+  "name": "aak-marketing",
+  "version": "0.1.0",
+  "description": "AI Agentic Kit — SEO, GEO, content.",
+  "author": {
+    "name": "hoangdvh"
+  },
+  "homepage": "https://github.com/hoangdvh/ai-agentic-kit",
+  "license": "MIT"
+}
