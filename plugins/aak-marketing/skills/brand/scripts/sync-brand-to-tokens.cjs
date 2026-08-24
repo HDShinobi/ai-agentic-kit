@@ -11,13 +11,11 @@
 
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
 
 // Paths
 const BRAND_GUIDELINES = 'docs/brand-guidelines.md';
 const DESIGN_TOKENS_JSON = 'assets/design-tokens.json';
 const DESIGN_TOKENS_CSS = 'assets/design-tokens.css';
-const GENERATE_TOKENS_SCRIPT = '.claude/skills/design-system/scripts/generate-tokens.cjs';
 
 /**
  * Extract color info from brand guidelines markdown
@@ -29,22 +27,24 @@ function extractColorsFromMarkdown(content) {
     accent: { name: 'accent', shades: {} }
   };
 
-  // Extract primary color name and hex from Quick Reference table
-  const quickRefMatch = content.match(/Primary Color\s*\|\s*#([A-Fa-f0-9]{6})\s*\(([^)]+)\)/);
+  // Extract color name and hex from Quick Reference table.
+  // The "(Name)" suffix is OPTIONAL — the shipped starter template writes "| Primary Color | #hex |"
+  // with no name, so fall back to the role name and never leave `base` undefined.
+  const quickRefMatch = content.match(/Primary Color\s*\|\s*#([A-Fa-f0-9]{6})(?:\s*\(([^)]+)\))?/);
   if (quickRefMatch) {
-    colors.primary.name = quickRefMatch[2].toLowerCase().replace(/\s+/g, '-');
+    colors.primary.name = (quickRefMatch[2] || 'primary').toLowerCase().replace(/\s+/g, '-');
     colors.primary.base = `#${quickRefMatch[1]}`;
   }
 
-  const secondaryMatch = content.match(/Secondary Color\s*\|\s*#([A-Fa-f0-9]{6})\s*\(([^)]+)\)/);
+  const secondaryMatch = content.match(/Secondary Color\s*\|\s*#([A-Fa-f0-9]{6})(?:\s*\(([^)]+)\))?/);
   if (secondaryMatch) {
-    colors.secondary.name = secondaryMatch[2].toLowerCase().replace(/\s+/g, '-');
+    colors.secondary.name = (secondaryMatch[2] || 'secondary').toLowerCase().replace(/\s+/g, '-');
     colors.secondary.base = `#${secondaryMatch[1]}`;
   }
 
-  const accentMatch = content.match(/Accent Color\s*\|\s*#([A-Fa-f0-9]{6})\s*\(([^)]+)\)/);
+  const accentMatch = content.match(/Accent Color\s*\|\s*#([A-Fa-f0-9]{6})(?:\s*\(([^)]+)\))?/);
   if (accentMatch) {
-    colors.accent.name = accentMatch[2].toLowerCase().replace(/\s+/g, '-');
+    colors.accent.name = (accentMatch[2] || 'accent').toLowerCase().replace(/\s+/g, '-');
     colors.accent.base = `#${accentMatch[1]}`;
   }
 
@@ -128,8 +128,9 @@ function updateDesignTokens(tokens, colors) {
   const brandName = `ClaudeKit Marketing - ${colors.primary.name.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}`;
   tokens.brand = brandName;
 
-  // Update primitive colors with new names
-  const primitiveColors = tokens.primitive?.color || {};
+  // Update primitive colors with new names (initialize the tree when starting from no tokens file)
+  tokens.primitive = tokens.primitive || {};
+  const primitiveColors = tokens.primitive.color || {};
 
   // Remove old color keys, add new ones
   delete primitiveColors.coral;
@@ -137,21 +138,12 @@ function updateDesignTokens(tokens, colors) {
   delete primitiveColors.mint;
 
   // Add new named colors
-  primitiveColors[colors.primary.name] = generateColorScale(
-    colors.primary.base,
-    colors.primary.dark,
-    colors.primary.light
-  );
-  primitiveColors[colors.secondary.name] = generateColorScale(
-    colors.secondary.base,
-    colors.secondary.dark,
-    colors.secondary.light
-  );
-  primitiveColors[colors.accent.name] = generateColorScale(
-    colors.accent.base,
-    colors.accent.dark,
-    colors.accent.light
-  );
+  // Only generate scales for roles that were actually found (accent is optional in the
+  // starter template). Skipping a role with no base keeps the script from crashing.
+  for (const role of ['primary', 'secondary', 'accent']) {
+    const c = colors[role];
+    if (c && c.base) primitiveColors[c.name] = generateColorScale(c.base, c.dark, c.light);
+  }
 
   tokens.primitive.color = primitiveColors;
 
@@ -242,25 +234,39 @@ function main() {
     return;
   }
 
-  // Write updated tokens
+  // Write updated tokens (create the assets/ dir when it doesn't exist yet)
+  fs.mkdirSync(path.dirname(tokensPath), { recursive: true });
   fs.writeFileSync(tokensPath, JSON.stringify(tokens, null, 2));
   console.log(`✅ Updated: ${DESIGN_TOKENS_JSON}`);
 
-  // Regenerate CSS
-  const generateScript = path.resolve(process.cwd(), GENERATE_TOKENS_SCRIPT);
-  if (fs.existsSync(generateScript)) {
-    try {
-      execSync(`node ${generateScript} --config ${DESIGN_TOKENS_JSON} -o ${DESIGN_TOKENS_CSS}`, {
-        cwd: process.cwd(),
-        stdio: 'inherit'
-      });
-      console.log(`✅ Regenerated: ${DESIGN_TOKENS_CSS}`);
-    } catch (e) {
-      console.error('⚠️  Failed to regenerate CSS:', e.message);
-    }
+  // Regenerate CSS custom properties from the token tree (self-contained — no external
+  // design-system skill required). Flattens every leaf value under design-tokens.json into
+  // `--dot.path` CSS variables on :root.
+  try {
+    const cssPath = path.resolve(process.cwd(), DESIGN_TOKENS_CSS);
+    fs.mkdirSync(path.dirname(cssPath), { recursive: true });
+    fs.writeFileSync(cssPath, tokensToCss(tokens));
+    console.log(`✅ Regenerated: ${DESIGN_TOKENS_CSS}`);
+  } catch (e) {
+    console.error('⚠️  Failed to regenerate CSS:', e.message);
   }
 
   console.log('\n✨ Brand sync complete!');
+}
+
+// Flatten a nested token object into CSS custom properties.
+// { primitive: { color: { primary: { base: "#123" } } } } -> "--primitive-color-primary-base: #123;"
+function tokensToCss(tokens) {
+  const lines = [];
+  const walk = (obj, prefix) => {
+    for (const [k, v] of Object.entries(obj || {})) {
+      const name = prefix ? `${prefix}-${k}` : k;
+      if (v && typeof v === 'object') walk(v, name);
+      else if (v !== undefined && v !== null) lines.push(`  --${name}: ${v};`);
+    }
+  };
+  walk(tokens, '');
+  return `/* Generated from ${DESIGN_TOKENS_JSON} by sync-brand-to-tokens.cjs. Do not edit by hand. */\n:root {\n${lines.join('\n')}\n}\n`;
 }
 
 main();

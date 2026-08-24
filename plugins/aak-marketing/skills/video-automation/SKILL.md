@@ -53,7 +53,7 @@ const ANTIGRAVITY_TOKENS = {
 ## 2. Usage Patterns
 
 ### High-Fidelity Landing Page Cloning
-1. **Research**: Use `browser_subagent` to extract brand colors, images, headlines
+1. **Research**: Use an available browser tool (`chrome-devtools` MCP, `playwright` MCP, or `ego-browser`) to extract brand colors, images, headlines
 2. **Implementation**: Use `interpolate`, `spring`, `Sequence` to animate sections
 3. **Aspect Ratios**: Always offer 16:9 (YouTube) and 9:16 (TikTok/Reels)
 
