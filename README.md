@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/logo-banner.svg" alt="AI Agentic Kit" width="520"></p>
 
-<p align="center"><sub>A broad Claude Code agent toolkit — one marketplace, eight domain plugins, enable only what a project needs.</sub></p>
+<p align="center"><b>Give Claude Code a full team of specialists — and switch on only the ones each project needs.</b></p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="License">
@@ -13,10 +13,20 @@
 
 ---
 
-**AI Agentic Kit** is a broad Claude Code agent toolkit distributed as **one marketplace of eight domain plugins** (prefix `aak-`). Install the marketplace once, then **enable only the slices a given project needs** — breadth is the point; what you don't need, you simply don't enable. Across the 8 plugins it ships **23 agents, 87 skills, and 20 command workflows**, spanning foundation, backend, frontend, security, quality, marketing, game development, and process orchestration.
+**AI Agentic Kit** is one Claude Code marketplace of **8 domain plugins** — backend, frontend, security, testing, marketing, games, and process orchestration. Install once, enable per project. No bloat, no lock-in: what you don't need, you don't turn on.
+
+> **→ Get started:** `/plugin marketplace add HDShinobi/ai-agentic-kit` — then [enable the plugins you need](#-install).
+
+## ✨ Why AI Agentic Kit
+
+- **The right expert shows up on its own** — 23 specialist agents (debugger, security-auditor, frontend-specialist, marketing-strategist…) auto-activate when your task matches, no wiring required.
+- **Idea → launch without leaving the terminal** — 20 command workflows (`/create`, `/debug`, `/deploy`, `/campaign`, `/seo`) run each job end-to-end.
+- **Enable only what a repo needs** — 8 independent, namespaced, self-contained plugins; turn on two, ignore the rest.
+- **Safer by default** — a built-in guard blocks high-confidence destructive shell commands before they run.
 
 ## Contents
 
+- [✨ Why AI Agentic Kit](#-why-ai-agentic-kit)
 - [🚀 Install](#-install)
 - [🧩 Plugin catalog](#-plugin-catalog)
 - [⚙️ How activation works](#️-how-activation-works)
