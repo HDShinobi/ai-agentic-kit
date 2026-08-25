@@ -16,7 +16,11 @@ For each evals/<skill>/pairs.jsonl row:
 Exit non-zero if any row misbehaves.
 """
 from __future__ import annotations
-import json, subprocess, sys, tempfile, pathlib
+import json, os, subprocess, sys, tempfile, pathlib
+
+# Don't let the validator subprocess write __pycache__ into the vendored tree
+# (it would break the byte-for-byte fidelity check).
+_ENV = {**os.environ, "PYTHONDONTWRITEBYTECODE": "1"}
 
 def run_validator(validator: pathlib.Path, text: str, filename, register, doctype):
     with tempfile.TemporaryDirectory() as d:
@@ -30,7 +34,7 @@ def run_validator(validator: pathlib.Path, text: str, filename, register, doctyp
         cmd = [sys.executable, str(validator), str(f), "--json", "--strict"]
         if register: cmd += ["--register", register]
         if doctype:  cmd += ["--doctype", doctype]
-        p = subprocess.run(cmd, capture_output=True, text=True)
+        p = subprocess.run(cmd, capture_output=True, text=True, env=_ENV)
         try:
             rules = {x["rule"] for x in json.loads(p.stdout).get("findings", [])}
         except Exception:
