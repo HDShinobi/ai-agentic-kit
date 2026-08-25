@@ -20,7 +20,11 @@ import json, subprocess, sys, tempfile, pathlib
 
 def run_validator(validator: pathlib.Path, text: str, filename, register, doctype):
     with tempfile.TemporaryDirectory() as d:
-        name = filename or "sample.md"
+        # Sanitize: use only the final path component so a corpus `filename`
+        # like "../x" or "/etc/x" cannot write outside the temp dir.
+        name = pathlib.Path(filename).name if filename else "sample.md"
+        if not name or name in (".", ".."):
+            name = "sample.md"
         f = pathlib.Path(d) / name
         f.write_text(text, encoding="utf-8")
         cmd = [sys.executable, str(validator), str(f), "--json", "--strict"]
