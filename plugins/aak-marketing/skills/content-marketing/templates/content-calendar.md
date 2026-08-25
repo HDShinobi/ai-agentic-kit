@@ -1,3 +1,5 @@
+> **Evidence & honesty:** every metric, statistic, benchmark, target rate, result, and testimonial below is an illustrative **placeholder**. Use only proof you can verify and the customer has approved; otherwise omit it or use product/process evidence. Rates/benchmarks shown are planning placeholders, not guarantees.
+
 # Content Calendar Template (30 Days)
 
 ## Content Pillar Distribution
@@ -5,7 +7,7 @@
 |--------|-----------|---------|
 | Educational (40%) | 12 posts/month | Build authority, attract audience |
 | Engagement (20%) | 6 posts/month | Drive comments, build community |
-| Behind-the-Scenes (15%) | 5 posts/month | Build trust, show authenticity |
+| Behind-the-Scenes (13%) | 4 posts/month | Build trust, show authenticity |
 | Social Proof (15%) | 5 posts/month | Build credibility, convert |
 | Promotional (10%) | 3 posts/month | Drive sales, grow revenue |
 

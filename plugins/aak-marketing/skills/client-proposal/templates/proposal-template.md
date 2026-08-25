@@ -1,3 +1,5 @@
+> **Evidence & honesty:** every metric, statistic, benchmark, target rate, result, and testimonial below is an illustrative **placeholder**. Use only proof you can verify and the customer has approved; otherwise omit it or use product/process evidence. Rates/benchmarks shown are planning placeholders, not guarantees.
+
 # Client Marketing Proposal Template
 
 ---

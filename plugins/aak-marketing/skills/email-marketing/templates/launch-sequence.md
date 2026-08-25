@@ -1,3 +1,5 @@
+> **Evidence & honesty:** every metric, statistic, benchmark, target rate, result, and testimonial below is an illustrative **placeholder**. Use only proof you can verify and the customer has approved; otherwise omit it or use product/process evidence. Rates/benchmarks shown are planning placeholders, not guarantees.
+
 # Product Launch Email Sequence Template (8 Emails)
 
 ## Timeline: 2-Week Launch Window

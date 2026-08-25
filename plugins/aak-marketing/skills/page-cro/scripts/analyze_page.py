@@ -11,7 +11,9 @@ import json
 import re
 import urllib.request
 import urllib.error
+import ipaddress
 import os
+import socket
 import ssl
 from html.parser import HTMLParser
 from urllib.parse import urlparse, urljoin
@@ -216,12 +218,19 @@ class MarketingPageParser(HTMLParser):
             if self._script_type == "application/ld+json":
                 try:
                     schema = json.loads(script_content)
-                    if isinstance(schema, list):
-                        self.schema_data.extend(schema)
-                    else:
-                        self.schema_data.append(schema)
                 except (json.JSONDecodeError, ValueError):
-                    pass
+                    schema = None
+                # Keep only JSON-LD objects (dicts); flatten @graph. Scalar or
+                # list-of-scalar JSON-LD is valid JSON but has no @type — ignore
+                # it so downstream `.get()` calls never hit a str/None.
+                for item in (schema if isinstance(schema, list) else [schema]):
+                    if not isinstance(item, dict):
+                        continue
+                    graph = item.get("@graph")
+                    if isinstance(graph, list):
+                        self.schema_data.extend(g for g in graph if isinstance(g, dict))
+                    else:
+                        self.schema_data.append(item)
 
     def handle_data(self, data):
         if self._in_title or self._in_heading or self._in_a or self._in_button or self._in_script:
@@ -317,24 +326,75 @@ def _ssl_context():
     return ctx
 
 
-def fetch_page(url):
-    """Fetch a webpage and return its HTML content."""
-    ctx = _ssl_context()
+MAX_FETCH_BYTES = 3_000_000  # cap the response body to avoid unbounded downloads
 
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-        "Accept-Language": "en-US,en;q=0.5",
-    }
 
-    req = urllib.request.Request(url, headers=headers)
+def _host_is_public(host):
+    """True only if EVERY resolved address for host is a public, routable IP."""
     try:
-        response = urllib.request.urlopen(req, timeout=15, context=ctx)
-        return response.read().decode("utf-8", errors="replace")
-    except urllib.error.HTTPError as e:
+        infos = socket.getaddrinfo(host, None)
+    except (socket.gaierror, UnicodeError):
+        return False
+    for info in infos:
+        try:
+            ip = ipaddress.ip_address(info[4][0])
+        except ValueError:
+            return False
+        if (ip.is_private or ip.is_loopback or ip.is_link_local
+                or ip.is_reserved or ip.is_multicast or ip.is_unspecified):
+            return False
+    return True
+
+
+def _url_allowed(url):
+    """Allow only http(s) URLs that point at public addresses (SSRF guard).
+
+    Scanning localhost/intranet requires an explicit opt-in via
+    AAK_ALLOW_PRIVATE_URLS=1, so the analyzer can't be pointed at loopback,
+    RFC1918, link-local, or cloud metadata endpoints by default.
+    """
+    parsed = urlparse(url)
+    if parsed.scheme not in ("http", "https") or not parsed.hostname:
+        return False
+    if os.environ.get("AAK_ALLOW_PRIVATE_URLS") == "1":
+        return True
+    return _host_is_public(parsed.hostname)
+
+
+class _SafeRedirectHandler(urllib.request.HTTPRedirectHandler):
+    """Re-validate every redirect hop so a public URL can't bounce inward."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        if not _url_allowed(newurl):
+            raise urllib.error.URLError("blocked redirect to non-public address")
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
+def _safe_get(url, timeout, user_agent):
+    """Fetch url with SSRF guards, TLS verification, and a byte cap. None on failure."""
+    if not _url_allowed(url):
         return None
-    except Exception as e:
+    opener = urllib.request.build_opener(
+        _SafeRedirectHandler(),
+        urllib.request.HTTPSHandler(context=_ssl_context()),
+    )
+    req = urllib.request.Request(url, headers={"User-Agent": user_agent})
+    try:
+        with opener.open(req, timeout=timeout) as response:
+            return response.read(MAX_FETCH_BYTES).decode("utf-8", errors="replace")
+    except Exception:
         return None
+
+
+def fetch_page(url):
+    """Fetch a webpage and return its HTML content (SSRF-guarded, byte-capped)."""
+    return _safe_get(
+        url,
+        timeout=15,
+        user_agent=("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "
+                    "Chrome/120.0.0.0 Safari/537.36"),
+    )
 
 
 def fetch_robots_txt(url):
@@ -352,16 +412,12 @@ def fetch_sitemap(url):
     """Check if sitemap.xml exists."""
     parsed = urlparse(url)
     sitemap_url = f"{parsed.scheme}://{parsed.netloc}/sitemap.xml"
-    try:
-        ctx = _ssl_context()
-        req = urllib.request.Request(sitemap_url, headers={"User-Agent": "MarketingBot/1.0"})
-        response = urllib.request.urlopen(req, timeout=10, context=ctx)
-        content = response.read().decode("utf-8", errors="replace")
-        # Count URLs in sitemap
-        url_count = content.lower().count("<url>") or content.lower().count("<loc>")
-        return {"exists": True, "url_count": url_count}
-    except:
+    content = _safe_get(sitemap_url, timeout=10, user_agent="MarketingBot/1.0")
+    if content is None:
         return {"exists": False, "url_count": 0}
+    # Count URLs in sitemap
+    url_count = content.lower().count("<url>") or content.lower().count("<loc>")
+    return {"exists": True, "url_count": url_count}
 
 
 def analyze(url):
@@ -458,8 +514,11 @@ def analyze(url):
         track_score = 5
     scores["tracking"] = track_score
 
-    page_results["scores"] = scores
-    page_results["overall_score"] = round(sum(scores.values()) / len(scores), 1)
+    # These are coarse 0-10 heuristic signals, NOT the /audit 0-100 rubric.
+    # Named explicitly so downstream workflows treat them as evidence, not verdicts.
+    page_results["signal_scores_0_to_10"] = scores
+    page_results["heuristic_signal_0_to_10"] = round(sum(scores.values()) / len(scores), 1)
+    page_results["score_scale"] = "0-10 heuristic signal from observable page elements; not a conversion/marketing verdict"
 
     results["analysis"] = page_results
     return results
@@ -476,8 +535,16 @@ def main():
         return
 
     url = sys.argv[1]
-    if not url.startswith("http"):
+    if not re.match(r"^https?://", url):
         url = "https://" + url
+
+    if not _url_allowed(url):
+        print(json.dumps({
+            "error": "URL rejected: only public http(s) addresses are scanned. "
+                     "Set AAK_ALLOW_PRIVATE_URLS=1 to scan localhost/intranet on purpose.",
+            "url": url,
+        }, indent=2))
+        return
 
     results = analyze(url)
     print(json.dumps(results, indent=2, default=str))

@@ -1,3 +1,5 @@
+> **Evidence & honesty:** every metric, statistic, benchmark, target rate, result, and testimonial below is an illustrative **placeholder**. Use only proof you can verify and the customer has approved; otherwise omit it or use product/process evidence. Rates/benchmarks shown are planning placeholders, not guarantees.
+
 # Welcome Email Sequence Template (5 Emails)
 
 ## Email 1: Welcome & Quick Win (Send: Immediately)

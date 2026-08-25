@@ -1,7 +1,9 @@
 ---
 name: client-proposal
-description: EXECUTION skill that generates a client-ready marketing-services proposal — discovery questions, situation analysis, tiered pricing with anchoring, ROI projection, and follow-up sequence. Use when creating a proposal or pitch to win a marketing client. Triggers on client proposal, marketing proposal, agency pitch, statement of work, retainer proposal, pricing tiers, discovery call.
+description: EXECUTION skill that generates a client-ready marketing-services proposal — discovery questions, situation analysis, tiered pricing with anchoring, ROI projection, and follow-up sequence. Use when creating a proposal or pitch to win a marketing client. Triggers on client proposal, marketing proposal, agency pitch, retainer proposal, pricing tiers, discovery call.
 ---
+
+> **Evidence & honesty (read first).** Every number, percentage, benchmark, result, ROI figure, pricing amount, case study, and testimonial in this skill and its template is an **illustrative placeholder**. Use only figures you can verify and that the client/your firm has approved. If you don't have a real number, write `Not provided` and omit the claim — never invent metrics, industry benchmarks, "typical" ranges, close-rate stats, or social proof. Projections must be explicit scenarios derived from user-supplied baselines, with a range and its basis.
 
 # Client Proposal Generator for Marketing Services
 
@@ -12,7 +14,7 @@ Generate a professional, client-ready marketing services proposal. This skill pr
 - User wants to create a proposal for a prospective marketing client
 - User has completed a discovery call and needs to formalize the engagement
 - User wants a template for their marketing agency's proposals
-- Invoked when the user asks to build a client proposal (often right after `/aak-marketing:audit`, `/optimize`, or `/seo`).
+- Invoked when the user asks to build a client proposal (often right after `/aak-marketing:audit`, `/aak-marketing:optimize`, or `/aak-marketing:seo`).
 
 ## How to Execute
 
@@ -35,7 +37,7 @@ Collect these details from the user (ask if not provided):
 3. Proposed timeline
 4. Your relevant case studies or results
 
-**If audit data exists:** Check for any previous `/aak-marketing:audit`, `/optimize`, or `/seo` results (look for a `MARKETING-AUDIT.md`). If found, automatically incorporate the findings into the Situation Analysis section for a data-backed proposal.
+**If audit data exists:** Check for any previous `/aak-marketing:audit`, `/aak-marketing:optimize`, or `/aak-marketing:seo` results (look for a `MARKETING-AUDIT.md`). If found, automatically incorporate the findings into the Situation Analysis section for a data-backed proposal.
 
 ### Step 2: Discovery Call Question Framework
 If the user hasn't had the discovery call yet, provide these 10 essential questions:
@@ -187,13 +189,15 @@ Present pricing using the Good-Better-Best tier structure.
 | **Monthly Investment** | **$X,XXX** | **$X,XXX** | **$X,XXX** |
 
 **Pricing Psychology Tips:**
-- Present three options; most clients choose the middle tier
+- Present three options so buyers have a comfortable middle default
 - Name the tiers with aspirational labels (not Bronze/Silver/Gold)
 - Anchor the highest tier first to make the middle tier feel reasonable
 - Include a "Most Popular" or "Recommended" badge on the middle tier
 - Show the math: "At [your LTV], you only need [X] new customers per month to see positive ROI"
 
 **Pricing Models Reference:**
+
+> The ranges below are illustrative market context, not a quote or benchmark — set your own numbers from your costs, positioning, and results. Delete this column if you can't stand behind the figures.
 
 | Model | When to Use | Typical Range |
 |---|---|---|
@@ -381,7 +385,7 @@ Generate a file called `CLIENT-PROPOSAL.md` with:
 - Lead with the client's problems and goals, not your services. Make them feel understood before presenting solutions.
 - Every price should be anchored to the ROI it will generate. Never present cost without context.
 - Use the client's own language from the discovery call. Mirror their words back to them.
-- If audit data is available from previous skills, use it extensively -- data-backed proposals close at 2-3x the rate of generic proposals.
+- If audit data is available from previous skills, use it extensively -- a data-backed proposal grounded in the client's own numbers is far more persuasive than a generic one.
 - Keep it concise. Executives skim. Use bold, headers, and tables to make key information scannable.
 - Always include a specific, time-bound next step. Ambiguity kills deals.
 

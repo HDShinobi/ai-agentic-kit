@@ -1,3 +1,5 @@
+> **Evidence & honesty:** every metric, statistic, benchmark, target rate, result, and testimonial below is an illustrative **placeholder**. Use only proof you can verify and the customer has approved; otherwise omit it or use product/process evidence. Rates/benchmarks shown are planning placeholders, not guarantees.
+
 # Lead Nurture Email Sequence Template (6 Emails)
 
 ## Purpose
@@ -13,7 +15,7 @@ Convert leads who signed up but haven't purchased. Build trust through value, th
 ## Email 1: The Big Insight (Send: Day 1 after signup)
 
 **Subject:** The [industry] mistake that costs you [money/time]
-**Preview text:** 90% of [audience] make this mistake. Here's the fix.
+**Preview text:** [X]% of [audience] make this mistake (cite a real, linkable source). Here's the fix.
 
 **Framework:**
 1. Hook with a surprising stat or counterintuitive insight
@@ -27,7 +29,7 @@ Convert leads who signed up but haven't purchased. Build trust through value, th
 ## Email 2: The Framework (Send: Day 3)
 
 **Subject:** My [number]-step framework for [desired result]
-**Preview text:** I've used this with [X] clients. It works every time.
+**Preview text:** I've used this with [X] clients (use a real count you can back up).
 
 **Framework:**
 1. Share a repeatable framework (3-5 steps)
