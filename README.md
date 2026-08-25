@@ -153,11 +153,11 @@ The audit/report commands aren't standalone tools — they bookend a full **audi
 /aak-marketing:audit <url>   → 0–100 score + MARKETING-AUDIT.md (dated, kept as history)
         → client-proposal      (findings → a priced proposal)
         → 40+ delivery skills   (copy / email / CRO / SEO … do the real work)
-        → /aak-marketing:audit  (re-run) → before/after DELTA   ← our edge over the upstream one-shot
+        → /aak-marketing:audit  (re-run) → before/after DELTA   ← proof of the improvement
         → /report               (client-ready PDF)
 ```
 
-The audit **rubrics, weights and report format** are vendored verbatim from `ai-marketing-claude`; what this kit adds is the **dated audit history + before/after delta on re-run** (upstream audits once and stops) — so you can *prove* the improvement you were paid for, then hand the client a PDF.
+The audit runs on a fixed, transparent scoring model (**rubrics, weights and report format**), and keeps a **dated audit history** so a re-run produces a **before/after delta** — you can *prove* the improvement you were paid for, then hand the client a PDF.
 
 **Agency-loop commands** — run the loop above:
 
