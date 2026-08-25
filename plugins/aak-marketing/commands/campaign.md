@@ -105,3 +105,7 @@ Ask the user whether they want automated video ads (TikTok / Reels / Meta). If y
 - `analytics-marketing` — tracking & measurement (Steps 4–5)
 - `frontend-slides` — presentation deck (Step 6)
 - `video-automation`, `remotion-best-practices` — video ads (Step 7)
+
+## Vietnamese (vi-VN) output
+
+> If the campaign's target language is Vietnamese and the `aak-vietnamese` plugin is enabled, invoke its `vietnamese-*` skills for language correctness (register/pronouns, advertising-law linting, NFC Unicode, ICU plural, VND/date/phone formatting) on every asset before finalizing. If it is not enabled, proceed normally.

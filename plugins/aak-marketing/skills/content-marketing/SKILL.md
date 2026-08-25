@@ -217,3 +217,7 @@ allowed-tools: Read, Glob, Grep
 ## Templates
 
 - `templates/content-calendar.md` — a 30-day content calendar (pillar mix, weekly structure, repurposing workflow) to fill in.
+
+## Vietnamese (vi-VN) output
+
+> If you are producing Vietnamese content and the `aak-vietnamese` plugin is enabled, invoke its `vietnamese-*` skills for language correctness (register/pronouns, advertising-law linting, NFC Unicode, ICU plural, VND/date/phone formatting) before finalizing. If it is not enabled, proceed normally.

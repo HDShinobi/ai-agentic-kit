@@ -85,3 +85,7 @@ Polish the content:
 - seo-fundamentals
 - social-media-expert
 - email-marketing
+
+## Vietnamese (vi-VN) output
+
+> If the target language is Vietnamese and the `aak-vietnamese` plugin is enabled, invoke its `vietnamese-*` skills for language correctness (register/pronouns, advertising-law linting, NFC Unicode, ICU plural, VND/date/phone formatting) before finalizing. If it is not enabled, proceed normally.

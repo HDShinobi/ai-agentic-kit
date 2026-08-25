@@ -152,3 +152,7 @@ Before shipping:
 | Script | Purpose | Command |
 |--------|---------|---------|
 | `scripts/i18n_checker.py` | Detect hardcoded strings & missing translations | `python scripts/i18n_checker.py <project_path>` |
+
+## Vietnamese (vi-VN) locale
+
+> When localizing to Vietnamese and the `aak-vietnamese` plugin is enabled, invoke its `vietnamese-*` skills for language correctness (register/pronouns, advertising-law linting, NFC Unicode, ICU plural — Vietnamese has only the `other` category — and VND/date/phone formatting) before finalizing vi-VN strings. If it is not enabled, proceed normally.

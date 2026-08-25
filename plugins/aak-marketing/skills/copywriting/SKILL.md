@@ -245,3 +245,7 @@ rewrite it until it feels obvious.
 ## When to Use
 
 This skill is applicable to execute the workflow or actions described in the overview.
+
+## Vietnamese (vi-VN) output
+
+> If the copy's target language is Vietnamese and the `aak-vietnamese` plugin is enabled, invoke its `vietnamese-*` skills for language correctness (register/pronouns, advertising-law linting, NFC Unicode, ICU plural, VND/date/phone formatting) before finalizing. If it is not enabled, proceed normally.
