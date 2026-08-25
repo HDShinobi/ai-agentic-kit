@@ -4,7 +4,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="License">
-  <img src="https://img.shields.io/badge/plugins-8-6f42c1?style=flat-square" alt="Plugins">
+  <img src="https://img.shields.io/badge/plugins-9-6f42c1?style=flat-square" alt="Plugins">
   <img src="https://img.shields.io/badge/agents-23-0969da?style=flat-square" alt="Agents">
   <img src="https://img.shields.io/badge/skills-90-1a7f37?style=flat-square" alt="Skills">
   <img src="https://img.shields.io/badge/commands-21-bf8700?style=flat-square" alt="Commands">
@@ -87,6 +87,7 @@ Local dev without publishing: `claude --plugin-dir ./plugins/aak-core`, then `/r
 | **aak-marketing** | Take a product to market — SEO/GEO, CRO, content, email, growth, analytics, brand & video (44 skills) | marketing-strategist, content-creator, growth-specialist, analytics-specialist, seo-specialist | site-audit (scored site audit), client-proposal, conversion-optimization (CRO router), page-cro, keyword-research-deep, programmatic-seo, analytics-marketing, email-marketing, content-marketing, launch-strategy, brand, vision-analysis, minimax-pdf | `/audit`, `/campaign`, `/content`, `/optimize`, `/analyze`, `/seo`, `/report`, `/brand-report` |
 | **aak-game** | Ship games across engines & platforms | game-developer | game-development (router → 10 platform guides) | — |
 | **aak-workflow** | Systematic process — brainstorm, plan, debug, verify — plus multi-agent orchestration (**skip if you use superpowers**) | project-planner | brainstorming, systematic-debugging, tdd-workflow, plan-writing, verify-changes, parallel-agents, coordinator-mode, intelligent-routing, memory-system, … | `/orchestrate`, `/coordinate`, `/status`, `/remember` |
+| **aak-vietnamese** | Write native-quality Vietnamese (vi-VN) a local professional would ship — correct register, advertising-law-safe claims, clean VND/date/Unicode; composes with the content skills | — | vietnamese-landing-copy, vietnamese-business-comms, vietnamese-finance-copy, vietnamese-education-copy, vietnamese-tech-writing | — |
 
 > **Enable only what you need.** Each plugin is self-contained: a command never depends on a skill from a plugin you haven't enabled — where richer cross-plugin capability exists, it is used only if that plugin is enabled, otherwise the work is done inline.
 

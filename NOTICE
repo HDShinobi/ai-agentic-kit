@@ -80,5 +80,14 @@ apply to the adapted portions.
   network-safety wrapper was added in front of the fetchers). The `/audit` command
   wires these to this kit's own marketing agents rather than vendoring theirs.
 
+- vietnamese-language-skill (https://github.com/trussary/vietnamese-language-skill),
+  Copyright (c) trussary, MIT. Vendored verbatim as the `aak-vietnamese` plugin —
+  the five `vietnamese-*` skills (SKILL.md bodies, references, and the dependency-free
+  `validate_copy.py` linter + domain `rules_*.py`), the shared references, and the eval
+  corpus, all byte-identical to pinned commit
+  1c44546d7862e0d09491a2a711a64086ab8c80d7 (2026-08-22). Only `plugin.json`
+  identity fields (name/author/homepage/repository) were changed; a non-vendored
+  acceptance harness (`.acceptance/replay_evals.py`) was added by this project.
+
 Where an upstream skill shipped a placeholder/stub library (marketing-ideas,
 marketing-psychology), the missing content was authored fresh for this project.
