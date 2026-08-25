@@ -145,15 +145,37 @@ Each command is a distinct workflow with a clear "use when". They also chain: `/
 
 ### Marketing track (`aak-marketing`)
 
+#### The agency money-loop
+
+The audit/report commands aren't standalone tools — they bookend a full **audit → propose → execute → prove → deliver** loop, the way an agency actually bills:
+
+```
+/aak-marketing:audit <url>   → 0–100 score + MARKETING-AUDIT.md (dated, kept as history)
+        → client-proposal      (findings → a priced proposal)
+        → 40+ delivery skills   (copy / email / CRO / SEO … do the real work)
+        → /aak-marketing:audit  (re-run) → before/after DELTA   ← our edge over the upstream one-shot
+        → /report               (client-ready PDF)
+```
+
+The audit **rubrics, weights and report format** are vendored verbatim from `ai-marketing-claude`; what this kit adds is the **dated audit history + before/after delta on re-run** (upstream audits once and stops) — so you can *prove* the improvement you were paid for, then hand the client a PDF.
+
+**Agency-loop commands** — run the loop above:
+
+| Command | Use when | Lead / mechanism |
+|---------|----------|------------------|
+| `/audit` | score a site's marketing (content, CRO, SEO/GEO, brand, competitive, growth) → one dated report; re-run for a before/after delta | `marketing-strategist` |
+| `/report` | export the results as a client-ready **PDF** | output tooling (`minimax-pdf`) |
+| `/brand-report` | same PDF export, but **clone a brand's site style** from a URL first | output tooling (`minimax-pdf`) |
+
+**Marketing-execution commands** — do the actual work:
+
 | Command | Use when | Lead agent |
 |---------|----------|-----------|
-| `/audit` | score a site's marketing (content, CRO, SEO/GEO, brand, competitive, growth) → one report; re-run for before/after | `marketing-strategist` |
 | `/campaign` | a **full campaign** end-to-end: brief → strategy → content → launch → optimize | `marketing-strategist` |
 | `/content` | a single asset: brief → research → outline → write → optimize | `content-creator` |
 | `/optimize` | raise conversion (CRO) for a page/funnel | `growth-specialist` + CRO router |
 | `/analyze` | crunch the numbers, find insights, recommend actions | `analytics-specialist` |
 | `/seo` | SEO + GEO audit/optimization (incl. AI-search visibility) | `seo-specialist` |
-| `/report`, `/brand-report` | export a **professional PDF** (`/brand-report` clones a brand's site style from a URL) | output tooling (`minimax-pdf`) |
 
 ## 🛡 Safety
 
