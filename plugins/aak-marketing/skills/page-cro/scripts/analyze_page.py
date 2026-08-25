@@ -11,6 +11,7 @@ import json
 import re
 import urllib.request
 import urllib.error
+import os
 import ssl
 from html.parser import HTMLParser
 from urllib.parse import urlparse, urljoin
@@ -302,11 +303,23 @@ class MarketingPageParser(HTMLParser):
         }
 
 
+def _ssl_context():
+    """TLS context that VERIFIES certificates by default.
+
+    Verification is only disabled when the caller explicitly opts in with
+    AAK_ALLOW_INSECURE_TLS=1 (e.g. to scan a site with a broken/self-signed
+    cert), knowingly accepting the MITM risk. Secure by default.
+    """
+    ctx = ssl.create_default_context()
+    if os.environ.get("AAK_ALLOW_INSECURE_TLS") == "1":
+        ctx.check_hostname = False
+        ctx.verify_mode = ssl.CERT_NONE
+    return ctx
+
+
 def fetch_page(url):
     """Fetch a webpage and return its HTML content."""
-    ctx = ssl.create_default_context()
-    ctx.check_hostname = False
-    ctx.verify_mode = ssl.CERT_NONE
+    ctx = _ssl_context()
 
     headers = {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -340,9 +353,7 @@ def fetch_sitemap(url):
     parsed = urlparse(url)
     sitemap_url = f"{parsed.scheme}://{parsed.netloc}/sitemap.xml"
     try:
-        ctx = ssl.create_default_context()
-        ctx.check_hostname = False
-        ctx.verify_mode = ssl.CERT_NONE
+        ctx = _ssl_context()
         req = urllib.request.Request(sitemap_url, headers={"User-Agent": "MarketingBot/1.0"})
         response = urllib.request.urlopen(req, timeout=10, context=ctx)
         content = response.read().decode("utf-8", errors="replace")
