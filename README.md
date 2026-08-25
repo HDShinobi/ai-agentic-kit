@@ -6,8 +6,8 @@
   <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="License">
   <img src="https://img.shields.io/badge/plugins-8-6f42c1?style=flat-square" alt="Plugins">
   <img src="https://img.shields.io/badge/agents-23-0969da?style=flat-square" alt="Agents">
-  <img src="https://img.shields.io/badge/skills-88-1a7f37?style=flat-square" alt="Skills">
-  <img src="https://img.shields.io/badge/commands-21-bf8700?style=flat-square" alt="Commands">
+  <img src="https://img.shields.io/badge/skills-87-1a7f37?style=flat-square" alt="Skills">
+  <img src="https://img.shields.io/badge/commands-20-bf8700?style=flat-square" alt="Commands">
   <img src="https://img.shields.io/badge/Claude%20Code-marketplace-d4520f?style=flat-square" alt="Claude Code">
 </p>
 
@@ -20,7 +20,7 @@
 ## ✨ Why AI Agentic Kit
 
 - **The right expert shows up on its own** — 23 specialist agents (debugger, security-auditor, frontend-specialist, marketing-strategist…) auto-activate when your task matches, no wiring required.
-- **Idea → launch without leaving the terminal** — 21 command workflows (`/create`, `/debug`, `/deploy`, `/audit`, `/campaign`, `/seo`) run each job end-to-end.
+- **Idea → launch without leaving the terminal** — 20 command workflows (`/create`, `/debug`, `/deploy`, `/campaign`, `/seo`) run each job end-to-end.
 - **Enable only what a repo needs** — 8 independent, namespaced, self-contained plugins; turn on two, ignore the rest.
 - **Safer by default** — a built-in guard blocks high-confidence destructive shell commands before they run.
 
@@ -84,7 +84,7 @@ Local dev without publishing: `claude --plugin-dir ./plugins/aak-core`, then `/r
 | **aak-frontend** | Build polished, on-brand UIs for web & mobile | frontend-specialist, mobile-developer | frontend-architecture, frontend-design, nextjs-react-expert, tailwind-patterns, web-design-guidelines, mobile-design, ui-ux-pro-max | — |
 | **aak-security** | Find & fix vulnerabilities before attackers do | security-auditor, penetration-tester | vulnerability-scanner, red-team-tactics | — |
 | **aak-quality** | Catch bugs, prove changes work & keep code fast | debugger, test-engineer, qa-automation-engineer, performance-optimizer, code-archaeologist, explorer-agent | testing-patterns, webapp-testing, code-review-checklist, performance-profiling, lint-and-validate | `/debug`, `/verify`, `/test` |
-| **aak-marketing** | Take a product to market — SEO/GEO, CRO, content, email, growth, analytics, brand & video (42 skills) | marketing-strategist, content-creator, growth-specialist, analytics-specialist, seo-specialist | conversion-optimization (CRO router), page-cro, signup-flow-cro, keyword-research-deep, programmatic-seo, analytics-marketing, email-marketing, content-marketing, launch-strategy, brand, client-proposal, minimax-pdf | `/audit`, `/campaign`, `/content`, `/optimize`, `/analyze`, `/seo`, `/report`, `/brand-report` |
+| **aak-marketing** | Take a product to market — SEO/GEO, CRO, content, email, growth, analytics, brand & video (41 skills) | marketing-strategist, content-creator, growth-specialist, analytics-specialist, seo-specialist | conversion-optimization (CRO router), page-cro, signup-flow-cro, keyword-research-deep, programmatic-seo, analytics-marketing, email-marketing, content-marketing, launch-strategy, brand, minimax-pdf | `/campaign`, `/content`, `/optimize`, `/analyze`, `/seo`, `/report`, `/brand-report` |
 | **aak-game** | Ship games across engines & platforms | game-developer | game-development (router → 10 platform guides) | — |
 | **aak-workflow** | Systematic process — brainstorm, plan, debug, verify — plus multi-agent orchestration (**skip if you use superpowers**) | project-planner | brainstorming, systematic-debugging, tdd-workflow, plan-writing, verify-changes, parallel-agents, coordinator-mode, intelligent-routing, memory-system, … | `/orchestrate`, `/coordinate`, `/status`, `/remember` |
 
@@ -147,7 +147,6 @@ Each command is a distinct workflow with a clear "use when". They also chain: `/
 
 | Command | Use when | Lead agent |
 |---------|----------|-----------|
-| `/audit` | score a site's marketing (content, CRO, SEO/GEO, brand, competitive, growth) → one report | `marketing-strategist` |
 | `/campaign` | a **full campaign** end-to-end: brief → strategy → content → launch → optimize | `marketing-strategist` |
 | `/content` | a single asset: brief → research → outline → write → optimize | `content-creator` |
 | `/optimize` | raise conversion (CRO) for a page/funnel | `growth-specialist` + CRO router |

@@ -239,10 +239,3 @@ allowed-tools: Read, Glob, Grep
 ---
 
 > **Remember:** Email is permission-based. Respect your subscribers, provide value, and they'll reward you with loyalty.
-
-## Templates
-
-Ready-to-use sequences ship in `templates/` (adapt the placeholders, never send raw):
-- `templates/welcome-sequence.md` — 5-email onboarding series
-- `templates/nurture-sequence.md` — 6-email lead-nurture series (value → trust → offer)
-- `templates/launch-sequence.md` — 8-email product-launch series

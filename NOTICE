@@ -68,12 +68,5 @@ apply to the adapted portions.
   community-contributed. Origin of several patterns (e.g. `marketing-ideas`,
   the CRO-suite skills, `programmatic-seo`) as bundled via antigravity-marketing.
 
-- ai-marketing-claude (https://github.com/zubair-trabzada/ai-marketing-claude),
-  Copyright (c) 2026 Zubair Trabzada, MIT. Source of the `client-proposal` skill
-  and its proposal template, the email/content/launch templates bundled under
-  `email-marketing`, `content-marketing`, and `launch-strategy`, the
-  `page-cro/scripts/analyze_page.py` page analyzer, and the `/audit` workflow
-  concept (reimplemented natively over this kit's own agents and skills).
-
 Where an upstream skill shipped a placeholder/stub library (marketing-ideas,
 marketing-psychology), the missing content was authored fresh for this project.

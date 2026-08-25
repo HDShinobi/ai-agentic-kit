@@ -213,7 +213,3 @@ allowed-tools: Read, Glob, Grep
 ---
 
 > **Remember:** Great content is built on deep understanding of your audience. Research first, create second, optimize always.
-
-## Templates
-
-- `templates/content-calendar.md` — a 30-day content calendar (pillar mix, weekly structure, repurposing workflow) to fill in.
