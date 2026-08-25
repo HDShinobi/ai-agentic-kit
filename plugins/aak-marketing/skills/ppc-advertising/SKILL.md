@@ -8,6 +8,8 @@ allowed-tools: Read, Glob, Grep
 
 > Master paid advertising across major platforms.
 
+> If the `aak-ads` plugin is enabled, defer account-level paid-media work — source-grounded audits, deterministic scoring, budget/bidding plans, campaign launch, monitoring, optimization, and any change to a live ad account — to `/aak-ads:ads` (it covers 12 platforms with a read-only-by-default mutation gate). Use this skill for quick, standalone PPC guidance when `aak-ads` is not enabled.
+
 ---
 
 ## 1. Platform Overview

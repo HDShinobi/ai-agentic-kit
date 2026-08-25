@@ -91,3 +91,34 @@ apply to the adapted portions.
 
 Where an upstream skill shipped a placeholder/stub library (marketing-ideas,
 marketing-psychology), the missing content was authored fresh for this project.
+
+------------------------------------------------------------------------------
+aak-ads — additional third-party source
+------------------------------------------------------------------------------
+
+The `plugins/aak-ads/` plugin is vendored from Claude Ads
+(https://github.com/AgriciDaniel/claude-ads), Copyright (c) 2026 agricidaniel,
+MIT. It is copied verbatim: the `ads/` skill router and its 38 references, the
+33 `ads-*` workflow skills (with `ads-plan/assets/`), the 25 audit/creative/
+release agents, the `claude_ads_core/` deterministic scoring engine and v1
+schemas, the `control-plane/` manifests and schemas, the `scripts/` helpers,
+the `evals/`, and the `tests/` (with fixtures) — substance byte-identical to
+upstream. The plugin's own `LICENSE` and `THIRD_PARTY_NOTICES.md` (which
+enumerates its runtime dependency licenses) are retained under
+`plugins/aak-ads/`.
+
+Only mechanical wiring changed: `.claude-plugin/plugin.json` identity fields
+(name → `aak-ads`, author, homepage) were rewritten for this kit; the upstream
+repo-governance and host files (README, CHANGELOG, CONTRIBUTING, install/
+uninstall scripts and their receipt/verify helpers, `.github/`, per-host
+CLAUDE.md/AGENTS.md/GEMINI.md/CODEX.md, the upstream marketplace.json, and
+`assets/`) were dropped as they do not apply inside this marketplace. Two
+repo-governance tests coupled to those dropped/renamed identity files were
+removed with them: `tests/scripts/test_installer_security.py` (tested the
+dropped installer) and the single test case
+`test_claude_command_contract_distinguishes_plugin_namespace` in
+`tests/release/test_release.py` (asserted the dropped repo `README.md` exists
+and documents the upstream `/claude-ads:ads` namespace, now `/aak-ads:ads`); the
+other 49 cases in that file, which exercise the release/SBOM/inventory gate used
+by `ads-validate`, are retained verbatim. No skill, agent, reference, rubric,
+scoring, schema, or other product substance was paraphrased or re-derived.
