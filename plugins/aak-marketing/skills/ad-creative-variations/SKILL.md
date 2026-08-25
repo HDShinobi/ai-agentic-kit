@@ -8,6 +8,8 @@ allowed-tools: Read, Glob, Grep
 
 > Create 10-50+ ad variations quickly for A/B testing.
 
+> If the `aak-ads` plugin is enabled, prefer its `/aak-ads:ads create` (and `ads-creative` / `ads-generate`) for paid-ad creative tied to a specific platform, brand profile, and account — it produces source-grounded, spec-compliant, format-adapted assets. Use this skill for fast, platform-agnostic copy variations when `aak-ads` is not enabled.
+
 ---
 
 ## 🎯 What This Skill Does

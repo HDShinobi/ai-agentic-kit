@@ -52,6 +52,11 @@
       "name": "aak-vietnamese",
       "source": "./plugins/aak-vietnamese",
       "description": "Native-quality, advertising-law-aware Vietnamese (vi-VN) writing — register, advertising-law linting, NFC, locale."
+    },
+    {
+      "name": "aak-ads",
+      "source": "./plugins/aak-ads",
+      "description": "Paid-media (PPC) operations across 12 ad platforms — source-grounded audits, deterministic scoring, plans, creative, monitoring, experiments, capability-gated (read-only-by-default) changes."
     }
   ]
 }

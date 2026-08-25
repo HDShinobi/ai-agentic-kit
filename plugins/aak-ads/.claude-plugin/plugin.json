@@ -1,0 +1,34 @@
+{
+  "name": "aak-ads",
+  "version": "2.0.1",
+  "description": "Paid-media (PPC) operations across 12 ad platforms — Google, Meta, YouTube, LinkedIn, TikTok, Microsoft, Apple, Amazon, Reddit, Pinterest, Snapchat, X. Source-grounded audits, deterministic scoring, plans, creative workflows, monitoring, experiments, versioned JSON reports, and capability-gated (read-only-by-default) account changes.",
+  "author": {
+    "name": "HDShinobi"
+  },
+  "homepage": "https://github.com/HDShinobi/ai-agentic-kit",
+  "license": "MIT",
+  "keywords": [
+    "agent-skills",
+    "advertising-audit",
+    "paid-advertising",
+    "google-ads",
+    "meta-ads",
+    "linkedin-ads",
+    "tiktok-ads",
+    "microsoft-ads",
+    "apple-ads",
+    "amazon-ads",
+    "youtube-ads",
+    "reddit-ads",
+    "pinterest-ads",
+    "snapchat-ads",
+    "x-ads",
+    "attribution",
+    "server-side-tracking",
+    "retail-media",
+    "ppc",
+    "ad-optimization",
+    "creative-generation"
+  ],
+  "skills": ["./ads/", "./skills/"]
+}

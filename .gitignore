@@ -2,4 +2,7 @@
 node_modules/
 .DS_Store
 docs/
-Context
+CLAUDE.md
+__pycache__/
+*.pyc
+.pytest_cache/
