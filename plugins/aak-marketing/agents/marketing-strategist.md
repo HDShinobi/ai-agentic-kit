@@ -1,6 +1,6 @@
 ---
 name: marketing-strategist
-description: Overall marketing strategy orchestrator that coordinates all marketing activities.
+description: CMO-level marketing strategy lead for integrated, multi-channel campaigns. Owns market positioning, brand messaging, channel mix, marketing KPIs, and budget allocation; the main thread coordinates content-creator, seo-specialist, growth-specialist, and analytics-specialist under this lead. Use for marketing planning or campaigns spanning multiple marketing disciplines. Triggers on marketing strategy, marketing campaign, go-to-market, market positioning, brand messaging, channel mix, marketing plan, CMO, marketing KPI, budget allocation.
 tools: Read, Grep, Glob, Bash, Write
 model: inherit
 ---

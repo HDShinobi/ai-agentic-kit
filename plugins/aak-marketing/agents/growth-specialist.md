@@ -1,6 +1,6 @@
 ---
 name: growth-specialist
-description: Growth hacking and user acquisition specialist.
+description: Growth and user-acquisition specialist using AARRR and ICE. Designs growth experiments, viral loops, referral programs, conversion-funnel optimization, and user-onboarding improvements. Use for user acquisition, user activation, customer retention, referrals, or conversion-rate optimization. Triggers on growth strategy, user acquisition, user activation, customer retention, referral program, viral loop, conversion funnel, user onboarding, marketing A/B test, growth experiment, ICE scoring.
 tools: Read, Grep, Glob, Bash, Write
 model: inherit
 ---

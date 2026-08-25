@@ -50,6 +50,70 @@ Local dev without publishing: `claude --plugin-dir ./plugins/aak-core`, then `/r
 
 **Enable only what you need.** Each plugin is self-contained: a command never depends on a skill from a plugin you haven't enabled — where richer cross-plugin capability exists, it is used only if that plugin is enabled, otherwise the work is done inline.
 
+## How activation works
+
+The kit ships three kinds of component, and they activate in **three different ways** — this is the part most people get wrong:
+
+| Component | Lives in | How it fires | Who triggers it |
+|-----------|----------|--------------|-----------------|
+| **Skill** (`skills/*/SKILL.md`) | every plugin | Claude reads its `description` and loads it when the task matches | the model, automatically |
+| **Agent** (`agents/*.md`) | every plugin | Claude spawns it as a subagent (via the Task tool) when the task matches its `description` + `Triggers on …` keywords | the model automatically, **or** a command that names it as lead |
+| **Command** (`commands/*.md`) | some plugins | runs **only** when you type `/plugin:command` | you, explicitly — never auto-fires |
+
+### Two ways an agent kicks in
+
+- **Implicit (you just chat).** You describe a task without typing a command. The main thread (Claude) reads the `description` of every *enabled* agent and, when your task matches the keywords, spawns that agent as a subagent. Example: *"the login API throws 500, find it"* matches `debugger` (`Triggers on: bug, error, broken, investigate`) → Claude runs `debugger` with a read/edit toolset, it investigates and reports back.
+- **Explicit (you run a command).** A command is a pre-written workflow script. Its body names a `> **Lead agent:**` to drive the phases, which then pulls in other specialists. Example: `/campaign` is driven by `marketing-strategist`, which delegates content to `content-creator`, SEO to `seo-specialist`, and so on.
+
+### Request lifecycle
+
+```
+your request / /command
+        │
+   [MAIN THREAD = Claude]          ← always here; only the main thread can spawn subagents
+        │
+   ┌────┴───────────────────────────────┐
+   │ no command:                         │ /command:
+   │ match a skill/agent by description   │ read the workflow in the command body,
+   │ → auto-load / auto-spawn            │ delegate per its "Lead agent"
+   └────┬───────────────────────────────┘
+        │
+   spawn subagent(s) via Task tool  (a subagent CANNOT spawn further subagents — one level only)
+        │  each agent = its own context + a limited toolset (e.g. product-manager has no Write)
+        │
+   subagent returns → MAIN THREAD synthesizes → answers you
+```
+
+Two structural rules follow from this: **subagents are one level deep** (an agent can't call another agent — multi-agent coordination always runs on the main thread or via `/orchestrate`), and every command follows the **degradation rule** — *delegate to a specialist if its plugin is enabled, otherwise do that role inline* — so a command is never hollow even when you've enabled only `aak-core`.
+
+## Command use cases
+
+Each command is a distinct workflow with a clear "use when". They also chain: `/campaign` calls `/content` for each asset, then hands measurement to `/analyze` → `/report`.
+
+### Dev track
+
+| Command | Use when | Lead / mechanism |
+|---------|----------|------------------|
+| `/aak-core:create` | starting a brand-new app | `app-builder` skill → scoping → `DESIGN.md` → build |
+| `/aak-core:enhance` | adding/changing a feature in an existing app | iterative, no re-scaffold |
+| `/aak-core:plan` | you want a **plan file** only (task breakdown), no code yet | `project-planner`, plan-only |
+| `/aak-core:brainstorm` | direction unclear — compare multiple approaches first | defers to `superpowers`/`brainstorming` |
+| `/aak-backend:deploy`, `/preview` | production release / local dev server | `devops-engineer`, with pre-flight checks |
+| `/aak-quality:debug` | a hard bug — **root-cause before fixing** | `systematic-debugging`, evidence-based |
+| `/aak-quality:test`, `/verify` | generate & run tests / prove changes actually run | `test-engineer` |
+| `/aak-workflow:orchestrate`, `/coordinate` | a big task needing **3+ specialist perspectives** in parallel | main thread spawns multiple agents |
+
+### Marketing track (`aak-marketing`)
+
+| Command | Use when | Lead agent |
+|---------|----------|-----------|
+| `/campaign` | a **full campaign** end-to-end: brief → strategy → content → launch → optimize | `marketing-strategist` |
+| `/content` | a single asset: brief → research → outline → write → optimize | `content-creator` |
+| `/optimize` | raise conversion (CRO) for a page/funnel | `growth-specialist` + CRO router |
+| `/analyze` | crunch the numbers, find insights, recommend actions | `analytics-specialist` |
+| `/seo` | SEO + GEO audit/optimization (incl. AI-search visibility) | `seo-specialist` |
+| `/report`, `/brand-report` | export a **professional PDF** (`/brand-report` clones a brand's site style from a URL) | output tooling (`minimax-pdf`) |
+
 ## Safety
 
 `aak-core` ships a native `PreToolUse` hook (`hooks/guard.mjs`) that blocks a narrow set of high-confidence destructive Bash commands (root deletion, drive format, raw-disk writes — incl. macOS `/dev/rdisk*`). It is deliberately narrow and anchors commands at their position, so mentions like `echo "rm -rf /"` are not blocked. It is not a general linter.

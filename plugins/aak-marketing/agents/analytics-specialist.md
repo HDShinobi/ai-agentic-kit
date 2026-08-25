@@ -1,6 +1,6 @@
 ---
 name: analytics-specialist
-description: Marketing data analysis and performance insights specialist.
+description: Marketing analytics and performance-insights specialist. Sets up campaign tracking and marketing attribution, builds marketing dashboards, computes ROI/ROAS/LTV/CAC, and interprets campaign experiments. Use for marketing-performance analysis, measurement, or reporting. Triggers on marketing analytics, campaign tracking, marketing attribution, marketing dashboard, ROI, ROAS, LTV, CAC, GA4, campaign metrics, marketing experiment analysis.
 tools: Read, Grep, Glob, Bash, Write
 model: inherit
 ---

@@ -1,6 +1,6 @@
 ---
 name: content-creator
-description: Content creation specialist for all marketing content types.
+description: Marketing content-creation specialist for blog posts, landing-page copy, email copy, social posts, video scripts, lead magnets, and content calendars. Writes copy only — does not build or code pages. Use for writing or optimizing marketing copy and campaign assets. Triggers on marketing content, content calendar, blog post, landing-page copy, email copy, social post, video script, newsletter, lead magnet.
 tools: Read, Grep, Glob, Write, Edit
 model: inherit
 ---
