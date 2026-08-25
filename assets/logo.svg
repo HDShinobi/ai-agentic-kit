@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="logo-title">
+  <title id="logo-title">AI Agentic Kit logo</title>
+  <defs>
+    <linearGradient id="panel" x1="32" y1="24" x2="224" y2="232" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4F46E5"/>
+      <stop offset="0.52" stop-color="#4338CA"/>
+      <stop offset="1" stop-color="#0F766E"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="translate(177 68) rotate(132) scale(154)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22D3EE" stop-opacity="0.42"/>
+      <stop offset="0.65" stop-color="#6366F1" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#312E81" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="network" x1="55" y1="54" x2="202" y2="207" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C4B5FD"/>
+      <stop offset="0.48" stop-color="#67E8F9"/>
+      <stop offset="1" stop-color="#5EEAD4"/>
+    </linearGradient>
+    <linearGradient id="core" x1="96" y1="91" x2="163" y2="169" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A5B4FC"/>
+      <stop offset="0.5" stop-color="#22D3EE"/>
+      <stop offset="1" stop-color="#2DD4BF"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="8" y="8" width="240" height="240" rx="52" fill="url(#panel)"/>
+  <rect x="8.75" y="8.75" width="238.5" height="238.5" rx="51.25" fill="none" stroke="#C7D2FE" stroke-opacity="0.36" stroke-width="1.5"/>
+  <rect x="9" y="9" width="238" height="238" rx="51" fill="url(#glow)"/>
+
+  <!-- Eight linked modules form the plugin marketplace and agent network. -->
+  <path d="M128 46 184 70 208 128 184 186 128 210 72 186 48 128 72 70Z"
+        fill="none" stroke="url(#network)" stroke-width="5" stroke-linejoin="round" opacity="0.76"/>
+  <g fill="#172554" stroke="url(#network)" stroke-width="4">
+    <rect x="118" y="36" width="20" height="20" rx="6"/>
+    <rect x="177" y="55" width="20" height="20" rx="6" transform="rotate(45 187 65)"/>
+    <rect x="198" y="118" width="20" height="20" rx="6"/>
+    <rect x="177" y="181" width="20" height="20" rx="6" transform="rotate(45 187 191)"/>
+    <rect x="118" y="200" width="20" height="20" rx="6"/>
+    <rect x="59" y="181" width="20" height="20" rx="6" transform="rotate(45 69 191)"/>
+    <rect x="38" y="118" width="20" height="20" rx="6"/>
+    <rect x="59" y="55" width="20" height="20" rx="6" transform="rotate(45 69 65)"/>
+  </g>
+
+  <!-- A faceted core suggests an autonomous agent assembled from modular parts. -->
+  <path d="M128 82 168 105V151L128 174 88 151V105Z" fill="#172554" fill-opacity="0.84" stroke="url(#core)" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M128 96V160M100 112L128 128 156 112M100 144L128 128 156 144"
+        fill="none" stroke="url(#core)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="128" cy="128" r="9" fill="url(#core)"/>
+  <circle cx="128" cy="128" r="3.5" fill="#E0F2FE"/>
+</svg>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" role="img" aria-labelledby="banner-title">
+  <title id="banner-title">AI Agentic Kit — Claude Code plugin marketplace</title>
+  <defs>
+    <linearGradient id="banner-panel" x1="30" y1="16" x2="690" y2="190" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#312E81"/>
+      <stop offset="0.48" stop-color="#3730A3"/>
+      <stop offset="1" stop-color="#115E59"/>
+    </linearGradient>
+    <radialGradient id="banner-glow" cx="0" cy="0" r="1" gradientTransform="translate(622 36) rotate(146) scale(275 190)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22D3EE" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#4338CA" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="icon-panel" x1="31" y1="22" x2="184" y2="180" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6366F1"/>
+      <stop offset="0.55" stop-color="#4F46E5"/>
+      <stop offset="1" stop-color="#0F766E"/>
+    </linearGradient>
+    <linearGradient id="icon-network" x1="55" y1="52" x2="166" y2="164" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C4B5FD"/>
+      <stop offset="0.5" stop-color="#67E8F9"/>
+      <stop offset="1" stop-color="#5EEAD4"/>
+    </linearGradient>
+    <linearGradient id="wordmark" x1="217" y1="70" x2="577" y2="116" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EEF2FF"/>
+      <stop offset="0.55" stop-color="#C7D2FE"/>
+      <stop offset="1" stop-color="#A5F3FC"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="6" y="6" width="708" height="188" rx="38" fill="url(#banner-panel)"/>
+  <rect x="6.75" y="6.75" width="706.5" height="186.5" rx="37.25" fill="none" stroke="#C7D2FE" stroke-opacity="0.3" stroke-width="1.5"/>
+  <rect x="7" y="7" width="706" height="186" rx="37" fill="url(#banner-glow)"/>
+
+  <!-- Compact reuse of the eight-module agent mark. -->
+  <g>
+    <rect x="22" y="22" width="156" height="156" rx="35" fill="url(#icon-panel)"/>
+    <rect x="22.75" y="22.75" width="154.5" height="154.5" rx="34.25" fill="none" stroke="#C7D2FE" stroke-opacity="0.36" stroke-width="1.5"/>
+    <path d="M100 47 136 62 153 100 136 138 100 153 64 138 47 100 64 62Z"
+          fill="none" stroke="url(#icon-network)" stroke-width="3.5" stroke-linejoin="round" opacity="0.78"/>
+    <g fill="#172554" stroke="url(#icon-network)" stroke-width="3">
+      <rect x="93" y="40" width="14" height="14" rx="4"/>
+      <rect x="132" y="52" width="14" height="14" rx="4" transform="rotate(45 139 59)"/>
+      <rect x="146" y="93" width="14" height="14" rx="4"/>
+      <rect x="132" y="134" width="14" height="14" rx="4" transform="rotate(45 139 141)"/>
+      <rect x="93" y="146" width="14" height="14" rx="4"/>
+      <rect x="54" y="134" width="14" height="14" rx="4" transform="rotate(45 61 141)"/>
+      <rect x="40" y="93" width="14" height="14" rx="4"/>
+      <rect x="54" y="52" width="14" height="14" rx="4" transform="rotate(45 61 59)"/>
+    </g>
+    <path d="M100 70 126 85V115L100 130 74 115V85Z" fill="#172554" fill-opacity="0.86" stroke="url(#icon-network)" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M100 79V121M82 90L100 100 118 90M82 110L100 100 118 110"
+          fill="none" stroke="url(#icon-network)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="100" cy="100" r="6" fill="url(#icon-network)"/>
+    <circle cx="100" cy="100" r="2.5" fill="#E0F2FE"/>
+  </g>
+
+  <text x="215" y="96" fill="url(#wordmark)"
+        font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+        font-size="49" font-weight="700" letter-spacing="-1.5">AI Agentic Kit</text>
+  <rect x="217" y="116" width="44" height="4" rx="2" fill="#22D3EE"/>
+  <text x="215" y="148" fill="#BAE6FD"
+        font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+        font-size="18" font-weight="500" letter-spacing="1.15">CLAUDE CODE PLUGIN MARKETPLACE</text>
+</svg>

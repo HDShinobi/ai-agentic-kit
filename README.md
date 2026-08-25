@@ -1,10 +1,31 @@
-# AI Agentic Kit
+<p align="center"><img src="assets/logo-banner.svg" alt="AI Agentic Kit" width="520"></p>
 
-A broad Claude Code agent toolkit distributed as **one marketplace of eight domain plugins** (prefix `aak-`). Install the marketplace once, then **enable only the slices a given project needs** — breadth is the point; what you don't need, you simply don't enable.
+<p align="center"><sub>A broad Claude Code agent toolkit — one marketplace, eight domain plugins, enable only what a project needs.</sub></p>
 
-Salvaged from [ag-kit](https://github.com/vudovn/ag-kit) © vudovn (MIT) and expanded with a deep marketing suite adapted from several open-source skill sets (see [NOTICE](NOTICE)). The Antigravity-specific plumbing is rewritten (native safety hook, main-thread orchestration, self-contained commands) or dropped. Current totals across the 8 plugins: **23 agents, 87 skills, 20 command workflows**.
+<p align="center">
+  <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="License">
+  <img src="https://img.shields.io/badge/plugins-8-6f42c1?style=flat-square" alt="Plugins">
+  <img src="https://img.shields.io/badge/agents-23-0969da?style=flat-square" alt="Agents">
+  <img src="https://img.shields.io/badge/skills-87-1a7f37?style=flat-square" alt="Skills">
+  <img src="https://img.shields.io/badge/commands-20-bf8700?style=flat-square" alt="Commands">
+  <img src="https://img.shields.io/badge/Claude%20Code-marketplace-d4520f?style=flat-square" alt="Claude Code">
+</p>
 
-## Install
+---
+
+**AI Agentic Kit** is a broad Claude Code agent toolkit distributed as **one marketplace of eight domain plugins** (prefix `aak-`). Install the marketplace once, then **enable only the slices a given project needs** — breadth is the point; what you don't need, you simply don't enable. Across the 8 plugins it ships **23 agents, 87 skills, and 20 command workflows**, spanning foundation, backend, frontend, security, quality, marketing, game development, and process orchestration.
+
+## Contents
+
+- [🚀 Install](#-install)
+- [🧩 Plugin catalog](#-plugin-catalog)
+- [⚙️ How activation works](#️-how-activation-works)
+- [🗂 Command use cases](#-command-use-cases)
+- [🛡 Safety](#-safety)
+- [🧰 Development](#-development)
+- [📄 License](#-license)
+
+## 🚀 Install
 
 ```bash
 # once per machine
@@ -31,11 +52,11 @@ Commands and skills are **namespaced** per plugin — e.g. `/aak-core:create`, `
 
 **If you do NOT run superpowers** and want a full self-contained process layer: also install `aak-workflow` for the methodology skills + orchestration.
 
-> Rule of thumb: **always install `aak-core`** (foundation + the only safety hook). Add `aak-workflow` **only** when you have no superpowers-style stack.
+> **Rule of thumb:** always install `aak-core` (foundation + the only safety hook). Add `aak-workflow` **only** when you have no superpowers-style stack.
 
 Local dev without publishing: `claude --plugin-dir ./plugins/aak-core`, then `/reload-plugins`.
 
-## Plugin catalog
+## 🧩 Plugin catalog
 
 | Plugin | Covers | Agents | Notable skills | Commands |
 |--------|--------|--------|----------------|----------|
@@ -48,9 +69,9 @@ Local dev without publishing: `claude --plugin-dir ./plugins/aak-core`, then `/r
 | **aak-game** | Game development | game-developer | game-development (router → 10 platform guides) | — |
 | **aak-workflow** | Process methodology **skills** + orchestration (**skip if you use superpowers**) | project-planner | brainstorming, systematic-debugging, tdd-workflow, plan-writing, verify-changes, parallel-agents, coordinator-mode, intelligent-routing, memory-system, … | `/orchestrate`, `/coordinate`, `/status`, `/remember` |
 
-**Enable only what you need.** Each plugin is self-contained: a command never depends on a skill from a plugin you haven't enabled — where richer cross-plugin capability exists, it is used only if that plugin is enabled, otherwise the work is done inline.
+> **Enable only what you need.** Each plugin is self-contained: a command never depends on a skill from a plugin you haven't enabled — where richer cross-plugin capability exists, it is used only if that plugin is enabled, otherwise the work is done inline.
 
-## How activation works
+## ⚙️ How activation works
 
 The kit ships three kinds of component, and they activate in **three different ways** — this is the part most people get wrong:
 
@@ -86,7 +107,7 @@ your request / /command
 
 Two structural rules follow from this: **subagents are one level deep** (an agent can't call another agent — multi-agent coordination always runs on the main thread or via `/orchestrate`), and every command follows the **degradation rule** — *delegate to a specialist if its plugin is enabled, otherwise do that role inline* — so a command is never hollow even when you've enabled only `aak-core`.
 
-## Command use cases
+## 🗂 Command use cases
 
 Each command is a distinct workflow with a clear "use when". They also chain: `/campaign` calls `/content` for each asset, then hands measurement to `/analyze` → `/report`.
 
@@ -114,18 +135,20 @@ Each command is a distinct workflow with a clear "use when". They also chain: `/
 | `/seo` | SEO + GEO audit/optimization (incl. AI-search visibility) | `seo-specialist` |
 | `/report`, `/brand-report` | export a **professional PDF** (`/brand-report` clones a brand's site style from a URL) | output tooling (`minimax-pdf`) |
 
-## Safety
+## 🛡 Safety
 
 `aak-core` ships a native `PreToolUse` hook (`hooks/guard.mjs`) that blocks a narrow set of high-confidence destructive Bash commands (root deletion, drive format, raw-disk writes — incl. macOS `/dev/rdisk*`). It is deliberately narrow and anchors commands at their position, so mentions like `echo "rm -rf /"` are not blocked. It is not a general linter.
 
 > **Install `aak-core` in every project.** It is the foundation plugin and the only one that ships the safety hook — enabling other plugins without it leaves Bash unguarded by this kit.
 
-## Development
+## 🧰 Development
 
 - Validate: `claude plugin validate ./plugins/aak-<name>` (and `claude plugin validate .` for the marketplace).
 - Safety-hook tests: `node --test plugins/aak-core/hooks/guard.test.mjs`.
-- Migration converter (one-time, for re-deriving from ag-kit source): `scripts/convert.mjs` + `scripts/mapping.mjs`.
+- Migration converter (one-time, for re-deriving from source): `scripts/convert.mjs` + `scripts/mapping.mjs`.
 
-## License
+> Built on and credits to prior open-source work — see [NOTICE](NOTICE) for full attribution.
 
-MIT. See [LICENSE](LICENSE) (root and per-plugin). Adapted from [ag-kit](https://github.com/vudovn/ag-kit) © vudovn (MIT).
+## 📄 License
+
+MIT. See [LICENSE](LICENSE) (root and per-plugin).
