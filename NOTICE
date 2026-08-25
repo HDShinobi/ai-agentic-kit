@@ -47,6 +47,8 @@ apply to the adapted portions.
   Copyright (c) NguyenPHP, MIT (as declared in the project's package.json and
   README). Source of most marketing skills, the 4 marketing agents, and the
   /campaign, /content, /optimize, /analyze, /report, /brand-report workflows.
+  Includes the `vision-analysis` skill, re-pointed from the paid MiniMax vision
+  tool to Claude's native image reading (MiniMax kept as an optional fallback).
 
 - ClaudeKit (https://claudekit.cc / https://github.com/mrgoonie/claudekit-skills),
   by claudekit. Source of the `brand` and `banner-design` skills. Both were
@@ -67,6 +69,16 @@ apply to the adapted portions.
 - Antigravity Awesome Skills (https://github.com/sickn33/antigravity-awesome-skills),
   community-contributed. Origin of several patterns (e.g. `marketing-ideas`,
   the CRO-suite skills, `programmatic-seo`) as bundled via antigravity-marketing.
+
+- ai-marketing-claude (https://github.com/zubair-trabzada/ai-marketing-claude),
+  Copyright (c) 2026 Zubair Trabzada, MIT. Source of: the `client-proposal` skill
+  and its proposal template; the email/content/launch templates bundled under
+  `email-marketing`, `content-marketing`, and `launch-strategy`; the verbatim
+  scoring rubrics, weights, and report format in the `site-audit` skill (its five
+  audit-dimension rubric files are copied from that project's audit subagents); and
+  `site-audit/scripts/analyze_page.py` (parsing/scoring logic unchanged; a
+  network-safety wrapper was added in front of the fetchers). The `/audit` command
+  wires these to this kit's own marketing agents rather than vendoring theirs.
 
 Where an upstream skill shipped a placeholder/stub library (marketing-ideas,
 marketing-psychology), the missing content was authored fresh for this project.
