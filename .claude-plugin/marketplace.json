@@ -47,6 +47,11 @@
       "name": "aak-workflow",
       "source": "./plugins/aak-workflow",
       "description": "Process & orchestration layer (methodology skills + /orchestrate /coordinate). Skip if you use superpowers."
+    },
+    {
+      "name": "aak-vietnamese",
+      "source": "./plugins/aak-vietnamese",
+      "description": "Native-quality, advertising-law-aware Vietnamese (vi-VN) writing — register, advertising-law linting, NFC, locale."
     }
   ]
 }
