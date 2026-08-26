@@ -11,6 +11,8 @@
   <img src="https://img.shields.io/badge/Claude%20Code-marketplace-d4520f?style=flat-square" alt="Claude Code">
 </p>
 
+<p align="center"><b>English</b> · <a href="README.vi.md">Tiếng Việt</a></p>
+
 ---
 
 **AI Agentic Kit** is one Claude Code marketplace of **10 domain plugins** — backend, frontend, security, testing, marketing, paid-media/ads, games, Vietnamese writing, and process orchestration. Install once, enable per project. No bloat, no lock-in: what you don't need, you don't turn on.
