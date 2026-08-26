@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/logo-banner.svg" alt="AI Agentic Kit" width="520"></p>
 
-<p align="center"><b>Trao cho Claude Code cả một đội chuyên gia — và chỉ bật đúng những người mà mỗi project cần.</b></p>
+<p align="center"><b>Trao cho Claude Code cả một đội chuyên gia — bật đúng người cho từng project.</b></p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="License">
@@ -15,16 +15,16 @@
 
 ---
 
-**AI Agentic Kit** là một marketplace Claude Code gồm **10 plugin theo lĩnh vực** — backend, frontend, security, testing, marketing, paid-media/ads, game, viết tiếng Việt, và điều phối quy trình. Cài một lần, bật theo từng project. Không cồng kềnh, không khoá cứng: thứ gì bạn không cần thì không bật.
+**AI Agentic Kit** biến Claude Code thành cả một đội chuyên gia: một marketplace gồm **10 plugin theo lĩnh vực** — backend, frontend, security, testing, marketing, paid-media/ads, game, viết tiếng Việt, và điều phối quy trình. Cài một lần, bật theo từng project. Không cồng kềnh, không khoá cứng — thứ gì bạn không cần thì không bật.
 
-> **→ Bắt đầu:** `/plugin marketplace add HDShinobi/ai-agentic-kit` — rồi [bật các plugin bạn cần](#-cài-đặt).
+> **→ Thêm marketplace, bật thứ bạn cần:** `/plugin marketplace add HDShinobi/ai-agentic-kit` — rồi [chọn plugin cho project của bạn](#-cài-đặt).
 
 ## ✨ Vì sao chọn AI Agentic Kit
 
-- **Đúng chuyên gia tự xuất hiện** — 48 agent chuyên biệt (debugger, security-auditor, frontend-specialist, marketing-strategist, audit-google…) tự kích hoạt khi tác vụ của bạn khớp, không cần cấu hình gì thêm.
-- **Từ ý tưởng → ra mắt mà không rời terminal** — 21 command workflow (`/create`, `/debug`, `/deploy`, `/audit`, `/campaign`, `/seo`) chạy trọn từng đầu việc.
-- **Chỉ bật thứ một repo cần** — 10 plugin độc lập, có namespace, tự chứa; bật hai cái, phần còn lại cứ để yên.
-- **An toàn hơn theo mặc định** — một guard tích hợp sẵn chặn các lệnh shell phá huỷ chắc-chắn-nguy-hiểm trước khi chúng chạy.
+- **Khỏi chọn tool — đúng chuyên gia tự nhận việc.** 48 agent chuyên biệt (debugger, security-auditor, frontend-specialist, marketing-strategist, audit-google…) tự kích hoạt khi tác vụ của bạn khớp, không cần cấu hình.
+- **Từ ý tưởng đến ra mắt mà không rời terminal.** 21 command workflow (`/create`, `/debug`, `/deploy`, `/audit`, `/campaign`, `/seo`) chạy trọn từng đầu việc.
+- **Chỉ bật thứ một repo cần.** 10 plugin độc lập, có namespace, tự chứa — bật hai cái, phần còn lại cứ để yên; không cồng kềnh, không xung đột.
+- **An toàn hơn ngay từ mặc định.** Một guard tích hợp sẵn chặn các lệnh shell phá huỷ rõ ràng nguy hiểm (xoá gốc hệ thống, format ổ đĩa, ghi raw-disk) trước khi chúng chạy.
 
 ## Mục lục
 

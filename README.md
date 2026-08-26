@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/logo-banner.svg" alt="AI Agentic Kit" width="520"></p>
 
-<p align="center"><b>Give Claude Code a full team of specialists — and switch on only the ones each project needs.</b></p>
+<p align="center"><b>Give Claude Code a full team of specialists — switch on the right ones for each project.</b></p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="License">
@@ -15,16 +15,16 @@
 
 ---
 
-**AI Agentic Kit** is one Claude Code marketplace of **10 domain plugins** — backend, frontend, security, testing, marketing, paid-media/ads, games, Vietnamese writing, and process orchestration. Install once, enable per project. No bloat, no lock-in: what you don't need, you don't turn on.
+**AI Agentic Kit** turns Claude Code into a full team of specialists: one marketplace of **10 domain plugins** — backend, frontend, security, testing, marketing, paid-media/ads, games, Vietnamese writing, and process orchestration. Install once, enable per project. No bloat, no lock-in — what you don't need, you don't turn on.
 
-> **→ Get started:** `/plugin marketplace add HDShinobi/ai-agentic-kit` — then [enable the plugins you need](#-install).
+> **→ Add the marketplace, enable what you need:** `/plugin marketplace add HDShinobi/ai-agentic-kit` — then [pick the plugins for your project](#-install).
 
 ## ✨ Why AI Agentic Kit
 
-- **The right expert shows up on its own** — 48 specialist agents (debugger, security-auditor, frontend-specialist, marketing-strategist, audit-google…) auto-activate when your task matches, no wiring required.
-- **Idea → launch without leaving the terminal** — 21 command workflows (`/create`, `/debug`, `/deploy`, `/audit`, `/campaign`, `/seo`) run each job end-to-end.
-- **Enable only what a repo needs** — 10 independent, namespaced, self-contained plugins; turn on two, ignore the rest.
-- **Safer by default** — a built-in guard blocks high-confidence destructive shell commands before they run.
+- **No tool-picking — the right expert takes the job.** 48 specialist agents (debugger, security-auditor, frontend-specialist, marketing-strategist, audit-google…) auto-activate when your task matches, no wiring required.
+- **From idea to launch without leaving the terminal.** 21 command workflows (`/create`, `/debug`, `/deploy`, `/audit`, `/campaign`, `/seo`) run each job end-to-end.
+- **Enable only what a repo needs.** 10 independent, namespaced, self-contained plugins — turn on two, ignore the rest; no bloat, no collisions.
+- **Safer from the default.** A built-in guard blocks high-confidence destructive shell commands (root deletion, drive format, raw-disk writes) before they run.
 
 ## Contents
 
