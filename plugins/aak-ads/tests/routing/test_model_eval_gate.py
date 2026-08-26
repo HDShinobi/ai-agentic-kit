@@ -100,7 +100,7 @@ def _case_evidence(case: dict, *, passed: bool = True) -> dict:
         "response_sha256": _sha(response),
         "response": response,
         "skill_invocation": {
-            "entrypoint": "/claude-ads:ads",
+            "entrypoint": "/aak-ads:ads",
             "mode": "explicit-plugin-skill",
         },
         "required_behavior_results": required_results,
@@ -148,7 +148,7 @@ def _run_evidence(
             "provider": "anthropic",
             "model_id": "claude-model",
             "model_snapshot": model_snapshot,
-            "skill_entrypoint": "/claude-ads:ads",
+            "skill_entrypoint": "/aak-ads:ads",
             "invocation_mode": "explicit-plugin-skill",
             "fresh_process_per_case": True,
             "conversation_reuse": False,
@@ -273,7 +273,7 @@ def test_execution_plan_is_pinned_and_explicitly_not_run_evidence(repo_root):
         assert packet["required_behaviors"] == case["required_behaviors"]
         assert packet["forbidden_behaviors"] == case["forbidden_behaviors"]
         assert packet["skill_invocation"] == {
-            "entrypoint": "/claude-ads:ads",
+            "entrypoint": "/aak-ads:ads",
             "mode": "explicit-plugin-skill",
         }
 
@@ -286,7 +286,7 @@ def test_every_case_requires_explicit_namespaced_plugin_entrypoint(repo_root, tm
     }
     report = _assess_with_auth(repo_root, tmp_path, candidate)
     assert report["external_runs"]["candidate"]["status"] == "invalid"
-    assert "explicitly invoke /claude-ads:ads" in report["external_runs"]["candidate"]["error"]
+    assert "explicitly invoke /aak-ads:ads" in report["external_runs"]["candidate"]["error"]
 
 
 def test_missing_external_runs_fail_closed_without_local_substitution(repo_root):

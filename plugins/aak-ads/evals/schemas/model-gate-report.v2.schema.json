@@ -156,7 +156,7 @@
         "provider": {"type": ["string", "null"]},
         "model_id": {"type": ["string", "null"]},
         "model_snapshot": {"type": ["string", "null"]},
-        "skill_entrypoint": {"type": ["string", "null"], "enum": ["/claude-ads:ads", null]},
+        "skill_entrypoint": {"type": ["string", "null"], "enum": ["/aak-ads:ads", null]},
         "invocation_mode": {"type": ["string", "null"], "enum": ["explicit-plugin-skill", null]},
         "explicit_invocation_case_count": {"type": ["integer", "null"], "minimum": 0},
         "fresh_process_per_case": {"type": ["boolean", "null"]},

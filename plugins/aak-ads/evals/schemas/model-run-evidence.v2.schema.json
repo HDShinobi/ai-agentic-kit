@@ -67,7 +67,7 @@
         "provider": {"const": "anthropic"},
         "model_id": {"type": "string", "minLength": 1},
         "model_snapshot": {"type": "string", "minLength": 1},
-        "skill_entrypoint": {"const": "/claude-ads:ads"},
+        "skill_entrypoint": {"const": "/aak-ads:ads"},
         "invocation_mode": {"const": "explicit-plugin-skill"},
         "fresh_process_per_case": {"const": true},
         "conversation_reuse": {"const": false},
@@ -143,7 +143,7 @@
             "additionalProperties": false,
             "required": ["entrypoint", "mode"],
             "properties": {
-              "entrypoint": {"const": "/claude-ads:ads"},
+              "entrypoint": {"const": "/aak-ads:ads"},
               "mode": {"const": "explicit-plugin-skill"}
             }
           },

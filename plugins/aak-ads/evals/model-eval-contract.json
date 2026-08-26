@@ -4,11 +4,11 @@
   "schemas": {
     "external_run": {
       "path": "evals/schemas/model-run-evidence.v2.schema.json",
-      "sha256": "3691051ab197bce7ad9be31ecc56888892c4167a3451a39686eee203eb4f2da5"
+      "sha256": "bc77eaae6e3eb0424fb7affb054a875a112b03a54962aefe49b16aa8d22e198b"
     },
     "gate_report": {
       "path": "evals/schemas/model-gate-report.v2.schema.json",
-      "sha256": "c0f424a6a0f8dc92c5c480513c02a993b773f1a9cadbe753f72c4034c3d66626"
+      "sha256": "c0126473564d1dfee0f514a439347b22fcd51e6ac6ba91dc255b28093e2d1753"
     },
     "trust_bundle": {
       "path": "evals/schemas/model-eval-trust-bundle.v1.schema.json",
@@ -37,7 +37,7 @@
   },
   "runtime": {
     "family": "claude-code",
-    "skill_entrypoint": "/claude-ads:ads",
+    "skill_entrypoint": "/aak-ads:ads",
     "invocation_mode": "explicit-plugin-skill",
     "fresh_process_per_case": true,
     "conversation_reuse": false,

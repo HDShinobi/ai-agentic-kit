@@ -8,7 +8,7 @@
   "canonical_command": "/ads",
   "runtime_commands": {
     "claude_standalone_skill": "/ads",
-    "claude_plugin": "/claude-ads:ads"
+    "claude_plugin": "/aak-ads:ads"
   },
   "canonical_machine_output": "versioned-json",
   "human_renderers": ["markdown", "html", "pdf"],

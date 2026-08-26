@@ -198,7 +198,7 @@ def _load_contract(path: Path) -> dict[str, Any]:
     )
     if runtime != {
         "family": "claude-code",
-        "skill_entrypoint": "/claude-ads:ads",
+        "skill_entrypoint": "/aak-ads:ads",
         "invocation_mode": "explicit-plugin-skill",
         "fresh_process_per_case": True,
         "conversation_reuse": False,
@@ -424,7 +424,7 @@ def _runner_binding(run: Mapping[str, Any]) -> dict[str, Any]:
         "case_count": len(case_receipts),
         "explicit_invocation_case_count": sum(
             case["skill_invocation"]
-            == {"entrypoint": "/claude-ads:ads", "mode": "explicit-plugin-skill"}
+            == {"entrypoint": "/aak-ads:ads", "mode": "explicit-plugin-skill"}
             for case in run["cases"]
         ),
     }
@@ -647,7 +647,7 @@ def _validate_external_run(
             "mode": contract["runtime"]["invocation_mode"],
         }:
             raise EvaluationContractError(
-                f"{role} case {case_id} did not explicitly invoke /claude-ads:ads"
+                f"{role} case {case_id} did not explicitly invoke /aak-ads:ads"
             )
         by_id[case_id] = case
 
@@ -843,7 +843,7 @@ def build_plan(contract_path: Path, root: Path) -> dict[str, Any]:
         "authentication_requirements": contract["authentication_policy"],
         "instructions": [
             "Run every case in a fresh Claude Code process from a clean checkout of the exact subject.",
-            "Explicitly invoke /claude-ads:ads for every scenario on both subjects; do not rely on global natural skill selection.",
+            "Explicitly invoke /aak-ads:ads for every scenario on both subjects; do not rely on global natural skill selection.",
             "Disable mutation authority and do not reuse conversation state between cases.",
             "Retain raw responses privately; record their exact UTF-8 SHA-256 values.",
             "Use a separate human or model evaluator and the rubric text exactly as pinned here.",

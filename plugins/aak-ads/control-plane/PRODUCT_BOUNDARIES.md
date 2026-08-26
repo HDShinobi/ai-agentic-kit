@@ -13,7 +13,7 @@ read-only by default.
 ## Supported product surface
 
 - Primary runtime: Claude Code through `/ads` for a standalone skill install or
-  `/claude-ads:ads` for the necessarily namespaced plugin install.
+  `/aak-ads:ads` for the necessarily namespaced plugin install.
 - Portable surface: Agent Skills-compatible runtimes and a matching CLI where
   executable support exists.
 - Target platforms: Google, Meta, YouTube, LinkedIn, TikTok, Microsoft, Apple,
