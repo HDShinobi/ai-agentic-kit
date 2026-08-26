@@ -10,7 +10,7 @@ long in Vietnamese.
 
 Every ❌ string here is a deliberate defect, so this file is exempt from its own linter.
 
-**18 pairs.** Contributions welcome — see [CONTRIBUTING.md](../../../CONTRIBUTING.md).
+**18 pairs.** Contributions welcome — see [CONTRIBUTING.md](https://github.com/HDShinobi/ai-agentic-kit/blob/main/CONTRIBUTING.md).
 
 ## K-12 school communications
 

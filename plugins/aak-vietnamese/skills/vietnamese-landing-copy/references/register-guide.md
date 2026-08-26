@@ -104,4 +104,4 @@ The near-inverse.
 New verticals (government, education, medical) are welcome contributions. Open a
 `register-profile` issue with: the pronoun, the self-reference, five sample headlines from
 real Vietnamese sites in that vertical, and the vocabulary that distinguishes it. See
-[CONTRIBUTING.md](../../../CONTRIBUTING.md).
+[CONTRIBUTING.md](https://github.com/HDShinobi/ai-agentic-kit/blob/main/CONTRIBUTING.md).
