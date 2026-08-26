@@ -7,7 +7,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep
 # Frontend Architecture
 
 > How to organize frontend code so it scales. Separation of concerns over file-type folders.
-> Applies to React/Next and Vue. For directory layout, follow [app-builder](../app-builder/scaffolding.md). For visual design, see [frontend-design](../frontend-design/SKILL.md). For React/Next performance, see [nextjs-react-expert](../nextjs-react-expert/SKILL.md).
+> Applies to React/Next and Vue. For directory layout, use the `app-builder` skill (from `aak-core`, if enabled). For visual design, see [frontend-design](../frontend-design/SKILL.md). For React/Next performance, see [nextjs-react-expert](../nextjs-react-expert/SKILL.md).
 
 ---
 
