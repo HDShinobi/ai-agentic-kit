@@ -94,6 +94,8 @@ Local dev without publishing: `claude --plugin-dir ./plugins/aak-core`, then `/r
 
 > **`aak-ads` ↔ `aak-marketing`:** they don't collide. `aak-marketing` stays authoritative for organic/SEO/content/brand. When **both** are enabled, `aak-ads` is the deep paid-media system and supersedes `aak-marketing`'s generalist `ppc-advertising` / `ad-creative-variations` for anything account-level (audits, budgets, launches, live-account changes) — those two skills carry a note that defers to `/aak-ads:ads` when it's present.
 
+> **`aak-ads` release tooling is upstream-only.** `aak-ads` is vendored verbatim from the standalone [`claude-ads`](https://github.com/AgriciDaniel/claude-ads) repo. Its `scripts/release.py` (the `audit` / `build` / `verify` subcommands) is that repo's **standalone-repo release/packaging harness** — it expects a self-contained single-plugin repo (own `README.md` + a self-referential one-plugin `.claude-plugin/marketplace.json`), which by design does not exist for a vendored sub-plugin. It is kept byte-verbatim because `scripts/verify_target_lock.py` imports it as a library, but its CLI audit is **not applicable inside this kit**. Release/packaging readiness here is governed by the host marketplace: run `claude plugin validate .` (marketplace) and `claude plugin validate ./plugins/aak-ads` (plugin) at the repo root.
+
 ## ⚙️ How activation works
 
 The kit ships three kinds of component, and they activate in **three different ways** — this is the part most people get wrong:
