@@ -20,6 +20,22 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-Includes material adapted from ag-kit (https://github.com/vudovn/ag-kit),
-Copyright (c) 2026 VUDOVN, MIT License. See the NOTICE file at the repository
-root for the full third-party license text.
+This plugin bundles skills adapted from several upstream projects. Each retains
+its own license; the repository-root NOTICE file carries the full attribution and
+third-party license text. Sources include:
+
+- ag-kit (https://github.com/vudovn/ag-kit), Copyright (c) 2026 VUDOVN, MIT.
+- antigravity-marketing (https://github.com/nguyenphp/antigravity-marketing),
+  Copyright (c) NguyenPHP, MIT.
+- ClaudeKit (https://github.com/mrgoonie/claudekit-skills), MIT — source of the
+  `brand` and `banner-design` skills.
+- MiniMax-AI/skills (https://github.com/MiniMax-AI/skills), Copyright (c) 2026
+  MiniMax, MIT — source of the `minimax-pdf` skill.
+- Remotion Dev Skills (https://github.com/remotion-dev/skills) — source of
+  `remotion-best-practices`, `video-automation`, `tutorial-video-expert`.
+- vibeship-spawner-skills, Apache License 2.0 — source of the
+  `viral-generator-builder` skill (see that skill's LICENSE for the full text).
+- ai-marketing-claude (https://github.com/zubair-trabzada/ai-marketing-claude),
+  Copyright (c) 2026 Zubair Trabzada, MIT — source of the `client-proposal` skill.
+
+See the NOTICE file at the repository root for the full third-party license text.
