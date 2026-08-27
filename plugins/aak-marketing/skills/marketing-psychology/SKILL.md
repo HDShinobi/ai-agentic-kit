@@ -282,7 +282,7 @@ If ethical risk > leverage → **do not recommend**
 * **copywriting / copy-editing** → Translate models into language
 * **popup-cro** → Triggers, urgency, interruption ethics
 * **pricing-strategy** → Anchoring, relativity, loss framing
-* **ab-test-setup** → Validate psychological hypotheses
+* **ab-test-dashboard** → Validate psychological hypotheses
 
 ---
 

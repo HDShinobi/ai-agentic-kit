@@ -350,6 +350,6 @@ If you need more context:
 ## Related Skills
 
 - **onboarding-cro**: For optimizing what happens after signup
-- **signup-flow-cro**: For non-signup forms (lead capture, contact)
+- **form-cro**: For non-signup forms (lead capture, contact)
 - **page-cro**: For the landing page leading to signup
-- **ab-test-setup**: For testing signup flow changes
+- **ab-test-dashboard**: For testing signup flow changes

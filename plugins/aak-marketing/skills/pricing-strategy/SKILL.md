@@ -349,8 +349,8 @@ page-cro – Pricing page conversion
 
 copywriting – Pricing copy
 
-analytics-tracking – Measure impact
+analytics-marketing – Measure impact
 
-ab-test-setup – Safe experimentation
+ab-test-dashboard – Safe experimentation
 
 marketing-psychology – Behavioral pricing effects

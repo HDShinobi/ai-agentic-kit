@@ -339,7 +339,7 @@ If triggered, **halt indexing or roll back**:
 
 ## Related Skills
 
-- **seo-audit** – Audit programmatic pages post-launch
+- **seo-fundamentals** – Audit programmatic pages post-launch
 - **schema-markup** – Add structured data to templates
 - **copywriting** – Improve non-templated sections
-- **analytics-tracking** – Measure performance and validate value
+- **analytics-marketing** – Measure performance and validate value

@@ -305,9 +305,9 @@ Use these biases when scoring:
 
 ## 8. Related Skills
 
-* **analytics-tracking** – Validate ideas with real data
+* **analytics-marketing** – Validate ideas with real data
 * **page-cro** – Convert acquired traffic
 * **pricing-strategy** – Monetize demand
 * **programmatic-seo** – Scale SEO ideas
-* **ab-test-setup** – Test ideas rigorously
+* **ab-test-dashboard** – Test ideas rigorously
 

@@ -566,5 +566,5 @@ If you need more context:
 
 - **page-cro**: For public pricing page optimization
 - **onboarding-cro**: For driving to aha moment before upgrade
-- **ab-test-setup**: For testing paywall variations
-- **analytics-tracking**: For measuring upgrade funnel
+- **ab-test-dashboard**: For testing paywall variations
+- **analytics-marketing**: For measuring upgrade funnel

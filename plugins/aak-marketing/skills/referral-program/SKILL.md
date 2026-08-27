@@ -619,5 +619,5 @@ If you need more context:
 - **launch-strategy**: For launching referral program effectively
 - **email-marketing**: For referral nurture campaigns
 - **marketing-psychology**: For understanding referral motivation
-- **analytics-tracking**: For tracking referral attribution
+- **analytics-marketing**: For tracking referral attribution
 - **pricing-strategy**: For structuring rewards relative to LTV
