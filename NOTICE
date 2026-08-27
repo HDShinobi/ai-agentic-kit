@@ -103,6 +103,22 @@ apply to the adapted portions.
   a "Reference guide" pointer line was appended to each SKILL.md so the bundled
   `references/` guide is discoverably loaded. Vendored from upstream commit
   e1d08b66899795bfaddbb42a1843b1bcb9e0f688 (2026-07-15).
+  Additionally, `references/` reference-guides from this source were grafted onto
+  existing skills to add depth (bodies unchanged): `pricing-strategy` ←
+  saas-pricing-guide; `seo-fundamentals` ← keyword-research + seo-audit-checklist;
+  `content-marketing` ← content-pillars; `email-marketing` ← deliverability +
+  email-marketing-playbook + segmentation; `page-cro` ← cro-checklist +
+  element-benchmarks (upstream file names seo-mastery/*, content-strategy/* map to
+  this kit's seo-fundamentals/content-marketing). Each grafted guide is byte-verbatim;
+  where upstream content was stale or foreign (deprecated FID metric vs. the current
+  INP; a disputed HubSpot conversion stat; illustrative single-case lift figures; an
+  embedded lead-scoring block; and references to the upstream project's own
+  workflows/agents/commands that do not exist here), a clearly-delimited "KIT NOTE"
+  preamble was prepended ABOVE the vendored block to correct/caveat it — the upstream
+  bytes below the note are unmodified. Several upstream reference files were
+  deliberately NOT grafted (technical-seo, lead-nurturing-workflows, sequence-design,
+  automation, repurposing) because they duplicated this kit's body content or belonged
+  to another skill's home (email-sequence, content-repurposing).
   This project shares a common ancestor with
   antigravity-marketing / ai-marketing-claude above.
 

@@ -127,3 +127,11 @@ allowed-tools: Read, Glob, Grep
 ---
 
 > **Remember:** SEO is a long-term game. Quality content + technical excellence + patience = results.
+
+---
+
+## Reference guides
+
+Additional depth for this skill (load on demand):
+- `references/keyword-research.md`
+- `references/seo-audit-checklist.md`

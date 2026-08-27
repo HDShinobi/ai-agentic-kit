@@ -221,3 +221,10 @@ allowed-tools: Read, Glob, Grep
 ## Vietnamese (vi-VN) output
 
 > If you are producing Vietnamese content and the `aak-vietnamese` plugin is enabled, invoke its `vietnamese-*` skills for language correctness (register/pronouns, advertising-law linting, NFC Unicode, ICU plural, VND/date/phone formatting) before finalizing. If it is not enabled, proceed normally.
+
+---
+
+## Reference guides
+
+Additional depth for this skill (load on demand):
+- `references/content-pillars.md`

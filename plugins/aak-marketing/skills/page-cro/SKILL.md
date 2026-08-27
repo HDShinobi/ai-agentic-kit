@@ -335,3 +335,11 @@ Fix fundamentals first.
 * **ab-test-dashboard** – For test execution and instrumentation
 
 ```
+
+---
+
+## Reference guides
+
+Additional depth for this skill (load on demand):
+- `references/cro-checklist.md`
+- `references/element-benchmarks.md`
