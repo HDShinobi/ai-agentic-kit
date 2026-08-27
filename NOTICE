@@ -128,6 +128,19 @@ apply to the adapted portions.
   consumer-behavior levers" group (models 46-55, scored under PLFS). The flat,
   unscored catalogs and generic "foundational thinking model" entries were
   deliberately not imported.
+  The `competitor-alternatives` skill (comparison/alternative-page production) was
+  vendored — SKILL.md body + comparison-page-guide reference byte-verbatim; its
+  frontmatter reduced and scoped to producing one page / a small set, with a handoff
+  to `programmatic-seo` for at-scale generation, a KIT-NOTE marking the reference's
+  "Templates for Scale" sections as inputs to `programmatic-seo`, and its `seo-audit`
+  ref re-pointed to `seo-fundamentals`; `programmatic-seo`'s trigger was narrowed to
+  "comparison pages at scale" with mutual routing pointers. The `ab-test-setup` skill
+  was NOT adopted standalone — its design-side content and statistical guide were
+  folded into `ab-test-dashboard` as `references/test-design-guide.md` +
+  `references/statistical-guide.md` (byte-verbatim, one dangling `analytics-tracking`
+  ref re-pointed), a lifecycle section marks the power/MDE sizing method canonical,
+  and `conversion-optimization` was re-pointed to hand test design/sizing/analysis to
+  `ab-test-dashboard`.
   This project shares a common ancestor with
   antigravity-marketing / ai-marketing-claude above.
 

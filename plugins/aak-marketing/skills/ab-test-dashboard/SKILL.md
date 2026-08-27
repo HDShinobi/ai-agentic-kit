@@ -1,6 +1,6 @@
 ---
 name: ab-test-dashboard
-description: Build and analyze A/B test dashboards, calculate statistical significance, and track experiment results.
+description: Own the full A/B experiment lifecycle — design (hypothesis, test types, guardrail metrics, traffic allocation, client-vs-server, peeking), sizing & significance (power/MDE), tracking dashboards, and results reporting. Use for planning, running, or analyzing an A/B test or experiment. Triggers on A/B test, split test, experiment, statistical significance, hypothesis, sample size, test dashboard. (CRO opportunity-finding & prioritization stays in conversion-optimization, which hands the test itself to this skill.)
 allowed-tools: Read, Glob, Grep
 ---
 
@@ -125,9 +125,9 @@ Where:
 
 | Confidence | Meaning |
 |------------|---------|
-| **95%** | 5% chance results are random (standard) |
-| **99%** | 1% chance results are random (high stakes) |
-| **90%** | 10% chance results are random (quick tests) |
+| **95%** | α = 5%: ≤5% chance of a false positive when there is no real difference (standard) |
+| **99%** | α = 1%: ≤1% false-positive rate (high stakes) |
+| **90%** | α = 10%: ≤10% false-positive rate (quick tests) |
 
 ### Quick Significance Check
 
@@ -288,3 +288,14 @@ What did we learn?
 ---
 
 > **Remember:** Statistical significance ≠ practical significance. Always ask: "Is this lift worth the effort to implement?"
+
+---
+
+## Full experiment lifecycle & reference guides
+
+This skill owns the whole experiment lifecycle: **design → size → run → measure → report**. Load on demand:
+
+- `references/test-design-guide.md` — hypothesis framework, test types (A/B, A/B/n, MVT, split-URL), guardrail metrics, traffic allocation/ramping, client-vs-server-vs-feature-flag, and the peeking problem.
+- `references/statistical-guide.md` — **canonical** sizing & significance method: prefer the power + MDE sample-size formula `n = 2·((z_α + z_β)² · p·(1-p)) / MDE²` (it accounts for statistical power, unlike the quick margin-of-error approximation shown earlier) and the duration formula `Days = (sample size per variant × variants) / daily traffic`.
+
+CRO opportunity-finding, hypotheses, and ICE/PIE prioritization live in **conversion-optimization**, which hands the actual test off to this skill; event/tracking instrumentation lives in the analytics skills.

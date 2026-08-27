@@ -1,6 +1,6 @@
 ---
 name: conversion-optimization
-description: CRO entry point & method — research, hypothesis, prioritization (ICE/PIE), and A/B testing that apply across ALL surfaces. Routes surface-specific work to the specialized CRO skills. Use this to start any conversion problem or run the experiment process; use the specialized skill for a specific surface.
+description: CRO entry point & method — research, hypothesis, and prioritization (ICE/PIE) that apply across ALL surfaces. Routes surface-specific work to the specialized CRO skills, and hands off A/B test design, sample sizing, execution, significance analysis, and reporting to ab-test-dashboard. Use this to start any conversion problem; use the specialized skill for a specific surface.
 allowed-tools: Read, Glob, Grep
 ---
 
@@ -160,7 +160,7 @@ Pick the specialized skill for the surface being optimized; use this skill for t
 |--------|---------|
 | **Sample size** | Statistical significance |
 | **Duration** | 1-2 full business cycles |
-| **Visitors/variation** | 100+ conversions each |
+| **Visitors/variation** | Size properly via ab-test-dashboard (power + MDE) — not a fixed rule of thumb |
 
 ### Statistical Significance
 
