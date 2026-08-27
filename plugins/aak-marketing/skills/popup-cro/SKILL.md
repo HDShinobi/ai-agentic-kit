@@ -343,4 +343,4 @@ Multiple CTAs or mixed goals destroy performance.
 * **signup-flow-cro** – Optimize the form inside the popup
 * **page-cro** – Optimize the surrounding page
 * **email-marketing** – Post-conversion follow-up
-* **ab-test-setup** – Test popup variants safely
+* **ab-test-dashboard** – Test popup variants safely

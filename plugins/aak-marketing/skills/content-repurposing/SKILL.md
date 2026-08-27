@@ -1,5 +1,5 @@
 ---
-name: content-repurposing-pipeline
+name: content-repurposing
 description: Transform one piece of content into multiple formats - blog to social, video to text, podcast to threads.
 allowed-tools: Read, Glob, Grep
 ---

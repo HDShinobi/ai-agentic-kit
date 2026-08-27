@@ -430,4 +430,4 @@ If you need more context:
 - **signup-flow-cro**: For optimizing the signup before onboarding
 - **email-marketing**: For onboarding email series
 - **paywall-upgrade-cro**: For converting to paid during/after onboarding
-- **ab-test-setup**: For testing onboarding changes
+- **ab-test-dashboard**: For testing onboarding changes

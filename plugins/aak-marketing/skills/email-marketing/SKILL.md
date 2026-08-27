@@ -1,6 +1,6 @@
 ---
 name: email-marketing
-description: Email marketing campaigns, automation sequences, newsletter optimization, and deliverability best practices.
+description: Email marketing strategy — campaigns, newsletter optimization, list segmentation, and deliverability best practices. For building multi-step drip/nurture/lifecycle email flows, see email-sequence.
 allowed-tools: Read, Glob, Grep
 ---
 
@@ -246,3 +246,12 @@ Ready-to-use sequences ship in `templates/` (adapt the placeholders before sendi
 - `templates/welcome-sequence.md` — 5-email onboarding series
 - `templates/nurture-sequence.md` — 6-email lead-nurture series (value → trust → offer)
 - `templates/launch-sequence.md` — 8-email product-launch series
+
+---
+
+## Reference guides
+
+Additional depth for this skill (load on demand):
+- `references/deliverability.md`
+- `references/email-marketing-playbook.md`
+- `references/segmentation.md`

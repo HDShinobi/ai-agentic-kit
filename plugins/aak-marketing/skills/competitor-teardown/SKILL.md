@@ -1,5 +1,5 @@
 ---
-name: competitor-teardown-agent
+name: competitor-teardown
 description: Analyze competitor websites, social media, ads, and strategies to find gaps and opportunities.
 allowed-tools: Read, Glob, Grep
 ---

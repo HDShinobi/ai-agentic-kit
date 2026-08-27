@@ -49,6 +49,22 @@ apply to the adapted portions.
   /campaign, /content, /optimize, /analyze, /report, /brand-report workflows.
   Includes the `vision-analysis` skill, re-pointed from the paid MiniMax vision
   tool to Claude's native image reading (MiniMax kept as an optional fallback).
+  Deliberate mechanical deviations from the upstream (frontmatter/wiring only,
+  bodies unchanged): (a) stale "Related Skills" cross-refs that dangle in the
+  upstream itself were re-pointed to this kit's real skill names
+  (`ab-test-setup`→`ab-test-dashboard`, `seo-audit`→`seo-fundamentals`,
+  `analytics-tracking`→`analytics-marketing`), and a self-referential ref in
+  `signup-flow-cro` was corrected to `form-cro` (both upstreams already say
+  `form-cro`); (b) three skills whose upstream frontmatter `name:` did not match
+  their directory (`competitor-teardown`→was `competitor-teardown-agent`,
+  `competitor-monitor`→was `competitor-monitor-alert`,
+  `content-repurposing`→was `content-repurposing-pipeline`; the suffixes matched
+  no upstream agent and nothing references them) were normalized to `name = dir`.
+  (c) Two antigravity-derived skill bodies were corrected in place, beyond
+  frontmatter/wiring: `ab-test-dashboard` (its confidence/p-value table rows,
+  which stated the classic "5% chance results are random" misinterpretation) and
+  `conversion-optimization` (a "100+ conversions each" sizing rule of thumb
+  re-pointed to power/MDE sizing in `ab-test-dashboard`).
 
 - ClaudeKit (https://claudekit.cc / https://github.com/mrgoonie/claudekit-skills),
   by claudekit. Source of the `brand` and `banner-design` skills. Both were
@@ -79,6 +95,59 @@ apply to the adapted portions.
   `site-audit/scripts/analyze_page.py` (parsing/scoring logic unchanged; a
   network-safety wrapper was added in front of the fetchers). The `/audit` command
   wires these to this kit's own marketing agents rather than vendoring theirs.
+
+- agentkits-marketing (https://github.com/aitytech/agentkits-marketing),
+  Copyright (c) AityTech, MIT. Source of the net-new marketing skills `schema-markup`,
+  `form-cro`, `free-tool-strategy`, `copy-editing`, and `email-sequence` (SKILL.md
+  bodies and their `references/` guides vendored verbatim). Only mechanical wiring
+  changed: frontmatter reduced to this kit's `name`/`description` convention (their
+  `triggers` folded into the description; `brand`/`agents`/`related_skills`/
+  `mcp_integrations`/`success_metrics` dropped), and a few "Related Skills" prose
+  refs re-pointed to this kit's skill names (`ab-test-setup`→`ab-test-dashboard`,
+  `seo-audit`→`seo-fundamentals`, `analytics-tracking`→`analytics-marketing`), and
+  a "Reference guide" pointer line was appended to each SKILL.md so the bundled
+  `references/` guide is discoverably loaded. Vendored from upstream commit
+  e1d08b66899795bfaddbb42a1843b1bcb9e0f688 (2026-07-15).
+  Additionally, `references/` reference-guides from this source were grafted onto
+  existing skills to add depth (bodies unchanged): `pricing-strategy` ←
+  saas-pricing-guide; `seo-fundamentals` ← keyword-research + seo-audit-checklist;
+  `content-marketing` ← content-pillars; `email-marketing` ← deliverability +
+  email-marketing-playbook + segmentation; `page-cro` ← cro-checklist +
+  element-benchmarks (upstream file names seo-mastery/*, content-strategy/* map to
+  this kit's seo-fundamentals/content-marketing). Each grafted guide is byte-verbatim;
+  where upstream content was stale or foreign (deprecated FID metric vs. the current
+  INP; a disputed HubSpot conversion stat; illustrative single-case lift figures; an
+  embedded lead-scoring block; and references to the upstream project's own
+  workflows/agents/commands that do not exist here), a clearly-delimited "KIT NOTE"
+  preamble was prepended ABOVE the vendored block to correct/caveat it — the upstream
+  bytes below the note are unmodified. Several upstream reference files were
+  deliberately NOT grafted (technical-seo, lead-nurturing-workflows, sequence-design,
+  automation, repurposing) because they duplicated this kit's body content or belonged
+  to another skill's home (email-sequence, content-repurposing).
+  Finally, a small number of net-new entries were ADAPTED (paraphrased, not
+  vendored verbatim, and re-scored under this kit's own engines) from this
+  source's flatter catalogs into our curated+scored skills: `marketing-ideas`
+  gained a "Competitive Switching, Developer-Led & Promotions" group (patterns
+  72-78, scored under MFS) and its inaccurate "140 ideas" prose was corrected to
+  the real count (78); `marketing-psychology` gained an "Additional
+  consumer-behavior levers" group (models 46-55, scored under PLFS). The flat,
+  unscored catalogs and generic "foundational thinking model" entries were
+  deliberately not imported.
+  The `competitor-alternatives` skill (comparison/alternative-page production) was
+  vendored — SKILL.md body + comparison-page-guide reference byte-verbatim; its
+  frontmatter reduced and scoped to producing one page / a small set, with a handoff
+  to `programmatic-seo` for at-scale generation, a KIT-NOTE marking the reference's
+  "Templates for Scale" sections as inputs to `programmatic-seo`, and its `seo-audit`
+  ref re-pointed to `seo-fundamentals`; `programmatic-seo`'s trigger was narrowed to
+  "comparison pages at scale" with mutual routing pointers. The `ab-test-setup` skill
+  was NOT adopted standalone — its design-side content and statistical guide were
+  folded into `ab-test-dashboard` as `references/test-design-guide.md` +
+  `references/statistical-guide.md` (byte-verbatim, one dangling `analytics-tracking`
+  ref re-pointed), a lifecycle section marks the power/MDE sizing method canonical,
+  and `conversion-optimization` was re-pointed to hand test design/sizing/analysis to
+  `ab-test-dashboard`.
+  This project shares a common ancestor with
+  antigravity-marketing / ai-marketing-claude above.
 
 - vietnamese-language-skill (https://github.com/trussary/vietnamese-language-skill),
   Copyright (c) trussary, MIT. Vendored verbatim as the `aak-vietnamese` plugin —

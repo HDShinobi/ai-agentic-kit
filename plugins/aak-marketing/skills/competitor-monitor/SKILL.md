@@ -1,5 +1,5 @@
 ---
-name: competitor-monitor-alert
+name: competitor-monitor
 description: Ongoing monitoring of competitor changes - website updates, new campaigns, price changes, and alert setup.
 allowed-tools: Read, Glob, Grep
 ---

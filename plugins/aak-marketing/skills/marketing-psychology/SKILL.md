@@ -184,6 +184,18 @@ PLFS = (5 + 5 + 4 + 5) − 2 = 17 (cap at 15)
 44. **Sunk-cost (ethical use)** — surface accumulated value to reduce churn, never to trap.
 45. **Reciprocal referral** — people share when both sides benefit and the ask is well-timed.
 
+### G. Additional consumer-behavior levers
+46. **Zero-Price Effect** — "free" is disproportionately attractive; a free option pulls far harder than a merely cheap one.
+47. **Mental Accounting** — people bucket money by source and purpose; frame price against the right budget ("less than your daily coffee").
+48. **Rounded-price & Rule of 100** — round prices feel emotional/premium, precise prices feel rational; show % off under $100, $ off over $100.
+49. **Regret Aversion** — people act to avoid future regret; frame the cost of inaction and reduce it with risk reversal (guarantee, easy exit).
+50. **Mimetic Desire** — people want what similar others want; show peer/segment adoption, not just raw counts.
+51. **Pratfall Effect** — admitting a small, honest flaw increases trust and likeability more than a flawless pitch.
+52. **Curse of Knowledge** — experts overestimate what the audience knows; test copy against a true beginner and cut jargon.
+53. **Goal-Gradient (endowed progress)** — motivation rises approaching a goal; start progress above 0% and show the finish line.
+54. **EAST framework** — to change a behavior, make it Easy, Attractive, Social, and Timely (a behavioral-insights checklist for nudges).
+55. **COM-B model** — behavior needs Capability + Opportunity + Motivation; diagnose which is missing before designing the intervention.
+
 > Reference material — do not dump all of this. Select the 2–4 models that map to the target behavior, **score each with the PLFS**, apply only those that clear the ethics gate, and state the model you used.
 
 ---
@@ -282,7 +294,7 @@ If ethical risk > leverage → **do not recommend**
 * **copywriting / copy-editing** → Translate models into language
 * **popup-cro** → Triggers, urgency, interruption ethics
 * **pricing-strategy** → Anchoring, relativity, loss framing
-* **ab-test-setup** → Validate psychological hypotheses
+* **ab-test-dashboard** → Validate psychological hypotheses
 
 ---
 
