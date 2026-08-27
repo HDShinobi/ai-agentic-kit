@@ -60,6 +60,11 @@ apply to the adapted portions.
   `competitor-monitor`→was `competitor-monitor-alert`,
   `content-repurposing`→was `content-repurposing-pipeline`; the suffixes matched
   no upstream agent and nothing references them) were normalized to `name = dir`.
+  (c) Two antigravity-derived skill bodies were corrected in place, beyond
+  frontmatter/wiring: `ab-test-dashboard` (its confidence/p-value table rows,
+  which stated the classic "5% chance results are random" misinterpretation) and
+  `conversion-optimization` (a "100+ conversions each" sizing rule of thumb
+  re-pointed to power/MDE sizing in `ab-test-dashboard`).
 
 - ClaudeKit (https://claudekit.cc / https://github.com/mrgoonie/claudekit-skills),
   by claudekit. Source of the `brand` and `banner-design` skills. Both were

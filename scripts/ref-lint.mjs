@@ -64,7 +64,7 @@ for (const f of files) {
   for (const [alias, live] of Object.entries(RETIRED)) {
     // Treat a hyphenated skill name as one token: do NOT match when the alias is a
     // prefix/suffix of a longer name or filename (e.g. `seo-audit-checklist.md`).
-    const re = new RegExp(`(?<![\\w-])${alias}(?![\\w-])`, 'g');
+    const re = new RegExp(`(?<![\\w-])${alias}(?![\\w-])`);
     lines.forEach((ln, i) => {
       // A skill's own frontmatter `name:` line is exempt (it IS the definition, not a ref);
       // but retired names should never be a definition either, so we still flag them.
