@@ -49,6 +49,17 @@ apply to the adapted portions.
   /campaign, /content, /optimize, /analyze, /report, /brand-report workflows.
   Includes the `vision-analysis` skill, re-pointed from the paid MiniMax vision
   tool to Claude's native image reading (MiniMax kept as an optional fallback).
+  Deliberate mechanical deviations from the upstream (frontmatter/wiring only,
+  bodies unchanged): (a) stale "Related Skills" cross-refs that dangle in the
+  upstream itself were re-pointed to this kit's real skill names
+  (`ab-test-setup`→`ab-test-dashboard`, `seo-audit`→`seo-fundamentals`,
+  `analytics-tracking`→`analytics-marketing`), and a self-referential ref in
+  `signup-flow-cro` was corrected to `form-cro` (both upstreams already say
+  `form-cro`); (b) three skills whose upstream frontmatter `name:` did not match
+  their directory (`competitor-teardown`→was `competitor-teardown-agent`,
+  `competitor-monitor`→was `competitor-monitor-alert`,
+  `content-repurposing`→was `content-repurposing-pipeline`; the suffixes matched
+  no upstream agent and nothing references them) were normalized to `name = dir`.
 
 - ClaudeKit (https://claudekit.cc / https://github.com/mrgoonie/claudekit-skills),
   by claudekit. Source of the `brand` and `banner-design` skills. Both were
@@ -79,6 +90,21 @@ apply to the adapted portions.
   `site-audit/scripts/analyze_page.py` (parsing/scoring logic unchanged; a
   network-safety wrapper was added in front of the fetchers). The `/audit` command
   wires these to this kit's own marketing agents rather than vendoring theirs.
+
+- agentkits-marketing (https://github.com/aitytech/agentkits-marketing),
+  Copyright (c) AityTech, MIT. Source of the net-new marketing skills `schema-markup`,
+  `form-cro`, `free-tool-strategy`, `copy-editing`, and `email-sequence` (SKILL.md
+  bodies and their `references/` guides vendored verbatim). Only mechanical wiring
+  changed: frontmatter reduced to this kit's `name`/`description` convention (their
+  `triggers` folded into the description; `brand`/`agents`/`related_skills`/
+  `mcp_integrations`/`success_metrics` dropped), and a few "Related Skills" prose
+  refs re-pointed to this kit's skill names (`ab-test-setup`→`ab-test-dashboard`,
+  `seo-audit`→`seo-fundamentals`, `analytics-tracking`→`analytics-marketing`), and
+  a "Reference guide" pointer line was appended to each SKILL.md so the bundled
+  `references/` guide is discoverably loaded. Vendored from upstream commit
+  e1d08b66899795bfaddbb42a1843b1bcb9e0f688 (2026-07-15).
+  This project shares a common ancestor with
+  antigravity-marketing / ai-marketing-claude above.
 
 - vietnamese-language-skill (https://github.com/trussary/vietnamese-language-skill),
   Copyright (c) trussary, MIT. Vendored verbatim as the `aak-vietnamese` plugin —
