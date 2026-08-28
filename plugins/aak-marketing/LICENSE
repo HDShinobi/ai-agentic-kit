@@ -40,5 +40,9 @@ third-party license text. Sources include:
 - agentkits-marketing (https://github.com/aitytech/agentkits-marketing),
   Copyright (c) AityTech, MIT — source of the `schema-markup`, `form-cro`,
   `free-tool-strategy`, `copy-editing`, and `email-sequence` skills.
+- marketingskills (https://github.com/coreyhaines31/marketingskills),
+  Copyright (c) Corey Haines, MIT — source of the `product-marketing`,
+  `sales-enablement`, `revops`, `churn-prevention`, `public-relations`,
+  `co-marketing`, and `site-architecture` skills.
 
 See the NOTICE file at the repository root for the full third-party license text.
