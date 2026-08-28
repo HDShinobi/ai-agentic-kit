@@ -152,7 +152,8 @@ apply to the adapted portions.
 - marketingskills (https://github.com/coreyhaines31/marketingskills),
   Copyright (c) Corey Haines, MIT. Source of the net-new marketing skills
   `product-marketing`, `sales-enablement`, `revops`, `churn-prevention`,
-  `public-relations`, `co-marketing`, and `site-architecture` — SKILL.md bodies +
+  `public-relations`, `co-marketing`, `site-architecture`, `offers`,
+  `customer-research`, `cold-email`, and `lead-magnets` — SKILL.md bodies +
   their `references/` guides vendored byte-verbatim from upstream commit
   b1aaa3619e747f4a836c61e03084c4a531de1262. Only mechanical wiring changed:
   frontmatter reduced to this kit's name/description convention (upstream

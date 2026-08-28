@@ -142,7 +142,7 @@ Newsjacking decays fast. Approximate windows:
 
 ## Sources & Tooling
 
-Reuses tooling from the `social` skill's listening workflow. Same install: `brew install jq`.
+Reuses tooling from the `social-media-expert` skill's listening workflow. Same install: `brew install jq`.
 
 ### Google News RSS (no auth)
 
@@ -178,7 +178,7 @@ See also [journalist-pitching.md](journalist-pitching.md) for the full discovery
 
 ### Source list
 
-For repeatable monitoring, add a "Newsjacking topics" section to `.agents/listening-sources.md` (template in the `social` skill's references):
+For repeatable monitoring, add a "Newsjacking topics" section to `.agents/listening-sources.md` (template in the `social-media-expert` skill's references):
 
 ```markdown
 ## Newsjacking topics (Google News RSS)

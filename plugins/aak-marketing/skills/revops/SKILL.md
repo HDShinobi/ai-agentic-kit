@@ -1,6 +1,6 @@
 ---
 name: revops
-description: "When the user wants help with revenue operations, lead lifecycle management, or marketing-to-sales handoff processes. Also use when the user mentions 'RevOps,' 'revenue operations,' 'lead scoring,' 'lead routing,' 'MQL,' 'SQL,' 'pipeline stages,' 'deal desk,' 'CRM automation,' 'marketing-to-sales handoff,' 'data hygiene,' 'leads aren't getting to sales,' 'pipeline management,' 'lead qualification,' or 'when should marketing hand off to sales.' Use this for anything involving the systems and processes that connect marketing to revenue. For email drip campaigns, see email-sequence. For pricing decisions, see pricing-strategy."
+description: "When the user wants help with revenue operations, lead lifecycle management, or marketing-to-sales handoff processes. Also use when the user mentions 'RevOps,' 'revenue operations,' 'lead scoring,' 'lead routing,' 'MQL,' 'SQL,' 'pipeline stages,' 'deal desk,' 'CRM automation,' 'marketing-to-sales handoff,' 'data hygiene,' 'leads aren't getting to sales,' 'pipeline management,' 'lead qualification,' or 'when should marketing hand off to sales.' Use this for anything involving the systems and processes that connect marketing to revenue. For email drip campaigns, see email-sequence. For pricing decisions, see pricing-strategy. For cold outreach emails, see cold-email."
 ---
 
 # RevOps
@@ -336,6 +336,7 @@ For implementation, see the [tools registry](../../tools/REGISTRY.md). Key RevOp
 ## Related Skills
 
 - **email-sequence**: For lifecycle and nurture email flows
+- **cold-email**: For cold outbound prospecting emails
 - **pricing-strategy**: For pricing decisions and packaging
 - **analytics-marketing**: For tracking pipeline metrics and attribution
 - **launch-strategy**: For go-to-market launch planning
