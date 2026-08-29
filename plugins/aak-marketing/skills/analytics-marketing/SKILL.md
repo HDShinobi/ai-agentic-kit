@@ -250,3 +250,14 @@ allowed-tools: Read, Glob, Grep
 ---
 
 > **Remember:** Data without action is just noise. Always tie analytics to decisions and outcomes.
+
+---
+
+## Reference guides
+
+Deeper implementation detail lives on demand in `references/`:
+
+- `references/tracking-implementation.md` — end-to-end tracking-plan methodology: core principles, event naming conventions, essential events, UTM strategy, debugging/validation, and privacy/consent. (Attribution-model comparison stays in this skill's §3 above.)
+- `references/event-library.md` — a *menu* of events by business type (marketing site, product/app, monetization, e-commerce, B2B/SaaS) with properties and funnel sequences. Minimize collection; never place raw PII in event params.
+- `references/ga4-implementation.md` — detailed GA4 setup: data streams, enhanced measurement, custom events, conversions, custom dimensions, audiences, DebugView, and Google Ads linking. (Time-sensitive — verify against current GA4 docs.)
+- `references/gtm-implementation.md` — Google Tag Manager: container structure, naming, data-layer patterns, common tag configs, preview/debug, versioning, and consent mode. (Time-sensitive — verify against current GTM docs.)

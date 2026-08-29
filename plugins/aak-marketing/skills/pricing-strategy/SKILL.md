@@ -361,3 +361,7 @@ marketing-psychology – Behavioral pricing effects
 
 Additional depth for this skill (load on demand):
 - `references/saas-pricing-guide.md`
+- `references/pricing-models.md` — the eight ways to structure *how* you charge (flat, usage, tier, user, feature, credit, outcome, hybrid), how to combine them, the value/price ratio, and the low-price retention counterpoint.
+- `references/pricing-page-teardown.md` — the full two-axis (human buyer experience + AI-agent readiness) 10-dimension pricing-page rubric, scoring, report template, and common failure patterns.
+- `references/research-methods.md` — Van Westendorp, MaxDiff, willingness-to-pay surveys, and usage-value correlation analysis, with sample outputs.
+- `references/initial-pricing-and-rollout.md` — how to pick a first price you can learn from (the $10/$100/$1K rule, the $9 trap) and the sequenced methodology for rolling out a price change.

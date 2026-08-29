@@ -165,6 +165,17 @@ apply to the adapted portions.
   (directory-submissions) or not yet adopted (cold-email, offers). Each skill's
   optional `.agents/product-marketing.md` shared-context read block is preserved
   verbatim — a soft runtime file check that degrades gracefully, not a hollow ref.
+  Additionally, reference-guide material from this source was grafted (byte-verbatim,
+  bodies unchanged) into existing skills to add depth: geo-fundamentals ← ai-seo
+  (body-as-playbook + 7 refs), ab-test-dashboard ← ab-testing (experimentation-program
+  extract + test-templates; its statistically-wrong sample-size-guide was SKIPPED),
+  analytics-marketing ← analytics (tracking body + 3 refs), onboarding-cro ← onboarding
+  (3 refs), pricing-strategy ← pricing (3 refs + initial-pricing extract; tier-structure
+  SKIPPED), content-marketing ← content-strategy (distribution + ideation extract;
+  headless-cms SKIPPED), competitor-teardown ← competitor-profiling (profiling workflow
+  + templates + tool-reference). Where upstream content was time-sensitive, unsourced,
+  tool-dependent, or referenced a component absent here, a delimited "KIT NOTE" preamble
+  was prepended ABOVE the vendored bytes (bytes below unchanged).
 
 - vietnamese-language-skill (https://github.com/trussary/vietnamese-language-skill),
   Copyright (c) trussary, MIT. Vendored verbatim as the `aak-vietnamese` plugin —

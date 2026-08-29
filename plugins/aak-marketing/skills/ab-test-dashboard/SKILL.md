@@ -299,3 +299,10 @@ This skill owns the whole experiment lifecycle: **design → size → run → me
 - `references/statistical-guide.md` — **canonical** sizing & significance method: prefer the power + MDE sample-size formula `n = 2·((z_α + z_β)² · p·(1-p)) / MDE²` (it accounts for statistical power, unlike the quick margin-of-error approximation shown earlier) and the duration formula `Days = (sample size per variant × variants) / daily traffic`.
 
 CRO opportunity-finding, hypotheses, and ICE/PIE prioritization live in **conversion-optimization**, which hands the actual test off to this skill; event/tracking instrumentation lives in the analytics skills.
+
+---
+
+## Reference guides
+
+- `references/experimentation-program.md` — running experiments as an ongoing growth engine: the experiment loop, hypothesis-generation sources, ICE prioritization, velocity benchmarks, the experiment playbook, and weekly/monthly/quarterly cadence. (Program operations only; ICE/PIE prioritization canon lives in `conversion-optimization`, sizing/significance canon in `references/statistical-guide.md`.)
+- `references/test-templates.md` — copy-paste templates for planning, documenting, and analyzing experiments: test plan, results doc, test repository, quick brief, stakeholder update, prioritization scorecard, and hypothesis bank.

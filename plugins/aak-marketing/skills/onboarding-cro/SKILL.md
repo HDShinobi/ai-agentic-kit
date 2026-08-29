@@ -431,3 +431,12 @@ If you need more context:
 - **email-marketing**: For onboarding email series
 - **paywall-upgrade-cro**: For converting to paid during/after onboarding
 - **ab-test-dashboard**: For testing onboarding changes
+
+---
+
+## Reference guides
+
+Additional depth for this skill (load on demand):
+- `references/activation-models.md` — the 5 activation models (freemium, free trial, paid trial, money-back, white-glove), Model-Market Fit, and the Evernote-vs-Notion give-away lesson.
+- `references/minimum-path-to-value.md` — MPTV, Hick's Law applied to onboarding, the inventory→remove→reconstruct process, and short-path benchmark patterns.
+- `references/experiments.md` — the full onboarding/activation A/B experiment catalog (the condensed superset of the "Experiment Ideas" section above).

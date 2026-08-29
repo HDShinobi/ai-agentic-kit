@@ -275,3 +275,12 @@ Low Feature ------+------ High Feature
 ---
 
 > **Remember:** Study competitors to be informed, not to copy. Your best strategy comes from understanding the landscape then zigging where they zag.
+
+---
+
+## Reference guides
+
+Additional depth for this skill (load on demand):
+- `references/profiling-workflow.md` — a full URL-in / profile-out competitive-intelligence workflow: raw-data directory layout, a Firecrawl site-scraping phase, a DataForSEO SEO/market-data phase, synthesis, plus quick-scan vs. deep-profile and multi-competitor handling.
+- `references/templates.md` — ready-to-fill templates: quick-scan profile, summary comparison table, positioning map, competitive SWOT, and a profile update changelog.
+- `references/tool-reference.md` — reference for the (optional, external) Firecrawl and DataForSEO MCP tools the workflow uses, with recommended execution order and error handling. If those servers aren't installed, fall back to built-in WebFetch/WebSearch.
