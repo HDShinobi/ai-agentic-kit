@@ -57,7 +57,7 @@ Four modes. Most teams over-index on one. Run at least three.
 
 **For inbound press-request platforms (HARO, Qwoted, etc.)** — see [references/press-platforms.md](references/press-platforms.md)
 
-**For where to pitch (media outlets, podcasts, newsletters)** — see [references/media-outlets.md](references/media-outlets.md). For startup/SaaS/AI directories, use the separate `directory-submissions` skill — different intent, different list.
+**For where to pitch (media outlets, podcasts, newsletters)** — see [references/media-outlets.md](references/media-outlets.md). For startup/SaaS/AI directories, submit directly to those startup/SaaS/AI directories (Product Hunt, BetaList, Futurepedia, etc.) — different intent from journalist pitching.
 
 **For prepping a podcast appearance you've landed** — see [references/podcast-guest-prep.md](references/podcast-guest-prep.md). Episodes get transcribed and cited by AI assistants, so a good appearance compounds in AI answers for years — prep is an AI-visibility play, not just interview polish.
 

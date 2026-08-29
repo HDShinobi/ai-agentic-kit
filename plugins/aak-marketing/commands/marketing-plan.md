@@ -20,7 +20,10 @@ This command runs the `marketing-plan` skill (in `aak-marketing`).
 
 ## Step 2: Build the plan
 Follow the `marketing-plan` skill: diagnose the measured funnel bottleneck (AARRR), pull a
-short **scored** shortlist from the `marketing-ideas` skill (never an exhaustive dump),
+short **scored** shortlist from the `marketing-ideas` skill (never an exhaustive dump;
+note the `marketing-plan` skill's own Section 12 draws from its internal 139-idea library,
+while the `marketing-ideas` skill is the interactive MFS-scored selector — use whichever the
+current step calls for),
 sequence the work stage-by-stage, and hand each stage to its owner skill
 (`product-marketing`, `offers`, `pricing-strategy`, `content-marketing`, `sales-enablement`,
 `revops`, `churn-prevention`, …). Produce the plan document in-conversation (no filesystem

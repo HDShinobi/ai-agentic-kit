@@ -133,7 +133,7 @@ Save each scraped review page to `competitor-profiles/raw/<competitor-slug>/<YYY
 
 ### Phase 2: SEO & Market Data (DataForSEO)
 
-Use DataForSEO MCP tools to gather quantitative competitive intelligence. Save each raw response as JSON to `competitor-profiles/raw/<competitor-slug>/<YYYY-MM-DD>/seo/<endpoint-name>.json` before parsing it into the profile. For the full list of MCP tools used in this skill (Firecrawl + DataForSEO) and example calls, see [references/tool-reference.md](references/tool-reference.md).
+Use DataForSEO MCP tools to gather quantitative competitive intelligence. Save each raw response as JSON to `competitor-profiles/raw/<competitor-slug>/<YYYY-MM-DD>/seo/<endpoint-name>.json` before parsing it into the profile. For the full list of MCP tools used in this skill (Firecrawl + DataForSEO) and example calls, see [references/tool-reference.md](tool-reference.md).
 
 #### Domain Authority & Backlinks
 
@@ -189,7 +189,7 @@ Generate one markdown file per competitor, saved to a `competitor-profiles/` dir
 
 **Filename**: `competitor-profiles/[competitor-name].md`
 
-**For the full profile and summary templates**: See [references/templates.md](references/templates.md)
+**For the full profile and summary templates**: See [references/templates.md](templates.md)
 
 Each profile follows this structure:
 

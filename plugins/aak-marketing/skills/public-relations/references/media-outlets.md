@@ -1,6 +1,6 @@
 # Media Outlets — Where to Pitch
 
-A curated, opinionated list of *where* to pitch for software/SaaS PR. This is the media-outlet slice of resources like submit.co — the journalist-driven half. For startup/SaaS/AI directories (Product Hunt, BetaList, Futurepedia, etc.), use the separate `directory-submissions` skill — different intent, different audience.
+A curated, opinionated list of *where* to pitch for software/SaaS PR. This is the media-outlet slice of resources like submit.co — the journalist-driven half. For startup/SaaS/AI directories (Product Hunt, BetaList, Futurepedia, etc.), submit to those directories directly — different intent, different audience from journalist-driven PR.
 
 ## How to use this list
 
@@ -189,7 +189,7 @@ If your company has a regional angle (HQ location, customer concentration, gover
 
 ## What's NOT On This List (And Why)
 
-- **Product Hunt, BetaList, Indie Hackers** — these are directories, not press. Use the `directory-submissions` skill.
+- **Product Hunt, BetaList, Indie Hackers** — these are directories, not press. Submit to them directly as product directories, not press.
 - **Press release wires** (PRNewswire, BusinessWire, GlobeNewswire) — overpriced for early-stage; journalists ignore them. Skip until you have IR / SEC requirements.
 - **"As featured in" badge mills** — paid "media coverage" services. Worthless and damaging.
 - **Random "guest post" SEO link networks** — Google penalizes these. Don't.
