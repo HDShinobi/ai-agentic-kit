@@ -5,6 +5,10 @@ description: EXECUTION skill that generates a client-ready marketing-services pr
 
 # Client Proposal Generator for Marketing Services
 
+## Before Starting — Product Marketing Context
+
+If `.agents/product-marketing.md` exists (the shared positioning / ICP / voice doc created by the `product-marketing` skill) or an audit produced `MARKETING-AUDIT.md`, read them first — a data-backed, positioning-aware proposal closes far better. Otherwise gather what you need in discovery.
+
 ## Skill Purpose
 Generate a professional, client-ready marketing services proposal. This skill produces a complete proposal document that positions the agency/consultant as the clear choice, frames pricing with anchoring and tiered options, and includes ROI projections to justify the investment.
 
@@ -384,3 +388,12 @@ Generate a file called `CLIENT-PROPOSAL.md` with:
 - If audit data is available from previous skills, use it extensively -- data-backed proposals close at 2-3x the rate of generic proposals.
 - Keep it concise. Executives skim. Use bold, headers, and tables to make key information scannable.
 - Always include a specific, time-bound next step. Ambiguity kills deals.
+
+---
+
+## After the Proposal — Handoff
+
+Once the proposal is accepted, don't stop at the pitch — carry the engagement into the money-loop:
+- **`marketing-plan` skill** (or `/aak-marketing:marketing-plan`) — sequence the proposal's promised work into a stage-based (AARRR) action plan the client can see progress against.
+- **`/aak-marketing:optimize` · `:content` · `:seo` · `:campaign`** — execute the plan's stages.
+- Re-run **`/aak-marketing:audit`** after execution to show the before/after delta, then **`/aak-marketing:report`** to render it as a client PDF.

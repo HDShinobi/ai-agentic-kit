@@ -6,8 +6,8 @@
   <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="License">
   <img src="https://img.shields.io/badge/plugins-10-6f42c1?style=flat-square" alt="Plugins">
   <img src="https://img.shields.io/badge/agents-48-0969da?style=flat-square" alt="Agents">
-  <img src="https://img.shields.io/badge/skills-135-1a7f37?style=flat-square" alt="Skills">
-  <img src="https://img.shields.io/badge/commands-21-bf8700?style=flat-square" alt="Commands">
+  <img src="https://img.shields.io/badge/skills-147-1a7f37?style=flat-square" alt="Skills">
+  <img src="https://img.shields.io/badge/commands-22-bf8700?style=flat-square" alt="Commands">
   <img src="https://img.shields.io/badge/Claude%20Code-marketplace-d4520f?style=flat-square" alt="Claude Code">
 </p>
 
@@ -22,7 +22,7 @@
 ## ✨ Why AI Agentic Kit
 
 - **No tool-picking — the right expert takes the job.** 48 specialist agents (debugger, security-auditor, frontend-specialist, marketing-strategist, audit-google…) auto-activate when your task matches, no wiring required.
-- **From idea to launch without leaving the terminal.** 21 command workflows (`/create`, `/debug`, `/deploy`, `/audit`, `/campaign`, `/seo`) run each job end-to-end.
+- **From idea to launch without leaving the terminal.** 22 command workflows (`/create`, `/debug`, `/deploy`, `/audit`, `/campaign`, `/seo`) run each job end-to-end.
 - **Enable only what a repo needs.** 10 independent, namespaced, self-contained plugins — turn on two, ignore the rest; no bloat, no collisions.
 - **Safer from the default.** A built-in guard blocks high-confidence destructive shell commands (root deletion, drive format, raw-disk writes) before they run.
 
@@ -86,7 +86,7 @@ Local dev without publishing: `claude --plugin-dir ./plugins/aak-core`, then `/r
 | **aak-frontend** | Build polished, on-brand UIs for web & mobile | frontend-specialist, mobile-developer | frontend-architecture, frontend-design, nextjs-react-expert, tailwind-patterns, web-design-guidelines, mobile-design, ui-ux-pro-max | — |
 | **aak-security** | Find & fix vulnerabilities before attackers do | security-auditor, penetration-tester | vulnerability-scanner, red-team-tactics | — |
 | **aak-quality** | Catch bugs, prove changes work & keep code fast | debugger, test-engineer, qa-automation-engineer, performance-optimizer, code-archaeologist, explorer-agent | testing-patterns, webapp-testing, code-review-checklist, performance-profiling, lint-and-validate | `/debug`, `/verify`, `/test` |
-| **aak-marketing** | Take a product to market — SEO/GEO, CRO, content, email, growth, analytics, brand & video (50 skills) | marketing-strategist, content-creator, growth-specialist, analytics-specialist, seo-specialist | site-audit (scored site audit), client-proposal, conversion-optimization (CRO router), page-cro, keyword-research-deep, programmatic-seo, analytics-marketing, email-marketing, content-marketing, launch-strategy, brand, vision-analysis, minimax-pdf | `/audit`, `/campaign`, `/content`, `/optimize`, `/analyze`, `/seo`, `/report`, `/brand-report` |
+| **aak-marketing** | Take a product to market — SEO/GEO, CRO, content, email, growth, analytics, brand & video (62 skills) | marketing-strategist, content-creator, growth-specialist, analytics-specialist, seo-specialist | site-audit (scored site audit), client-proposal, conversion-optimization (CRO router), page-cro, keyword-research-deep, programmatic-seo, analytics-marketing, email-marketing, content-marketing, launch-strategy, brand, vision-analysis, minimax-pdf | `/audit`, `/campaign`, `/content`, `/optimize`, `/analyze`, `/seo`, `/report`, `/brand-report`, `/marketing-plan` |
 | **aak-ads** | Run paid media like an agency — source-grounded audits + deterministic scoring across 12 ad platforms (Google, Meta, YouTube, LinkedIn, TikTok, Microsoft, Apple, Amazon, Reddit, Pinterest, Snapchat, X); read-only by default, account writes pass a mutation gate (34 skills, 25 agents) | 25 platform/audit/creative agents (audit-google, audit-meta, creative-strategist, copy-writer, visual-designer, source-verifier, …) | ads (router), ads-audit, ads-plan, ads-create, ads-launch, ads-monitor, ads-optimize, ads-test, ads-report, ads-attribution, ads-server-side-tracking, ads-math, + 12 platform skills | `/aak-ads:ads setup\|audit\|plan\|create\|launch\|monitor\|optimize\|experiment\|report` |
 | **aak-game** | Ship games across engines & platforms | game-developer | game-development (router → 10 platform guides) | — |
 | **aak-workflow** | Systematic process — brainstorm, plan, debug, verify — plus multi-agent orchestration (**skip if you use superpowers**) | project-planner | brainstorming, systematic-debugging, tdd-workflow, plan-writing, verify-changes, parallel-agents, coordinator-mode, intelligent-routing, memory-system, … | `/orchestrate`, `/coordinate`, `/status`, `/remember` |
@@ -155,17 +155,42 @@ Each command is a distinct workflow with a clear "use when". They also chain: `/
 
 #### The agency money-loop
 
-The audit/report commands aren't standalone tools — they bookend a full **audit → propose → execute → prove → deliver** loop, the way an agency actually bills:
+The audit/report commands aren't standalone tools — they bookend a full **audit → context → propose → plan → execute → prove → deliver** loop, the way an agency actually bills:
 
 ```
 /aak-marketing:audit <url>   → 0–100 score + MARKETING-AUDIT.md (dated, kept as history)
+        → product-marketing    (audit findings → shared .agents/product-marketing.md positioning doc)
         → client-proposal      (findings → a priced proposal)
-        → 40+ delivery skills   (copy / email / CRO / SEO … do the real work)
+        → marketing-plan        (scored gaps → a sequenced AARRR action plan)   ← the bridge to execution
+        → 60+ delivery skills   (copy / email / CRO / SEO / offers / sales / retention … do the real work)
         → /aak-marketing:audit  (re-run) → before/after DELTA   ← proof of the improvement
         → /report               (client-ready PDF)
 ```
 
+Every marketing skill reads the shared `.agents/product-marketing.md` positioning doc if it exists, so you state who you are and who you sell to **once** — `product-marketing` bootstraps it (from the audit, or from you) and the rest of the loop reuses it.
+
 The audit runs on a fixed, transparent scoring model (**rubrics, weights and report format**), and keeps a **dated audit history** so a re-run produces a **before/after delta** — you can *prove* the improvement you were paid for, then hand the client a PDF.
+
+#### The founder go-to-market path
+
+Taking your *own* product to market runs a second named workflow. The skills chain in this order — each one's description hands off to the next, so the agent walks the path for you:
+
+**product-marketing** (positioning / ICP) → **customer-research** (voice-of-customer) → **offers** (offer design) → **pricing-strategy** → **site-architecture** (page hierarchy) → **content-marketing** + **copywriting** → **launch-strategy** → **sales-enablement** → **revops** (lead lifecycle) → **churn-prevention** (retention).
+
+Same rule: run `product-marketing` first, and every downstream skill reuses the positioning doc.
+
+#### The 62 marketing skills, by sub-track
+
+Everything auto-activates by description — this grouping is just a map of what's inside:
+
+| Sub-track | Skills |
+|-----------|--------|
+| **Strategy & Positioning** | `marketing-plan` · `product-marketing` · `customer-research` · `offers` · `pricing-strategy` · `marketing-ideas` · `marketing-psychology` · `competitor-teardown` · `competitor-monitor` · `competitor-alternatives` · `site-audit` · `client-proposal` |
+| **Acquisition & Growth** | `seo-fundamentals` · `geo-fundamentals` · `programmatic-seo` · `keyword-research-deep` · `schema-markup` · `site-architecture` · `app-store-optimization` · `growth-hacking` · `free-tool-strategy` · `lead-gen-scraper` · `lead-magnets` · `referral-program` · `co-marketing` · `influencer-marketing` · `public-relations` · `launch-strategy` · `ppc-advertising` · `ad-creative-variations` |
+| **Conversion (CRO)** | `conversion-optimization` (router) · `page-cro` · `form-cro` · `popup-cro` · `signup-flow-cro` · `onboarding-cro` · `paywall-upgrade-cro` · `ab-test-dashboard` |
+| **Lifecycle, Retention & Revenue** | `email-marketing` · `email-sequence` · `marketing-automation` · `cold-email` · `revops` · `sales-enablement` · `churn-prevention` |
+| **Content, Copy & Brand** | `content-marketing` · `content-repurposing` · `copywriting` · `copy-editing` · `social-media-expert` · `brand` · `branding-expert` · `banner-design` · `video-marketing` · `video-automation` · `tutorial-video-expert` · `viral-generator-builder` · `frontend-slides` · `remotion-best-practices` |
+| **Analytics & Output** | `analytics-marketing` · `vision-analysis` · `minimax-pdf` |
 
 **Agency-loop commands** — run the loop above:
 

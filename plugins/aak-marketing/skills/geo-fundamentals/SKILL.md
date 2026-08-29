@@ -1,6 +1,6 @@
 ---
 name: geo-fundamentals
-description: Generative Engine Optimization for AI search engines (ChatGPT, Claude, Perplexity). When optimizing content for AI search engines like ChatGPT, Claude, or Perplexity. Generative Engine Optimization.
+description: Generative Engine Optimization for AI search engines (ChatGPT, Claude, Perplexity). When optimizing content for AI search engines like ChatGPT, Claude, or Perplexity. Generative Engine Optimization. Triggers on llms.txt, AEO, answer engine optimization, AI citations, agent readiness, OKF.
 allowed-tools: Read, Glob, Grep
 ---
 
@@ -153,4 +153,21 @@ How AI engines select content to cite:
 | Script | Purpose | Command |
 |--------|---------|---------|
 | `scripts/geo_checker.py` | GEO audit (AI citation readiness) | `python scripts/geo_checker.py <project_path>` |
+
+---
+
+## Reference guides
+
+Deeper vendored playbook material (from the coreyhaines source) — load on demand:
+
+| Reference | Covers |
+|-----------|--------|
+| `references/ai-seo-playbook.md` | Full AI-SEO / AEO / GEO playbook — landscape, visibility audit, three pillars, machine-readable files, monitoring, mistakes |
+| `references/platform-ranking-factors.md` | How each platform (Google AI Overviews, ChatGPT, Perplexity, Copilot, Claude) picks sources + robots.txt bot list |
+| `references/content-patterns.md` | Reusable AEO/GEO content block patterns (definition, step-by-step, comparison, FAQ, statistic, expert-quote blocks) |
+| `references/content-types.md` | AI-SEO tactics by content type (SaaS pages, blog, comparison/alternative, docs, local/ecom) |
+| `references/citations-vs-recommendations.md` | The visibility ladder (retrieved → cited → mentioned → recommended) and what earns recommendations |
+| `references/agent-readiness.md` | Access / discovery / parseability audit for agent-readable sites; llms-full.txt, WebMCP |
+| `references/okf.md` | Open Knowledge Format (OKF) bundles — what it is, how to ship one, when to skip |
+| `references/youtube-ai-citations.md` | Anatomy of a YouTube video AI cites (transcript, captions, chapters, description, pinned comment) |
 

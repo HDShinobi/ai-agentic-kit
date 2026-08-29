@@ -149,6 +149,39 @@ apply to the adapted portions.
   This project shares a common ancestor with
   antigravity-marketing / ai-marketing-claude above.
 
+- marketingskills (https://github.com/coreyhaines31/marketingskills),
+  Copyright (c) Corey Haines, MIT. Source of the net-new marketing skills
+  `product-marketing`, `sales-enablement`, `revops`, `churn-prevention`,
+  `public-relations`, `co-marketing`, `site-architecture`, `offers`,
+  `customer-research`, `cold-email`, `lead-magnets`, and `marketing-plan` (the
+  flagship fCMO AARRR plan — vendored with its 13 references plus the upstream
+  139-idea `ideas-by-category.md` library saved as
+  `marketing-plan/references/idea-library.md` so its cross-references resolve
+  internally without remapping; a thin `/marketing-plan` command wraps it, and KIT
+  NOTEs add in-conversation / no-external-mutation guardrails) — SKILL.md bodies +
+  their `references/` guides vendored byte-verbatim from upstream commit
+  b1aaa3619e747f4a836c61e03084c4a531de1262. Only mechanical wiring changed:
+  frontmatter reduced to this kit's name/description convention (upstream
+  `metadata.version` dropped) and in-description "see X" cross-refs re-pointed to
+  this kit's names (competitors→competitor-teardown, emails→email-sequence,
+  pricing→pricing-strategy, paywalls→paywall-upgrade-cro, launch→launch-strategy,
+  social→social-media-expert, referrals→referral-program, seo-audit→seo-fundamentals,
+  schema→schema-markup), or dropped where the referenced skill is absent
+  (directory-submissions) or not yet adopted (cold-email, offers). Each skill's
+  optional `.agents/product-marketing.md` shared-context read block is preserved
+  verbatim — a soft runtime file check that degrades gracefully, not a hollow ref.
+  Additionally, reference-guide material from this source was grafted (byte-verbatim,
+  bodies unchanged) into existing skills to add depth: geo-fundamentals ← ai-seo
+  (body-as-playbook + 7 refs), ab-test-dashboard ← ab-testing (experimentation-program
+  extract + test-templates; its statistically-wrong sample-size-guide was SKIPPED),
+  analytics-marketing ← analytics (tracking body + 3 refs), onboarding-cro ← onboarding
+  (3 refs), pricing-strategy ← pricing (3 refs + initial-pricing extract; tier-structure
+  SKIPPED), content-marketing ← content-strategy (distribution + ideation extract;
+  headless-cms SKIPPED), competitor-teardown ← competitor-profiling (profiling workflow
+  + templates + tool-reference). Where upstream content was time-sensitive, unsourced,
+  tool-dependent, or referenced a component absent here, a delimited "KIT NOTE" preamble
+  was prepended ABOVE the vendored bytes (bytes below unchanged).
+
 - vietnamese-language-skill (https://github.com/trussary/vietnamese-language-skill),
   Copyright (c) trussary, MIT. Vendored verbatim as the `aak-vietnamese` plugin —
   the five `vietnamese-*` skills (SKILL.md bodies, references, and the dependency-free

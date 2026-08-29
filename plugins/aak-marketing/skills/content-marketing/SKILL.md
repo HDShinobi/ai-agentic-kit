@@ -10,6 +10,10 @@ allowed-tools: Read, Glob, Grep
 
 ---
 
+## Before Starting — Product Marketing Context
+
+If `.agents/product-marketing.md` exists (the shared positioning / ICP / voice doc created by the `product-marketing` skill), read it first and skip anything it already answers. If it doesn't exist, just proceed and gather what you need inline — it's an optional convenience, not a requirement.
+
 ## 1. Content Strategy Framework
 
 | Phase | Focus | Deliverables |
@@ -228,3 +232,5 @@ allowed-tools: Read, Glob, Grep
 
 Additional depth for this skill (load on demand):
 - `references/content-pillars.md`
+- `references/content-distribution.md` — the "distribute" half of content strategy: Create Once Distribute Twice, the ORB (Own/Rent/Borrow) funnel, the ownership paradox, platform half-lives, the Content Distribution Flywheel, and a per-flagship atomization checklist.
+- `references/ideation-and-prioritization.md` — where content ideas come from (keyword data, call transcripts, surveys, forums, competitor analysis, sales/support input), a weighted 4-factor scoring model for prioritizing them, and the link-earning-formats table.
