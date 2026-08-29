@@ -155,17 +155,42 @@ Each command is a distinct workflow with a clear "use when". They also chain: `/
 
 #### The agency money-loop
 
-The audit/report commands aren't standalone tools — they bookend a full **audit → propose → execute → prove → deliver** loop, the way an agency actually bills:
+The audit/report commands aren't standalone tools — they bookend a full **audit → context → propose → plan → execute → prove → deliver** loop, the way an agency actually bills:
 
 ```
 /aak-marketing:audit <url>   → 0–100 score + MARKETING-AUDIT.md (dated, kept as history)
+        → product-marketing    (audit findings → shared .agents/product-marketing.md positioning doc)
         → client-proposal      (findings → a priced proposal)
-        → 40+ delivery skills   (copy / email / CRO / SEO … do the real work)
+        → marketing-plan        (scored gaps → a sequenced AARRR action plan)   ← the bridge to execution
+        → 60+ delivery skills   (copy / email / CRO / SEO / offers / sales / retention … do the real work)
         → /aak-marketing:audit  (re-run) → before/after DELTA   ← proof of the improvement
         → /report               (client-ready PDF)
 ```
 
+Every marketing skill reads the shared `.agents/product-marketing.md` positioning doc if it exists, so you state who you are and who you sell to **once** — `product-marketing` bootstraps it (from the audit, or from you) and the rest of the loop reuses it.
+
 The audit runs on a fixed, transparent scoring model (**rubrics, weights and report format**), and keeps a **dated audit history** so a re-run produces a **before/after delta** — you can *prove* the improvement you were paid for, then hand the client a PDF.
+
+#### The founder go-to-market path
+
+Taking your *own* product to market runs a second named workflow. The skills chain in this order — each one's description hands off to the next, so the agent walks the path for you:
+
+**product-marketing** (positioning / ICP) → **customer-research** (voice-of-customer) → **offers** (offer design) → **pricing-strategy** → **site-architecture** (page hierarchy) → **content-marketing** + **copywriting** → **launch-strategy** → **sales-enablement** → **revops** (lead lifecycle) → **churn-prevention** (retention).
+
+Same rule: run `product-marketing` first, and every downstream skill reuses the positioning doc.
+
+#### The 62 marketing skills, by sub-track
+
+Everything auto-activates by description — this grouping is just a map of what's inside:
+
+| Sub-track | Skills |
+|-----------|--------|
+| **Strategy & Positioning** | `marketing-plan` · `product-marketing` · `customer-research` · `offers` · `pricing-strategy` · `marketing-ideas` · `marketing-psychology` · `competitor-teardown` · `competitor-monitor` · `competitor-alternatives` · `site-audit` · `client-proposal` |
+| **Acquisition & Growth** | `seo-fundamentals` · `geo-fundamentals` · `programmatic-seo` · `keyword-research-deep` · `schema-markup` · `site-architecture` · `app-store-optimization` · `growth-hacking` · `free-tool-strategy` · `lead-gen-scraper` · `lead-magnets` · `referral-program` · `co-marketing` · `influencer-marketing` · `public-relations` · `launch-strategy` · `ppc-advertising` · `ad-creative-variations` |
+| **Conversion (CRO)** | `conversion-optimization` (router) · `page-cro` · `form-cro` · `popup-cro` · `signup-flow-cro` · `onboarding-cro` · `paywall-upgrade-cro` · `ab-test-dashboard` |
+| **Lifecycle, Retention & Revenue** | `email-marketing` · `email-sequence` · `marketing-automation` · `cold-email` · `revops` · `sales-enablement` · `churn-prevention` |
+| **Content, Copy & Brand** | `content-marketing` · `content-repurposing` · `copywriting` · `copy-editing` · `social-media-expert` · `brand` · `branding-expert` · `banner-design` · `video-marketing` · `video-automation` · `tutorial-video-expert` · `viral-generator-builder` · `frontend-slides` · `remotion-best-practices` |
+| **Analytics & Output** | `analytics-marketing` · `vision-analysis` · `minimax-pdf` |
 
 **Agency-loop commands** — run the loop above:
 

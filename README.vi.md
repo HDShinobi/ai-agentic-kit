@@ -155,17 +155,42 @@ Mỗi command là một workflow riêng biệt với một mốc "dùng khi" rõ
 
 #### Vòng lặp kiếm tiền kiểu agency
 
-Các command audit/report không phải công cụ đứng lẻ — chúng đóng khung một vòng đầy đủ **audit → đề xuất → thực thi → chứng minh → bàn giao**, đúng cách một agency thật sự tính tiền:
+Các command audit/report không phải công cụ đứng lẻ — chúng đóng khung một vòng đầy đủ **audit → context → đề xuất → plan → thực thi → chứng minh → bàn giao**, đúng cách một agency thật sự tính tiền:
 
 ```
 /aak-marketing:audit <url>   → điểm 0–100 + MARKETING-AUDIT.md (có ngày, giữ làm lịch sử)
+        → product-marketing    (phát hiện audit → file định vị dùng chung .agents/product-marketing.md)
         → client-proposal      (phát hiện → một proposal đã báo giá)
-        → 40+ skill giao việc   (copy / email / CRO / SEO … làm phần việc thật)
+        → marketing-plan        (gap đã chấm điểm → kế hoạch hành động AARRR có trình tự)   ← mắt xích tới thực thi
+        → 60+ skill giao việc   (copy / email / CRO / SEO / offers / sales / retention … làm phần việc thật)
         → /aak-marketing:audit  (chạy lại) → DELTA trước/sau   ← bằng chứng của cải thiện
         → /report               (PDF sẵn sàng giao khách)
 ```
 
+Mọi skill marketing đều đọc file định vị dùng chung `.agents/product-marketing.md` nếu có, nên bạn chỉ khai **một lần** mình là ai và bán cho ai — `product-marketing` tạo nó (từ audit, hoặc từ bạn) và phần còn lại của vòng lặp tái dùng.
+
 Phần audit chạy trên một mô hình chấm điểm cố định, minh bạch (**rubric, trọng số và định dạng báo cáo**), và giữ một **lịch sử audit có ngày** để một lần chạy lại tạo ra **delta trước/sau** — bạn có thể *chứng minh* phần cải thiện mà mình được trả tiền, rồi giao khách một file PDF.
+
+#### Hành trình đưa sản phẩm ra thị trường (founder GTM)
+
+Đưa sản phẩm *của chính bạn* ra thị trường là một workflow thứ hai. Các skill nối chuỗi theo thứ tự này — mô tả mỗi skill tự handoff sang skill kế, nên agent tự đi hết chặng giúp bạn:
+
+**product-marketing** (định vị / ICP) → **customer-research** (voice-of-customer) → **offers** (thiết kế offer) → **pricing-strategy** → **site-architecture** (cấu trúc trang) → **content-marketing** + **copywriting** → **launch-strategy** → **sales-enablement** → **revops** (vòng đời lead) → **churn-prevention** (giữ chân).
+
+Cùng nguyên tắc: chạy `product-marketing` trước, mọi skill sau tái dùng file định vị.
+
+#### 62 skill marketing, theo sub-track
+
+Mọi skill tự kích hoạt theo mô tả — bảng gom nhóm này chỉ là bản đồ những gì có bên trong:
+
+| Sub-track | Skill |
+|-----------|-------|
+| **Chiến lược & Định vị** | `marketing-plan` · `product-marketing` · `customer-research` · `offers` · `pricing-strategy` · `marketing-ideas` · `marketing-psychology` · `competitor-teardown` · `competitor-monitor` · `competitor-alternatives` · `site-audit` · `client-proposal` |
+| **Thu hút & Tăng trưởng** | `seo-fundamentals` · `geo-fundamentals` · `programmatic-seo` · `keyword-research-deep` · `schema-markup` · `site-architecture` · `app-store-optimization` · `growth-hacking` · `free-tool-strategy` · `lead-gen-scraper` · `lead-magnets` · `referral-program` · `co-marketing` · `influencer-marketing` · `public-relations` · `launch-strategy` · `ppc-advertising` · `ad-creative-variations` |
+| **Chuyển đổi (CRO)** | `conversion-optimization` (router) · `page-cro` · `form-cro` · `popup-cro` · `signup-flow-cro` · `onboarding-cro` · `paywall-upgrade-cro` · `ab-test-dashboard` |
+| **Vòng đời, Giữ chân & Doanh thu** | `email-marketing` · `email-sequence` · `marketing-automation` · `cold-email` · `revops` · `sales-enablement` · `churn-prevention` |
+| **Content, Copy & Brand** | `content-marketing` · `content-repurposing` · `copywriting` · `copy-editing` · `social-media-expert` · `brand` · `branding-expert` · `banner-design` · `video-marketing` · `video-automation` · `tutorial-video-expert` · `viral-generator-builder` · `frontend-slides` · `remotion-best-practices` |
+| **Phân tích & Xuất bản** | `analytics-marketing` · `vision-analysis` · `minimax-pdf` |
 
 **Command vòng-lặp-agency** — chạy vòng lặp bên trên:
 
