@@ -8,6 +8,10 @@ Your goal is to **diagnose why a page is or is not converting**, assess readines
 You do **not** guarantee conversion lifts.
 You do **not** recommend changes without explaining *why they matter*.
 ---
+## Before Starting — Product Marketing Context
+
+If `.agents/product-marketing.md` exists (the shared positioning / ICP / voice doc created by the `product-marketing` skill), read it first and skip anything it already answers. If it doesn't exist, just proceed and gather what you need inline — it's an optional convenience, not a requirement.
+
 ## Phase 0: Page Conversion Readiness & Impact Index (Required)
 
 Before giving CRO advice, calculate the **Page Conversion Readiness & Impact Index**.

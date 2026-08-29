@@ -45,7 +45,9 @@ Apply the weighted score from the `site-audit` skill (Content .25 · Conversion 
 
 ## Handoffs
 
+- `product-marketing` skill — bootstrap the shared `.agents/product-marketing.md` positioning/ICP/voice doc from the audit findings, so every downstream marketing skill reuses it instead of re-asking.
 - `client-proposal` skill — turn the audit's scored gaps into a priced, data-backed proposal.
+- `marketing-plan` skill (or `/aak-marketing:marketing-plan`) — sequence the audit's scored gaps into a stage-based (AARRR) action plan; the bridge between the proposal and execution.
 - `/aak-marketing:optimize` — execute the conversion fixes.
 - `/aak-marketing:seo` — deep SEO/GEO pass.
 - `/aak-marketing:report` or `/aak-marketing:brand-report` — render the audit as a polished client PDF.

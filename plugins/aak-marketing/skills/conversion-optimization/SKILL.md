@@ -8,6 +8,10 @@ allowed-tools: Read, Glob, Grep
 
 > The CRO **entry point**: it owns the cross-surface *method* (research → hypothesis → prioritize → test → analyze) and routes surface-specific playbooks to the specialized CRO skills.
 
+## Before Starting — Product Marketing Context
+
+If `.agents/product-marketing.md` exists (the shared positioning / ICP / voice doc created by the `product-marketing` skill), read it first and skip anything it already answers. If it doesn't exist, just proceed and gather what you need inline — it's an optional convenience, not a requirement.
+
 ## Route to the right CRO skill
 
 Pick the specialized skill for the surface being optimized; use this skill for the shared research/experiment/prioritization method that spans all of them.

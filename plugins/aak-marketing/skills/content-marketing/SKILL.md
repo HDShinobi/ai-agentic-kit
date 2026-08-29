@@ -10,6 +10,10 @@ allowed-tools: Read, Glob, Grep
 
 ---
 
+## Before Starting — Product Marketing Context
+
+If `.agents/product-marketing.md` exists (the shared positioning / ICP / voice doc created by the `product-marketing` skill), read it first and skip anything it already answers. If it doesn't exist, just proceed and gather what you need inline — it's an optional convenience, not a requirement.
+
 ## 1. Content Strategy Framework
 
 | Phase | Focus | Deliverables |
