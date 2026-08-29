@@ -24,6 +24,13 @@ const RETIRED = {
   'competitor-teardown-agent': 'competitor-teardown',
   'competitor-monitor-alert': 'competitor-monitor',
   'content-repurposing-pipeline': 'content-repurposing',
+  // coreyhaines source skill-names grafted-from (unambiguous hyphenated tokens only;
+  // bare prose words like signup/paywalls/popups are intentionally NOT listed).
+  'ai-seo': 'geo-fundamentals',
+  'ab-testing': 'ab-test-dashboard',
+  'content-strategy': 'content-marketing',
+  'free-tools': 'free-tool-strategy',
+  'competitor-profiling': 'competitor-teardown',
 };
 
 function walk(dir, out = []) {
@@ -64,7 +71,8 @@ for (const f of files) {
   for (const [alias, live] of Object.entries(RETIRED)) {
     // Treat a hyphenated skill name as one token: do NOT match when the alias is a
     // prefix/suffix of a longer name or filename (e.g. `seo-audit-checklist.md`).
-    const re = new RegExp(`(?<![\\w-])${alias}(?![\\w-])`);
+    // Exclude URL/path segments (preceded by "/") so e.g. evanmiller.org/ab-testing/ is not a false hit.
+    const re = new RegExp(`(?<![\\w/-])${alias}(?![\\w-])`);
     lines.forEach((ln, i) => {
       // A skill's own frontmatter `name:` line is exempt (it IS the definition, not a ref);
       // but retired names should never be a definition either, so we still flag them.

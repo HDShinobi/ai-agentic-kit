@@ -64,7 +64,7 @@ Pay-for-performance reach. Affiliates promote you and earn commission on convers
 
 **Buyout clauses.** For a super-promoter you want to lock in (or eventually replace with owned channel), a buyout clause lets you pay out future commissions as a lump sum — commonly **~12× the monthly commission**. It caps long-term liability and gives the affiliate a clean exit.
 
-> Affiliate mechanics — commission structures, cookie windows, fraud, tooling (Rewardful/Tolt/PartnerStack) — belong in the **referrals** skill. Keep affiliate work here at the partnership-strategy level: which promoters to recruit, how to tier them, when to buy out.
+> Affiliate mechanics — commission structures, cookie windows, fraud, tooling (Rewardful/Tolt/PartnerStack) — belong in the **referral-program** skill. Keep affiliate work here at the partnership-strategy level: which promoters to recruit, how to tier them, when to buy out.
 
 ---
 

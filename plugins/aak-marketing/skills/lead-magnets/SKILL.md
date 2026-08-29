@@ -114,7 +114,7 @@ Goal: Help implement. Remove friction to purchase.
 | Template | "Ready-to-Use Sales Email Templates" |
 | Free trial | "14-Day Free Trial" |
 | Implementation guide | "Migration Checklist: Switch in 30 Minutes" |
-| ROI calculator | "Calculate Your Savings" (→ see **free-tools**) |
+| ROI calculator | "Calculate Your Savings" (→ see **free-tool-strategy**) |
 
 ---
 
@@ -145,8 +145,8 @@ Rule of thumb: Ask for the minimum needed. Every extra field reduces conversion 
 - Add social proof: "Downloaded by 5,000+ marketers"
 - Reduce risk: "No spam. Unsubscribe anytime."
 
-**For form optimization**: See **cro** skill
-**For popup implementation**: See **popups** skill
+**For form optimization**: See **conversion-optimization** skill
+**For popup implementation**: See **popup-cro** skill
 
 ---
 
@@ -161,7 +161,7 @@ Rule of thumb: Ask for the minimum needed. Every extra field reduces conversion 
 5. **Form** — Minimal fields, clear CTA button
 6. **FAQ** — Address hesitations (Is it really free? What format?)
 
-**For landing page optimization**: See **cro** skill
+**For landing page optimization**: See **conversion-optimization** skill
 
 ### Delivery Methods
 

@@ -2,7 +2,7 @@
 
 Build a prep brief before the user appears on a podcast as a guest. The goal: walk in knowing what's top of mind for the show, how it has evolved, who the hosts are, and which of the user's stories map onto what the show cares about *right now*.
 
-**Why prep is worth real effort:** podcast guesting isn't just audience reach. Episodes get transcribed, show notes get published, and both get crawled and cited by AI assistants — when someone asks ChatGPT about your category, the stories you told on a podcast two years ago are part of what it draws on. A good appearance is earned media that compounds in AI answers for years (see the `ai-seo` skill). The stories you tell — and the concrete numbers in them — become the citable record on your brand. Prep accordingly.
+**Why prep is worth real effort:** podcast guesting isn't just audience reach. Episodes get transcribed, show notes get published, and both get crawled and cited by AI assistants — when someone asks ChatGPT about your category, the stories you told on a podcast two years ago are part of what it draws on. A good appearance is earned media that compounds in AI answers for years (see the `geo-fundamentals` skill). The stories you tell — and the concrete numbers in them — become the citable record on your brand. Prep accordingly.
 
 ## Context to load first
 
@@ -49,7 +49,7 @@ Keep it tight — a doc they'll skim before recording, not a report.
 
 **Finding angles:** map the story bank onto the show's recurring threads. The shape to look for: a "data moats" thread maps to the guest's proprietary dataset as a live case study; an "AI replacing niche tools" debate maps to a defensibility story from their product history. One well-chosen contrarian take stands out most on shows that have converged on a consensus.
 
-**AI-visibility angle:** since the transcript becomes the record, coach the guest to say the important things in liftable form — the company name next to the category ("we build X, the Y for Z"), and numbers spoken aloud, not gestured at. Same logic as the YouTube text layer in `ai-seo`.
+**AI-visibility angle:** since the transcript becomes the record, coach the guest to say the important things in liftable form — the company name next to the category ("we build X, the Y for Z"), and numbers spoken aloud, not gestured at. Same logic as the YouTube text layer in `geo-fundamentals`.
 
 ## Follow-ups to offer (don't auto-run)
 
