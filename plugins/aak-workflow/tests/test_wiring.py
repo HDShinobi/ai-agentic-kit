@@ -465,3 +465,17 @@ def test_skill_invokes_runtime_clis():
     # The rewrite states explicitly that Control does NOT hand-parse stdout --
     # the stale instruction this closes out (the CLI parses the handoff itself).
     assert "hand-parse" in dispatch_section
+
+# --- Task 21: docs parity + version bump 0.2.0 -> 0.3.0 + validation gate ---
+# (final Phase-2 task: plugin.json version must move off 0.2.0, and
+# README.vi.md -- the deferred parity gap flagged since Task 15 -- must gain
+# its own mention of the multi-cli-delivery feature, not just the EN README.)
+
+def test_plugin_version_bumped_for_phase2():
+    manifest = _json.loads((PLUGIN_ROOT / ".claude-plugin" / "plugin.json").read_text())
+    assert manifest["version"] == "0.3.0"
+
+def test_readme_vi_documents_multi_cli_delivery():
+    readme_vi = (PLUGIN_ROOT.parent.parent / "README.vi.md").read_text(encoding="utf-8")
+    lowered = readme_vi.lower()
+    assert "multi-cli" in lowered or "delegate" in lowered
