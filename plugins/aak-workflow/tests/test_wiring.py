@@ -181,3 +181,13 @@ def test_delegate_command_frontmatter_and_distinction():
     assert "multi-cli-delivery" in text
     assert "orchestrate" in text.lower()        # states the distinction
     assert "--code" in text and "--review" in text   # per-run override documented
+
+# --- Task 15: README workflow section + version bump + validation gate ---
+
+import json as _json
+
+def test_version_bumped_and_delegate_documented():
+    manifest = _json.loads((PLUGIN_ROOT / ".claude-plugin" / "plugin.json").read_text())
+    assert manifest["version"] != "0.1.0", "bump aak-workflow version with this feature"
+    readme = (PLUGIN_ROOT.parent.parent / "README.md").read_text(encoding="utf-8")
+    assert "delegate" in readme and "multi-cli" in readme.lower()

@@ -6,8 +6,8 @@
   <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="License">
   <img src="https://img.shields.io/badge/plugins-10-6f42c1?style=flat-square" alt="Plugins">
   <img src="https://img.shields.io/badge/agents-48-0969da?style=flat-square" alt="Agents">
-  <img src="https://img.shields.io/badge/skills-147-1a7f37?style=flat-square" alt="Skills">
-  <img src="https://img.shields.io/badge/commands-22-bf8700?style=flat-square" alt="Commands">
+  <img src="https://img.shields.io/badge/skills-148-1a7f37?style=flat-square" alt="Skills">
+  <img src="https://img.shields.io/badge/commands-23-bf8700?style=flat-square" alt="Commands">
   <img src="https://img.shields.io/badge/Claude%20Code-marketplace-d4520f?style=flat-square" alt="Claude Code">
 </p>
 
@@ -22,7 +22,7 @@
 ## ✨ Why AI Agentic Kit
 
 - **No tool-picking — the right expert takes the job.** 48 specialist agents (debugger, security-auditor, frontend-specialist, marketing-strategist, audit-google…) auto-activate when your task matches, no wiring required.
-- **From idea to launch without leaving the terminal.** 22 command workflows (`/create`, `/debug`, `/deploy`, `/audit`, `/campaign`, `/seo`) run each job end-to-end.
+- **From idea to launch without leaving the terminal.** 23 command workflows (`/create`, `/debug`, `/deploy`, `/audit`, `/campaign`, `/seo`) run each job end-to-end.
 - **Enable only what a repo needs.** 10 independent, namespaced, self-contained plugins — turn on two, ignore the rest; no bloat, no collisions.
 - **Safer from the default.** A built-in guard blocks high-confidence destructive shell commands (root deletion, drive format, raw-disk writes) before they run.
 
@@ -89,7 +89,7 @@ Local dev without publishing: `claude --plugin-dir ./plugins/aak-core`, then `/r
 | **aak-marketing** | Take a product to market — SEO/GEO, CRO, content, email, growth, analytics, brand & video (62 skills) | marketing-strategist, content-creator, growth-specialist, analytics-specialist, seo-specialist | site-audit (scored site audit), client-proposal, conversion-optimization (CRO router), page-cro, keyword-research-deep, programmatic-seo, analytics-marketing, email-marketing, content-marketing, launch-strategy, brand, vision-analysis, minimax-pdf | `/audit`, `/campaign`, `/content`, `/optimize`, `/analyze`, `/seo`, `/report`, `/brand-report`, `/marketing-plan` |
 | **aak-ads** | Run paid media like an agency — source-grounded audits + deterministic scoring across 12 ad platforms (Google, Meta, YouTube, LinkedIn, TikTok, Microsoft, Apple, Amazon, Reddit, Pinterest, Snapchat, X); read-only by default, account writes pass a mutation gate (34 skills, 25 agents) | 25 platform/audit/creative agents (audit-google, audit-meta, creative-strategist, copy-writer, visual-designer, source-verifier, …) | ads (router), ads-audit, ads-plan, ads-create, ads-launch, ads-monitor, ads-optimize, ads-test, ads-report, ads-attribution, ads-server-side-tracking, ads-math, + 12 platform skills | `/aak-ads:ads setup\|audit\|plan\|create\|launch\|monitor\|optimize\|experiment\|report` |
 | **aak-game** | Ship games across engines & platforms | game-developer | game-development (router → 10 platform guides) | — |
-| **aak-workflow** | Systematic process — brainstorm, plan, debug, verify — plus multi-agent orchestration (**skip if you use superpowers**) | project-planner | brainstorming, systematic-debugging, tdd-workflow, plan-writing, verify-changes, parallel-agents, coordinator-mode, intelligent-routing, memory-system, … | `/orchestrate`, `/coordinate`, `/status`, `/remember` |
+| **aak-workflow** | Systematic process — brainstorm, plan, debug, verify — plus multi-agent orchestration (**skip if you use superpowers**) | project-planner | brainstorming, systematic-debugging, tdd-workflow, plan-writing, verify-changes, parallel-agents, coordinator-mode, intelligent-routing, memory-system, multi-cli-delivery, … | `/orchestrate`, `/coordinate`, `/status`, `/remember`, `/delegate` |
 | **aak-vietnamese** | Write native-quality Vietnamese (vi-VN) a local professional would ship — correct register, advertising-law-safe claims, clean VND/date/Unicode; composes with the content skills | — | vietnamese-landing-copy, vietnamese-business-comms, vietnamese-finance-copy, vietnamese-education-copy, vietnamese-tech-writing | — |
 
 > **Enable only what you need.** Each plugin is self-contained: a command never depends on a skill from a plugin you haven't enabled — where richer cross-plugin capability exists, it is used only if that plugin is enabled, otherwise the work is done inline.
@@ -209,6 +209,10 @@ Everything auto-activates by description — this grouping is just a map of what
 | `/optimize` | raise conversion (CRO) for a page/funnel | `growth-specialist` + CRO router |
 | `/analyze` | crunch the numbers, find insights, recommend actions | `analytics-specialist` |
 | `/seo` | SEO + GEO audit/optimization (incl. AI-search visibility) | `seo-specialist` |
+
+### Multi-CLI Delivery (`/aak-workflow:delegate`)
+
+Deliver a change with a *heterogeneous* team of CLIs: Control (Claude) decomposes an approved design and dispatches **plan / code / review** to different AI-CLIs and models — headless, in an isolated git worktree — with an independent reviewer on a **different model** (REVIEW ≠ CODE), per-task commits owned by Control, and the human owning the design-approval and merge gates. Configure per project in `.aak/delivery.yml` (roles → CLI+model). On a machine with only Claude, every role degrades to a Claude subagent and it still works. Distinct from `/orchestrate` (single-model, in-process). Requires `pyyaml`; scripts are stdlib otherwise.
 
 ## 🛡 Safety
 
