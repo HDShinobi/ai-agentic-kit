@@ -17,10 +17,20 @@ def test_worktree_reused_across_runs(git_repo):
     b = prepare_workspace(git_repo, "feat/x", workspaces_dir=d)
     assert a == b     # same path reused → caches survive
 
+def test_workspaces_dir_accepts_str(git_repo):
+    d = str(git_repo.parent / "wt")   # caller passes a str, not a Path
+    ws = prepare_workspace(git_repo, "feat/x", workspaces_dir=d)
+    assert isinstance(ws, Path) and ws.is_dir()
+
 def test_overlap_gate_flags_owned_dirty_user_path(git_repo):
     (git_repo / "seed.txt").write_text("user is editing\n", encoding="utf-8")
     assert overlap_gate(git_repo, ["seed.txt"]) == ["seed.txt"]
     assert overlap_gate(git_repo, ["other.txt"]) == []
+
+def test_overlap_gate_detects_renamed_owned_path(git_repo, git):
+    git("mv", "seed.txt", "renamed.txt")
+    assert overlap_gate(git_repo, ["seed.txt"]) == ["seed.txt"]
+    assert overlap_gate(git_repo, ["renamed.txt"]) == ["renamed.txt"]
 
 def test_branch_gate_rejects_detached_head(git_repo, git):
     head = git("rev-parse", "HEAD").strip()

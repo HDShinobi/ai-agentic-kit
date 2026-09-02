@@ -26,7 +26,7 @@ def prepare_workspace(repo_root: Path, feature_branch: str, *,
     repo_root = Path(repo_root)
     if workspace_mode == "shared":
         return repo_root
-    base = workspaces_dir or (repo_root / ".aak" / "worktrees")
+    base = Path(workspaces_dir) if workspaces_dir is not None else (repo_root / ".aak" / "worktrees")
     base.mkdir(parents=True, exist_ok=True)
     ws = base / feature_branch.replace("/", "__")
     if ws.is_dir() and (ws / ".git").exists():
@@ -38,7 +38,16 @@ def prepare_workspace(repo_root: Path, feature_branch: str, *,
 
 def overlap_gate(repo_root: Path, owned_paths: list[str]) -> list[str]:
     out = _git(repo_root, "status", "--porcelain")
-    dirty = {line[3:].strip() for line in out.splitlines() if line.strip()}
+    dirty: set[str] = set()
+    for line in out.splitlines():
+        if not line.strip():
+            continue
+        path_part = line[3:]
+        if " -> " in path_part:          # rename/copy: "old -> new"
+            old, new = path_part.split(" -> ", 1)
+            dirty.add(old.strip()); dirty.add(new.strip())
+        else:
+            dirty.add(path_part.strip())
     return [p for p in owned_paths if p in dirty]
 
 def branch_gate(repo_root: Path) -> str:
