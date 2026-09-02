@@ -1,0 +1,4 @@
+# Dev/runtime deps for multi-cli-delivery. Production users of the skill need
+# pyyaml at runtime for .aak/delivery.yml; contributors also need pytest.
+pytest>=9.0.3,<10.0
+pyyaml>=6.0,<7.0

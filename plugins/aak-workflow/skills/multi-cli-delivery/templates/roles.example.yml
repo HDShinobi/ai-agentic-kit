@@ -1,0 +1,43 @@
+# .aak/delivery.yml — per-project role → CLI+model map for the multi-cli-delivery
+# skill (SKILL.md §2), invoked directly or via /aak-workflow:delegate.
+#
+# Copy this file to <repo-root>/.aak/delivery.yml and edit every cli/model below
+# to one you actually have installed and authenticated — the names here
+# (gemini-2.x, gpt-5.6-terra, opus, ...) are EXAMPLES only, not real model ids.
+# The kit hardcodes no models or vendor choice (Golden Rule #1); if
+# .aak/delivery.yml is absent entirely, the skill is simply inert (nothing to
+# dispatch) — every project opts in by writing its own copy.
+
+roles:
+  # Required per role: cli, model. Optional: effort — validated per (cli, model)
+  # at preflight; setting effort on an adapter with no real effort knob is a
+  # warning, never fatal (references/adapters.md).
+  plan:   {cli: gemini, model: gemini-2.x}          # example model name
+  code:   {cli: codex,  model: gpt-5.6-terra, effort: medium}
+  review: {cli: claude, model: opus}                # different vendor+model → REVIEW≠CODE
+
+  # Optional third opinion, tried after `review` per defaults.review_fallback
+  # below — point it at a model distinct from both plan and code:
+  # review_alt: {cli: command-code, model: <third-party-model>}
+
+defaults:
+  degrade_to: claude-subagent          # a role's cli is absent → route here instead
+  review_must_differ_from_code: true   # enforce REVIEW≠CODE identity (spec §4.7)
+  workspace: worktree                  # worktree (default) | shared   (spec §4.9)
+  review_fallback: [review]            # [review, review_alt, ...] tried in order (§4.7)
+  on_missing_auth: escalate            # escalate (default) | degrade  (spec §4.4)
+
+# Per-role wall-clock / idle bounds, in minutes (spec §6.1). Native builds
+# (Xcode/SwiftPM, large monorepos, ...) may need a larger wall_min than shown here.
+timeouts:
+  plan:   {wall_min: 30,  idle_min: 5}
+  code:   {wall_min: 120, idle_min: 10}
+  review: {wall_min: 60,  idle_min: 10}
+
+# secrets:                       # env-var NAMES only — never the values (SKILL.md §8)
+#   # Needed only if a role's cli above is a multi-model shell. The kit ships
+#   # both adapters and recommends neither (spec decision #1) — uncomment at
+#   # most the one(s) you use. A first-party-only config (claude/codex/gemini)
+#   # needs none of this, and no data-egress acknowledgement either.
+#   command-code: COMMANDCODE_API_KEY
+#   opencode: OPENCODE_API_KEY

@@ -229,3 +229,28 @@ and documents the upstream `/claude-ads:ads` namespace, now `/aak-ads:ads`); the
 other 49 cases in that file, which exercise the release/SBOM/inventory gate used
 by `ads-validate`, are retained verbatim. No skill, agent, reference, rubric,
 scoring, schema, or other product substance was paraphrased or re-derived.
+
+------------------------------------------------------------------------------
+aak-workflow — additional third-party source
+------------------------------------------------------------------------------
+
+The `multi-cli-delivery` skill in `plugins/aak-workflow/` draws on dely
+(https://github.com/hieuphung97/dely), Copyright (c) 2026 Hieu Phung, MIT.
+Two different treatments apply to two different parts of that skill:
+
+- Concept-adapted (re-authored, not verbatim): the skill's overall shape
+  (the Control/worker split, the PLAN/CODE/REVIEW role sequence, the
+  handoff-block field set, and the DONE/BLOCKED/NEEDS_REPLAN and
+  ACCEPT/CHANGES_REQUESTED/BLOCKED status/disposition taxonomy) is adapted
+  from dely's control-protocol design. The prose in `SKILL.md` and
+  `references/handoff.md` is this kit's own writing, not dely's text.
+- Vendored verbatim (Golden Rule #4): `references/acceptance.md`'s
+  acceptance-table schema and validity rules (the `Requirement | Instrument |
+  Counterexample | Observed red` columns; "an instrument that passes both
+  before and after proves nothing"; "baseline-red is insufficient"; "the
+  feature is absent" does not satisfy Counterexample; the human-reads-the-diff
+  escape hatch) are copied byte-for-byte from dely's `skills/delivery/SKILL.md`
+  §Acceptance and `skills/delivery/templates/plan.md` §Acceptance. Only
+  phase-name wiring changed (dely's `implement` → this kit's `CODE`; dely's
+  `review` → this kit's `REVIEW`); that file's own header note records the
+  complete, itemized diff.

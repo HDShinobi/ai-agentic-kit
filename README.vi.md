@@ -6,8 +6,8 @@
   <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="License">
   <img src="https://img.shields.io/badge/plugins-10-6f42c1?style=flat-square" alt="Plugins">
   <img src="https://img.shields.io/badge/agents-48-0969da?style=flat-square" alt="Agents">
-  <img src="https://img.shields.io/badge/skills-147-1a7f37?style=flat-square" alt="Skills">
-  <img src="https://img.shields.io/badge/commands-22-bf8700?style=flat-square" alt="Commands">
+  <img src="https://img.shields.io/badge/skills-148-1a7f37?style=flat-square" alt="Skills">
+  <img src="https://img.shields.io/badge/commands-23-bf8700?style=flat-square" alt="Commands">
   <img src="https://img.shields.io/badge/Claude%20Code-marketplace-d4520f?style=flat-square" alt="Claude Code">
 </p>
 
@@ -22,7 +22,7 @@
 ## ✨ Vì sao chọn AI Agentic Kit
 
 - **Khỏi chọn tool — đúng chuyên gia tự nhận việc.** 48 agent chuyên biệt (debugger, security-auditor, frontend-specialist, marketing-strategist, audit-google…) tự kích hoạt khi tác vụ của bạn khớp, không cần cấu hình.
-- **Từ ý tưởng đến ra mắt mà không rời terminal.** 22 command workflow (`/create`, `/debug`, `/deploy`, `/audit`, `/campaign`, `/seo`) chạy trọn từng đầu việc.
+- **Từ ý tưởng đến ra mắt mà không rời terminal.** 23 command workflow (`/create`, `/debug`, `/deploy`, `/audit`, `/campaign`, `/seo`) chạy trọn từng đầu việc.
 - **Chỉ bật thứ một repo cần.** 10 plugin độc lập, có namespace, tự chứa — bật hai cái, phần còn lại cứ để yên; không cồng kềnh, không xung đột.
 - **An toàn hơn ngay từ mặc định.** Một guard tích hợp sẵn chặn các lệnh shell phá huỷ rõ ràng nguy hiểm (xoá gốc hệ thống, format ổ đĩa, ghi raw-disk) trước khi chúng chạy.
 
@@ -89,7 +89,7 @@ Chạy dev tại chỗ mà không cần publish: `claude --plugin-dir ./plugins/
 | **aak-marketing** | Đưa sản phẩm ra thị trường — SEO/GEO, CRO, content, email, growth, analytics, brand & video (62 skill) | marketing-strategist, content-creator, growth-specialist, analytics-specialist, seo-specialist | site-audit (chấm điểm audit website), client-proposal, conversion-optimization (router CRO), page-cro, keyword-research-deep, programmatic-seo, analytics-marketing, email-marketing, content-marketing, launch-strategy, brand, vision-analysis, minimax-pdf | `/audit`, `/campaign`, `/content`, `/optimize`, `/analyze`, `/seo`, `/report`, `/brand-report`, `/marketing-plan` |
 | **aak-ads** | Vận hành paid media như một agency — audit bám nguồn + chấm điểm tất định trên 12 nền tảng quảng cáo (Google, Meta, YouTube, LinkedIn, TikTok, Microsoft, Apple, Amazon, Reddit, Pinterest, Snapchat, X); mặc định chỉ đọc, mọi thay đổi tài khoản phải qua một mutation gate (34 skill, 25 agent) | 25 agent nền tảng/audit/creative (audit-google, audit-meta, creative-strategist, copy-writer, visual-designer, source-verifier, …) | ads (router), ads-audit, ads-plan, ads-create, ads-launch, ads-monitor, ads-optimize, ads-test, ads-report, ads-attribution, ads-server-side-tracking, ads-math, + 12 skill nền tảng | `/aak-ads:ads setup\|audit\|plan\|create\|launch\|monitor\|optimize\|experiment\|report` |
 | **aak-game** | Ra game trên nhiều engine & nền tảng | game-developer | game-development (router → 10 hướng dẫn theo nền tảng) | — |
-| **aak-workflow** | Quy trình bài bản — brainstorm, plan, debug, verify — cùng điều phối multi-agent (**bỏ qua nếu bạn dùng superpowers**) | project-planner | brainstorming, systematic-debugging, tdd-workflow, plan-writing, verify-changes, parallel-agents, coordinator-mode, intelligent-routing, memory-system, … | `/orchestrate`, `/coordinate`, `/status`, `/remember` |
+| **aak-workflow** | Quy trình bài bản — brainstorm, plan, debug, verify — cùng điều phối multi-agent (**bỏ qua nếu bạn dùng superpowers**) | project-planner | brainstorming, systematic-debugging, tdd-workflow, plan-writing, verify-changes, parallel-agents, coordinator-mode, intelligent-routing, memory-system, multi-cli-delivery, … | `/orchestrate`, `/coordinate`, `/status`, `/remember`, `/delegate` |
 | **aak-vietnamese** | Viết tiếng Việt (vi-VN) đạt chất lượng người bản xứ mà một dân chuyên địa phương sẽ giao — đúng register, câu chữ quảng cáo an toàn theo luật, VND/ngày tháng/Unicode sạch; kết hợp được với các skill content | — | vietnamese-landing-copy, vietnamese-business-comms, vietnamese-finance-copy, vietnamese-education-copy, vietnamese-tech-writing | — |
 
 > **Chỉ bật thứ bạn cần.** Mỗi plugin đều tự chứa: một command không bao giờ phụ thuộc vào skill của plugin mà bạn chưa bật — nơi nào có năng lực cross-plugin phong phú hơn thì nó chỉ được dùng nếu plugin đó đã bật, còn không thì việc được làm inline.
@@ -232,6 +232,10 @@ Mọi skill tự kích hoạt theo mô tả — bảng gom nhóm này chỉ là 
 | `/optimize` | nâng tỷ lệ chuyển đổi (CRO) cho một trang/funnel | `growth-specialist` + router CRO |
 | `/analyze` | xử lý số liệu, tìm insight, đề xuất hành động | `analytics-specialist` |
 | `/seo` | audit/tối ưu SEO + GEO (gồm cả khả năng hiển thị trên AI-search) | `seo-specialist` |
+
+### Multi-CLI Delivery (`/aak-workflow:delegate`)
+
+Giao một thay đổi bằng một đội CLI *không đồng nhất*: Control (Claude) chia nhỏ một thiết kế đã được duyệt rồi giao **plan / code / review** cho các AI-CLI và model khác nhau — chạy headless, trong một git worktree tách biệt — với một reviewer độc lập trên **model khác** (REVIEW ≠ CODE), mỗi task một commit do Control sở hữu, còn con người giữ hai cổng: duyệt thiết kế và merge. Cấu hình theo từng project trong `.aak/delivery.yml` (role → CLI+model); phía dưới, protocol chạy trên các CLI phụ trợ tất định (preflight/dispatch/workspace/containment), không hand-parse chuỗi thô. Trên một máy chỉ có Claude, mọi role đều suy giảm về một Claude subagent và vẫn chạy được. Khác với `/orchestrate` (một model, in-process). Cần `pyyaml`; ngoài ra các script chỉ dùng thư viện chuẩn (stdlib).
 
 ## 🛡 An toàn
 
