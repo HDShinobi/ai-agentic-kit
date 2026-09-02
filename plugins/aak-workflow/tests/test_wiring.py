@@ -171,3 +171,13 @@ def test_acceptance_vendored_with_killer_rules_and_credit():
     assert "dely" in text                       # credit present in the file
     root = PLUGIN_ROOT.parent.parent
     assert "dely" in (root / "NOTICE").read_text(encoding="utf-8").lower()
+
+# --- Task 14: command entrypoint (commands/delegate.md) ---
+
+def test_delegate_command_frontmatter_and_distinction():
+    cmd = PLUGIN_ROOT / "commands" / "delegate.md"
+    text = cmd.read_text(encoding="utf-8")
+    assert text.startswith("---") and "name: delegate" in text
+    assert "multi-cli-delivery" in text
+    assert "orchestrate" in text.lower()        # states the distinction
+    assert "--code" in text and "--review" in text   # per-run override documented
