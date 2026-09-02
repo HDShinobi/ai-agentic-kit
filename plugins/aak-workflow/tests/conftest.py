@@ -12,12 +12,12 @@ def plugin_root() -> Path:
 def _git(repo: Path, *args: str) -> str:
     return subprocess.run(
         ["git", *args], cwd=repo, check=True,
-        capture_output=True, text=True,
+        capture_output=True, text=True, timeout=30,
     ).stdout
 
 @pytest.fixture()
 def git_repo(tmp_path: Path) -> Path:
-    """A real, isolated git repo with one baseline commit on a feature branch."""
+    """A real, isolated git repo with one baseline commit on main."""
     repo = tmp_path / "repo"
     repo.mkdir()
     _git(repo, "init", "-q", "-b", "main")
