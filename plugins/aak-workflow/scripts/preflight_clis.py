@@ -11,6 +11,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # import mcd_co
 from mcd_core.config import load_delivery_config
 from mcd_core.preflight import probe
 from mcd_core.adapters import effort_warnings
+from mcd_core.identity import canonical_identity, review_differs_from_code
 from mcd_core.errors import McdError
 
 def main(argv: list[str]) -> int:
@@ -26,7 +27,25 @@ def main(argv: list[str]) -> int:
             r = probe(binding, cfg.secrets, which=shutil.which, env=os.environ,
                       on_missing_auth=cfg.defaults.on_missing_auth)
             roles[name] = {"outcome": r.outcome, "reason": r.reason}
-        print(json.dumps({"roles": roles, "effort_warnings": effort_warnings(cfg)}))
+        result = {"roles": roles, "effort_warnings": effort_warnings(cfg)}
+        # Role independence (REVIEW!=CODE, spec §4.7) is resolved here, at
+        # role-resolution time, from the TRUSTED config binding -- never from a
+        # worker's self-reported handoff `Model:` line. Only meaningful when
+        # both roles are configured; omit the block otherwise.
+        code_b, review_b = cfg.roles.get("code"), cfg.roles.get("review")
+        if code_b is not None and review_b is not None:
+            differ = review_differs_from_code(code_b, review_b)
+            indep = {
+                "code_identity": canonical_identity(code_b.cli, code_b.model),
+                "review_identity": canonical_identity(review_b.cli, review_b.model),
+                "differ": differ,
+                "review_must_differ_from_code": cfg.defaults.review_must_differ_from_code,
+            }
+            if not differ and cfg.defaults.review_must_differ_from_code:
+                indep["reduced_assurance"] = "review_independence: same-model"
+                indep["requires_human_approval"] = True
+            result["independence"] = indep
+        print(json.dumps(result))
     except McdError as exc:
         # Malformed/invalid .aak/delivery.yml (bad types, unknown keys, etc.):
         # preflight's contract is that Control always parses JSON off stdout

@@ -260,3 +260,59 @@ def test_version_bumped_and_delegate_documented():
     assert manifest["version"] != "0.1.0", "bump aak-workflow version with this feature"
     readme = (PLUGIN_ROOT.parent.parent / "README.md").read_text(encoding="utf-8")
     assert "delegate" in readme and "multi-cli" in readme.lower()
+
+# --- Task 17: preflight emits independence (REVIEW!=CODE) resolution ---
+
+def _write_delivery_yml_code_review(repo: Path, code: tuple[str, str], review: tuple[str, str],
+                                    review_must_differ_from_code: bool = True) -> None:
+    (repo / ".aak").mkdir(exist_ok=True)
+    (repo / ".aak" / "delivery.yml").write_text(textwrap.dedent(f"""
+        roles:
+          code: {{cli: {code[0]}, model: {code[1]}}}
+          review: {{cli: {review[0]}, model: {review[1]}}}
+        defaults:
+          review_must_differ_from_code: {str(review_must_differ_from_code).lower()}
+    """), encoding="utf-8")
+
+def _run_preflight(repo: Path):
+    script = PLUGIN_ROOT / "scripts" / "preflight_clis.py"
+    return subprocess.run([sys.executable, str(script), str(repo)],
+                          capture_output=True, text=True,
+                          env={"PATH": "/usr/bin:/bin", "PYTHONPATH": str(PLUGIN_ROOT)})
+
+def test_preflight_independence_differs(tmp_path):
+    # Different providers (codex/openai vs claude/anthropic) -> independent review.
+    _write_delivery_yml_code_review(tmp_path, ("codex", "gpt-5.6-terra"), ("claude", "opus"),
+                                    review_must_differ_from_code=True)
+    out = _run_preflight(tmp_path)
+    assert out.returncode == 0, out.stderr
+    data = json.loads(out.stdout)
+    assert data["independence"]["differ"] is True
+    assert "reduced_assurance" not in data["independence"]
+    assert "requires_human_approval" not in data["independence"]
+
+def test_preflight_independence_same_model_flagged(tmp_path):
+    # "opus" and "anthropic/opus" are aliases that collapse to the same canonical
+    # identity (mcd_core.identity) -- must NOT falsely satisfy REVIEW!=CODE.
+    _write_delivery_yml_code_review(tmp_path, ("claude", "opus"), ("claude", "anthropic/opus"),
+                                    review_must_differ_from_code=True)
+    out = _run_preflight(tmp_path)
+    assert out.returncode == 0, out.stderr
+    data = json.loads(out.stdout)
+    indep = data["independence"]
+    assert indep["differ"] is False
+    assert indep["reduced_assurance"] == "review_independence: same-model"
+    assert indep["requires_human_approval"] is True
+
+def test_preflight_independence_absent_without_review_role(tmp_path):
+    # Only a "code" role configured -- no "review" role to resolve independence
+    # against, so the block must be omitted entirely (not present-but-empty).
+    (tmp_path / ".aak").mkdir()
+    (tmp_path / ".aak" / "delivery.yml").write_text(textwrap.dedent("""
+        roles:
+          code: {cli: claude, model: opus}
+    """), encoding="utf-8")
+    out = _run_preflight(tmp_path)
+    assert out.returncode == 0, out.stderr
+    data = json.loads(out.stdout)
+    assert "independence" not in data
