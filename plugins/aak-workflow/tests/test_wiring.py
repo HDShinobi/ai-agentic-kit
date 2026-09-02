@@ -441,3 +441,27 @@ def test_containment_ctl_commit_owned_only_owned(git_repo, git):
     assert "sha" in data
     files = git("show", "--name-only", "--format=", data["sha"]).split()
     assert files == ["a.py"]   # b.py NOT absorbed into the commit
+
+# --- Task 20: SKILL invokes the runtime CLIs instead of doing the work as prose --
+# (final whole-branch review, Important #1: §4 told Control to hand-parse raw
+# dispatch_worker.py stdout; §3/§5/§6 described workspace/containment/independence
+# by hand instead of calling workspace_ctl.py/containment_ctl.py/preflight_clis.py) ---
+
+def test_skill_invokes_runtime_clis():
+    skill = PLUGIN_ROOT / "skills" / "multi-cli-delivery" / "SKILL.md"
+    text = skill.read_text(encoding="utf-8")
+    assert "workspace_ctl.py" in text     # §3 run workspace (branch/overlap gates + prepare)
+    assert "containment_ctl.py" in text   # §5 containment & commit
+
+    # Scope to §4 (Dispatch) specifically: Control must read dispatch_worker.py's
+    # own parsed success/handoff JSON, not hand-parse raw stdout for the
+    # sentinel/status itself.
+    dispatch_start = text.index("## 4. Dispatch")
+    containment_start = text.index("## 5. Containment")
+    assert dispatch_start < containment_start
+    dispatch_section = text[dispatch_start:containment_start]
+    assert "dispatch_worker.py" in dispatch_section
+    assert "success" in dispatch_section and "handoff" in dispatch_section
+    # The rewrite states explicitly that Control does NOT hand-parse stdout --
+    # the stale instruction this closes out (the CLI parses the handoff itself).
+    assert "hand-parse" in dispatch_section

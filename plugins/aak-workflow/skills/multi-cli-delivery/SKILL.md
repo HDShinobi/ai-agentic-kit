@@ -141,23 +141,58 @@ a role whose adapter has no real effort knob is a warning, never silent (see
 exit, exhausted quota, auth failure mid-run) is never a preflight case — it
 always escalates (§7), and is never read as "absent."
 
+The same JSON call also carries an `independence` block whenever both
+`code` and `review` roles are configured — Control reads it directly rather
+than comparing models itself; see §6.
+
 ## 3. Run workspace (spec §4.9)
 
-Default `workspace: worktree`: Control prepares a **persistent, per-repo git
-worktree** checked out on the run's feature branch (under
-`.aak/worktrees/`, one directory per branch), created once and **reused
-across dispatches and across runs** so native build caches (DerivedData,
-resolved packages, `node_modules`, pnpm store, …) stay warm. The user's own
-checkout is never in the blast radius — they may keep working there during a
-run. Because PLAN → CODE → REVIEW are strictly sequential, they are meant to
-see one continuous tree; a throwaway worktree per dispatch would rebuild cold
-and buy nothing serialization did not already buy.
+Before any worker is dispatched, two gates run against the **user's own
+checkout** at `<repo_root>`, then the workspace itself is prepared:
+
+```
+python3 "${CLAUDE_PLUGIN_ROOT}/scripts/workspace_ctl.py" branch-gate \
+  --repo <repo_root>
+```
+Returns `{"branch": "<name>"}`, or `{"error": "..."}` on a detached HEAD —
+halt and escalate on `error`. If the returned branch is the project's
+default branch, Control names a feature branch itself (or halts for human
+approval when the project sets `branch_requires_approval`); an existing
+branch the contract deems unsuitable also halts. Commits never land on the
+default branch.
+
+```
+python3 "${CLAUDE_PLUGIN_ROOT}/scripts/workspace_ctl.py" overlap-gate \
+  --repo <repo_root> --owned <comma,separated,paths>
+```
+`--owned` is the union of owned paths from the approved design/contract.
+Returns `{"overlap": [...]}` — any non-empty list halts before dispatch: ask
+the human to commit, stash, or discard the overlapping work. Control never
+absorbs the user's edits into a task.
+
+```
+python3 "${CLAUDE_PLUGIN_ROOT}/scripts/workspace_ctl.py" prepare \
+  --repo <repo_root> --branch <feature_branch> [--mode worktree|shared] \
+  [--workspaces-dir <path>]
+```
+The script itself never reads `.aak/delivery.yml` — Control passes `--mode`
+from the config's own `defaults.workspace` (§2), defaulting to `worktree`
+when unset. Returns `{"workspace": "<path>"}`: a persistent, per-repo worktree checked
+out on `<feature_branch>` (default under `.aak/worktrees/`, one directory
+per branch), created once and **reused across dispatches and across runs**
+so native build caches (DerivedData, resolved packages, `node_modules`, pnpm
+store, …) stay warm. The user's own checkout is never in the blast radius —
+they may keep working there during a run. Because PLAN → CODE → REVIEW are
+strictly sequential, they are meant to see one continuous tree; a throwaway
+worktree per dispatch would rebuild cold and buy nothing serialization did
+not already buy. Use the returned `workspace` path as every worker's
+`--cwd` (§4) and as `--repo` for every containment call (§5).
 
 **Reset happens between runs, not between dispatches**: tracked files are
 restored and task-created untracked files removed back to the feature-branch
 baseline, while excluded/out-of-tree cache directories are spared.
 
-**`workspace: shared` override**: for a repo whose build genuinely cannot run
+**`--mode shared` override**: for a repo whose build genuinely cannot run
 from a second checkout, Control runs in the user's own checkout instead —
 strictly serial, honest about the extra risk, pause-and-ask on any conflict.
 This is the documented, higher-friction exception, never the default.
@@ -165,17 +200,6 @@ This is the documented, higher-friction exception, never the default.
 **The worktree shares the repo's `.git/objects` and refs** — it is
 build/edit isolation, not git-control isolation, so every containment check
 in §5 applies inside it unchanged.
-
-Two gates run before any worker is dispatched:
-- **Run-start overlap gate** — compare every task's owned paths against
-  `git status` of the *user's own checkout*. Any intersection halts before
-  dispatch and asks the human to commit, stash, or discard the overlapping
-  work; Control never absorbs the user's edits into a task.
-- **Branch gate** — the run must sit on a non-default feature branch. On the
-  default branch, Control creates a feature branch itself (or halts for
-  approval if the project sets `branch_requires_approval`); a detached HEAD,
-  or an existing branch the contract deems unsuitable, halts and escalates.
-  Commits never land on the default branch.
 
 ## 4. Dispatch (spec §4.5, §6.1)
 
@@ -187,22 +211,46 @@ handoff block described in `references/handoff.md`.
 
 ```
 python3 "${CLAUDE_PLUGIN_ROOT}/scripts/dispatch_worker.py" \
-  --role <role> --repo <repo_root> --prompt-file <path> --cwd <workspace>
+  --role <role> --repo <repo_root> --prompt-file <path> --cwd <workspace> \
+  [--cli <id>] [--model <name>]
+```
+`--repo` locates `.aak/delivery.yml` (always the repo root); `--cwd` is
+where the worker actually runs — the workspace from §3. `--cli`/`--model`
+override the role's config binding for this one dispatch only (spec §11's
+per-run overrides, e.g. from `/aak-workflow:delegate --code …`); they are
+never written back to `.aak/delivery.yml`.
+
+The script runs the CLI headless under the role's wall/idle bound and parses
+the handoff **itself**, before Control ever sees it, printing exactly one
+JSON object:
+
+```
+{"stdout": ..., "exit_code": ..., "tripped": null|"wall"|"idle",
+ "forensics": {...},
+ "success": true,
+ "handoff": {"status": ..., "role": ..., "model": ..., "disposition": ...,
+             "changed_paths": [...], "verification": ...}}
 ```
 
-It resolves the role's adapter, composes argv (or pipes the prompt to stdin
-for the one adapter that reads it that way — see `references/adapters.md`),
-runs the CLI headless under the role's wall/idle bound, and prints exactly
-one JSON object on stdout: `{"stdout": ..., "exit_code": ..., "tripped":
-null|"wall"|"idle", "forensics": {...}}` on success, or `{"error": "..."}`
-with a non-zero exit if the config, adapter, or spawn itself failed.
+**Control reads `success` and the parsed `handoff` object to drive the
+loop — it does not hand-parse raw `stdout`**, which besides the handoff
+block is untrusted worker narration, never authority (§8). When the
+worker's output fails the deterministic success gate (§4.6/§6.1: missing
+`END OF HANDOFF`, or the sentinel present but the process exited non-zero),
+the script returns `"success": false` with a `handoff_error` string and no
+`handoff` object instead. **`success: false` is a failed dispatch**: route
+it through §1's table row for a missing/failed sentinel — retry once
+(baseline-cleaning owned paths first for a CODE dispatch, §5), then
+escalate — never treated as a parsed status. If the script could not even
+run the worker (bad config, unknown adapter, spawn failure) it exits
+non-zero and prints `{"error": "..."}` instead: a dispatch that never
+started, not a worker outcome — escalate per §7.
 
-**Parse ONLY the handoff block** inside `stdout` — everything else the
-worker printed is untrusted narration, never authority (§8). **Success is
-exit 0 AND the `END OF HANDOFF` sentinel present** — a sentinel-complete
-block from a process that exited non-zero (killed on timeout, crashed after
-writing it) is diagnostic output, not an accepted result, and is never
-parsed as a status.
+Once `success` is `true`, drive the rest of the loop off `handoff.status`
+(and, for REVIEW, `handoff.disposition`) per §1's table. `handoff.model`
+and `handoff.changed_paths` are the worker's own self-report — a
+cross-check only (§6), never the authority for what actually changed; that
+is containment's git-computed diff (§5).
 
 PLAN and REVIEW are expected to leave the workspace unchanged; CODE is the
 only workspace-write role. That expectation is **verified** after every
@@ -210,40 +258,85 @@ dispatch by containment (§5) — never merely assumed from the CLI.
 
 ## 5. Containment & commit (spec §4.8)
 
-**Before every dispatch**, snapshot the repo's git-control state: HEAD sha,
-every ref tip, and the index. Workers get no git authority — they may only
-edit working-tree files, never `.git/`. **After every dispatch**, re-check
-that snapshot: a new commit, a moved HEAD, a changed/created/deleted ref, a
-staged index, or an altered `.git/` control file is a **halt state**. Recovery
-is state-specific, never a single soft reset: restore every recorded ref,
-reset the current branch to the recorded sha, and restore the index to its
-*recorded* snapshot — not to HEAD, because Control itself stages owned paths
-mid-run, so the workspace index may legitimately hold staged content an
-index-to-HEAD reset would destroy. The working tree is never touched by this
-recovery.
+Every call below targets `--repo <workspace>` — the prepared worktree (§3)
+— never `<repo_root>`: that is where a worker's edits and the run's own
+git-control state actually live, so that is what must be snapshotted,
+checked, and committed. The user's own checkout is never touched by any of
+this.
 
-**After every dispatch**, compute the worker's true changed-path set —
-tracked diff, new untracked files, and `.gitignore`d untracked files, unioned
-(`git status` alone omits ignored files) — and intersect it with the task's
-owned paths. Anything outside owned scope is an **out-of-scope mutation**:
-never reviewed or committed. Control restores the strayed path to the task
-baseline (or removes it if it was untracked at baseline) and escalates.
+**Before every dispatch** (PLAN, CODE, and REVIEW alike):
+```
+python3 "${CLAUDE_PLUGIN_ROOT}/scripts/containment_ctl.py" snapshot \
+  --repo <workspace> --out <statefile>
+```
+→ `{"ok": true, "state": "<statefile>"}`. The statefile's own `head` field
+doubles as the task's baseline ref for the changed-paths check below.
 
-**Immediately after CODE returns `DONE`**, Control freezes that owned diff.
-That frozen diff — not whatever the workspace looks like later — is what
-REVIEW judges and what Control commits, so no later mutation can be smuggled
-into the commit. Before committing, Control verifies REVIEW left the frozen
-candidate byte-unchanged.
+**After every dispatch**, re-check the git-control state. Workers get no
+git authority — they may only edit working-tree files, never `.git/`:
+```
+python3 "${CLAUDE_PLUGIN_ROOT}/scripts/containment_ctl.py" detect-drift \
+  --repo <workspace> --state <statefile>
+```
+→ `{"drift": [...]}`. Non-empty — a new commit, a moved HEAD, a
+changed/created/deleted ref, or a staged index — is a **halt state**:
+```
+python3 "${CLAUDE_PLUGIN_ROOT}/scripts/containment_ctl.py" restore \
+  --repo <workspace> --state <statefile>
+```
+→ `{"restored": true}`: every recorded ref and the current branch return to
+their recorded sha, and the index goes back to its *recorded* snapshot —
+never to HEAD, because Control itself stages owned paths mid-run, so the
+workspace index may legitimately hold staged content an index-to-HEAD reset
+would destroy. The working tree itself is never touched by restore.
+Escalate after restoring.
 
-**Commit only the owned paths**, on the feature branch, with a conventional
-task-scoped message, then verify the committed contents equal the reviewed
-frozen diff exactly — any mismatch halts; it is never treated as a completed
-task. A `.gitignore`d file *inside* owned scope is rejected by default (it
-can be reviewed yet silently dropped by a plain `git add`); a task that must
-commit one declares a `force_add` exception, Control force-adds exactly those
-paths, and still verifies commit == reviewed diff.
+**Also after every dispatch** — drift alone misses an ordinary unstaged
+file edit, so check the working tree too:
+```
+python3 "${CLAUDE_PLUGIN_ROOT}/scripts/containment_ctl.py" changed-paths \
+  --repo <workspace> --baseline <task_baseline_ref>
+python3 "${CLAUDE_PLUGIN_ROOT}/scripts/containment_ctl.py" classify-scope \
+  --changed <comma,separated,paths> --owned <comma,separated,paths>
+```
+`changed-paths` returns `{"changed": [...]}` — tracked diff ∪ new untracked
+∪ `.gitignore`d untracked, unioned (`git status` alone omits the last of
+these). Feed that list straight into `classify-scope` as `--changed`; it
+returns `{"out_of_scope": [...]}`. For PLAN/REVIEW pass `--owned` empty —
+they are expected to touch nothing, so any changed path at all is
+out-of-scope. Any non-empty `out_of_scope` is an **out-of-scope mutation**:
+never reviewed or committed. Control restores the strayed path(s) to the
+task baseline (`git restore`, or removes them if they were untracked at
+baseline, scoped strictly to those paths) and escalates.
 
-**Cleanup differs by failure shape** (consistent with §1's table):
+**Immediately after CODE returns** `success: true` and `handoff.status:
+DONE` with a scope-clean, non-empty `changed` set, that set is the frozen
+candidate — what REVIEW judges and what Control commits, regardless of what
+the workspace looks like later, so no later mutation can be smuggled into
+the commit. After REVIEW returns, re-run `changed-paths` with the same
+baseline: an identical set, together with a clean `detect-drift`, is what
+"REVIEW left the frozen candidate unchanged" means operationally — any
+difference is a containment violation, never committed.
+
+**Commit only the frozen, scope-clean owned paths**, on the feature branch:
+```
+python3 "${CLAUDE_PLUGIN_ROOT}/scripts/containment_ctl.py" commit-owned \
+  --repo <workspace> --owned <comma,separated,paths> \
+  --message "<conventional task-scoped message>" \
+  [--force-add <comma,separated,paths>]
+```
+→ `{"sha": "..."}`, or a non-zero exit with `{"error": "..."}` if the
+resulting commit's contents don't exactly equal the owned set (§4.8's
+commit-equals-reviewed-diff invariant) — that mismatch halts; it is never
+treated as a completed task. The script stages and commits `--only` the
+owned paths itself; a `.gitignore`d file *inside* owned scope is rejected by
+default (it can be reviewed yet silently dropped by a plain `git add`)
+unless it is named in `--force-add`, in which case the script force-adds
+exactly those paths and still verifies commit == reviewed diff.
+
+**Cleanup differs by failure shape** (consistent with §1's table; neither
+shape has a dedicated script — both are owned-path-scoped git operations
+Control runs directly):
 - **Discard** — CODE `BLOCKED`/`NEEDS_REPLAN`, or a remediation pass that
   still fails: restore tracked owned paths to the task baseline and remove
   owned paths that did not exist at baseline, scoped strictly to owned
@@ -255,21 +348,48 @@ paths, and still verifies commit == reviewed diff.
 ## 6. Independence & reduced-assurance (spec §4.7)
 
 REVIEW must run on a model different from CODE's
-(`review_must_differ_from_code`, default true), compared on a **canonical
-`provider:model` identity** established from the trusted config/runtime side
-— never from the worker's own `Model:` handoff line, which is a cross-check
-that can *flag* a mismatch but is never proof. Aliases (e.g. two spellings of
-the same model) collapse to one identity so they cannot falsely satisfy the
-invariant.
+(`review_must_differ_from_code`, default true). **Control does not compare
+identities itself** — the same `preflight_clis.py` call from §2 already
+resolves this from the trusted config side, and reports it in an
+`independence` block whenever both `code` and `review` roles are configured:
+
+```
+"independence": {
+  "code_identity": "anthropic:opus", "review_identity": "anthropic:opus",
+  "differ": false, "review_must_differ_from_code": true,
+  "reduced_assurance": "review_independence: same-model",
+  "requires_human_approval": true
+}
+```
+
+`code_identity`/`review_identity` are canonical `provider:model` strings —
+aliases like `opus` and `anthropic/opus` collapse to one identity, so they
+cannot falsely satisfy the invariant — established from the trusted config
+binding, never from the worker's own `Model:` handoff line, which is a
+cross-check that can *flag* a mismatch but is never proof. The
+`reduced_assurance`/`requires_human_approval` keys appear only when `differ`
+is `false` and the flag is `true`; Control reads them, it does not compose
+its own wording.
 
 When degrading absent roles (§2) would collapse CODE and REVIEW onto the same
 effective model, Control resolves it in order, never silently:
 1. Try the declared `review_fallback` list in order — by default `review`,
    then `review_alt` if set, then any other distinct authed role Control is
-   configured to reuse — preflighting each, and use the first distinct,
-   authed candidate.
-2. If none is available, same-model (or unconfirmable-identity) review is
-   permitted only as an explicitly recorded **reduced-assurance** task.
+   configured to reuse — each already scored by §2's single preflight call —
+   and use the first distinct, authed candidate.
+2. If none is available, reduced-assurance review is permitted only as an
+   explicitly recorded task, using one of two verbatim run-note values:
+   - `review_independence: same-model` — CODE and REVIEW share a canonical
+     identity; this is exactly the `reduced_assurance` string preflight's
+     `independence` block already reports, above.
+   - `review_independence: identity-unconfirmed` — a distinct model is
+     configured (preflight reports `differ: true`), but the dispatched CLI
+     can silently substitute what actually ran (e.g. an `auto` fallback) and
+     the effective identity cannot be confirmed from the trusted side.
+     Preflight cannot see this — it only compares configured bindings — so
+     Control records this note itself from what dispatch (§4) reveals; the
+     untrusted handoff `Model:` field may *flag* such a substitution but is
+     never proof either way.
 
 Approval timing for a reduced-assurance `ACCEPT` depends on the flag: with
 `review_must_differ_from_code: true`, it is **not committed automatically** —
@@ -329,8 +449,8 @@ A second failure, or any cleanup uncertainty, always escalates.
 any dispatch: the human approves the design/contract Control will decompose
 and execute, and the branch gate + run-start overlap gate (§3) are cleared in
 the same step. **Gate 2 — publish** — clears after the run reaches a
-terminal state: the automated protocol never pushes, opens a PR, or merges
-(§8); Control only reports the branch and diff — flagging reduced-assurance
+terminal state: the automated protocol never pushes, opens a PR, or merges;
+Control only reports the branch and diff — flagging reduced-assurance
 tasks (§6) and confirmed no-ops — and the human performs the actual
 push/PR/merge with their own credentials. An **Incomplete** run additionally
 requires an explicit human disposition (resume/replan, accept the partial
