@@ -43,6 +43,21 @@ def test_preflight_cli_is_inert_without_config(tmp_path):
     data = json.loads(out.stdout)
     assert data["roles"] == {} and data.get("inert") is True
 
+def test_preflight_cli_malformed_config_emits_json_error(tmp_path):
+    # Fix round 1: a malformed .aak/delivery.yml (roles as a list/scalar,
+    # unknown keys, bad types) raises mcd_core.errors.ConfigError inside
+    # load_delivery_config. preflight_clis.py must still honor its contract
+    # -- exit 0, error IN the JSON on stdout -- not an uncaught traceback.
+    (tmp_path / ".aak").mkdir()
+    (tmp_path / ".aak" / "delivery.yml").write_text("roles: oops\n", encoding="utf-8")
+    script = PLUGIN_ROOT / "scripts" / "preflight_clis.py"
+    out = subprocess.run([sys.executable, str(script), str(tmp_path)],
+                         capture_output=True, text=True,
+                         env={"PATH": "/usr/bin:/bin", "PYTHONPATH": str(PLUGIN_ROOT)})
+    assert out.returncode == 0, out.stderr
+    data = json.loads(out.stdout)
+    assert data["roles"] == {} and "error" in data
+
 def _write_delivery_yml(repo: Path, role: str, cli: str, model: str) -> None:
     (repo / ".aak").mkdir(exist_ok=True)
     (repo / ".aak" / "delivery.yml").write_text(textwrap.dedent(f"""
@@ -85,6 +100,17 @@ def test_dispatch_worker_cli_spawn_failure_emits_error_json(tmp_path):
     assert out.returncode != 0, out.stdout
     data = json.loads(out.stdout)
     assert "error" in data and "claude" in data["error"]
+
+def test_dispatch_worker_cli_unknown_cli_emits_error_json(tmp_path):
+    # Fix round 1 (minor): a role bound to a cli id that isn't a registered
+    # adapter makes get_adapter() raise ConfigError. dispatch_worker.py's
+    # try/except McdError must turn that into structured JSON too, not just
+    # spawn failures -- this was claimed in the Task 10 report but untested.
+    _write_delivery_yml(tmp_path, "code", "not-a-real-cli", "some-model")
+    out = _run_dispatch_worker(tmp_path, "code", "hello\n", "/usr/bin:/bin")
+    assert out.returncode != 0, out.stdout
+    data = json.loads(out.stdout)
+    assert "error" in data
 
 def test_dispatch_worker_cli_wires_prompt_via_arg_for_claude(tmp_path):
     # Ruling B: claude's adapter takes the prompt file path as a trailing CLI arg.
