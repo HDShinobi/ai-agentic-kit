@@ -3,16 +3,22 @@
 > Vendored verbatim from dely (© Hieu Phung, MIT) under Golden Rule #4 (AI
 > Agentic Kit vendors external artifacts byte-for-byte; see root `NOTICE`).
 > Source: `hieuphung97/dely` `skills/delivery/SKILL.md` §Acceptance (+
-> `skills/delivery/templates/plan.md` §Acceptance).
+> `skills/delivery/templates/plan.md` §Acceptance), vendored at dely commit
+> `c2fc1a96dce4eabc5b8c9ee9dafbb66fb371d785`.
 >
 > Only phase-name wiring changed, both one-word swaps: dely's `implement` →
 > this kit's `CODE` (in the `templates/plan.md` extract below — "Design
 > fills Counterexample; CODE fills Observed red"); dely's `review` → this
 > kit's `REVIEW` (in the `SKILL.md` extract below — "...will be found at
-> REVIEW"). dely's `Design` is left as-is: this kit's own Gate-1
-> design-approval step uses the same word, so no re-pointing applies there.
-> Nothing else was added, removed, reordered, or reworded — the "Source:"
-> lines below and this note are the only non-vendored text in this file.
+> REVIEW"). dely's capitalized `Design` is sentence-initial prose, not a
+> phase heading — it refers to the undispatched, Control-authored planning
+> work that precedes any dispatch. This kit splits that work across Gate 1
+> (human design approval) and the PLAN worker, which is what actually
+> carries the acceptance rows and counterexample in its handoff (see
+> `SKILL.md` §1) — there is no single clean 1:1 mapping, so dely's original
+> wording is left unchanged rather than re-pointed to either alone. Nothing
+> else was added, removed, reordered, or reworded — the "Source:" lines
+> below and this note are the only non-vendored text in this file.
 
 *Source: `hieuphung97/dely` `skills/delivery/SKILL.md` §Acceptance*
 
