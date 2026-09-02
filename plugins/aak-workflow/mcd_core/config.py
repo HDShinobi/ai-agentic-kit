@@ -62,12 +62,16 @@ def load_delivery_config(repo_root: Path) -> DeliveryConfig | None:
             "pyyaml is required to read .aak/delivery.yml — "
             "`pip install -r requirements-dev.txt`"
         ) from exc
-    raw = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    raw = yaml.safe_load(path.read_text(encoding="utf-8"))
+    raw = {} if raw is None else raw
     _require(isinstance(raw, dict), "delivery.yml must be a mapping")
     _reject_unknown(raw, _TOP_KEYS, "delivery.yml")
 
+    roles_raw = raw.get("roles")
+    roles_raw = {} if roles_raw is None else roles_raw
+    _require(isinstance(roles_raw, dict), "roles must be a mapping")
     roles: dict[str, RoleBinding] = {}
-    for name, spec in (raw.get("roles") or {}).items():
+    for name, spec in roles_raw.items():
         _require(isinstance(spec, dict), f"role {name!r} must be a mapping")
         _reject_unknown(spec, _ROLE_KEYS, f"role {name!r}")
         _require("cli" in spec, f"role {name!r} missing cli")
@@ -75,7 +79,9 @@ def load_delivery_config(repo_root: Path) -> DeliveryConfig | None:
         roles[name] = RoleBinding(str(spec["cli"]), str(spec["model"]),
                                   spec.get("effort"))
 
-    d = raw.get("defaults") or {}
+    d = raw.get("defaults")
+    d = {} if d is None else d
+    _require(isinstance(d, dict), "defaults must be a mapping")
     _reject_unknown(d, _DEFAULT_KEYS, "defaults")
     workspace = d.get("workspace", "worktree")
     _require(workspace in _WORKSPACE, f"defaults.workspace must be one of {_WORKSPACE}")
@@ -90,14 +96,24 @@ def load_delivery_config(repo_root: Path) -> DeliveryConfig | None:
         on_missing_auth=on_missing_auth,
     )
 
+    timeouts_raw = raw.get("timeouts")
+    timeouts_raw = {} if timeouts_raw is None else timeouts_raw
+    _require(isinstance(timeouts_raw, dict), "timeouts must be a mapping")
     timeouts: dict[str, TimeoutPolicy] = {}
-    for role, spec in (raw.get("timeouts") or {}).items():
+    for role, spec in timeouts_raw.items():
         _require(isinstance(spec, dict), f"timeouts.{role} must be a mapping")
         _reject_unknown(spec, {"wall_min", "idle_min"}, f"timeouts.{role}")
-        wall = int(spec.get("wall_min", 0)); idle = int(spec.get("idle_min", 0))
+        wm, im = spec.get("wall_min"), spec.get("idle_min")
+        for label, v in (("wall_min", wm), ("idle_min", im)):
+            _require(isinstance(v, int) and not isinstance(v, bool),
+                     f"timeouts.{role}.{label} must be an integer")
+        wall, idle = int(wm), int(im)
         _require(wall > 0 and idle > 0, f"timeouts.{role} needs positive wall_min/idle_min")
         timeouts[role] = TimeoutPolicy(wall * 60, idle * 60)
 
-    secrets = {str(k): str(v) for k, v in (raw.get("secrets") or {}).items()}
+    secrets_raw = raw.get("secrets")
+    secrets_raw = {} if secrets_raw is None else secrets_raw
+    _require(isinstance(secrets_raw, dict), "secrets must be a mapping")
+    secrets = {str(k): str(v) for k, v in secrets_raw.items()}
     return DeliveryConfig(roles=roles, defaults=defaults,
                           timeouts=timeouts, secrets=secrets)

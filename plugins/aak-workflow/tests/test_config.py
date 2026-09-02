@@ -53,3 +53,31 @@ def test_role_missing_required_fields_rejected(tmp_path):
     _write(tmp_path, "roles: {code: {cli: codex}}\n")   # no model
     with pytest.raises(ConfigError, match="model"):
         load_delivery_config(tmp_path)
+
+def test_empty_file_is_all_defaults(tmp_path):
+    _write(tmp_path, "")
+    cfg = load_delivery_config(tmp_path)
+    assert isinstance(cfg, DeliveryConfig)
+    assert cfg.roles == {}
+
+def test_invalid_on_missing_auth_rejected(tmp_path):
+    _write(tmp_path, """
+      roles: {code: {cli: codex, model: x}}
+      defaults: {on_missing_auth: nonsense}
+    """)
+    with pytest.raises(ConfigError, match="on_missing_auth"):
+        load_delivery_config(tmp_path)
+
+def test_non_mapping_roles_rejected(tmp_path):
+    _write(tmp_path, "roles: oops\n")
+    with pytest.raises(ConfigError, match="roles"):
+        load_delivery_config(tmp_path)
+
+def test_non_numeric_timeout_rejected(tmp_path):
+    _write(tmp_path, """
+      roles: {code: {cli: codex, model: x}}
+      timeouts:
+        code: {wall_min: "ten", idle_min: 5}
+    """)
+    with pytest.raises(ConfigError, match="wall_min"):
+        load_delivery_config(tmp_path)
