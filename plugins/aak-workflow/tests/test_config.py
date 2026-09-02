@@ -1,5 +1,7 @@
 from __future__ import annotations
 from pathlib import Path
+import shutil
+import tempfile
 import textwrap
 import pytest
 from mcd_core.config import load_delivery_config, DeliveryConfig
@@ -81,3 +83,15 @@ def test_non_numeric_timeout_rejected(tmp_path):
     """)
     with pytest.raises(ConfigError, match="wall_min"):
         load_delivery_config(tmp_path)
+
+def test_example_template_parses(plugin_root):
+    tmpl = plugin_root / "skills" / "multi-cli-delivery" / "templates" / "roles.example.yml"
+    assert tmpl.is_file()
+    # copy into a fake repo layout and load it, exactly as a real project would
+    with tempfile.TemporaryDirectory() as d:
+        repo = Path(d)
+        (repo / ".aak").mkdir()
+        shutil.copy(tmpl, repo / ".aak" / "delivery.yml")
+        cfg = load_delivery_config(repo)
+        assert cfg is not None and "review" in cfg.roles
+        assert cfg.defaults.review_must_differ_from_code is True
