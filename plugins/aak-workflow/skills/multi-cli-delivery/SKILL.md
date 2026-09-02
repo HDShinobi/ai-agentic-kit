@@ -88,7 +88,7 @@ combination — nothing is left undefined:
 | CODE | `DONE`, non-empty owned diff | freeze the owned diff (§5); proceed to REVIEW |
 | CODE | `DONE`, empty owned diff | never an empty commit — treat as `NEEDS_REPLAN` and escalate, unless the human explicitly confirms an intended no-op (closes as a completed terminal no-op, no commit, still counts toward Complete) |
 | CODE | `BLOCKED` / `NEEDS_REPLAN` | discard the task's uncommitted owned edits (baseline-aware cleanup, §5); do not commit; escalate |
-| REVIEW | `DONE` + `ACCEPT` | verify REVIEW left the frozen candidate byte-unchanged, then commit (§5) — unless reduced-assurance (§6) defers to a human approval step first |
+| REVIEW | `DONE` + `ACCEPT` | verify REVIEW left the frozen candidate unchanged (owned-path-set + git-state, see §5), then commit — unless reduced-assurance (§6) defers to a human approval step first |
 | REVIEW | `DONE` + `CHANGES_REQUESTED` | one remediation pass by the same CODE model, re-reviewed by the same reviewer; still not `ACCEPT` → discard owned edits and escalate as a replan-or-split |
 | REVIEW | `BLOCKED` / `NEEDS_REPLAN` | preserve the candidate uncommitted, **halt the whole run** (no later task dispatched), escalate the unresolved question |
 | REVIEW | `DONE` + `Disposition: BLOCKED` | identical to REVIEW `Status: BLOCKED` above — a `DONE` transport status carrying a `BLOCKED` disposition is a blocked review, never an acceptance |

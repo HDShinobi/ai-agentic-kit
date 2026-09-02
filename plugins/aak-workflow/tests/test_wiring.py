@@ -357,6 +357,19 @@ def test_workspace_ctl_branch_gate_detached(git_repo, git):
     data = json.loads(out.stdout)
     assert "error" in data
 
+def test_workspace_ctl_bad_repo_emits_error_json():
+    # Fix-wave (Important #1): a nonexistent/inaccessible --repo makes
+    # subprocess.run(cwd=<missing>) raise a raw FileNotFoundError/OSError
+    # before git even spawns. mcd_core.workspace._git must turn that into
+    # ContainmentError -- the same typed-error contract dispatch.py already
+    # has for a bad worker argv[0] (OSError -> DispatchError) -- so this
+    # CLI's `except McdError` still catches it: structured JSON on stdout
+    # with a non-zero exit, never a raw traceback / empty stdout.
+    out = _run_workspace_ctl("branch-gate", "--repo", "/nonexistent-xyz-123")
+    assert out.returncode != 0, out.stdout
+    data = json.loads(out.stdout)
+    assert "error" in data
+
 # --- Task 19: containment_ctl.py -- thin CLI over mcd_core.containment
 # (snapshot/detect-drift/restore/changed-paths/classify-scope/commit-owned) ---
 
@@ -441,6 +454,17 @@ def test_containment_ctl_commit_owned_only_owned(git_repo, git):
     assert "sha" in data
     files = git("show", "--name-only", "--format=", data["sha"]).split()
     assert files == ["a.py"]   # b.py NOT absorbed into the commit
+
+def test_containment_ctl_bad_repo_emits_error_json():
+    # Fix-wave (Important #1): same OSError-hardening as
+    # test_workspace_ctl_bad_repo_emits_error_json above, for
+    # mcd_core.containment._git -- a bad --repo must not leak a raw
+    # traceback past this CLI's `except McdError`.
+    out = _run_containment_ctl("changed-paths", "--repo", "/nonexistent-xyz-123",
+                               "--baseline", "HEAD")
+    assert out.returncode != 0, out.stdout
+    data = json.loads(out.stdout)
+    assert "error" in data
 
 # --- Task 20: SKILL invokes the runtime CLIs instead of doing the work as prose --
 # (final whole-branch review, Important #1: §4 told Control to hand-parse raw

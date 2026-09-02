@@ -12,7 +12,15 @@ from pathlib import Path
 from .errors import ContainmentError
 
 def _git(repo: Path, *args: str, check: bool = True) -> str:
-    r = subprocess.run(["git", *args], cwd=repo, capture_output=True, text=True)
+    try:
+        r = subprocess.run(["git", *args], cwd=repo, capture_output=True, text=True)
+    except OSError as exc:
+        # A nonexistent/inaccessible repo makes subprocess.run(cwd=...) raise
+        # a raw FileNotFoundError/NotADirectoryError/OSError before git even
+        # spawns -- never let that leak past this module's typed-error
+        # contract (mirrors dispatch.py's OSError -> DispatchError; kept
+        # consistent with mcd_core.workspace._git's identical hardening).
+        raise ContainmentError(f"git invocation failed in {repo}: {exc}") from exc
     if check and r.returncode != 0:
         raise ContainmentError(f"git {' '.join(args)} failed: {r.stderr.strip()}")
     return r.stdout
