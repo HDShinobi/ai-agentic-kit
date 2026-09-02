@@ -23,3 +23,10 @@ SOFTWARE.
 Includes material adapted from ag-kit (https://github.com/vudovn/ag-kit),
 Copyright (c) 2026 VUDOVN, MIT License. See the NOTICE file at the repository
 root for the full third-party license text.
+
+Includes material from dely (https://github.com/hieuphung97/dely), Copyright
+(c) 2026 Hieu Phung, MIT License — concept-adapted (the `multi-cli-delivery`
+skill's role sequence and handoff/status taxonomy) and, in
+`skills/multi-cli-delivery/references/acceptance.md`, vendored verbatim under
+this project's Golden Rule #4. See the NOTICE file at the repository root for
+the full attribution and third-party license text.
