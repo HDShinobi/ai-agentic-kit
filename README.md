@@ -179,6 +179,29 @@ Taking your *own* product to market runs a second named workflow. The skills cha
 
 Same rule: run `product-marketing` first, and every downstream skill reuses the positioning doc.
 
+#### The paid-media loop (aak-ads)
+
+`aak-ads` has 34 skills, but you never call them by name — there's **one entry point**, `/aak-ads:ads`, and the `ads` router loads the right platform/workflow skill for you. Say the intent, it picks the worker. The account money-path — reviewing a live account, then acting on it — runs in three moves (Meta shown; swap in any of the 12 platforms):
+
+```
+/aak-ads:ads setup            → connect the account + set objective, budget,
+                                conversion definition, guardrails   (run ONCE)
+/aak-ads:ads audit meta       → the "review the account" step: source-grounded,
+                                deterministically scored — Pixel/CAPI, attribution,
+                                account structure, audiences, placements, creative
+                                fatigue, budgets, policy → one JSON run bundle
+        → recommendations, already split into:
+             · setup    → fix via /aak-ads:ads setup or optimize
+             · creative → go deeper with /aak-ads:ads create
+             · optimize → /aak-ads:ads optimize
+/aak-ads:ads optimize --draft → preview the changes    ← nothing is written yet
+                     --apply   → execute, only after the 6-item mutation gate passes
+```
+
+The setup / creative / optimize "branches" aren't separate runs — the **audit already produces them** as a prioritized recommendation set; you then execute the ones you want. `aak-ads` is **read-only by default**: no live-account change happens until `--apply` clears the mutation gate. If a platform's MCP (e.g. Meta Ads) is connected, the audit pulls live account data instead of manual exports.
+
+> **Rule of thumb for paid media:** `setup` (once) → `audit <platform>` (review + score + recommend) → `optimize --draft`/`--apply` (execute). When both plugins are on, use `aak-ads` for anything account-level and keep `aak-marketing` for organic/SEO/content/brand.
+
 #### The 62 marketing skills, by sub-track
 
 Everything auto-activates by description — this grouping is just a map of what's inside:

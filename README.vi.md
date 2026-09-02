@@ -179,6 +179,29 @@ Phần audit chạy trên một mô hình chấm điểm cố định, minh bạ
 
 Cùng nguyên tắc: chạy `product-marketing` trước, mọi skill sau tái dùng file định vị.
 
+#### Vòng lặp paid-media (aak-ads)
+
+`aak-ads` có 34 skill, nhưng bạn không bao giờ gọi từng cái theo tên — chỉ có **một cửa vào duy nhất**, `/aak-ads:ads`, và router `ads` tự nạp đúng skill nền tảng/workflow cho bạn. Nói ý định, nó chọn "công nhân". Money-path ở mức tài khoản — review một tài khoản đang chạy rồi hành động trên nó — chạy trong ba bước (ví dụ Meta; thay bằng bất kỳ nền tảng nào trong 12 cái):
+
+```
+/aak-ads:ads setup            → kết nối tài khoản + khai báo mục tiêu, ngân sách,
+                                định nghĩa conversion, guardrail   (chạy MỘT LẦN)
+/aak-ads:ads audit meta       → bước "review tài khoản": bám nguồn, chấm điểm tất
+                                định — Pixel/CAPI, attribution, cấu trúc tài khoản,
+                                audience, placement, creative fatigue, ngân sách,
+                                policy → một JSON run bundle
+        → recommendations, đã tách sẵn thành:
+             · setup    → sửa qua /aak-ads:ads setup hoặc optimize
+             · creative → đào sâu bằng /aak-ads:ads create
+             · optimize → /aak-ads:ads optimize
+/aak-ads:ads optimize --draft → xem trước thay đổi     ← chưa ghi gì cả
+                     --apply   → thực thi, chỉ sau khi qua mutation gate 6 mục
+```
+
+Ba "nhánh" setup / creative / optimize không phải các lần chạy riêng — **audit đã sinh ra chúng** dưới dạng tập đề xuất được ưu tiên; bạn chỉ việc thực thi cái nào muốn. `aak-ads` **mặc định chỉ đọc**: không thay đổi nào lên tài khoản đang chạy cho tới khi `--apply` qua mutation gate. Nếu MCP của nền tảng (ví dụ Meta Ads) đã kết nối, audit sẽ kéo dữ liệu tài khoản trực tiếp thay vì phải export tay.
+
+> **Nguyên tắc cho paid media:** `setup` (một lần) → `audit <nền tảng>` (review + chấm điểm + đề xuất) → `optimize --draft`/`--apply` (thực thi). Khi bật cả hai plugin, dùng `aak-ads` cho mọi việc ở mức tài khoản và giữ `aak-marketing` cho organic/SEO/content/brand.
+
 #### 62 skill marketing, theo sub-track
 
 Mọi skill tự kích hoạt theo mô tả — bảng gom nhóm này chỉ là bản đồ những gì có bên trong:
