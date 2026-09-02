@@ -356,3 +356,88 @@ def test_workspace_ctl_branch_gate_detached(git_repo, git):
     assert out.returncode != 0
     data = json.loads(out.stdout)
     assert "error" in data
+
+# --- Task 19: containment_ctl.py -- thin CLI over mcd_core.containment
+# (snapshot/detect-drift/restore/changed-paths/classify-scope/commit-owned) ---
+
+import shutil
+
+def _git_path_env() -> str:
+    # Dynamic, not hardcoded to /usr/bin: git_repo/git (conftest.py) create
+    # the fixture repo with whatever "git" resolves to on the inherited PATH
+    # of the pytest process. The CLI subprocess below gets a restricted PATH
+    # instead -- a real git of any vintage reads/writes the same on-disk
+    # format, so prepending shutil.which("git")'s directory (falling back to
+    # /usr/bin if git can't be located) keeps this portable across machines
+    # where git isn't at /usr/bin, unlike hardcoding it.
+    git_bin = shutil.which("git")
+    git_dir = str(Path(git_bin).resolve().parent) if git_bin else "/usr/bin"
+    return f"{git_dir}:/usr/bin:/bin"
+
+def _run_containment_ctl(*args: str):
+    script = PLUGIN_ROOT / "scripts" / "containment_ctl.py"
+    return subprocess.run(
+        [sys.executable, str(script), *args],
+        capture_output=True, text=True, timeout=30,
+        env={"PATH": _git_path_env(), "PYTHONPATH": str(PLUGIN_ROOT)},
+    )
+
+def test_containment_ctl_snapshot_drift_restore(git_repo, git, tmp_path):
+    # Round-trip: GitState survives a JSON statefile across separate CLI
+    # invocations (Control snapshots before a worker run, then detects drift
+    # / restores in a later call) -- proves the state file is not just
+    # written but faithfully reconstructed via GitState(...).
+    statefile = tmp_path / "state.json"
+    out = _run_containment_ctl("snapshot", "--repo", str(git_repo), "--out", str(statefile))
+    assert out.returncode == 0, out.stderr
+    snap = json.loads(out.stdout)
+    assert snap == {"ok": True, "state": str(statefile)}
+    assert statefile.is_file()
+    before_head = git("rev-parse", "HEAD").strip()
+
+    # a rogue worker commit -- containment must never touch the working tree
+    # on restore, only recorded refs/HEAD/index.
+    (git_repo / "rogue.txt").write_text("x\n", encoding="utf-8")
+    git("add", "rogue.txt")
+    git("commit", "-q", "-m", "rogue commit")
+    assert git("rev-parse", "HEAD").strip() != before_head
+
+    out = _run_containment_ctl("detect-drift", "--repo", str(git_repo), "--state", str(statefile))
+    assert out.returncode == 0, out.stderr
+    drift = json.loads(out.stdout)["drift"]
+    assert drift, "HEAD moved -- drift must be reported non-empty"
+
+    out = _run_containment_ctl("restore", "--repo", str(git_repo), "--state", str(statefile))
+    assert out.returncode == 0, out.stderr
+    assert json.loads(out.stdout) == {"restored": True}
+
+    assert git("rev-parse", "HEAD").strip() == before_head
+    assert (git_repo / "rogue.txt").exists()   # working tree untouched by restore
+
+def test_containment_ctl_changed_paths_includes_ignored(git_repo, git):
+    (git_repo / ".gitignore").write_text("*.log\n", encoding="utf-8")
+    git("add", ".gitignore")
+    git("commit", "-q", "-m", "ignore logs")
+    base = git("rev-parse", "HEAD").strip()
+
+    (git_repo / "app.py").write_text("code\n", encoding="utf-8")        # untracked candidate
+    (git_repo / "secret.log").write_text("leak\n", encoding="utf-8")    # ignored
+
+    out = _run_containment_ctl("changed-paths", "--repo", str(git_repo), "--baseline", base)
+    assert out.returncode == 0, out.stderr
+    data = json.loads(out.stdout)
+    assert data["changed"] == sorted(data["changed"])   # stable sorted JSON
+    assert "app.py" in data["changed"] and "secret.log" in data["changed"]
+
+def test_containment_ctl_commit_owned_only_owned(git_repo, git):
+    (git_repo / "a.py").write_text("a\n", encoding="utf-8")
+    (git_repo / "b.py").write_text("b\n", encoding="utf-8")
+    git("add", "b.py")   # pre-staged unrelated (not owned) file
+
+    out = _run_containment_ctl("commit-owned", "--repo", str(git_repo), "--owned", "a.py",
+                               "--message", "x")
+    assert out.returncode == 0, out.stderr
+    data = json.loads(out.stdout)
+    assert "sha" in data
+    files = git("show", "--name-only", "--format=", data["sha"]).split()
+    assert files == ["a.py"]   # b.py NOT absorbed into the commit
