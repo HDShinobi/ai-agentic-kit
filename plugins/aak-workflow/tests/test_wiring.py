@@ -73,14 +73,19 @@ def _make_fake_bin(bin_dir: Path, name: str, body: str) -> None:
     script.write_text(f"#!{sys.executable}\n{body}", encoding="utf-8")
     script.chmod(0o755)
 
-def _run_dispatch_worker(repo: Path, role: str, prompt_text: str, path_env: str):
+def _run_dispatch_worker(repo: Path, role: str, prompt_text: str, path_env: str,
+                         cli: str | None = None, model: str | None = None):
     prompt = repo / "prompt.txt"
     prompt.write_text(prompt_text, encoding="utf-8")
     script = PLUGIN_ROOT / "scripts" / "dispatch_worker.py"
+    argv = [sys.executable, str(script), "--role", role, "--repo", str(repo),
+           "--prompt-file", str(prompt), "--cwd", str(repo)]
+    if cli is not None:
+        argv += ["--cli", cli]
+    if model is not None:
+        argv += ["--model", model]
     return subprocess.run(
-        [sys.executable, str(script), "--role", role, "--repo", str(repo),
-         "--prompt-file", str(prompt), "--cwd", str(repo)],
-        capture_output=True, text=True, timeout=30,
+        argv, capture_output=True, text=True, timeout=30,
         env={"PATH": path_env, "PYTHONPATH": str(PLUGIN_ROOT)},
     )
 
@@ -147,6 +152,70 @@ def test_dispatch_worker_cli_wires_prompt_via_stdin_for_codex(tmp_path):
     data = json.loads(out.stdout)
     assert data["exit_code"] == 0 and data["tripped"] is None
     assert "hello-via-stdin" in data["stdout"]
+
+# --- Task 16: dispatch_worker returns the parsed handoff + honors --cli/--model overrides ---
+
+def test_dispatch_worker_parses_handoff(tmp_path):
+    # The tested exit0+sentinel+last-match gate (mcd_core.handoff.parse_handoff)
+    # must actually run at the CLI boundary, not just in test_handoff.py.
+    _write_delivery_yml(tmp_path, "code", "claude", "opus")
+    _make_fake_bin(tmp_path / "bin", "claude", textwrap.dedent("""\
+        import sys
+        sys.stdout.write("doing work\\nStatus: DONE\\nRole: code\\nModel: fake\\n"
+                         "Changed paths: src/a.py\\nVerification: pytest -> pass\\n"
+                         "Disposition: ACCEPT\\nEND OF HANDOFF\\n")
+        sys.exit(0)
+        """))
+    out = _run_dispatch_worker(tmp_path, "code", "hello\n",
+                               f"{tmp_path / 'bin'}:/usr/bin:/bin")
+    assert out.returncode == 0, out.stderr
+    data = json.loads(out.stdout)
+    assert data["success"] is True
+    assert data["handoff"]["status"] == "DONE"
+    assert data["handoff"]["disposition"] == "ACCEPT"
+    assert data["handoff"]["changed_paths"] == ["src/a.py"]
+
+def test_dispatch_worker_flags_truncated_handoff(tmp_path):
+    # No END OF HANDOFF sentinel -> parse_handoff raises HandoffError -> the
+    # CLI must report success: false with the reason, not crash and not
+    # silently claim success on truncated/untrusted worker output.
+    _write_delivery_yml(tmp_path, "code", "claude", "opus")
+    _make_fake_bin(tmp_path / "bin", "claude", textwrap.dedent("""\
+        import sys
+        sys.stdout.write("doing work\\nStatus: DONE\\nno sentinel here\\n")
+        sys.exit(0)
+        """))
+    out = _run_dispatch_worker(tmp_path, "code", "hello\n",
+                               f"{tmp_path / 'bin'}:/usr/bin:/bin")
+    assert out.returncode == 0, out.stderr
+    data = json.loads(out.stdout)
+    assert data["success"] is False
+    assert "handoff_error" in data
+
+def test_dispatch_worker_cli_model_override(tmp_path):
+    # role "code" is bound to a *nonexistent* adapter id in config -- without
+    # the override applying before get_adapter(), this would fail with a
+    # ConfigError ("unknown adapter/cli id"), like
+    # test_dispatch_worker_cli_unknown_cli_emits_error_json. Passing
+    # --cli claude --model OVERRIDE-MODEL must both dodge that error AND put
+    # OVERRIDE-MODEL (not the config's "base-model") on the worker's argv --
+    # proving the override supersedes the config binding for this dispatch.
+    _write_delivery_yml(tmp_path, "code", "not-a-real-cli", "base-model")
+    _make_fake_bin(tmp_path / "bin", "claude", textwrap.dedent("""\
+        import sys
+        model = sys.argv[sys.argv.index("--model") + 1]
+        sys.stdout.write(f"Status: DONE\\nRole: code\\nModel: {model}\\n"
+                         "Changed paths:\\nVerification: none\\n"
+                         "Disposition: ACCEPT\\nEND OF HANDOFF\\n")
+        sys.exit(0)
+        """))
+    out = _run_dispatch_worker(tmp_path, "code", "hello\n",
+                               f"{tmp_path / 'bin'}:/usr/bin:/bin",
+                               cli="claude", model="OVERRIDE-MODEL")
+    assert out.returncode == 0, out.stdout + out.stderr
+    data = json.loads(out.stdout)
+    assert data["success"] is True
+    assert data["handoff"]["model"] == "OVERRIDE-MODEL"
 
 # --- Task 11: the protocol playbook (SKILL.md + references/handoff.md + references/adapters.md) ---
 
