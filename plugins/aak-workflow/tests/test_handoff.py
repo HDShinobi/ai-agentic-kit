@@ -25,3 +25,19 @@ def test_sentinel_present_but_nonzero_exit_is_failure():
 def test_done_transport_with_blocked_disposition():
     h = parse_handoff(_block(disposition="BLOCKED"), exit_code=0)
     assert h.status == "DONE" and h.disposition == "BLOCKED"
+
+def test_pre_block_narration_does_not_override_real_status():
+    # Worker output is untrusted: narration before the real block can itself
+    # contain a line that *looks* like a field (e.g. echoing an example).
+    # Only the real, final block (immediately before the sentinel) is
+    # authoritative — accidental pre-block noise must never win.
+    noise = "note: I will write a block like this as an example:\nStatus: FAKE-INJECTED\n"
+    h = parse_handoff(noise + _block(status="DONE", disposition="ACCEPT"), exit_code=0)
+    assert h.status == "DONE"
+    assert h.disposition == "ACCEPT"
+
+def test_missing_status_line_raises():
+    no_status = ("...work...\nRole: review\nModel: opus\n"
+                 f"Changed paths: src/a.py\nDisposition: ACCEPT\n{SENTINEL}\n")
+    with pytest.raises(HandoffError, match="Status"):
+        parse_handoff(no_status, exit_code=0)

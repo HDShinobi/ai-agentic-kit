@@ -10,7 +10,8 @@ from .errors import HandoffError
 
 SENTINEL = "END OF HANDOFF"
 _FIELDS = {"status": "Status:", "role": "Role:", "model": "Model:",
-           "disposition": "Disposition:", "verification": "Verification:"}
+           "changed_paths": "Changed paths:", "disposition": "Disposition:",
+           "verification": "Verification:"}
 
 @dataclass(frozen=True)
 class Handoff:
@@ -23,10 +24,14 @@ class Handoff:
     raw: str
 
 def _field(text: str, prefix: str) -> str | None:
+    # Last-match-wins: the real block is the final structured section,
+    # immediately before the sentinel, so it must beat any earlier
+    # look-alike line from untrusted pre-block narration.
+    hit = None
     for line in text.splitlines():
         if line.strip().startswith(prefix):
-            return line.split(prefix, 1)[1].strip()
-    return None
+            hit = line.split(prefix, 1)[1].strip()
+    return hit
 
 def parse_handoff(stdout: str, exit_code: int) -> Handoff:
     if exit_code != 0:
@@ -35,17 +40,18 @@ def parse_handoff(stdout: str, exit_code: int) -> Handoff:
     if SENTINEL not in stdout:
         raise HandoffError("missing END OF HANDOFF sentinel — output truncated "
                            "mid-write; retry/escalate, never parse (§4.6)")
-    status = _field(stdout, _FIELDS["status"])
+    block = stdout[: stdout.rfind(SENTINEL)]   # scope to the block; ignore anything after
+    status = _field(block, _FIELDS["status"])
     if not status:
         raise HandoffError("handoff has no Status: line")
-    raw_paths = _field(stdout, "Changed paths:") or ""
+    raw_paths = _field(block, _FIELDS["changed_paths"]) or ""
     changed = [p.strip() for p in raw_paths.replace(",", " ").split() if p.strip()]
     return Handoff(
         status=status,
-        role=_field(stdout, _FIELDS["role"]) or "",
-        model=_field(stdout, _FIELDS["model"]) or "",
+        role=_field(block, _FIELDS["role"]) or "",
+        model=_field(block, _FIELDS["model"]) or "",
         changed_paths=changed,
-        disposition=_field(stdout, _FIELDS["disposition"]),
-        verification=_field(stdout, _FIELDS["verification"]) or "",
+        disposition=_field(block, _FIELDS["disposition"]),
+        verification=_field(block, _FIELDS["verification"]) or "",
         raw=stdout,
     )
