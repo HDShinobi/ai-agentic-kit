@@ -14,3 +14,110 @@ def test_package_exposes_version_and_error_hierarchy():
 
 def test_plugin_manifest_present():
     assert (PLUGIN_ROOT / ".claude-plugin" / "plugin.json").is_file()
+
+# --- Task 10: thin CLI entrypoints over mcd_core (preflight_clis.py, dispatch_worker.py) ---
+
+import json, subprocess, sys, textwrap
+
+def test_preflight_cli_emits_json(tmp_path):
+    (tmp_path / ".aak").mkdir()
+    (tmp_path / ".aak" / "delivery.yml").write_text(textwrap.dedent("""
+        roles:
+          review: {cli: claude, model: opus}
+    """), encoding="utf-8")
+    script = PLUGIN_ROOT / "scripts" / "preflight_clis.py"
+    out = subprocess.run([sys.executable, str(script), str(tmp_path)],
+                         capture_output=True, text=True,
+                         env={"PATH": "/usr/bin:/bin", "PYTHONPATH": str(PLUGIN_ROOT)})
+    assert out.returncode == 0, out.stderr
+    data = json.loads(out.stdout)
+    assert "roles" in data and "review" in data["roles"]
+
+def test_preflight_cli_is_inert_without_config(tmp_path):
+    # CLI contract: absent .aak/delivery.yml -> {"roles": {}, "inert": true, ...}, exit 0.
+    script = PLUGIN_ROOT / "scripts" / "preflight_clis.py"
+    out = subprocess.run([sys.executable, str(script), str(tmp_path)],
+                         capture_output=True, text=True,
+                         env={"PATH": "/usr/bin:/bin", "PYTHONPATH": str(PLUGIN_ROOT)})
+    assert out.returncode == 0, out.stderr
+    data = json.loads(out.stdout)
+    assert data["roles"] == {} and data.get("inert") is True
+
+def _write_delivery_yml(repo: Path, role: str, cli: str, model: str) -> None:
+    (repo / ".aak").mkdir(exist_ok=True)
+    (repo / ".aak" / "delivery.yml").write_text(textwrap.dedent(f"""
+        roles:
+          {role}: {{cli: {cli}, model: {model}}}
+    """), encoding="utf-8")
+
+def _make_fake_bin(bin_dir: Path, name: str, body: str) -> None:
+    """A minimal fake CLI on PATH, run by the SAME interpreter as the test process
+    (absolute-path shebang -- no dependency on a system python3 being on PATH)."""
+    bin_dir.mkdir(exist_ok=True)
+    script = bin_dir / name
+    script.write_text(f"#!{sys.executable}\n{body}", encoding="utf-8")
+    script.chmod(0o755)
+
+def _run_dispatch_worker(repo: Path, role: str, prompt_text: str, path_env: str):
+    prompt = repo / "prompt.txt"
+    prompt.write_text(prompt_text, encoding="utf-8")
+    script = PLUGIN_ROOT / "scripts" / "dispatch_worker.py"
+    return subprocess.run(
+        [sys.executable, str(script), "--role", role, "--repo", str(repo),
+         "--prompt-file", str(prompt), "--cwd", str(repo)],
+        capture_output=True, text=True, timeout=30,
+        env={"PATH": path_env, "PYTHONPATH": str(PLUGIN_ROOT)},
+    )
+
+def test_dispatch_worker_cli_missing_config_emits_error_json(tmp_path):
+    out = _run_dispatch_worker(tmp_path, "code", "hello\n", "/usr/bin:/bin")
+    assert out.returncode != 0
+    data = json.loads(out.stdout)
+    assert "error" in data
+
+def test_dispatch_worker_cli_spawn_failure_emits_error_json(tmp_path):
+    # Config/role are well-formed, but no "claude" binary exists on this PATH.
+    # Task 7 follow-up: run_worker must raise DispatchError (not a raw
+    # FileNotFoundError), and the CLI must turn that into structured JSON
+    # instead of crashing with a traceback.
+    _write_delivery_yml(tmp_path, "code", "claude", "opus")
+    out = _run_dispatch_worker(tmp_path, "code", "hello\n", "/usr/bin:/bin")
+    assert out.returncode != 0, out.stdout
+    data = json.loads(out.stdout)
+    assert "error" in data and "claude" in data["error"]
+
+def test_dispatch_worker_cli_wires_prompt_via_arg_for_claude(tmp_path):
+    # Ruling B: claude's adapter takes the prompt file path as a trailing CLI arg.
+    _write_delivery_yml(tmp_path, "code", "claude", "opus")
+    _make_fake_bin(tmp_path / "bin", "claude", textwrap.dedent("""\
+        import sys
+        with open(sys.argv[-1], encoding="utf-8") as f:
+            data = f.read()
+        sys.stdout.write(f"argfile={data}")
+        sys.exit(0)
+        """))
+    out = _run_dispatch_worker(tmp_path, "code", "hello-via-arg\n",
+                               f"{tmp_path / 'bin'}:/usr/bin:/bin")
+    assert out.returncode == 0, out.stderr
+    data = json.loads(out.stdout)
+    assert data["exit_code"] == 0 and data["tripped"] is None
+    assert "hello-via-arg" in data["stdout"]
+
+def test_dispatch_worker_cli_wires_prompt_via_stdin_for_codex(tmp_path):
+    # Ruling B: codex reads its prompt from stdin, not argv -- dispatch_worker.py
+    # must pass stdin_file=<prompt file> to run_worker for this adapter only.
+    # (If this wiring regresses to always stdin_file=None, codex sees EOF and
+    # this test fails -- it does not merely check the "arg" path works.)
+    _write_delivery_yml(tmp_path, "code", "codex", "gpt-5.6-terra")
+    _make_fake_bin(tmp_path / "bin", "codex", textwrap.dedent("""\
+        import sys
+        data = sys.stdin.read()
+        sys.stdout.write(f"stdin={data}")
+        sys.exit(0)
+        """))
+    out = _run_dispatch_worker(tmp_path, "code", "hello-via-stdin\n",
+                               f"{tmp_path / 'bin'}:/usr/bin:/bin")
+    assert out.returncode == 0, out.stderr
+    data = json.loads(out.stdout)
+    assert data["exit_code"] == 0 and data["tripped"] is None
+    assert "hello-via-stdin" in data["stdout"]

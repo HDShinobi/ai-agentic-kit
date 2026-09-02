@@ -13,6 +13,8 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Callable
 
+from .errors import DispatchError
+
 # Removed from the worker env: no remote credential can reach a worker, and no
 # global base-url override may leak first-party traffic to a foreign endpoint.
 WORKER_ENV_SCRUB: tuple[str, ...] = (
@@ -78,11 +80,17 @@ def run_worker(argv: list[str], *, cwd: Path, wall_sec: int, idle_sec: int,
     # affect it.
     stdin_source = open(stdin_file, "rb") if stdin_file is not None else subprocess.DEVNULL
     try:
-        proc = subprocess.Popen(
-            argv, cwd=str(cwd), stdin=stdin_source,
-            stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
-            text=True, bufsize=1, env=_worker_env(env), start_new_session=True,
-        )
+        try:
+            proc = subprocess.Popen(
+                argv, cwd=str(cwd), stdin=stdin_source,
+                stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                text=True, bufsize=1, env=_worker_env(env), start_new_session=True,
+            )
+        except OSError as exc:
+            # Bad argv[0] (typo, CLI not on PATH) or another spawn-time OS
+            # failure: surface as the typed error the dispatch interface
+            # declares, never a raw FileNotFoundError/OSError traceback.
+            raise DispatchError(f"failed to spawn worker {argv[0]!r}: {exc}") from exc
     finally:
         if stdin_file is not None:
             stdin_source.close()

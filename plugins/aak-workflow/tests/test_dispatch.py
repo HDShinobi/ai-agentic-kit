@@ -3,6 +3,7 @@ import sys, os
 from pathlib import Path
 import pytest
 from mcd_core.dispatch import run_worker, WORKER_ENV_SCRUB
+from mcd_core.errors import DispatchError
 
 FAKES = Path(__file__).resolve().parent / "fakes"
 
@@ -51,6 +52,14 @@ def test_stdin_file_is_piped_to_worker(tmp_path):
     assert out.tripped is None and out.exit_code == 0
     assert known.strip() in out.stdout
     assert "END OF HANDOFF" in out.stdout
+
+def test_spawn_failure_raises_dispatch_error():
+    # Task 7 follow-up: a bad argv[0] (CLI not on PATH) must surface as the
+    # typed DispatchError the dispatch interface declares -- not a raw
+    # FileNotFoundError/OSError leaking out of subprocess.Popen.
+    with pytest.raises(DispatchError):
+        run_worker(["/nonexistent/cli-xyz"], cwd=FAKES, wall_sec=5, idle_sec=5,
+                   prompt_file=FAKES / "unused.txt")
 
 def test_default_stdin_is_devnull_not_a_hang():
     # stdin_file=None must keep the brief's hang-prevention default: the child's
