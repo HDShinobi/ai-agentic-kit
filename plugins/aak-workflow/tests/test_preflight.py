@@ -30,3 +30,16 @@ def test_first_party_needs_no_key_env():
     r = probe(RoleBinding("claude", "opus"), secrets={},
               which=_which({"claude"}), env={})
     assert r.outcome == "dispatch"
+
+def test_kiro_binary_name_resolved():
+    r = probe(RoleBinding("kiro", "x"), {"kiro": "KIRO_KEY"},
+              which=_which({"kiro-cli"}), env={"KIRO_KEY": "1"})
+    assert r.outcome == "dispatch"
+    r2 = probe(RoleBinding("kiro", "x"), {"kiro": "KIRO_KEY"},
+               which=_which(set()), env={"KIRO_KEY": "1"})
+    assert r2.outcome == "degrade"
+
+def test_multi_model_shell_no_key_is_unauthed():
+    r = probe(RoleBinding("command-code", "x"), secrets={},
+              which=_which({"command-code"}), env={})
+    assert r.outcome == "escalate"

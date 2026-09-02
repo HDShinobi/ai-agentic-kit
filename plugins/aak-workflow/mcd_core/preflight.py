@@ -6,6 +6,7 @@ mutates anything. A runtime failure during dispatch is NOT a preflight case
 from __future__ import annotations
 from dataclasses import dataclass
 from typing import Callable, Mapping
+from .adapters import ADAPTERS
 from .config import RoleBinding
 
 # Adapters whose auth is a logged-in first-party session, not an env key.
@@ -29,7 +30,9 @@ def _auth_present(binding: RoleBinding, secrets: Mapping[str, str],
 def probe(binding: RoleBinding, secrets: Mapping[str, str], *,
           which: Callable[[str], str | None], env: Mapping[str, str],
           on_missing_auth: str = "escalate") -> PreflightResult:
-    binary = which(binding.cli)
+    adapter = ADAPTERS.get(binding.cli)
+    binary_name = adapter.resolved_binary if adapter is not None else binding.cli
+    binary = which(binary_name)
     if binary is None:
         return PreflightResult("degrade",
             f"{binding.cli}: binary absent — degrade to {binding.cli}→subagent (Golden Rule #1)")

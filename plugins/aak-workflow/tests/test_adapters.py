@@ -40,3 +40,7 @@ def test_effort_on_effortless_adapter_warns():
         defaults=Defaults(), timeouts={}, secrets={})
     warns = effort_warnings(cfg)
     assert any("review" in w and "gemini" in w for w in warns)
+
+def test_resolved_binary():
+    assert get_adapter("kiro").resolved_binary == "kiro-cli"
+    assert get_adapter("claude").resolved_binary == "claude"

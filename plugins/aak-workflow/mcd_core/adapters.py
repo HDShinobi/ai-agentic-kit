@@ -24,9 +24,14 @@ class Adapter:
     effort_supported: bool
     prompt_via: str            # "arg" | "stdin"
     _argv: Callable[[RoleBinding, Path], list[str]]
+    binary: str | None = None  # actual executable name, if it differs from `id` (e.g. kiro -> kiro-cli)
 
     def compose_argv(self, binding: RoleBinding, prompt_file: Path) -> list[str]:
         return self._argv(binding, prompt_file)
+
+    @property
+    def resolved_binary(self) -> str:
+        return self.binary or self.id
 
 def _claude(b: RoleBinding, pf: Path) -> list[str]:
     # model pinned via --model; effort via model tier (not a flag) → not a CLI arg here.
@@ -62,7 +67,7 @@ ADAPTERS: dict[str, Adapter] = {
     "command-code": Adapter("command-code", False, "arg", _command_code),
     "opencode": Adapter("opencode", False, "arg", _opencode),
     "gemini": Adapter("gemini", False, "arg", _gemini),
-    "kiro": Adapter("kiro", False, "arg", _kiro),
+    "kiro": Adapter("kiro", False, "arg", _kiro, binary="kiro-cli"),
 }
 
 def get_adapter(cli: str) -> Adapter:
