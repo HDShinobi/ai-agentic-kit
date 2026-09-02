@@ -370,6 +370,20 @@ def test_workspace_ctl_bad_repo_emits_error_json():
     data = json.loads(out.stdout)
     assert "error" in data
 
+def test_workspace_ctl_prepare_bad_repo_emits_error_json(tmp_path):
+    # Completion fix: test_workspace_ctl_bad_repo_emits_error_json above only
+    # exercises branch-gate -> mcd_core.workspace._git, which the prior
+    # fix-wave already hardened. prepare -> prepare_workspace -> _branch_exists
+    # has its OWN bare subprocess.run(cwd=repo) call that bypasses _git()
+    # entirely -- a nonexistent --repo must still turn into ContainmentError
+    # -> structured JSON, not a raw FileNotFoundError traceback.
+    ws_dir = tmp_path / "wt"
+    out = _run_workspace_ctl("prepare", "--repo", "/nonexistent-xyz-123",
+                             "--branch", "x", "--workspaces-dir", str(ws_dir))
+    assert out.returncode != 0, out.stdout
+    data = json.loads(out.stdout)
+    assert "error" in data
+
 # --- Task 19: containment_ctl.py -- thin CLI over mcd_core.containment
 # (snapshot/detect-drift/restore/changed-paths/classify-scope/commit-owned) ---
 
@@ -462,6 +476,20 @@ def test_containment_ctl_bad_repo_emits_error_json():
     # traceback past this CLI's `except McdError`.
     out = _run_containment_ctl("changed-paths", "--repo", "/nonexistent-xyz-123",
                                "--baseline", "HEAD")
+    assert out.returncode != 0, out.stdout
+    data = json.loads(out.stdout)
+    assert "error" in data
+
+def test_containment_ctl_commit_owned_bad_repo_emits_error_json():
+    # Completion fix: test_containment_ctl_bad_repo_emits_error_json above
+    # only exercises changed-paths -> mcd_core.containment._git, which the
+    # prior fix-wave already hardened. commit-owned -> commit_owned ->
+    # _is_ignored has its OWN bare subprocess.run(cwd=repo) call that
+    # bypasses _git() entirely -- a nonexistent --repo must still turn into
+    # ContainmentError -> structured JSON, not a raw FileNotFoundError
+    # traceback.
+    out = _run_containment_ctl("commit-owned", "--repo", "/nonexistent-xyz-123",
+                               "--owned", "a.py", "--message", "x")
     assert out.returncode != 0, out.stdout
     data = json.loads(out.stdout)
     assert "error" in data

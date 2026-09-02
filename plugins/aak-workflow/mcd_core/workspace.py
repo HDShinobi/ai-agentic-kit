@@ -23,8 +23,17 @@ def _git(repo: Path, *args: str) -> str:
     return r.stdout
 
 def _branch_exists(repo: Path, name: str) -> bool:
-    r = subprocess.run(["git", "show-ref", "--verify", "--quiet", f"refs/heads/{name}"],
-                       cwd=repo)
+    try:
+        r = subprocess.run(["git", "show-ref", "--verify", "--quiet", f"refs/heads/{name}"],
+                           cwd=repo)
+    except OSError as exc:
+        # Sibling of _git's guard above: this call bypasses _git() (no
+        # stdout/stderr capture needed, just the exit code) but the same
+        # nonexistent/inaccessible repo raises the same raw
+        # FileNotFoundError/NotADirectoryError/OSError before git even
+        # spawns -- never let that leak past this module's typed-error
+        # contract.
+        raise ContainmentError(f"git invocation failed in {repo}: {exc}") from exc
     return r.returncode == 0
 
 def prepare_workspace(repo_root: Path, feature_branch: str, *,

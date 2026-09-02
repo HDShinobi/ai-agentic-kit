@@ -86,7 +86,17 @@ def classify_scope(changed: set[str], owned: set[str]) -> set[str]:
     return set(changed) - set(owned)
 
 def _is_ignored(repo: Path, path: str) -> bool:
-    return subprocess.run(["git", "check-ignore", "-q", path], cwd=repo).returncode == 0
+    try:
+        r = subprocess.run(["git", "check-ignore", "-q", path], cwd=repo)
+    except OSError as exc:
+        # Sibling of _git's guard above: this call bypasses _git() (no
+        # stdout/stderr capture needed, just the exit code) but the same
+        # nonexistent/inaccessible repo raises the same raw
+        # FileNotFoundError/NotADirectoryError/OSError before git even
+        # spawns -- never let that leak past this module's typed-error
+        # contract.
+        raise ContainmentError(f"git invocation failed in {repo}: {exc}") from exc
+    return r.returncode == 0
 
 def commit_owned(repo: Path, owned: list[str], message: str, *,
                  force_add: list[str] = []) -> str:
