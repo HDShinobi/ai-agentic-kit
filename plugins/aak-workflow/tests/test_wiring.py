@@ -316,3 +316,43 @@ def test_preflight_independence_absent_without_review_role(tmp_path):
     assert out.returncode == 0, out.stderr
     data = json.loads(out.stdout)
     assert "independence" not in data
+
+# --- Task 18: workspace_ctl.py -- thin CLI over mcd_core.workspace
+# (branch/overlap gates + prepare worktree) ---
+
+def _run_workspace_ctl(*args: str):
+    script = PLUGIN_ROOT / "scripts" / "workspace_ctl.py"
+    # Real git needed (unlike the other CLI-boundary tests, which only ever
+    # spawn fake/absent CLI binaries) -- /usr/bin/git is Apple's real git on
+    # this machine, confirmed working, so the same restricted PATH used by
+    # every other subprocess test here still suffices.
+    return subprocess.run(
+        [sys.executable, str(script), *args],
+        capture_output=True, text=True, timeout=30,
+        env={"PATH": "/usr/bin:/bin", "PYTHONPATH": str(PLUGIN_ROOT)},
+    )
+
+def test_workspace_ctl_prepare(git_repo):
+    ws_dir = git_repo.parent / "wt"
+    out = _run_workspace_ctl("prepare", "--repo", str(git_repo), "--branch", "feat/x",
+                             "--workspaces-dir", str(ws_dir))
+    assert out.returncode == 0, out.stderr
+    data = json.loads(out.stdout)
+    workspace = Path(data["workspace"])
+    assert workspace.resolve() != git_repo.resolve()
+    assert workspace.is_dir()
+
+def test_workspace_ctl_overlap_gate(git_repo):
+    (git_repo / "seed.txt").write_text("user is editing\n", encoding="utf-8")
+    out = _run_workspace_ctl("overlap-gate", "--repo", str(git_repo), "--owned", "seed.txt")
+    assert out.returncode == 0, out.stderr
+    data = json.loads(out.stdout)
+    assert data == {"overlap": ["seed.txt"]}
+
+def test_workspace_ctl_branch_gate_detached(git_repo, git):
+    head = git("rev-parse", "HEAD").strip()
+    git("checkout", "-q", head)      # detached HEAD
+    out = _run_workspace_ctl("branch-gate", "--repo", str(git_repo))
+    assert out.returncode != 0
+    data = json.loads(out.stdout)
+    assert "error" in data
