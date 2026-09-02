@@ -147,3 +147,16 @@ def test_dispatch_worker_cli_wires_prompt_via_stdin_for_codex(tmp_path):
     data = json.loads(out.stdout)
     assert data["exit_code"] == 0 and data["tripped"] is None
     assert "hello-via-stdin" in data["stdout"]
+
+# --- Task 11: the protocol playbook (SKILL.md + references/handoff.md + references/adapters.md) ---
+
+def test_skill_frontmatter_and_no_hardcoded_models():
+    skill = PLUGIN_ROOT / "skills" / "multi-cli-delivery" / "SKILL.md"
+    text = skill.read_text(encoding="utf-8")
+    assert text.startswith("---")
+    assert "name: multi-cli-delivery" in text
+    assert "Triggers on" in text or "Triggers on…" in text
+    # Golden Rule #1: the SKILL must not hardcode a project's model/plan choice.
+    for banned in ("gpt-5.6-terra", "glm-5.2", "minimax-m3"):
+        assert banned not in text, f"SKILL.md must not hardcode model {banned!r}"
+    assert "END OF HANDOFF" in text
