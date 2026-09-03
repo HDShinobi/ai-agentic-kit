@@ -74,9 +74,12 @@ six uniformly) but ignore it — they have no analogous flag today.
 
 - **Model and effort are named on every dispatch** — a worker is never left
   on the CLI's own default; an unpinned dispatch is an unpinned environment.
-- **The prompt always goes to a file inside the run workspace**, never
+- **The prompt is written to a temp file outside the run workspace**, never
   inline in a shell argument (prompts routinely carry backticks, quotes, and
-  newlines that would break argv construction or shell-escape unsafely).
+  newlines that would break argv construction or shell-escape unsafely). For
+  `stdin` adapters the dispatcher pipes that file's bytes to the worker on
+  stdin — the worker never sees the file path; `arg` adapters instead receive
+  the path itself as a trailing argument (see `prompt_via` above).
 
 ## First-party vs. foreign models
 

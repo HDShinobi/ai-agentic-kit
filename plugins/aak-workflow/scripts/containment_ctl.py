@@ -4,10 +4,14 @@
 Control invokes the deterministic checks at runtime instead of hand-rolling
 git subprocess calls: snapshot/restore git-control state around a worker
 run, detect the drift a rogue commit or ref/index change would leave behind,
-compute the true changed-path set (Ruling-A: tracked + untracked + ignored,
-so e.g. a leaked secret in a .gitignore'd file can't slip past scope),
-classify what a candidate touched outside its declared ownership, and commit
-ONLY owned paths with a commit==reviewed-diff verification. Mirrors
+compute the true changed-path set (tracked diff + new untracked files;
+gitignored churn -- test/build caches, agent scratch -- is deliberately
+excluded, since it can never be committed anyway and is never a scope
+violation; a leaked secret in a gitignored file is instead kept out of a
+worker's readable view by spec §7's data-egress boundary, not caught here --
+see mcd_core.containment.changed_paths' own comment), classify what a
+candidate touched outside its declared ownership, and commit ONLY owned
+paths with a commit==reviewed-diff verification. Mirrors
 dispatch_worker.py/workspace_ctl.py's contract: any mcd_core failure
 (ContainmentError, or any other McdError) becomes structured JSON on stdout
 with a non-zero exit -- never a raw traceback -- so Control can always parse

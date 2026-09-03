@@ -462,7 +462,16 @@ def test_containment_ctl_snapshot_drift_restore(git_repo, git, tmp_path):
     assert git("rev-parse", "HEAD").strip() == before_head
     assert (git_repo / "rogue.txt").exists()   # working tree untouched by restore
 
-def test_containment_ctl_changed_paths_includes_ignored(git_repo, git):
+def test_containment_ctl_changed_paths_excludes_ignored(git_repo, git):
+    # Ruling reversed (supersedes the ca8ef0a tooling-scratch whitelist): the
+    # project's own .gitignore is authoritative for what counts as churn, not
+    # a hand-maintained prefix list -- see mcd_core.containment.changed_paths'
+    # own comment. An ignored path can never be committed anyway
+    # (commit-owned only ever stages the declared --owned set), and a
+    # sensitive ignored file is excluded from a worker's readable view by
+    # SKILL.md's data-egress boundary (spec §7) before dispatch, not by this
+    # check. This CLI-level test used to assert the ignored file WAS
+    # returned; it is now inverted to match.
     (git_repo / ".gitignore").write_text("*.log\n", encoding="utf-8")
     git("add", ".gitignore")
     git("commit", "-q", "-m", "ignore logs")
@@ -475,7 +484,8 @@ def test_containment_ctl_changed_paths_includes_ignored(git_repo, git):
     assert out.returncode == 0, out.stderr
     data = json.loads(out.stdout)
     assert data["changed"] == sorted(data["changed"])   # stable sorted JSON
-    assert "app.py" in data["changed"] and "secret.log" in data["changed"]
+    assert "app.py" in data["changed"]
+    assert "secret.log" not in data["changed"]
 
 def test_containment_ctl_commit_owned_only_owned(git_repo, git):
     (git_repo / "a.py").write_text("a\n", encoding="utf-8")

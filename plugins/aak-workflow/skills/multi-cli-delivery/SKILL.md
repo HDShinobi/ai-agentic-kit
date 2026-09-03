@@ -203,11 +203,20 @@ in §5 applies inside it unchanged.
 
 ## 4. Dispatch (spec §4.5, §6.1)
 
-Write the role's prompt to a file **inside the run workspace** — never inline
-in a shell argument, prompts carry backticks/quotes/newlines — and pin the
-model and effort explicitly in it (a worker left on the CLI's own default is
-an unpinned environment). The prompt instructs the worker to end with the
-handoff block described in `references/handoff.md`.
+Write the role's prompt to a file at a **temp path outside the run
+workspace** (the run's own `$TMPDIR`/temp directory — never `.aak/` or
+anywhere inside the repo) — never inline in a shell argument, prompts carry
+backticks/quotes/newlines — and pin the model and effort explicitly in it (a
+worker left on the CLI's own default is an unpinned environment). The
+workspace never needs to hold this file: `dispatch_worker.py` opens
+`--prompt-file` itself and pipes its bytes into the worker's stdin rather
+than handing the worker a path under its own `--cwd` (`prompt_via: stdin`
+for every adapter live-verified today, see `references/adapters.md`).
+Delete the prompt file once the worker returns (spec §4.3) — it is
+dispatch-scoped Control state, not a workspace artifact, so it must never be
+left behind for a later scope/containment check (§5) to trip over. The
+prompt instructs the worker to end with the handoff block described in
+`references/handoff.md`.
 
 ```
 python3 "${CLAUDE_PLUGIN_ROOT}/scripts/dispatch_worker.py" \
@@ -269,8 +278,12 @@ this.
 python3 "${CLAUDE_PLUGIN_ROOT}/scripts/containment_ctl.py" snapshot \
   --repo <workspace> --out <statefile>
 ```
-→ `{"ok": true, "state": "<statefile>"}`. The statefile's own `head` field
-doubles as the task's baseline ref for the changed-paths check below.
+→ `{"ok": true, "state": "<statefile>"}`. `<statefile>` is, like the prompt
+file (§4), a temp path **outside** the workspace — never under `.aak/` or
+anywhere inside the workspace itself, so it can never appear in that
+workspace's own changed-paths scan — and Control deletes it once its
+drift/restore use is done. The statefile's own `head` field doubles as the
+task's baseline ref for the changed-paths check below.
 
 **After every dispatch**, re-check the git-control state. Workers get no
 git authority — they may only edit working-tree files, never `.git/`:
@@ -300,23 +313,51 @@ python3 "${CLAUDE_PLUGIN_ROOT}/scripts/containment_ctl.py" classify-scope \
   --changed <comma,separated,paths> --owned <comma,separated,paths>
 ```
 `changed-paths` returns `{"changed": [...]}` — tracked diff ∪ new untracked
-∪ `.gitignore`d untracked, unioned (`git status` alone omits the last of
-these). Feed that list straight into `classify-scope` as `--changed`; it
-returns `{"out_of_scope": [...]}`. For PLAN/REVIEW pass `--owned` empty —
-they are expected to touch nothing, so any changed path at all is
-out-of-scope. Any non-empty `out_of_scope` is an **out-of-scope mutation**:
-never reviewed or committed. Control restores the strayed path(s) to the
-task baseline (`git restore`, or removes them if they were untracked at
-baseline, scoped strictly to those paths) and escalates.
+files. `.gitignore`d paths are deliberately **excluded** from that set: the
+project's own `.gitignore` is the authoritative declaration of "churn, not
+signal" — test/build caches and agent scratch (e.g. `.remember/`,
+`.claude/`, `.codex/`) all land in a run workspace unavoidably, and none of
+it is a scope violation, since it can never enter a commit anyway
+(`commit-owned` only ever stages the declared owned set). A prior fix tried
+to hand-whitelist known scratch prefixes instead of trusting `.gitignore`; a
+live end-to-end run proved that whack-a-mole — a codex worker's own
+`pytest` run created `.pytest_cache/`, which the whitelist didn't cover, and
+it still false-flagged as out-of-scope. Feed `changed-paths`' output
+straight into `classify-scope` as `--changed`; it is now a bare set
+difference (`changed − owned`, no per-path filtering) and returns
+`{"out_of_scope": [...]}`. A stray **non**-ignored file, or a modified
+tracked file, outside owned scope still lands in `changed` and is still
+flagged — excluding ignored paths never weakens that. A sensitive ignored
+file (a leaked `.env`/credential) is likewise never flagged here, and that
+is deliberate: keeping such paths out of a non-first-party worker's
+readable view *before* dispatch is §8's data-egress boundary's job, not
+this scope check's. For PLAN/REVIEW pass `--owned` empty — they are
+expected to touch nothing, so any changed path at all is out-of-scope. Any
+non-empty `out_of_scope` is an **out-of-scope mutation**: never reviewed or
+committed. Control restores the strayed path(s) to the task baseline (`git
+restore`, or removes them if they were untracked at baseline, scoped
+strictly to those paths) and escalates.
+
+**Known limitation:** because the scope check excludes gitignored paths, a
+task whose sole owned deliverable is a gitignored (force-add) path reads as
+an empty owned diff and will escalate as `NEEDS_REPLAN` (fail-safe, never a
+wrong commit). Avoid making an ignored file the only owned path in a
+contract, or split the contract.
 
 **Immediately after CODE returns** `success: true` and `handoff.status:
 DONE` with a scope-clean, non-empty `changed` set, that set is the frozen
 candidate — what REVIEW judges and what Control commits, regardless of what
 the workspace looks like later, so no later mutation can be smuggled into
 the commit. After REVIEW returns, re-run `changed-paths` with the same
-baseline: an identical set, together with a clean `detect-drift`, is what
-"REVIEW left the frozen candidate unchanged" means operationally — any
-difference is a containment violation, never committed.
+baseline, take whatever is new beyond the frozen set, and feed that into
+`classify-scope` with `--owned` **empty** (REVIEW owns nothing — not even
+the frozen candidate's own paths, so nothing legitimate should ever appear
+in the delta): a clean `detect-drift` together with an empty `out_of_scope`
+is what "REVIEW left the frozen candidate unchanged" means operationally.
+`changed-paths`' gitignore exclusion (above) already keeps a worker's own
+runtime droppings — caches, agent scratch — out of that delta, so any
+`out_of_scope` entry still left over is a real REVIEW mutation — a
+containment violation, never committed.
 
 **Commit only the frozen, scope-clean owned paths**, on the feature branch:
 ```
