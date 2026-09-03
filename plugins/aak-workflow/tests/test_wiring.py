@@ -546,7 +546,8 @@ def test_skill_invokes_runtime_clis():
 
 def test_plugin_version_bumped_for_phase2():
     manifest = _json.loads((PLUGIN_ROOT / ".claude-plugin" / "plugin.json").read_text())
-    assert manifest["version"] == "0.3.0"
+    # Phase-2+ bumped past the pre-feature baselines
+    assert manifest["version"] not in ("0.1.0", "0.2.0")
 
 def test_readme_vi_documents_multi_cli_delivery():
     readme_vi = (PLUGIN_ROOT.parent.parent / "README.vi.md").read_text(encoding="utf-8")

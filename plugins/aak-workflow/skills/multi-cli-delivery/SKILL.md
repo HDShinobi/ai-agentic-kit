@@ -429,9 +429,10 @@ worker's whole process group — stdout/stderr bytes, CPU time, disk I/O, or a
 child process starting/exiting — so a silent-but-busy compile stays healthy
 while a merely-living child that does nothing does not count as progress.
 Prevention, before either timer fires: the child's stdin is `/dev/null` (or
-the prompt piped in, for the one adapter that reads its prompt from stdin),
-with `CI=1`, `GIT_TERMINAL_PROMPT=0`, `NO_COLOR`, and SSH `BatchMode` set, so
-a credential or input prompt dies immediately instead of hanging.
+the prompt piped in, for the adapters that read their prompt from stdin
+(claude, codex)), with `CI=1`, `GIT_TERMINAL_PROMPT=0`, `NO_COLOR`, and SSH
+`BatchMode` set, so a credential or input prompt dies immediately instead of
+hanging.
 
 On trip: classify as a **process failure** (`FAILED_HANG`), never `BLOCKED`
 or `NEEDS_REPLAN`; kill the whole process group (never just the parent PID)

@@ -1,7 +1,7 @@
 """Run a worker CLI headless with two independent bounds (spec §6.1):
 a hard wall-clock deadline (never extended) and an activity-aware idle detector.
 Prevention: stdin=/dev/null by default (Ruling B: a piped prompt file instead,
-for adapters whose CLI reads its prompt from stdin — e.g. codex); env scrubbed
+for adapters whose CLI reads its prompt from stdin — claude, codex); env scrubbed
 of remote creds + base-url override, with CI/GIT_TERMINAL_PROMPT/NO_COLOR set
 so credential/stdin prompts die fast. On trip: kill the whole process group
 (SIGTERM→grace→SIGKILL), reap, capture partial stdout. This is a PROCESS
