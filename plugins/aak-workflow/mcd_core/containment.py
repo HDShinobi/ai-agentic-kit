@@ -1,9 +1,10 @@
 """Git containment (spec §4.8). Workers have no git authority; Control alone
 commits. This module gives Control the checks that make that enforceable when
 the worktree shares `.git/` with the repo: snapshot/restore git-control state,
-detect drift, compute the true changed-path set (including ignored files),
-and commit ONLY owned paths with a commit==reviewed-diff verification.
-Recovery never touches the working tree.
+detect drift, compute the true changed-path set (tracked changes + new
+non-ignored files -- gitignored churn is deliberately excluded, see
+changed_paths' own comment below for why), and commit ONLY owned paths with a
+commit==reviewed-diff verification. Recovery never touches the working tree.
 """
 from __future__ import annotations
 import subprocess
@@ -74,39 +75,41 @@ def _split0(s: str) -> list[str]:
     return [p for p in s.split("\0") if p]
 
 def changed_paths(repo: Path, baseline_ref: str) -> set[str]:
-    # `git status`/a single ls-files call is not enough to find the true
-    # changed-path set: tracked changes, brand-new untracked files, and
-    # .gitignore'd untracked files (e.g. a leaked secret) live in three
-    # disjoint git views. Union all three so none can slip past scope checks.
+    # Ignored files are INTENTIONALLY EXCLUDED from the changed-path set that
+    # scope checks operate on. The project's own .gitignore is treated as the
+    # authoritative declaration of "churn, not signal":
+    #   1. It can never be committed anyway -- commit_owned() only ever
+    #      stages/commits the caller's declared `owned` set, so an ignored
+    #      path can't slip into a commit regardless of whether it shows up
+    #      here.
+    #   2. It is expected runtime churn, not agent misbehavior -- test/build
+    #      caches (.pytest_cache/, __pycache__/, ...) and agent scratch
+    #      (.remember/, .claude/, .codex/) all land in a run workspace
+    #      unavoidably. A prior fix (superseded) tried to hand-whitelist
+    #      known scratch prefixes instead of trusting .gitignore; a live
+    #      end-to-end run proved that approach is unbounded whack-a-mole --
+    #      a codex worker's own `pytest` run created `.pytest_cache/`, which
+    #      the whitelist didn't cover, and it still false-flagged as
+    #      out-of-scope.
+    #   3. A sensitive ignored file (a leaked .env/secret) is not this
+    #      function's problem -- spec §7's data-egress boundary (SKILL.md's
+    #      Security & data egress section) is what keeps such paths out of a
+    #      non-first-party worker's readable view *before* dispatch, so they
+    #      should not be reachable to leak in the first place.
+    # Trusting .gitignore completely (rather than re-deriving a parallel
+    # exclusion list) loses no real coverage: a mutated TRACKED file, or a
+    # NEW file that is NOT gitignored, is still returned below and still
+    # reaches classify_scope() as a real out-of-scope candidate.
     # -z + _split0 on every view (not a bare whitespace .split()) so a path
     # containing a space is never shattered into two paths.
     tracked = _split0(_git(repo, "diff", "--name-only", "-z", baseline_ref))
     untracked = _split0(_git(repo, "ls-files", "--others", "--exclude-standard", "-z"))
-    ignored = _split0(_git(repo, "ls-files", "--others", "--ignored", "--exclude-standard", "-z"))
-    return set(tracked) | set(untracked) | set(ignored)
-
-# Worker-runtime scratch dirs (agent plugins/sessions -- e.g. Claude's
-# Remember plugin, a `claude`/`codex` worker's own session state) that land
-# in the run workspace unavoidably during dispatch. They are gitignored and
-# never committed (commit_owned() only ever stages/commits the owned set),
-# so they are not a scope violation. Deliberately excludes `.aak/` (holds
-# delivery.yml -- a worker writing there must still be flagged as
-# out-of-scope, spec config integrity) and `.git/` (handled separately by
-# the drift/restore checks above, not by scope classification).
-TOOLING_SCRATCH_PREFIXES: tuple[str, ...] = (".remember/", ".claude/", ".codex/")
-
-def is_tooling_scratch(path: str) -> bool:
-    p = path[2:] if path.startswith("./") else path
-    return any(p.startswith(prefix) or p == prefix.rstrip("/")
-               for prefix in TOOLING_SCRATCH_PREFIXES)
+    return set(tracked) | set(untracked)
 
 def classify_scope(changed: set[str], owned: set[str]) -> set[str]:
-    # changed_paths() above still unions in ignored files (Ruling A), so a
-    # mutated ignored file OUTSIDE this whitelist -- a real leaked .env or
-    # other secret -- is still surfaced here as out-of-scope; only the known
-    # agent-runtime scratch dirs above are exempt, and only because they can
-    # never enter a commit regardless (commit_owned is path-scoped to owned).
-    return {p for p in changed if p not in owned and not is_tooling_scratch(p)}
+    # `changed` (from changed_paths() above) already excludes ignored files,
+    # so a bare set difference is enough here -- no per-path filtering needed.
+    return set(changed) - set(owned)
 
 def _is_ignored(repo: Path, path: str) -> bool:
     try:
