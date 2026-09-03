@@ -235,6 +235,8 @@ Everything auto-activates by description — this grouping is just a map of what
 
 ### Multi-CLI Delivery (`/aak-workflow:delegate`)
 
+![Multi-CLI Delivery architecture — Control (Claude) drives deterministic helper CLIs (preflight/workspace/dispatch/containment) that dispatch plan/code/review to different headless AI-CLIs and models inside an isolated git worktree (REVIEW ≠ CODE), commit per task to a feature branch, all bracketed by two human gates.](assets/multi-cli-delivery-architecture.svg)
+
 Deliver a change with a *heterogeneous* team of CLIs: Control (Claude) decomposes an approved design and dispatches **plan / code / review** to different AI-CLIs and models — headless, in an isolated git worktree — with an independent reviewer on a **different model** (REVIEW ≠ CODE), per-task commits owned by Control, and the human owning the design-approval and merge gates. Configure per project in `.aak/delivery.yml` (roles → CLI+model); under the hood the protocol runs on deterministic helper CLIs (preflight/dispatch/workspace/containment), not hand-parsed prose. On a machine with only Claude, every role degrades to a Claude subagent and it still works. Distinct from `/orchestrate` (single-model, in-process). Requires `pyyaml`; scripts are stdlib otherwise.
 
 ## 🛡 Safety
