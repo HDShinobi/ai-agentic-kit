@@ -85,8 +85,28 @@ def changed_paths(repo: Path, baseline_ref: str) -> set[str]:
     ignored = _split0(_git(repo, "ls-files", "--others", "--ignored", "--exclude-standard", "-z"))
     return set(tracked) | set(untracked) | set(ignored)
 
+# Worker-runtime scratch dirs (agent plugins/sessions -- e.g. Claude's
+# Remember plugin, a `claude`/`codex` worker's own session state) that land
+# in the run workspace unavoidably during dispatch. They are gitignored and
+# never committed (commit_owned() only ever stages/commits the owned set),
+# so they are not a scope violation. Deliberately excludes `.aak/` (holds
+# delivery.yml -- a worker writing there must still be flagged as
+# out-of-scope, spec config integrity) and `.git/` (handled separately by
+# the drift/restore checks above, not by scope classification).
+TOOLING_SCRATCH_PREFIXES: tuple[str, ...] = (".remember/", ".claude/", ".codex/")
+
+def is_tooling_scratch(path: str) -> bool:
+    p = path[2:] if path.startswith("./") else path
+    return any(p.startswith(prefix) or p == prefix.rstrip("/")
+               for prefix in TOOLING_SCRATCH_PREFIXES)
+
 def classify_scope(changed: set[str], owned: set[str]) -> set[str]:
-    return set(changed) - set(owned)
+    # changed_paths() above still unions in ignored files (Ruling A), so a
+    # mutated ignored file OUTSIDE this whitelist -- a real leaked .env or
+    # other secret -- is still surfaced here as out-of-scope; only the known
+    # agent-runtime scratch dirs above are exempt, and only because they can
+    # never enter a commit regardless (commit_owned is path-scoped to owned).
+    return {p for p in changed if p not in owned and not is_tooling_scratch(p)}
 
 def _is_ignored(repo: Path, path: str) -> bool:
     try:

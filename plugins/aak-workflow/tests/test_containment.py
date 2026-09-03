@@ -4,7 +4,7 @@ import subprocess
 import pytest
 from mcd_core.containment import (
     snapshot_git_state, detect_git_drift, restore_git_state,
-    changed_paths, classify_scope, commit_owned,
+    changed_paths, classify_scope, commit_owned, is_tooling_scratch,
 )
 from mcd_core.errors import ContainmentError
 
@@ -53,6 +53,51 @@ def test_changed_paths_handles_space_in_tracked_filename(git_repo, git):
 
 def test_out_of_scope_detected(git_repo):
     assert classify_scope({"app.py", "other.py"}, {"app.py"}) == {"other.py"}
+
+def test_classify_scope_excludes_worker_tooling_scratch(git_repo):
+    # Real end-to-end run finding: worker runtimes (Claude's Remember plugin,
+    # a codex session) write gitignored scratch into the workspace during
+    # dispatch. That scratch is neither owned nor a scope violation -- it can
+    # never enter a commit because commit_owned() only stages the owned set.
+    changed = {"app.py", ".remember/logs/x.log", ".claude/foo", ".codex/session"}
+    assert classify_scope(changed, {"app.py"}) == set()
+
+def test_classify_scope_still_flags_ignored_file_outside_whitelist(git_repo):
+    # Ruling A preserved: a real ignored file OUTSIDE the tooling-scratch
+    # whitelist (e.g. a leaked .env/secret) still escalates as out-of-scope.
+    assert classify_scope({"app.py", ".env"}, {"app.py"}) == {".env"}
+    assert classify_scope({"app.py", "secret.log"}, {"app.py"}) == {"secret.log"}
+
+def test_classify_scope_still_flags_aak_config_dir(git_repo):
+    # .aak/ is deliberately NOT whitelisted -- it holds delivery.yml, so a
+    # worker writing there must still be flagged (config integrity).
+    assert classify_scope({"app.py", ".aak/delivery.yml"}, {"app.py"}) == {".aak/delivery.yml"}
+
+def test_classify_scope_still_flags_normal_out_of_scope_file(git_repo):
+    assert classify_scope({"app.py", "other.py"}, {"app.py"}) == {"other.py"}
+
+def test_is_tooling_scratch_prefix_match():
+    assert is_tooling_scratch(".remember/logs/x.log")
+    assert is_tooling_scratch(".claude/foo")
+    assert is_tooling_scratch(".codex/session")
+
+def test_is_tooling_scratch_exact_dir_match():
+    assert is_tooling_scratch(".remember")
+    assert is_tooling_scratch(".claude")
+    assert is_tooling_scratch(".codex")
+
+def test_is_tooling_scratch_strips_leading_dot_slash():
+    assert is_tooling_scratch("./.remember/logs/x.log")
+    assert is_tooling_scratch("./.claude")
+
+def test_is_tooling_scratch_non_match():
+    assert not is_tooling_scratch(".aak/delivery.yml")
+    assert not is_tooling_scratch(".env")
+    assert not is_tooling_scratch("other.py")
+    assert not is_tooling_scratch(".git/HEAD")
+    # a lookalike name sharing the prefix string but not actually inside
+    # that directory must not match.
+    assert not is_tooling_scratch(".remember-extra/x")
 
 def test_commit_owned_only_owned_paths(git_repo, git):
     (git_repo / "a.py").write_text("a\n", encoding="utf-8")
