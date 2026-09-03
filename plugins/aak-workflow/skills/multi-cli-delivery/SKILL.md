@@ -338,6 +338,12 @@ committed. Control restores the strayed path(s) to the task baseline (`git
 restore`, or removes them if they were untracked at baseline, scoped
 strictly to those paths) and escalates.
 
+**Known limitation:** because the scope check excludes gitignored paths, a
+task whose sole owned deliverable is a gitignored (force-add) path reads as
+an empty owned diff and will escalate as `NEEDS_REPLAN` (fail-safe, never a
+wrong commit). Avoid making an ignored file the only owned path in a
+contract, or split the contract.
+
 **Immediately after CODE returns** `success: true` and `handoff.status:
 DONE` with a scope-clean, non-empty `changed` set, that set is the frozen
 candidate — what REVIEW judges and what Control commits, regardless of what
