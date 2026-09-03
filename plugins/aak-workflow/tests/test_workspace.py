@@ -32,6 +32,24 @@ def test_overlap_gate_detects_renamed_owned_path(git_repo, git):
     assert overlap_gate(git_repo, ["seed.txt"]) == ["seed.txt"]
     assert overlap_gate(git_repo, ["renamed.txt"]) == ["renamed.txt"]
 
+def test_overlap_gate_detects_renamed_path_with_space(git_repo, git):
+    # `git status --porcelain` (no -z) renders a rename as "old -> new" and
+    # quotes/escapes paths containing spaces, which a naive line[3:] +
+    # " -> ".split() parse cannot recover cleanly. -z instead gives two
+    # consecutive NUL-terminated fields (new path, then old path) with no
+    # arrow and no quoting.
+    git("mv", "seed.txt", "re named.txt")
+    assert overlap_gate(git_repo, ["seed.txt"]) == ["seed.txt"]
+    assert overlap_gate(git_repo, ["re named.txt"]) == ["re named.txt"]
+    assert overlap_gate(git_repo, ["seed.txt", "re named.txt"]) == ["seed.txt", "re named.txt"]
+
+def test_overlap_gate_detects_space_named_modify_whole(git_repo, git):
+    (git_repo / "a b.py").write_text("x\n", encoding="utf-8")
+    git("add", "a b.py"); git("commit", "-q", "-m", "add a b.py")
+    (git_repo / "a b.py").write_text("y\n", encoding="utf-8")   # dirty modify
+    assert overlap_gate(git_repo, ["a b.py"]) == ["a b.py"]
+    assert overlap_gate(git_repo, ["a"]) == [] and overlap_gate(git_repo, ["b.py"]) == []
+
 def test_branch_gate_rejects_detached_head(git_repo, git):
     head = git("rev-parse", "HEAD").strip()
     git("checkout", "-q", head)      # detached
