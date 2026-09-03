@@ -3,13 +3,24 @@ adapter-agnostic; a new CLI is a new row. Prompts go to a file inside the
 workspace, never inline in a shell arg. Model + effort (where supported) are
 pinned on every dispatch (spec §4.3). NOTE: the §4.3 table is illustrative;
 exact flags per CLI *version* are pinned here and updated as versions drift.
+`claude` and `codex` below are LIVE-VERIFIED against real installed CLIs;
+`command-code`/`opencode`/`gemini`/`kiro` remain illustrative (not installed
+on the verifying machine) and are updated when confirmed.
 
 Prompt delivery (Ruling B): each adapter declares `prompt_via` — "arg" means
 the prompt file path is passed as a CLI argument; "stdin" means the dispatcher
 must open the prompt file and pipe its contents to the child process's stdin.
-codex reads its prompt from stdin (`codex exec -m <model> -`), so it is the
-one "stdin" adapter; every other adapter here takes the prompt file path as a
-trailing CLI arg.
+Both `claude` (`claude -p` reads its prompt from stdin — a positional path is
+NOT a reliable file read for it) and `codex` (`codex exec -m <model> -`) are
+"stdin" adapters; every other adapter here takes the prompt file path as a
+trailing CLI arg (unverified — see module note above).
+
+Write capability (spec §4.5): only the CODE role is workspace-write; PLAN and
+REVIEW are read-only. `compose_argv` takes a `writable` keyword so the
+dispatcher can tell an adapter which case this dispatch is. Only `claude`
+(`--permission-mode acceptEdits` when writable) and `codex` (`--sandbox
+workspace-write` vs `read-only`) act on it today; every other adapter accepts
+and ignores the keyword so the dispatcher can call all six uniformly.
 """
 from __future__ import annotations
 from dataclasses import dataclass
@@ -23,46 +34,57 @@ class Adapter:
     id: str
     effort_supported: bool
     prompt_via: str            # "arg" | "stdin"
-    _argv: Callable[[RoleBinding, Path], list[str]]
+    _argv: Callable[..., list[str]]
     binary: str | None = None  # actual executable name, if it differs from `id` (e.g. kiro -> kiro-cli)
 
-    def compose_argv(self, binding: RoleBinding, prompt_file: Path) -> list[str]:
-        return self._argv(binding, prompt_file)
+    def compose_argv(self, binding: RoleBinding, prompt_file: Path, *,
+                     writable: bool = False) -> list[str]:
+        return self._argv(binding, prompt_file, writable=writable)
 
     @property
     def resolved_binary(self) -> str:
         return self.binary or self.id
 
-def _claude(b: RoleBinding, pf: Path) -> list[str]:
+def _claude(b: RoleBinding, pf: Path, *, writable: bool = False) -> list[str]:
+    # Live-verified: claude -p reads its prompt from STDIN, not a positional
+    # arg -- pf is unused here (kept for the uniform adapter signature); the
+    # dispatcher pipes the prompt file into stdin via prompt_via == "stdin".
     # model pinned via --model; effort via model tier (not a flag) → not a CLI arg here.
-    return ["claude", "-p", "--model", b.model, str(pf)]
+    argv = ["claude", "-p", "--model", b.model]
+    if writable:
+        argv += ["--permission-mode", "acceptEdits"]   # spec §4.5: CODE only
+    return argv
 
-def _codex(b: RoleBinding, pf: Path) -> list[str]:
-    # codex reads the prompt from stdin — the dispatcher pipes the prompt file
-    # into the child's stdin when prompt_via == "stdin" (see ADAPTERS below).
-    # pf is unused here; the uniform (binding, prompt_file) signature is kept
-    # so the dispatcher can call every adapter's compose_argv the same way.
+def _codex(b: RoleBinding, pf: Path, *, writable: bool = False) -> list[str]:
+    # Live-verified non-interactive invocation. codex reads the prompt from
+    # stdin — the dispatcher pipes the prompt file into the child's stdin when
+    # prompt_via == "stdin" (see ADAPTERS below). pf is unused here; the
+    # uniform (binding, prompt_file) signature is kept so the dispatcher can
+    # call every adapter's compose_argv the same way. cwd is set by the
+    # dispatcher's subprocess cwd=, so no -C flag is needed here.
     argv = ["codex", "exec", "-m", b.model]
     if b.effort:
         argv += ["-c", f"model_reasoning_effort={b.effort}"]
-    argv += ["-"]        # read prompt from stdin; dispatcher pipes the prompt file in
+    argv += ["--skip-git-repo-check", "--sandbox",
+             "workspace-write" if writable else "read-only",   # spec §4.5
+             "-"]        # read prompt from stdin; dispatcher pipes the prompt file in
     return argv
 
-def _command_code(b: RoleBinding, pf: Path) -> list[str]:
+def _command_code(b: RoleBinding, pf: Path, *, writable: bool = False) -> list[str]:
     return ["command-code", "-p", "--model", b.model, str(pf)]
 
-def _opencode(b: RoleBinding, pf: Path) -> list[str]:
+def _opencode(b: RoleBinding, pf: Path, *, writable: bool = False) -> list[str]:
     return ["opencode", "run", "--model", b.model, str(pf)]
 
-def _gemini(b: RoleBinding, pf: Path) -> list[str]:
+def _gemini(b: RoleBinding, pf: Path, *, writable: bool = False) -> list[str]:
     return ["gemini", "-p", "--model", b.model, str(pf)]
 
-def _kiro(b: RoleBinding, pf: Path) -> list[str]:
+def _kiro(b: RoleBinding, pf: Path, *, writable: bool = False) -> list[str]:
     return ["kiro-cli", "chat", "--no-interactive", "--trust-all-tools",
             "--model", b.model, str(pf)]
 
 ADAPTERS: dict[str, Adapter] = {
-    "claude": Adapter("claude", False, "arg", _claude),
+    "claude": Adapter("claude", False, "stdin", _claude),
     "codex": Adapter("codex", True, "stdin", _codex),
     "command-code": Adapter("command-code", False, "arg", _command_code),
     "opencode": Adapter("opencode", False, "arg", _opencode),

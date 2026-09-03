@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
-"""Thin CLI over mcd_core.dispatch. Composes adapter argv, wires prompt
-delivery per adapter.prompt_via (Ruling B: "arg" adapters get the prompt file
-path as a trailing CLI arg; "stdin" adapters — codex — get it piped to the
-child's stdin), runs the worker headless, then deterministically parses the
-handoff out of stdout (mcd_core.handoff.parse_handoff — the tested exit0 +
-sentinel + last-match untrusted-output gate) so Control never hand-parses raw
-worker output. Any mcd_core config/spawn error (bad config, unknown adapter,
-spawn failure) is caught and reported as structured JSON with a non-zero exit
-rather than a raw traceback. A worker that ran but produced no valid handoff
-(truncated output, killed on timeout, nonzero exit) is reported inline as
+"""Thin CLI over mcd_core.dispatch. Composes adapter argv (passing
+writable=(role == "code") — spec §4.5: only CODE is workspace-write, PLAN/
+REVIEW stay read-only), wires prompt delivery per adapter.prompt_via (Ruling
+B: "arg" adapters get the prompt file path as a trailing CLI arg; "stdin"
+adapters — claude, codex — get it piped to the child's stdin), runs the
+worker headless, then deterministically parses the handoff out of stdout
+(mcd_core.handoff.parse_handoff — the tested exit0 + sentinel + last-match
+untrusted-output gate) so Control never hand-parses raw worker output. Any
+mcd_core config/spawn error (bad config, unknown adapter, spawn failure) is
+caught and reported as structured JSON with a non-zero exit rather than a raw
+traceback. A worker that ran but produced no valid handoff (truncated output,
+killed on timeout, nonzero exit) is reported inline as
 `"success": false` — the CLI process itself still exits 0, because it did its
 job (ran the worker, tried to parse); the worker's outcome is data for
 Control, not a failure of this script. Usage:
@@ -52,7 +54,11 @@ def main() -> int:
         # .aak/delivery.yml — that file stays the reproducible default.
         binding = RoleBinding(args.cli or binding.cli, args.model or binding.model, binding.effort)
         adapter = get_adapter(binding.cli)
-        argv = adapter.compose_argv(binding, args.prompt_file)
+        # spec §4.5: only the CODE role is workspace-write; PLAN/REVIEW stay
+        # read-only. Adapters that act on `writable` (claude, codex) use it to
+        # pick their permission-mode/sandbox flag; the rest ignore it.
+        writable = args.role == "code"
+        argv = adapter.compose_argv(binding, args.prompt_file, writable=writable)
         # Ruling B: only "stdin" adapters (codex) get the prompt piped to
         # stdin; every other adapter already has the prompt file in argv, and
         # the child's stdin stays /dev/null (dispatch.py's hang-prevention

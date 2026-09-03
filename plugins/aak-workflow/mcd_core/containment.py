@@ -70,14 +70,17 @@ def restore_git_state(repo: Path, before: GitState) -> None:
     # index to the recorded snapshot (NOT to HEAD — preserves mid-run staged content)
     _git(repo, "read-tree", before.index_tree)
 
+def _split0(s: str) -> list[str]:
+    return [p for p in s.split("\0") if p]
+
 def changed_paths(repo: Path, baseline_ref: str) -> set[str]:
     # `git status`/a single ls-files call is not enough to find the true
     # changed-path set: tracked changes, brand-new untracked files, and
     # .gitignore'd untracked files (e.g. a leaked secret) live in three
     # disjoint git views. Union all three so none can slip past scope checks.
-    def _split0(s: str) -> list[str]:
-        return [p for p in s.split("\0") if p]
-    tracked = _git(repo, "diff", "--name-only", baseline_ref).split()
+    # -z + _split0 on every view (not a bare whitespace .split()) so a path
+    # containing a space is never shattered into two paths.
+    tracked = _split0(_git(repo, "diff", "--name-only", "-z", baseline_ref))
     untracked = _split0(_git(repo, "ls-files", "--others", "--exclude-standard", "-z"))
     ignored = _split0(_git(repo, "ls-files", "--others", "--ignored", "--exclude-standard", "-z"))
     return set(tracked) | set(untracked) | set(ignored)
@@ -110,7 +113,10 @@ def commit_owned(repo: Path, owned: list[str], message: str, *,
         _git(repo, "add", "-f", p) if p in force else _git(repo, "add", p)
     _git(repo, "commit", "--only", "-m", message, "--", *owned)
     sha = _git(repo, "rev-parse", "HEAD").strip()
-    committed = set(_git(repo, "show", "--name-only", "--format=", sha).split())
+    # -z + _split0, not a bare .split(), so a committed path containing a
+    # space is read back whole instead of shattered into two paths (which
+    # would falsely trip the commit==reviewed-diff check just below).
+    committed = set(_split0(_git(repo, "show", "--name-only", "-z", "--format=", sha)))
     if committed != set(owned):
         raise ContainmentError(
             f"commit contents {sorted(committed)} != reviewed owned diff {sorted(owned)} "

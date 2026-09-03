@@ -39,6 +39,18 @@ def test_changed_paths_includes_ignored(git_repo, git):
     changed = changed_paths(git_repo, base)
     assert "app.py" in changed and "secret.log" in changed   # status-only check would miss the .log
 
+def test_changed_paths_handles_space_in_tracked_filename(git_repo, git):
+    # `git diff --name-only <ref>` (no -z) was fed through a bare .split(),
+    # which shatters "a b.py" into {"a", "b.py"} on whitespace. Stress the
+    # TRACKED-diff branch specifically: commit the space-named file so it is
+    # tracked, then diff against the ref that predates it.
+    base = git("rev-parse", "HEAD").strip()
+    (git_repo / "a b.py").write_text("code\n", encoding="utf-8")
+    git("add", "a b.py"); git("commit", "-q", "-m", "add a b.py")
+    changed = changed_paths(git_repo, base)
+    assert "a b.py" in changed
+    assert "a" not in changed and "b.py" not in changed
+
 def test_out_of_scope_detected(git_repo):
     assert classify_scope({"app.py", "other.py"}, {"app.py"}) == {"other.py"}
 
@@ -49,6 +61,16 @@ def test_commit_owned_only_owned_paths(git_repo, git):
     sha = commit_owned(git_repo, ["a.py"], "feat: add a")
     files = _g(git_repo, "show", "--name-only", "--format=", sha).split()
     assert files == ["a.py"]                       # b.py NOT absorbed
+
+def test_commit_owned_handles_space_in_filename(git_repo, git):
+    # The post-commit verification (`committed == set(owned)`) read back
+    # `git show --name-only --format=` through a bare .split(), which shatters
+    # "a b.py" into {"a", "b.py"} -- that mismatch would wrongly raise
+    # ContainmentError even though the commit itself is correct.
+    (git_repo / "a b.py").write_text("code\n", encoding="utf-8")
+    sha = commit_owned(git_repo, ["a b.py"], "feat: add a b")
+    out = _g(git_repo, "show", "--name-only", "-z", "--format=", sha)
+    assert [p for p in out.split("\0") if p] == ["a b.py"]
 
 def test_commit_owned_rejects_ignored_without_force(git_repo, git):
     (git_repo / ".gitignore").write_text("gen/\n", encoding="utf-8")

@@ -6,14 +6,18 @@ how it wants its prompt delivered. The protocol core is adapter-agnostic —
 adding a new CLI is adding a new row here (and to the registry it mirrors),
 never a change to the dispatch/containment/handoff machinery in `SKILL.md`.
 
-This table mirrors `mcd_core/adapters.py`. **It is illustrative — exact flags
-per CLI *version* drift.** The registry module is the source of truth; update
-it first when a CLI changes its interface, then bring this table in sync.
+This table mirrors `mcd_core/adapters.py`. **`claude` and `codex` are
+live-verified against real installed CLIs on the machine that wrote this
+table; `command-code`/`opencode`/`gemini`/`kiro` remain illustrative (not
+installed there) — their prompt-delivery is UNVERIFIED (likely also stdin,
+like claude and codex, but unconfirmed). Exact flags per CLI *version*
+drift.** The registry module is the source of truth; update it first when a
+CLI changes its interface, then bring this table in sync.
 
 | Adapter id | Binary | Headless invocation | Model flag | Effort support | `prompt_via` |
 |---|---|---|---|---|---|
-| `claude` | `claude` | `claude -p --model <model> <prompt-file>` | `--model` | no | `arg` |
-| `codex` | `codex` | `codex exec -m <model> [-c model_reasoning_effort=<effort>] -` | `-m` | yes — `-c model_reasoning_effort=<effort>` | `stdin` |
+| `claude` | `claude` | `claude -p --model <model>` (+ `--permission-mode acceptEdits` when writable) | `--model` | no | `stdin` |
+| `codex` | `codex` | `codex exec -m <model> [-c model_reasoning_effort=<effort>] --skip-git-repo-check --sandbox <workspace-write\|read-only> -` | `-m` | yes — `-c model_reasoning_effort=<effort>` | `stdin` |
 | `command-code` | `command-code` | `command-code -p --model <model> <prompt-file>` | `--model` | no | `arg` |
 | `opencode` | `opencode` | `opencode run --model <model> <prompt-file>` | `--model` | no | `arg` |
 | `gemini` | `gemini` | `gemini -p --model <model> <prompt-file>` | `--model` | no | `arg` |
@@ -22,7 +26,23 @@ it first when a CLI changes its interface, then bring this table in sync.
 `<model>` and `<prompt-file>` are placeholders filled in per dispatch from
 the role's binding and the workspace-local prompt file — never a literal
 model name baked into the adapter (Golden Rule #1: this kit ships no
-hardcoded model list).
+hardcoded model list). Neither `claude` nor `codex` takes a `<prompt-file>`
+CLI argument at all — both read the prompt from stdin, so the dispatcher
+pipes the prompt file's bytes into the child's stdin for them instead (see
+`prompt_via` below).
+
+**Role-aware sandbox/permission (spec §4.5):** only the CODE role is
+workspace-write; PLAN and REVIEW stay read-only. `compose_argv` takes a
+`writable` keyword so the dispatcher — `dispatch_worker.py`, which sets
+`writable = (role == "code")` — can tell each adapter which case applies.
+`claude` appends `--permission-mode acceptEdits` only when writable (headless
+claude otherwise cannot edit files); `codex` always passes `--sandbox`, set to
+`workspace-write` when writable and `read-only` otherwise. The other four
+adapters accept the same `writable` keyword (so the dispatcher can call all
+six uniformly) but ignore it — they have no analogous flag today.
+
+> claude + codex are live-verified; gemini/command-code/kiro prompt-delivery
+> is UNVERIFIED (likely also stdin) — verify when installed.
 
 ## Reading the columns
 
@@ -35,12 +55,13 @@ hardcoded model list).
     argument; the child's own stdin is left at `/dev/null` (the
     hang-prevention default — see SKILL.md §7).
   - `stdin` — the dispatcher opens the prompt file itself and pipes its
-    bytes into the child's stdin instead. `codex` is the only adapter wired
-    this way today, because it reads its prompt from stdin rather than an
+    bytes into the child's stdin instead. `claude` and `codex` are wired this
+    way today, because both read their prompt from stdin rather than an
     argument. Every adapter still exposes the same `compose_argv(binding,
-    prompt_file)` shape regardless of which mode it uses, so the dispatcher
-    never special-cases argv construction — only which file descriptor the
-    prompt goes into.
+    prompt_file, *, writable=False)` shape regardless of which mode it uses
+    or whether it acts on `writable`, so the dispatcher never special-cases
+    argv construction — only which file descriptor the prompt goes into and
+    which role gets write access.
 - **Effort support** — whether the adapter has a real, native reasoning-
   effort knob to translate a role's `effort:` setting into. Only `codex` has
   one today. Setting `effort:` on a role bound to an adapter with no such

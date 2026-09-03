@@ -117,22 +117,43 @@ def test_dispatch_worker_cli_unknown_cli_emits_error_json(tmp_path):
     data = json.loads(out.stdout)
     assert "error" in data
 
-def test_dispatch_worker_cli_wires_prompt_via_arg_for_claude(tmp_path):
-    # Ruling B: claude's adapter takes the prompt file path as a trailing CLI arg.
+def test_dispatch_worker_cli_wires_prompt_via_stdin_for_claude(tmp_path):
+    # Real invocation (live-verified): claude -p reads its prompt from STDIN,
+    # not a positional CLI arg -- dispatch_worker.py must pipe the prompt file
+    # into its stdin, same wiring path already used for codex below.
     _write_delivery_yml(tmp_path, "code", "claude", "opus")
     _make_fake_bin(tmp_path / "bin", "claude", textwrap.dedent("""\
         import sys
-        with open(sys.argv[-1], encoding="utf-8") as f:
-            data = f.read()
-        sys.stdout.write(f"argfile={data}")
+        data = sys.stdin.read()
+        sys.stdout.write(f"stdin={data}")
         sys.exit(0)
         """))
-    out = _run_dispatch_worker(tmp_path, "code", "hello-via-arg\n",
+    out = _run_dispatch_worker(tmp_path, "code", "hello-via-stdin\n",
                                f"{tmp_path / 'bin'}:/usr/bin:/bin")
     assert out.returncode == 0, out.stderr
     data = json.loads(out.stdout)
     assert data["exit_code"] == 0 and data["tripped"] is None
-    assert "hello-via-arg" in data["stdout"]
+    assert "hello-via-stdin" in data["stdout"]
+
+def test_dispatch_worker_cli_review_role_is_read_only_for_claude(tmp_path):
+    # spec §4.5: only the CODE role is workspace-write; REVIEW (like PLAN)
+    # stays read-only -- dispatch_worker.py must compute writable from
+    # args.role and thread it into compose_argv, so a REVIEW dispatch never
+    # gets claude's --permission-mode acceptEdits.
+    _write_delivery_yml(tmp_path, "review", "claude", "opus")
+    _make_fake_bin(tmp_path / "bin", "claude", textwrap.dedent("""\
+        import sys
+        assert "--permission-mode" not in sys.argv, sys.argv
+        data = sys.stdin.read()
+        sys.stdout.write(f"stdin={data}")
+        sys.exit(0)
+        """))
+    out = _run_dispatch_worker(tmp_path, "review", "hello-review\n",
+                               f"{tmp_path / 'bin'}:/usr/bin:/bin")
+    assert out.returncode == 0, out.stderr
+    data = json.loads(out.stdout)
+    assert data["exit_code"] == 0 and data["tripped"] is None
+    assert "hello-review" in data["stdout"]
 
 def test_dispatch_worker_cli_wires_prompt_via_stdin_for_codex(tmp_path):
     # Ruling B: codex reads its prompt from stdin, not argv -- dispatch_worker.py
@@ -525,7 +546,8 @@ def test_skill_invokes_runtime_clis():
 
 def test_plugin_version_bumped_for_phase2():
     manifest = _json.loads((PLUGIN_ROOT / ".claude-plugin" / "plugin.json").read_text())
-    assert manifest["version"] == "0.3.0"
+    # Phase-2+ bumped past the pre-feature baselines
+    assert manifest["version"] not in ("0.1.0", "0.2.0")
 
 def test_readme_vi_documents_multi_cli_delivery():
     readme_vi = (PLUGIN_ROOT.parent.parent / "README.vi.md").read_text(encoding="utf-8")

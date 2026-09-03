@@ -53,17 +53,26 @@ def prepare_workspace(repo_root: Path, feature_branch: str, *,
     return ws
 
 def overlap_gate(repo_root: Path, owned_paths: list[str]) -> list[str]:
-    out = _git(repo_root, "status", "--porcelain")
+    # `git status --porcelain` (no -z) renders a rename as "old -> new" and
+    # quotes/escapes any path containing a space or other special character --
+    # a naive line[3:] + " -> ".split() parse cannot recover those cleanly.
+    # -z instead gives NUL-terminated entries with paths verbatim (no
+    # quoting) and no arrow: a rename/copy is TWO consecutive entries, the
+    # new path (with its XY status prefix) immediately followed by the bare
+    # old path.
+    out = _git(repo_root, "status", "--porcelain", "-z")
+    entries = [e for e in out.split("\0") if e]
     dirty: set[str] = set()
-    for line in out.splitlines():
-        if not line.strip():
-            continue
-        path_part = line[3:]
-        if " -> " in path_part:          # rename/copy: "old -> new"
-            old, new = path_part.split(" -> ", 1)
-            dirty.add(old.strip()); dirty.add(new.strip())
-        else:
-            dirty.add(path_part.strip())
+    i = 0
+    while i < len(entries):
+        entry = entries[i]
+        status, path = entry[:2], entry[3:]
+        dirty.add(path)
+        if status.startswith(("R", "C")):
+            i += 1
+            if i < len(entries):
+                dirty.add(entries[i])
+        i += 1
     return [p for p in owned_paths if p in dirty]
 
 def branch_gate(repo_root: Path) -> str:
