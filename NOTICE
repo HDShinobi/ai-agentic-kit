@@ -192,8 +192,16 @@ apply to the adapted portions.
   the five `vietnamese-*` skills (SKILL.md bodies, references, and the dependency-free
   `validate_copy.py` linter + domain `rules_*.py`), the shared references, and the eval
   corpus, byte-identical to pinned commit
-  1c44546d7862e0d09491a2a711a64086ab8c80d7 (2026-08-22) except for the two
-  mechanical wiring changes noted here. Changed: `plugin.json` identity fields
+  9ab84436a4bff62a98810c73bf94278f3b409a9d (2026-09-03) except for the two
+  mechanical wiring changes noted here. (Re-synced from the earlier pin
+  1c44546d7862e0d09491a2a711a64086ab8c80d7 (2026-08-22); the three intervening
+  upstream commits expanded `vietnamese-education-copy` with EdTech/pedagogical
+  material — the new `references/edtech-pedagogy.md`, an expanded SKILL.md, and
+  refreshed banned-phrases/doc-registers/glossary/qa-checklist/rules/eval-pairs —
+  and hardened the `validate_copy.py`/`check_font_coverage.py` scripts across all
+  five skills. Upstream left its own `version` at 2.1.0 across those commits, so
+  this plugin patch-bumps to 2.1.1 — staying on the upstream 2.1.x line while
+  letting the marketplace CLI detect the refresh.) Changed: `plugin.json` identity fields
   (name/author/homepage/repository); and the reference-doc `CONTRIBUTING.md`
   links in the `examples.md`/`register-guide.md` files were re-pointed from the
   upstream repo-root path to this kit's own `CONTRIBUTING.md`
