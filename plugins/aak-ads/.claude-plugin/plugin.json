@@ -1,6 +1,6 @@
 {
   "name": "aak-ads",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Paid-media (PPC) operations across 12 ad platforms — Google, Meta, YouTube, LinkedIn, TikTok, Microsoft, Apple, Amazon, Reddit, Pinterest, Snapchat, X. Source-grounded audits, deterministic scoring, plans, creative workflows, monitoring, experiments, versioned JSON reports, and capability-gated (read-only-by-default) account changes.",
   "author": {
     "name": "HDShinobi"
