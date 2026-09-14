@@ -172,7 +172,12 @@ apply to the adapted portions.
   verbatim — a soft runtime file check that degrades gracefully, not a hollow ref.
   Additionally, reference-guide material from this source was grafted (byte-verbatim,
   bodies unchanged) into existing skills to add depth: geo-fundamentals ← ai-seo
-  (body-as-playbook + 7 refs), ab-test-dashboard ← ab-testing (experimentation-program
+  (body-as-playbook + 8 refs; refreshed to upstream commit
+  5b2c0007766c6a1cf1d53fd8fc73e979e0821022, ai-seo 2.5.0, which added the
+  `format-volatility.md` reference — byte-verbatim — and the ChatGPT-5.6
+  format-shift, LinkedIn-citation, and non-determinism notes folded into the
+  body-as-playbook under the same link/skill re-pointing convention),
+  ab-test-dashboard ← ab-testing (experimentation-program
   extract + test-templates; its statistically-wrong sample-size-guide was SKIPPED),
   analytics-marketing ← analytics (tracking body + 3 refs), onboarding-cro ← onboarding
   (3 refs), pricing-strategy ← pricing (3 refs + initial-pricing extract; tier-structure
