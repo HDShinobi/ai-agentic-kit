@@ -170,4 +170,5 @@ Deeper vendored playbook material (from the coreyhaines source) — load on dema
 | `references/agent-readiness.md` | Access / discovery / parseability audit for agent-readable sites; llms-full.txt, WebMCP |
 | `references/okf.md` | Open Knowledge Format (OKF) bundles — what it is, how to ship one, when to skip |
 | `references/youtube-ai-citations.md` | Anatomy of a YouTube video AI cites (transcript, captions, chapters, description, pinned comment) |
+| `references/format-volatility.md` | Citation-format volatility — ChatGPT 5.6 (Aug 2026) listicle/comparison demotion, per-platform format table, LinkedIn citation numbers, ChatGPT fan-out extraction, non-determinism rigor |
 

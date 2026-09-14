@@ -105,6 +105,8 @@ Google's own example: a user asking "how to fix lawns" triggers fan-out queries 
 
 **Action**: when planning content, brainstorm the 5–10 related queries the AI is likely to fan out to and make sure your content (or your site as a whole) covers them.
 
+ChatGPT fans out too — and you can extract its *literal* background queries for your niche via DevTools (method in [references/format-volatility.md](format-volatility.md)). Post-5.6, ChatGPT's fan-outs shifted away from "best/vs/top" modifiers toward `site:` and "official" searches — use the extraction to see where your category's fan-outs stand today.
+
 ---
 
 ## AI Visibility Audit
@@ -252,6 +254,7 @@ AI systems don't just cite your website — they cite where you appear.
 **Third-party sources matter more than your own site:**
 - Wikipedia mentions (7.8% of all ChatGPT citations)
 - Reddit discussions (volatile: ~1.8% of ChatGPT citations historically, but nearly wiped from ChatGPT by Aug 2026 retrieval changes — still retrieved elsewhere; see the volatility section in [references/agent-readiness.md](agent-readiness.md))
+- LinkedIn — per LinkedIn's own AEO guide, the most-cited outlet for professional-topic searches; Articles out-cite Posts ~60/40, and a post's first words become its URL slug, so front-load the target phrase (details in [references/format-volatility.md](format-volatility.md))
 - Industry publications and guest posts
 - Review sites (G2, Capterra, TrustRadius for B2B SaaS)
 - YouTube (frequently cited by Google AI Overviews)
@@ -366,24 +369,11 @@ For ecom and local business specifically, Google highlights:
 
 ## Content Types That Get Cited Most
 
-Not all content is equally citable. Prioritize these formats:
+Not all content is equally citable — and the format mix is **volatile**. The long-standing baseline had comparison articles (~33%) and listicles (~10%) among the top citation earners, but **ChatGPT 5.6 (Aug 2026) demoted the exploited formats: listicle citations fell −50.5% and comparison-page citations −32.1%, while `site:` and "official" retrieval surged** — a shift toward primary sources and owned pages. Format strategy is now per-platform (comparisons still work on Google AIO/Gemini/Perplexity). See [references/format-volatility.md](format-volatility.md) for the shift data, the per-platform format table, LinkedIn's citation numbers, and the ChatGPT fan-out extraction diagnostic.
 
-| Content Type | Citation Share | Why AI Cites It |
-|-------------|:------------:|----------------|
-| **Comparison articles** | ~33% | Structured, balanced, high-intent |
-| **Definitive guides** | ~15% | Comprehensive, authoritative |
-| **Original research/data** | ~12% | Unique, citable statistics |
-| **Best-of/listicles** | ~10% | Clear structure, entity-rich |
-| **Product pages** | ~10% | Specific details AI can extract |
-| **How-to guides** | ~8% | Step-by-step structure |
-| **Opinion/analysis** | ~10% | Expert perspective, quotable |
+**Evergreen winners across platforms:** original research and data, definitive guides, and owned "official" pages — product, docs, pricing — with extractable structure.
 
-**Underperformers for AI citation:**
-- Generic blog posts without structure
-- Thin product pages with marketing fluff
-- Gated content (AI can't access it)
-- Content without dates or author attribution
-- PDF-only content (harder for AI to parse)
+**Underperformers:** generic unstructured posts, thin or gated or PDF-only content, and anything undated without author attribution.
 
 **Citation ≠ recommendation.** Getting cited means your content was useful to consult; getting *recommended* — onto the buyer's actual shortlist — is governed by web-wide consensus (reviews, forums, analysts, press) and is largely independent of your own content. Self-promotional "best [category]" listicles can even backfire for emerging brands: in one 100-query B2B study, 69% of the AI Overview citations that self-promotional listicles earned came in answers that recommended competitors instead of the publishing brand. See [references/citations-vs-recommendations.md](citations-vs-recommendations.md) for the visibility ladder (retrieved → cited → mentioned → recommended), stage-dependent buyer's-guide strategy, what earns recommendations, and the attribution blind spot.
 
@@ -418,6 +408,8 @@ Monthly manual check:
 2. Run each through ChatGPT, Perplexity, and Google
 3. Record: Are you cited? Who is? What page?
 4. Log in a spreadsheet, track month-over-month
+
+AI answers are **non-deterministic** — one run is an anecdote, not a measurement. Run each query 3–5 times per platform and track the mention *rate* with its sample size ("cited 3/5, n=5"), comparing rates over time rather than single runs. Full rigor checklist in [references/format-volatility.md](format-volatility.md).
 
 ### Search Console expectations
 

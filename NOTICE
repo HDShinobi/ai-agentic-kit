@@ -172,7 +172,12 @@ apply to the adapted portions.
   verbatim — a soft runtime file check that degrades gracefully, not a hollow ref.
   Additionally, reference-guide material from this source was grafted (byte-verbatim,
   bodies unchanged) into existing skills to add depth: geo-fundamentals ← ai-seo
-  (body-as-playbook + 7 refs), ab-test-dashboard ← ab-testing (experimentation-program
+  (body-as-playbook + 8 refs; refreshed to upstream commit
+  5b2c0007766c6a1cf1d53fd8fc73e979e0821022, ai-seo 2.5.0, which added the
+  `format-volatility.md` reference — byte-verbatim — and the ChatGPT-5.6
+  format-shift, LinkedIn-citation, and non-determinism notes folded into the
+  body-as-playbook under the same link/skill re-pointing convention),
+  ab-test-dashboard ← ab-testing (experimentation-program
   extract + test-templates; its statistically-wrong sample-size-guide was SKIPPED),
   analytics-marketing ← analytics (tracking body + 3 refs), onboarding-cro ← onboarding
   (3 refs), pricing-strategy ← pricing (3 refs + initial-pricing extract; tier-structure
@@ -187,8 +192,16 @@ apply to the adapted portions.
   the five `vietnamese-*` skills (SKILL.md bodies, references, and the dependency-free
   `validate_copy.py` linter + domain `rules_*.py`), the shared references, and the eval
   corpus, byte-identical to pinned commit
-  1c44546d7862e0d09491a2a711a64086ab8c80d7 (2026-08-22) except for the two
-  mechanical wiring changes noted here. Changed: `plugin.json` identity fields
+  9ab84436a4bff62a98810c73bf94278f3b409a9d (2026-09-03) except for the two
+  mechanical wiring changes noted here. (Re-synced from the earlier pin
+  1c44546d7862e0d09491a2a711a64086ab8c80d7 (2026-08-22); the three intervening
+  upstream commits expanded `vietnamese-education-copy` with EdTech/pedagogical
+  material — the new `references/edtech-pedagogy.md`, an expanded SKILL.md, and
+  refreshed banned-phrases/doc-registers/glossary/qa-checklist/rules/eval-pairs —
+  and hardened the `validate_copy.py`/`check_font_coverage.py` scripts across all
+  five skills. Upstream left its own `version` at 2.1.0 across those commits, so
+  this plugin patch-bumps to 2.1.1 — staying on the upstream 2.1.x line while
+  letting the marketplace CLI detect the refresh.) Changed: `plugin.json` identity fields
   (name/author/homepage/repository); and the reference-doc `CONTRIBUTING.md`
   links in the `examples.md`/`register-guide.md` files were re-pointed from the
   upstream repo-root path to this kit's own `CONTRIBUTING.md`
