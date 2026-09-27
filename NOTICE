@@ -186,6 +186,18 @@ apply to the adapted portions.
   + templates + tool-reference). Where upstream content was time-sensitive, unsourced,
   tool-dependent, or referenced a component absent here, a delimited "KIT NOTE" preamble
   was prepended ABOVE the vendored bytes (bytes below unchanged).
+  `marketing-council` (a simulated board of twelve marketing advisors, v1.0.0) is
+  vendored from upstream commit 5b2c0007766c6a1cf1d53fd8fc73e979e0821022 — SKILL.md
+  body, `references/advisor-template.md`, the twelve `references/advisors/*.md`
+  dossiers, and `evals/evals.json` byte-verbatim. Only mechanical wiring changed:
+  upstream `metadata.version` dropped; two generic trigger phrases ('get multiple
+  perspectives,' 'debate this') removed from the description to keep triggers
+  collision-free across plugins; description and "Related Skills" handoffs
+  re-pointed to this kit's names (positioning→product-marketing, pricing→
+  pricing-strategy, ads→ppc-advertising, ad-creative→ad-creative-variations,
+  content-strategy→content-marketing, social→social-media-expert,
+  brand-strategy→branding-expert, ab-testing→ab-test-dashboard) with an "if
+  `aak-ads` is enabled" conditional for paid media. A thin `/council` command wraps it.
 
 - vietnamese-language-skill (https://github.com/trussary/vietnamese-language-skill),
   Copyright (c) trussary, MIT. Vendored verbatim as the `aak-vietnamese` plugin —
