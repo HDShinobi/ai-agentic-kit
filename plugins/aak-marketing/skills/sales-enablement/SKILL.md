@@ -366,3 +366,4 @@ Additional depth for this skill (load on demand):
 - `references/demo-scripts.md`
 - `references/objection-library.md`
 - `references/one-pager-templates.md`
+- `references/b2b-brand-abm.md` — B2B brand layer: buying-committee messaging map (message + proof per role), LinkedIn brand strategy, and an ABM brand-warmup sequence before SDR outreach.

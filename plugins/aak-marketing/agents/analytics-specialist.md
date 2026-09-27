@@ -68,3 +68,4 @@ Use this agent when you need to:
 - analytics-marketing
 - growth-hacking
 - conversion-optimization
+- brand-measurement

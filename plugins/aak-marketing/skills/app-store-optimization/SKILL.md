@@ -401,3 +401,12 @@ This skill is based on current Apple App Store and Google Play Store requirement
 - Google Play Console updates (play.google.com/console/about/guides/releasewithconfidence)
 - iOS/Android version adoption rates (affects device testing)
 - Store algorithm changes (follow ASO blogs and communities)
+
+---
+
+## Reference guides
+
+<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. This section is a kit-added index. -->
+
+Additional depth for this skill (load on demand):
+- `references/store-testing-and-ratings.md` — store-native A/B testing mechanics (Apple Product Page Optimization, Google Play Store Listing Experiments), description-ranking rules, and in-app rating-prompt guidance.

@@ -208,3 +208,12 @@ allowed-tools: Read, Glob, Grep
 ---
 
 > **Remember:** The best influencer partnerships feel authentic. Focus on genuine alignment over follower counts.
+
+---
+
+## Reference guides
+
+<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. This section is a kit-added index. -->
+
+Additional depth for this skill (load on demand):
+- `references/outreach-briefs-agreements.md` — cold-outreach formula and rules, a full influencer brief template, an agreement checklist (usage rights, whitelisting, exclusivity, kill fee, morality clause), and a gifting/seeding program.

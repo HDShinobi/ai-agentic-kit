@@ -1,6 +1,6 @@
 ---
 name: brand
-description: Operational brand governance: manage brand assets, enforce compliance/consistency, and sync brand guidelines to design tokens (has scripts). For brand STRATEGY/identity creation (positioning, archetypes, naming), use branding-expert instead.
+description: Operational brand governance: manage brand assets, enforce compliance/consistency, and sync brand guidelines to design tokens (has scripts). For brand STRATEGY/identity creation (positioning, archetypes, voice), use branding-expert instead; for a full naming workflow, use brand-naming.
 ---
 
 # Brand

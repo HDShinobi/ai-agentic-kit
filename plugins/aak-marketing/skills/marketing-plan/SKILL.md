@@ -352,3 +352,4 @@ Bundled with this skill under `references/`:
 - **`ops-stack-mapping.md`** — Marketing skills + MCP/API tooling mapped to each AARRR stage.
 - **`plan-template.md`** — The full 13-section plan template.
 - **`team-and-agency-model.md`** — Hiring sequence, π-shaped marketer, contractor/agency model.
+- **`d2c-playbook.md`** — D2C deep-dive for the commerce archetype: unit-economics baseline, acquisition funnel, email/SMS flow priority, repeat-purchase mechanics and repurchase benchmarks (kit-grafted; see its KIT NOTE).
