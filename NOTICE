@@ -199,6 +199,25 @@ apply to the adapted portions.
   brand-strategy→branding-expert, ab-testing→ab-test-dashboard) with an "if
   `aak-ads` is enabled" conditional for paid media. A thin `/council` command wraps it.
 
+- Brand-building-skills (https://github.com/arnabbagxd/Brand-building-skills),
+  Copyright (c) 2026 Arnab Bag, MIT. Source of the net-new brand skills
+  `brand-naming` (with its `evals/evals.json`), `brand-architecture`,
+  `brand-measurement`, `brand-packaging`, `brand-manifesto`, `personal-brand`,
+  `ugc-strategy`, and `whatsapp-marketing` — SKILL.md bodies vendored byte-verbatim
+  from upstream commit 4a0a8b5 (2026-06-12). Only mechanical wiring changed: upstream
+  `metadata.version` dropped; two trigger phrases removed from descriptions to keep
+  triggers collision-free ('thought leadership' from personal-brand — owned by
+  public-relations; 'packaging strategy' from brand-packaging — collides with
+  pricing packaging); "Related Skills" names re-pointed to this kit's skills
+  (brand-strategy/identity/voice/story/guidelines/audit→branding-expert,
+  brand-positioning/messaging/context→product-marketing, meta-ads→ppc-advertising
+  with an "if `aak-ads` is enabled" conditional, d2c-marketing→marketing-plan). A
+  delimited "KIT NOTE" preamble was prepended ABOVE the vendored bytes of each skill
+  (bytes below unchanged) mapping upstream's `.agents/brand-context.md` to this kit's
+  shared `.agents/product-marketing.md`, and — for whatsapp-marketing and
+  ugc-strategy — flagging unsourced statistics, rate cards, and India-centric tooling.
+  The upstream repo's other 21 skills were not adopted (covered by existing kit skills).
+
 - vietnamese-language-skill (https://github.com/trussary/vietnamese-language-skill),
   Copyright (c) trussary, MIT. Vendored verbatim as the `aak-vietnamese` plugin —
   the five `vietnamese-*` skills (SKILL.md bodies, references, and the dependency-free

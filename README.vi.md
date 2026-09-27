@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="License">
   <img src="https://img.shields.io/badge/plugins-10-6f42c1?style=flat-square" alt="Plugins">
   <img src="https://img.shields.io/badge/agents-48-0969da?style=flat-square" alt="Agents">
-  <img src="https://img.shields.io/badge/skills-149-1a7f37?style=flat-square" alt="Skills">
+  <img src="https://img.shields.io/badge/skills-157-1a7f37?style=flat-square" alt="Skills">
   <img src="https://img.shields.io/badge/commands-24-bf8700?style=flat-square" alt="Commands">
   <img src="https://img.shields.io/badge/Claude%20Code-marketplace-d4520f?style=flat-square" alt="Claude Code">
 </p>
@@ -86,7 +86,7 @@ Chạy dev tại chỗ mà không cần publish: `claude --plugin-dir ./plugins/
 | **aak-frontend** | Dựng UI chỉn chu, đúng nhận diện thương hiệu cho web & mobile | frontend-specialist, mobile-developer | frontend-architecture, frontend-design, nextjs-react-expert, tailwind-patterns, web-design-guidelines, mobile-design, ui-ux-pro-max | — |
 | **aak-security** | Tìm & vá lỗ hổng trước khi kẻ tấn công ra tay | security-auditor, penetration-tester | vulnerability-scanner, red-team-tactics | — |
 | **aak-quality** | Bắt bug, chứng minh thay đổi chạy đúng & giữ code nhanh | debugger, test-engineer, qa-automation-engineer, performance-optimizer, code-archaeologist, explorer-agent | testing-patterns, webapp-testing, code-review-checklist, performance-profiling, lint-and-validate | `/debug`, `/verify`, `/test` |
-| **aak-marketing** | Đưa sản phẩm ra thị trường — SEO/GEO, CRO, content, email, growth, analytics, brand & video (63 skill) | marketing-strategist, content-creator, growth-specialist, analytics-specialist, seo-specialist | site-audit (chấm điểm audit website), client-proposal, conversion-optimization (router CRO), page-cro, keyword-research-deep, programmatic-seo, analytics-marketing, email-marketing, content-marketing, launch-strategy, brand, vision-analysis, minimax-pdf | `/audit`, `/campaign`, `/content`, `/optimize`, `/analyze`, `/seo`, `/report`, `/brand-report`, `/marketing-plan`, `/council` |
+| **aak-marketing** | Đưa sản phẩm ra thị trường — SEO/GEO, CRO, content, email, growth, analytics, brand & video (71 skill) | marketing-strategist, content-creator, growth-specialist, analytics-specialist, seo-specialist | site-audit (chấm điểm audit website), client-proposal, conversion-optimization (router CRO), page-cro, keyword-research-deep, programmatic-seo, analytics-marketing, email-marketing, content-marketing, launch-strategy, brand, vision-analysis, minimax-pdf | `/audit`, `/campaign`, `/content`, `/optimize`, `/analyze`, `/seo`, `/report`, `/brand-report`, `/marketing-plan`, `/council` |
 | **aak-ads** | Vận hành paid media như một agency — audit bám nguồn + chấm điểm tất định trên 12 nền tảng quảng cáo (Google, Meta, YouTube, LinkedIn, TikTok, Microsoft, Apple, Amazon, Reddit, Pinterest, Snapchat, X); mặc định chỉ đọc, mọi thay đổi tài khoản phải qua một mutation gate (34 skill, 25 agent) | 25 agent nền tảng/audit/creative (audit-google, audit-meta, creative-strategist, copy-writer, visual-designer, source-verifier, …) | ads (router), ads-audit, ads-plan, ads-create, ads-launch, ads-monitor, ads-optimize, ads-test, ads-report, ads-attribution, ads-server-side-tracking, ads-math, + 12 skill nền tảng | `/aak-ads:ads setup\|audit\|plan\|create\|launch\|monitor\|optimize\|experiment\|report` |
 | **aak-game** | Ra game trên nhiều engine & nền tảng | game-developer | game-development (router → 10 hướng dẫn theo nền tảng) | — |
 | **aak-workflow** | Quy trình bài bản — brainstorm, plan, debug, verify — cùng điều phối multi-agent (**bỏ qua nếu bạn dùng superpowers**) | project-planner | brainstorming, systematic-debugging, tdd-workflow, plan-writing, verify-changes, parallel-agents, coordinator-mode, intelligent-routing, memory-system, multi-cli-delivery, … | `/orchestrate`, `/coordinate`, `/status`, `/remember`, `/delegate` |
@@ -202,18 +202,18 @@ Ba "nhánh" setup / creative / optimize không phải các lần chạy riêng �
 
 > **Nguyên tắc cho paid media:** `setup` (một lần) → `audit <nền tảng>` (review + chấm điểm + đề xuất) → `optimize --draft`/`--apply` (thực thi). Khi bật cả hai plugin, dùng `aak-ads` cho mọi việc ở mức tài khoản và giữ `aak-marketing` cho organic/SEO/content/brand.
 
-#### 63 skill marketing, theo sub-track
+#### 71 skill marketing, theo sub-track
 
 Mọi skill tự kích hoạt theo mô tả — bảng gom nhóm này chỉ là bản đồ những gì có bên trong:
 
 | Sub-track | Skill |
 |-----------|-------|
 | **Chiến lược & Định vị** | `marketing-plan` · `marketing-council` · `product-marketing` · `customer-research` · `offers` · `pricing-strategy` · `marketing-ideas` · `marketing-psychology` · `competitor-teardown` · `competitor-monitor` · `competitor-alternatives` · `site-audit` · `client-proposal` |
-| **Thu hút & Tăng trưởng** | `seo-fundamentals` · `geo-fundamentals` · `programmatic-seo` · `keyword-research-deep` · `schema-markup` · `site-architecture` · `app-store-optimization` · `growth-hacking` · `free-tool-strategy` · `lead-gen-scraper` · `lead-magnets` · `referral-program` · `co-marketing` · `influencer-marketing` · `public-relations` · `launch-strategy` · `ppc-advertising` · `ad-creative-variations` |
+| **Thu hút & Tăng trưởng** | `seo-fundamentals` · `geo-fundamentals` · `programmatic-seo` · `keyword-research-deep` · `schema-markup` · `site-architecture` · `app-store-optimization` · `growth-hacking` · `free-tool-strategy` · `lead-gen-scraper` · `lead-magnets` · `referral-program` · `co-marketing` · `influencer-marketing` · `ugc-strategy` · `public-relations` · `launch-strategy` · `ppc-advertising` · `ad-creative-variations` |
 | **Chuyển đổi (CRO)** | `conversion-optimization` (router) · `page-cro` · `form-cro` · `popup-cro` · `signup-flow-cro` · `onboarding-cro` · `paywall-upgrade-cro` · `ab-test-dashboard` |
-| **Vòng đời, Giữ chân & Doanh thu** | `email-marketing` · `email-sequence` · `marketing-automation` · `cold-email` · `revops` · `sales-enablement` · `churn-prevention` |
-| **Content, Copy & Brand** | `content-marketing` · `content-repurposing` · `copywriting` · `copy-editing` · `social-media-expert` · `brand` · `branding-expert` · `banner-design` · `video-marketing` · `video-automation` · `tutorial-video-expert` · `viral-generator-builder` · `frontend-slides` · `remotion-best-practices` |
-| **Phân tích & Xuất bản** | `analytics-marketing` · `vision-analysis` · `minimax-pdf` |
+| **Vòng đời, Giữ chân & Doanh thu** | `email-marketing` · `email-sequence` · `whatsapp-marketing` · `marketing-automation` · `cold-email` · `revops` · `sales-enablement` · `churn-prevention` |
+| **Content, Copy & Brand** | `content-marketing` · `content-repurposing` · `copywriting` · `copy-editing` · `social-media-expert` · `brand` · `branding-expert` · `brand-naming` · `brand-architecture` · `brand-manifesto` · `brand-packaging` · `personal-brand` · `banner-design` · `video-marketing` · `video-automation` · `tutorial-video-expert` · `viral-generator-builder` · `frontend-slides` · `remotion-best-practices` |
+| **Phân tích & Xuất bản** | `analytics-marketing` · `brand-measurement` · `vision-analysis` · `minimax-pdf` |
 
 **Command vòng-lặp-agency** — chạy vòng lặp bên trên:
 

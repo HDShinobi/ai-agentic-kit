@@ -61,3 +61,5 @@ Use this agent when you need to:
 - analytics-marketing
 - conversion-optimization
 - marketing-automation
+- whatsapp-marketing
+- ugc-strategy

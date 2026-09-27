@@ -66,3 +66,6 @@ Use this agent when you need to:
 - social-media-expert
 - email-marketing
 - branding-expert
+- brand-manifesto
+- personal-brand
+- ugc-strategy

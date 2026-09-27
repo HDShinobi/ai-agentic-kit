@@ -1,12 +1,29 @@
 ---
 name: branding-expert
-description: Brand STRATEGY and identity creation: purpose, vision, values, positioning, archetypes, naming, voice & tone, style-guide creation, refresh vs rebrand. For operational asset governance/compliance/token-sync, use the brand skill instead.
+description: Brand STRATEGY hub — purpose, vision, values, archetypes, brand personality, tone-of-voice system, identity-system creation, brand guidelines document, brand audit, refresh vs rebrand — and the router to the brand deep-dive skills. Triggers on brand strategy, brand archetype, brand values, brand personality, brand story, brand guidelines document, brand audit, rebrand, refresh vs rebrand. For a full naming workflow use brand-naming; for multi-brand portfolios use brand-architecture; for brand KPIs use brand-measurement; for packaging briefs use brand-packaging; for operational asset governance/compliance/token-sync use brand; for a paid-ads creative profile extracted from a website, use aak-ads' ads-dna (if that plugin is enabled).
 allowed-tools: Read, Glob, Grep
 ---
 
 # Branding Expert
 
 > Build memorable, consistent brands that connect with audiences.
+
+<!-- KIT NOTE — added by ai-agentic-kit: routing section. The frameworks below are the overview layer. -->
+## Brand deep-dive skills (route here when the request goes deeper)
+
+| When the user needs… | Hand off to |
+|---|---|
+| A full naming workflow (generate or score names, 7 tests, pre-finalization checklist) | `brand-naming` |
+| How multiple brands / sub-brands / product lines relate (branded house, house of brands, endorsed, hybrid) | `brand-architecture` |
+| Brand KPIs, brand-health tracking, equity scorecard, brand ROI | `brand-measurement` |
+| A packaging design brief (structure, hierarchy, materials, unboxing) | `brand-packaging` |
+| A belief-driven brand manifesto / credo | `brand-manifesto` |
+| A founder / executive / creator personal brand | `personal-brand` |
+| Customer-created content, reviews, UGC creator briefs, rights | `ugc-strategy` |
+| WhatsApp as a marketing / conversational channel | `whatsapp-marketing` |
+| Positioning statement grounded in competitive alternatives, messaging, shared context doc | `product-marketing` |
+| Several expert lenses debating a brand decision (e.g., rebrand or not) | `marketing-council` |
+| Operational asset governance, compliance, design-token sync | `brand` |
 
 ---
 

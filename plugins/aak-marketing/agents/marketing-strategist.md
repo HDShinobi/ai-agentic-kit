@@ -51,4 +51,8 @@ Use this agent when you need to:
 - growth-hacking
 - analytics-marketing
 - branding-expert
+- brand-naming
+- brand-architecture
+- brand-measurement
+- brand-packaging
 - ppc-advertising
