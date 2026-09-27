@@ -259,3 +259,13 @@ Account
 ---
 
 > **Remember:** PPC success comes from continuous testing and optimization. Start small, learn fast, scale what works.
+
+---
+
+## Reference guides
+
+<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. This section is a kit-added index. -->
+
+Additional depth for this skill (load on demand):
+- `references/meta-ads-tactics.md` — Meta creative strategy (formats, hooks, UGC vs. polished, copy structure), a testing framework incl. the 3-2-2 creative method, retargeting audiences/messages, and budget-scaling rules.
+- `references/google-ads-tactics.md` — a recommended starting campaign structure, a keyword research process (seed keywords, match types, negatives, ad-group organization), an RSA copy formula plus assets, and a monthly optimization checklist.

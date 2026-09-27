@@ -259,3 +259,4 @@ Additional depth for this skill (load on demand):
 - `references/deliverability.md`
 - `references/email-marketing-playbook.md`
 - `references/segmentation.md`
+- `references/list-building.md` — list-building strategy: lead-magnet types by business, opt-in placement and timing, double opt-in and list hygiene from day one.

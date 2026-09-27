@@ -313,3 +313,4 @@ For implementation, see the tools registry. Key tools for co-marketing:
 
 Additional depth for this skill (load on demand):
 - `references/partnership-types.md`
+- `references/brand-protection.md` — brand protection in partnerships: brand-usage rules for partners, approvals, morality/exit clause, and red flags.

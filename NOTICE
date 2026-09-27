@@ -216,7 +216,24 @@ apply to the adapted portions.
   (bytes below unchanged) mapping upstream's `.agents/brand-context.md` to this kit's
   shared `.agents/product-marketing.md`, and — for whatsapp-marketing and
   ugc-strategy — flagging unsourced statistics, rate cards, and India-centric tooling.
-  The upstream repo's other 21 skills were not adopted (covered by existing kit skills).
+  The upstream repo's other 21 skills were not adopted as skills (covered by existing kit
+  skills); instead, material from them was grafted byte-verbatim (whole bodies or delimited
+  section extracts, each file stating its exact upstream line ranges and separating
+  non-contiguous extracts with `<!-- extract -->` markers) as reference guides under a
+  "KIT NOTE" preamble: branding-expert ← brand-strategy, brand-identity, brand-voice,
+  brand-messaging, brand-story, brand-guidelines, brand-audit, brand-positioning, rebranding
+  (bodies; upstream frontmatter and "Related Skills" lists not carried over — the hub's routing
+  table replaces them) + brand-launch §06 (rebrand launch comms); influencer-marketing ←
+  influencer-marketing §03–05, §07 (outreach, brief, agreements, seeding); competitor-teardown ←
+  competitor-branding (brand-lens analysis); app-store-optimization ← aso (description rules,
+  in-app rating prompt, store A/B testing — two upstream API/limit inaccuracies corrected in the
+  KIT NOTE, bytes unchanged); ppc-advertising ← meta-ads §04–07 and google-ads (structure,
+  keywords, RSA copy, monthly checklist — upstream benchmark and bid-threshold sections
+  deliberately not grafted); marketing-plan ← d2c-marketing §01–04 (D2C playbook);
+  email-marketing ← email-marketing §01 (list building); co-marketing ← brand-partnerships §07
+  (brand protection); sales-enablement ← b2b-brand-marketing §02, §04, §07 (buying-committee
+  map, LinkedIn brand, ABM brand layer). Unsourced figures are flagged in each KIT NOTE rather
+  than edited. target-audience was not used (customer-research covers it).
 
 - vietnamese-language-skill (https://github.com/trussary/vietnamese-language-skill),
   Copyright (c) trussary, MIT. Vendored verbatim as the `aak-vietnamese` plugin —
