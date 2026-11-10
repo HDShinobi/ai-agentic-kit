@@ -42,6 +42,7 @@ project-name/
 │
 ├── public/
 ├── proxy.ts                        # Network boundary (auth, redirects)
+├── DESIGN.md                       # Design source-of-truth tokens & rationale (MANDATORY for UI)
 ├── .env.example
 ├── .env.local
 ├── package.json
@@ -68,6 +69,7 @@ project-name/
 | File | Purpose |
 |------|---------|
 | `proxy.ts` | Next.js 16 network boundary logic (auth, redirects). Renamed from `middleware.ts`, runs on Node.js runtime |
+| `DESIGN.md` | Single source of truth for visual tokens (YAML frontmatter) & rationale (MANDATORY before UI) |
 | `package.json` | Dependencies |
 | `next.config.ts` | Next.js config (TypeScript) |
 | `tsconfig.json` | TypeScript + path aliases (`@/*`) |
@@ -76,6 +78,7 @@ project-name/
 | `.gitignore` | Git ignore rules |
 | `prisma/schema.prisma` | Database schema |
 | `src/app/globals.css` | Tailwind v4 config via `@theme` (no `tailwind.config.js`) |
+
 
 ---
 
