@@ -24,14 +24,15 @@ Analysis:
 ## Iterative Enhancement Process
 
 ```
-1. Analyze existing project
-2. Create change plan
-3. Present plan to user
-4. Get approval
-5. Apply changes
-6. Test
-7. Show preview
+1. Analyze existing project & architecture
+2. Create change plan ({task-slug}.md)
+3. If UI modified/added: check & align with DESIGN.md
+4. Present plan to user & get approval
+5. Apply changes with specialist agents
+6. Test & validate (lint, typecheck, unit tests)
+7. Start preview (`/aak-backend:preview`, if `aak-backend` is enabled)
 ```
+
 
 ## Error Handling
 

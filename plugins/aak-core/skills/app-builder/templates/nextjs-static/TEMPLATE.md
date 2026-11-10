@@ -45,6 +45,7 @@ project-name/
 │       └── utils.ts      # Helper functions (cn, formatters)
 ├── content/              # Markdown/MDX content
 ├── public/               # Static assets (images, fonts)
+├── DESIGN.md             # Visual source-of-truth tokens & rationale (MANDATORY before UI)
 ├── next.config.ts        # Next.js Config (TypeScript)
 └── package.json
 ```

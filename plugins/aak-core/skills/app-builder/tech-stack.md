@@ -39,3 +39,17 @@ Monorepo:
 | Payment | Stripe | LemonSqueezy, Paddle |
 | Email | Resend | SendGrid, Postmark |
 | Search | Algolia | Typesense, Orama |
+| AI / LLM SDK | Vercel AI SDK (`ai` + `@ai-sdk/*`) | LangChain.js, direct REST API |
+| Vector Database | PostgreSQL (pgvector via Supabase / Neon) | Pinecone, Qdrant |
+| ORM (SQL-first) | Prisma ORM | Drizzle ORM (`drizzle-orm` + `drizzle-kit`) |
+
+---
+
+## AI Application Pattern (2026 Standard)
+
+When building an AI or LLM-powered application:
+- **Streaming**: Use Vercel AI SDK `streamText` / `streamUI` in Route Handlers or Server Actions.
+- **UI State**: Leverage `useChat` / `useCompletion` with React 19 optimistic updates.
+- **Embeddings & Vector**: Store vectors in PostgreSQL using `pgvector` extension; query via cosine similarity.
+- **Safety & Rate Limits**: Protect AI endpoints with rate limiting (`@[skills/api-patterns/rate-limiting]`, if `aak-backend` is enabled) and Zod schema parsing.
+
