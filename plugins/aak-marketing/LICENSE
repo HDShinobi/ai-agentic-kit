@@ -32,7 +32,13 @@ third-party license text. Sources include:
 - MiniMax-AI/skills (https://github.com/MiniMax-AI/skills), Copyright (c) 2026
   MiniMax, MIT — source of the `minimax-pdf` skill.
 - Remotion Dev Skills (https://github.com/remotion-dev/skills) — source of
-  `remotion-best-practices`.
+  `remotion-best-practices`, vendored from commit
+  1af7e69a2a613437d46095924057970a6a7df40d (2026-11-09, v4.0.542). The upstream repo
+  states no license (GitHub: NOASSERTION). Remotion itself is distributed under the
+  Remotion License (https://github.com/remotion-dev/remotion/blob/main/LICENSE.md),
+  which requires a paid Company License for some organizations. The skill text
+  remains (c) Remotion and is included without a separate license grant. Installers are
+  responsible for complying with Remotion's licensing when using Remotion.
 - ai-marketing-claude (https://github.com/zubair-trabzada/ai-marketing-claude),
   Copyright (c) 2026 Zubair Trabzada, MIT — source of the `client-proposal` skill.
 - agentkits-marketing (https://github.com/aitytech/agentkits-marketing),

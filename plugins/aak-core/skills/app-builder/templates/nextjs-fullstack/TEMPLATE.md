@@ -46,6 +46,7 @@ project-name/
 │   ├── actions/            # Server Actions (Mutations)
 │   └── types/              # Global TS Types
 ├── public/
+├── DESIGN.md               # Visual source-of-truth tokens & rationale (MANDATORY before UI)
 ├── next.config.ts          # TypeScript Config
 └── package.json
 ```

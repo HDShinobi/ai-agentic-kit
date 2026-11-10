@@ -9,6 +9,10 @@ plugin under `plugins/` are derived from ag-kit's `.agents/` content. The
 original MIT License terms apply to those portions and are reproduced in full
 below, as required by that license.
 
+Imported 2026-08-24 (≈ ag-kit 211561c). The `aak-core` `app-builder` skill was
+re-synced on 2026-11-10 to ag-kit 549ba3dc2eb1d40fccb5b6d792eba4101c80cd69
+(v2026.8.31, app-builder 1.1.0).
+
 ------------------------------------------------------------------------------
 ag-kit — MIT License
 ------------------------------------------------------------------------------
@@ -159,7 +163,19 @@ apply to the adapted portions.
 
 - Remotion Dev Skills (https://github.com/remotion-dev/skills), by Remotion.
   Source of `remotion-best-practices` (formerly also `video-automation` and
-  `tutorial-video-expert`, retired in aak-marketing 1.0.0).
+  `tutorial-video-expert`, retired in aak-marketing 1.0.0). Vendored from commit
+  1af7e69a2a613437d46095924057970a6a7df40d (2026-11-09, v4.0.542): the router
+  `skills/remotion-best-practices/` tree including its nested `REFERENCE.md`
+  sub-folders; the upstream top-level duplicate sub-skill dirs are not vendored.
+  The upstream repo states no license (GitHub: NOASSERTION). Remotion itself is
+  distributed under the Remotion License
+  (https://github.com/remotion-dev/remotion/blob/main/LICENSE.md), which requires a
+  paid Company License for some organizations. The skill text remains (c) Remotion and
+  is included without a separate license grant. Installers are responsible for
+  complying with Remotion's licensing when using Remotion.
+  Wiring: the router `description` keeps upstream's text and appends kit
+  "Triggers on:" keywords (frontmatter only; body verbatim), plus a KIT NOTE
+  preamble and a "## Kit additions" section.
 
 - vibeship-spawner-skills, Apache License 2.0. Formerly the source of the
   `viral-generator-builder` skill (retired in aak-marketing 1.0.0). Under Apache-2.0, this notice preserves the
@@ -348,8 +364,9 @@ aak-ads — additional third-party source
 ------------------------------------------------------------------------------
 
 The `plugins/aak-ads/` plugin is vendored from Claude Ads
-(https://github.com/AgriciDaniel/claude-ads), Copyright (c) 2026 agricidaniel,
-MIT. It is copied verbatim: the `ads/` skill router and its 38 references, the
+(https://github.com/AgriciDaniel/claude-ads), Copyright (c) 2026 Daniel Agrici
+(AgriciDaniel), MIT. Pinned to upstream tag v2.1.0 (commit
+4a74a5a2237caf2bc81091108164fe20e178818c, 2026-10-16). It is copied verbatim: the `ads/` skill router and its 38 references, the
 33 `ads-*` workflow skills (with `ads-plan/assets/`), the 25 audit/creative/
 release agents, the `claude_ads_core/` deterministic scoring engine and v1
 schemas, the `control-plane/` manifests and schemas, the `scripts/` helpers,
@@ -362,16 +379,30 @@ Only mechanical wiring changed: `.claude-plugin/plugin.json` identity fields
 (name → `aak-ads`, author, homepage) were rewritten for this kit; the upstream
 repo-governance and host files (README, CHANGELOG, CONTRIBUTING, install/
 uninstall scripts and their receipt/verify helpers, `.github/`, per-host
-CLAUDE.md/AGENTS.md/GEMINI.md/CODEX.md, the upstream marketplace.json, and
-`assets/`) were dropped as they do not apply inside this marketplace. Two
+CLAUDE.md/AGENTS.md/GEMINI.md/CODEX.md, the upstream marketplace.json,
+`assets/`, `docs/`, and the separate optional `mods/claude-ads-cockpit` Claude
+Code mod) were dropped as they do not apply inside this marketplace. The
 repo-governance tests coupled to those dropped/renamed identity files were
-removed with them: `tests/scripts/test_installer_security.py` (tested the
-dropped installer) and the single test case
-`test_claude_command_contract_distinguishes_plugin_namespace` in
-`tests/release/test_release.py` (asserted the dropped repo `README.md` exists
-and documents the upstream `/claude-ads:ads` namespace, now `/aak-ads:ads`); the
-other 49 cases in that file, which exercise the release/SBOM/inventory gate used
-by `ads-validate`, are retained verbatim. No skill, agent, reference, rubric,
+removed with them: `tests/scripts/test_installer_security.py`,
+`test_installer_ci.py`, `test_installer_git_ref.py` and
+`test_verify_managed_install.py` (tested the dropped installer and receipt
+helpers), `tests/release/test_optional_marketplace.py`,
+`test_public_docs_hygiene.py` and `test_cockpit_packaging.py` (new in 2.1.0;
+they assert the dropped README/CONTRIBUTING/`.github`/`mods/` files exist) and
+two test cases in
+`tests/release/test_release.py`:
+`test_claude_command_contract_distinguishes_plugin_namespace` (asserted the
+dropped repo `README.md` exists and documents the upstream `/claude-ads:ads`
+namespace, now `/aak-ads:ads`) and
+`test_remote_ci_verifier_requires_exact_private_subject_and_all_jobs` (reads the
+dropped `.github/workflows/ci.yml`); the
+other cases in that file, which exercise the release/SBOM/inventory gate used
+by `ads-validate`, are retained verbatim. A "## Kit additions" note appended to
+`ads/SKILL.md` states that the optional `ads-cockpit` companion is not shipped
+here (the `claude_ads_core.cockpit` core it drives is) and points to upstream;
+a one-line KIT NOTE after its frontmatter points there. `scripts/package_cockpit.py`
+(packages only the dropped `mods/claude-ads-cockpit`) was dropped with it;
+`scripts/release.py` already treats its absence as "no companion". No skill, agent, reference, rubric,
 scoring, schema, or other product substance was paraphrased or re-derived.
 
 ------------------------------------------------------------------------------
@@ -398,3 +429,5 @@ Two different treatments apply to two different parts of that skill:
   phase-name wiring changed (dely's `implement` → this kit's `CODE`; dely's
   `review` → this kit's `REVIEW`); that file's own header note records the
   complete, itemized diff.
+  Pinned at dely commit 450e874b06a0d4f4ade686b6f371ec9761de1b29 (v0.27.2,
+  2026-11-04); previously c2fc1a96dce4eabc5b8c9ee9dafbb66fb371d785.

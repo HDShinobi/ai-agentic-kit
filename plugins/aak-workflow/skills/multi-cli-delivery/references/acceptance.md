@@ -4,7 +4,7 @@
 > Agentic Kit vendors external artifacts byte-for-byte; see root `NOTICE`).
 > Source: `hieuphung97/dely` `skills/delivery/SKILL.md` §Acceptance (+
 > `skills/delivery/templates/plan.md` §Acceptance), vendored at dely commit
-> `c2fc1a96dce4eabc5b8c9ee9dafbb66fb371d785`.
+> `450e874b06a0d4f4ade686b6f371ec9761de1b29`.
 >
 > Only phase-name wiring changed, both one-word swaps: dely's `implement` →
 > this kit's `CODE` (in the `templates/plan.md` extract below — "Design
@@ -28,20 +28,19 @@ One table: each requirement, the instrument that proves it, the plausible
 wrong implementation that instrument rejects, and where that rejection was
 observed.
 
-**An acceptance row is invalid until you have settled that its instrument
-discriminates.** A row whose instrument passes both before and after the
-change proves nothing and will be found at REVIEW. Baseline-red is
-insufficient by itself: an instrument observed red only because the feature
-is absent says nothing about whether it can catch an implementation that is
-present, runs, returns a pass, and is wrong.
+**An acceptance row is invalid until its instrument discriminates.** A row
+that passes both before and after the change proves nothing and will be
+found at REVIEW. Baseline-red is not enough: red only because the feature
+is absent says nothing about catching an implementation that is present,
+runs, returns a pass, and is wrong. Each row names such a wrong
+implementation. "The feature is absent" does not satisfy Counterexample.
+Where none exists, the row says so and a human reads the diff.
 
-Each row names a plausible wrong implementation its instrument rejects — one
-that exists, runs, and returns a pass. "The feature is absent" does not
-satisfy Counterexample. Where no counterexample exists, the row says so and
-says a human reads the diff.
-
-Record what the available instruments cannot observe. Prefer the simplest
-instrument that proves the contract.
+Record what the instruments cannot observe. Prefer the simplest instrument
+that proves the contract. Any claim about extent — a scope, a count, a set
+of call sites — names the command that produced it, reports its output, and
+enumerates rather than samples. Naming the command is not the measurement;
+the command must have been run.
 
 *Source: `hieuphung97/dely` `skills/delivery/templates/plan.md` §Acceptance*
 

@@ -47,8 +47,8 @@ project-name/
 │   │   ├── db.ts        # Prisma Singleton
 │   │   ├── data/        # Data Access Layer (server-only reads)
 │   │   └── stripe.ts    # Stripe Singleton
-│   └── styles/
-│       └── globals.css  # Tailwind v4 imports (CSS only)
+│   └── app/globals.css  # Tailwind v4 imports (@theme in CSS)
+├── DESIGN.md            # Visual source-of-truth tokens & rationale (MANDATORY before UI)
 └── package.json
 ```
 

@@ -9,6 +9,8 @@
 | blog, post, article | Blog | astro-static |
 | e-commerce, product, cart, payment | E-commerce | nextjs-saas |
 | dashboard, panel, management | Admin Dashboard | nextjs-fullstack |
+| ai, chat, bot, llm, rag, agent app | AI / Chatbot App | nextjs-fullstack (AI SDK / Streaming) |
+| game, 2d, 3d, canvas, phaser, godot | Game Application | `game-development` skill (via `game-developer`) — if `aak-game` is enabled |
 | api, backend, service, rest | API Service | express-api |
 | python, fastapi, django | Python API | python-fastapi |
 | mobile, android, ios, react native | Mobile App (RN) | react-native-app |
@@ -22,6 +24,7 @@
 | desktop, electron | Desktop App | electron-desktop |
 | cli, command line, terminal | CLI Tool | cli-tool |
 | monorepo, workspace | Monorepo | monorepo-turborepo |
+
 
 ## Detection Process
 
