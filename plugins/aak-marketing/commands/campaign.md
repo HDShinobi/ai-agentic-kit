@@ -93,7 +93,7 @@ To share, deploy the static HTML to any static host the user already uses (e.g. 
 
 Ask the user whether they want automated video ads (TikTok / Reels / Meta). If yes, use the **`video`** and **`remotion-best-practices`** skills (this plugin):
 - Take a natural-language brief (e.g. "a 9:16 TikTok promoting feature X, neon style" or "a 16:9 and a 9:16 cut of this campaign").
-- Build the Remotion composition, preview locally (the skill provides the dev-server command), then render to MP4 (the skill checks for FFmpeg and installs it if missing).
+- Build the Remotion composition, preview locally (the skill provides the dev-server command), then render to MP4 (Remotion bundles its own FFmpeg — use `npx remotion ffmpeg` if a separate binary is needed).
 - Define your own composition IDs per format (e.g. one for 16:9, one for 9:16) — do not reuse example IDs from other projects.
 
 ## Skills used

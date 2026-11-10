@@ -1,6 +1,6 @@
 ---
 name: remotion-best-practices
-description: Router for all Remotion skills
+description: "Router for all Remotion skills. Triggers on: Remotion, video in React, programmatic or code-rendered video, video composition, Remotion Studio, captions/subtitles, render to MP4."
 version: 4.0.542
 ---
 
@@ -131,3 +131,4 @@ upstream tree. Preserved byte-for-byte; load them when relevant:
 - [Text animations](./references/legacy-rules/text-animations.md) — typography and text animation patterns
 - [Can decode](./references/legacy-rules/can-decode.md) — check whether the browser can decode a video with Mediabunny
 - [Extract frames](./references/legacy-rules/extract-frames.md) — extract frames at timestamps with Mediabunny
+- Updates to this vendored copy arrive with the `aak-marketing` plugin version. In `remotion-upgrade/REFERENCE.md`, skip the `npx skills update …` step — it would install upstream's separate top-level skills into the project instead of updating this copy.

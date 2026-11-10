@@ -173,6 +173,9 @@ apply to the adapted portions.
   paid Company License for some organizations. The skill text remains (c) Remotion and
   is included without a separate license grant. Installers are responsible for
   complying with Remotion's licensing when using Remotion.
+  Wiring: the router `description` keeps upstream's text and appends kit
+  "Triggers on:" keywords (frontmatter only; body verbatim), plus a KIT NOTE
+  preamble and a "## Kit additions" section.
 
 - vibeship-spawner-skills, Apache License 2.0. Formerly the source of the
   `viral-generator-builder` skill (retired in aak-marketing 1.0.0). Under Apache-2.0, this notice preserves the
@@ -386,14 +389,20 @@ removed with them: `tests/scripts/test_installer_security.py`,
 helpers), `tests/release/test_optional_marketplace.py`,
 `test_public_docs_hygiene.py` and `test_cockpit_packaging.py` (new in 2.1.0;
 they assert the dropped README/CONTRIBUTING/`.github`/`mods/` files exist) and
-the single test case
-`test_claude_command_contract_distinguishes_plugin_namespace` in
-`tests/release/test_release.py` (asserted the dropped repo `README.md` exists
-and documents the upstream `/claude-ads:ads` namespace, now `/aak-ads:ads`); the
+two test cases in
+`tests/release/test_release.py`:
+`test_claude_command_contract_distinguishes_plugin_namespace` (asserted the
+dropped repo `README.md` exists and documents the upstream `/claude-ads:ads`
+namespace, now `/aak-ads:ads`) and
+`test_remote_ci_verifier_requires_exact_private_subject_and_all_jobs` (reads the
+dropped `.github/workflows/ci.yml`); the
 other cases in that file, which exercise the release/SBOM/inventory gate used
 by `ads-validate`, are retained verbatim. A "## Kit additions" note appended to
 `ads/SKILL.md` states that the optional `ads-cockpit` companion is not shipped
-here (the `claude_ads_core.cockpit` core it drives is) and points to upstream. No skill, agent, reference, rubric,
+here (the `claude_ads_core.cockpit` core it drives is) and points to upstream;
+a one-line KIT NOTE after its frontmatter points there. `scripts/package_cockpit.py`
+(packages only the dropped `mods/claude-ads-cockpit`) was dropped with it;
+`scripts/release.py` already treats its absence as "no companion". No skill, agent, reference, rubric,
 scoring, schema, or other product substance was paraphrased or re-derived.
 
 ------------------------------------------------------------------------------
