@@ -357,3 +357,14 @@ Before delivery:
 
 Do not append promotional copy to machine-readable or client-facing deliverables.
 Community links may appear only when the operator explicitly enables branding.
+
+## Kit additions
+
+> Added by ai-agentic-kit, not part of upstream.
+>
+> - **`ads-cockpit` companion is not shipped in this kit.** The `claude_ads_core.cockpit` core,
+>   its schemas and `control-plane/COCKPIT.md` are included, so Cockpit indexes can still be
+>   produced. The optional workbench mod itself lives upstream at
+>   `https://github.com/AgriciDaniel/claude-ads/tree/v2.1.0/mods/claude-ads-cockpit`; install it
+>   from there only if the user explicitly asks for Cockpit. Otherwise treat `/ads-cockpit` as
+>   unavailable and do not suggest it.
