@@ -159,7 +159,16 @@ apply to the adapted portions.
 
 - Remotion Dev Skills (https://github.com/remotion-dev/skills), by Remotion.
   Source of `remotion-best-practices` (formerly also `video-automation` and
-  `tutorial-video-expert`, retired in aak-marketing 1.0.0).
+  `tutorial-video-expert`, retired in aak-marketing 1.0.0). Vendored from commit
+  1af7e69a2a613437d46095924057970a6a7df40d (2026-11-09, v4.0.542): the router
+  `skills/remotion-best-practices/` tree including its nested `REFERENCE.md`
+  sub-folders; the upstream top-level duplicate sub-skill dirs are not vendored.
+  The upstream repo states no license (GitHub: NOASSERTION). Remotion itself is
+  distributed under the Remotion License
+  (https://github.com/remotion-dev/remotion/blob/main/LICENSE.md), which requires a
+  paid Company License for some organizations. The skill text remains (c) Remotion and
+  is included without a separate license grant. Installers are responsible for
+  complying with Remotion's licensing when using Remotion.
 
 - vibeship-spawner-skills, Apache License 2.0. Formerly the source of the
   `viral-generator-builder` skill (retired in aak-marketing 1.0.0). Under Apache-2.0, this notice preserves the
