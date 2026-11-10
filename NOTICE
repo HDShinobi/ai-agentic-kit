@@ -112,6 +112,10 @@ apply to the adapted portions.
   pypistats, Optimizely/GrowthBook CDNs, and an optional keyed ScrapeCreators API;
   it reads the env vars `GITHUB_TOKEN`/`GH_TOKEN`, `SEC_USER_AGENT` and
   `SCRAPECREATORS_API_KEY`, spawns no processes, and writes only to an explicit `--out` path;
+  because it follows URLs taken from the target's own content, the kit adds an
+  isolated wrapper `scripts/safe-teardown.mjs` (aak-marketing 1.0.1; SSRF guard +
+  gunzip cap, `AAK_ALLOW_PRIVATE_URLS=1` opt-in) and the skill's KIT NOTE routes
+  runs through it — `teardown.mjs` itself is unmodified;
   `conversion-tracking/scripts/*.py` build/check GTM recipes locally with no network
   (`check_recipes.py --write` rewrites the local recipe JSON in place). The
   upstream relative link to `conversion-tracking.md` in

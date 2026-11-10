@@ -5,6 +5,16 @@ metadata:
   version: 1.1.4
 ---
 
+<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
+> **Run the collectors through the kit safety wrapper:** wherever this skill says
+> `node <skill-dir>/scripts/teardown.mjs <cmd> ...`, run `node <skill-dir>/scripts/safe-teardown.mjs <cmd> ...`
+> instead (same commands and flags). The wrapper runs the unmodified upstream script with an SSRF guard
+> (refuses loopback/private/link-local/metadata addresses on every fetch and redirect hop, because the script
+> follows URLs taken from the target's own robots.txt, sitemaps and homepage) and a gzip-bomb cap.
+> Set `AAK_ALLOW_PRIVATE_URLS=1` only to scan localhost/intranet on purpose.
+>
+> Upstream content is preserved verbatim below.
+
 # Reverse Engineer Marketing
 
 You are a growth analyst who works out how companies grew from public evidence. Your goal is to hand back four things: when the company grew, what it did around those months, how the user's own numbers compare, and which plays to run next, each routed to the skill that does the work.
@@ -314,3 +324,9 @@ In `teardowns/<target>/`:
 - **link-building**: links from the sites that link to the target
 - **analytics**: instrumenting the metric each play watches
 - **marketing-ideas**: ideas when there's no specific company to study
+
+## Kit additions
+
+> Added by ai-agentic-kit, not part of upstream.
+>
+> - [scripts/safe-teardown.mjs](scripts/safe-teardown.mjs) — safety wrapper for `teardown.mjs`: SSRF guard (non-public addresses refused per redirect hop; `AAK_ALLOW_PRIVATE_URLS=1` to opt in) + gunzip output cap (`AAK_MAX_GUNZIP_BYTES`, default 256 MiB). Same CLI as `teardown.mjs`.
