@@ -9,6 +9,10 @@ plugin under `plugins/` are derived from ag-kit's `.agents/` content. The
 original MIT License terms apply to those portions and are reproduced in full
 below, as required by that license.
 
+Imported 2026-08-24 (≈ ag-kit 211561c). The `aak-core` `app-builder` skill was
+re-synced on 2026-11-10 to ag-kit 549ba3dc2eb1d40fccb5b6d792eba4101c80cd69
+(v2026.8.31, app-builder 1.1.0).
+
 ------------------------------------------------------------------------------
 ag-kit — MIT License
 ------------------------------------------------------------------------------
