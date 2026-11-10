@@ -1,6 +1,8 @@
 ---
 name: offers
-description: "When the user wants to design, construct, or improve an offer — the thing they actually sell — including value framing, bonus stacking, guarantee design, scarcity/urgency, naming, and payment structure. Also use when the user mentions 'offer,' 'offer design,' 'build an offer,' 'grand slam offer,' 'irresistible offer,' 'value stack,' 'bonus stack,' 'guarantee,' 'risk reversal,' 'money-back guarantee,' 'scarcity,' 'urgency,' 'high-ticket offer,' 'productize a service,' 'naming an offer,' 'payment plan,' 'down-sell,' 'upsell offer,' or 'why isn't my offer converting.' Best for services, agencies, courses, coaching, info products, high-ticket B2B, and direct-response. If you run pure self-serve SaaS, read pricing-strategy first — tiers and packaging do more work there. For price level itself (tiers, freemium, value metric), see pricing-strategy. For the page that presents the offer, see copywriting. For the launch moment, see launch-strategy. For sales collateral, see sales-enablement."
+description: "When the user wants to design or improve the offer itself, or asks why it isn't selling or how to add urgency honestly: value stacking, bonuses, guarantees, scarcity, payment plans, upsells. Best for services, courses, coaching, and high-ticket B2B; for self-serve SaaS, read pricing first. For price and tiers, see pricing. For the page, see copywriting. For the launch, see launch. For sales collateral, see sales-enablement."
+metadata:
+  version: 1.0.6
 ---
 
 # Offer Design
@@ -18,7 +20,7 @@ If `.agents/product-marketing.md` exists (or `.claude/product-marketing.md`, or 
 
 **The offer is the thing, not the page.** Better copy on a weak offer compounds slowly. A stronger offer with average copy converts immediately. Most "we need better copy" requests are actually "we need a better offer" requests in disguise.
 
-This skill exists because the rest of the repo handles the *expression* of an offer — `copywriting` writes the sales page, `conversion-optimization` optimizes the conversion path, `pricing-strategy` sets the tier structure, `launch-strategy` orchestrates the moment, `paywall-upgrade-cro` shapes the upgrade prompt. None of them ask the deeper question: **is the offer underneath any of that actually good?**
+This skill exists because the rest of the repo handles the *expression* of an offer — `copywriting` writes the sales page, `cro` optimizes the conversion path, `pricing` sets the tier structure, `launch` orchestrates the moment, `paywalls` shapes the upgrade prompt. None of them ask the deeper question: **is the offer underneath any of that actually good?**
 
 ### When this skill matters
 
@@ -30,13 +32,13 @@ You sell:
 - **High-ticket B2B** — $5K+ ACV with a sales conversation
 - **Direct-response** — e-com promo offers, infomercial-style, paid-traffic-to-VSL
 
-### When `pricing-strategy` does more of the work
+### When `pricing` does more of the work
 
 You sell:
 - **Self-serve SaaS** with tiered subscriptions — the levers are mostly tier structure, value metric, and packaging; offer construction (bonuses, guarantees) is secondary
 - **Marketplaces** — the offer is structural, not constructed
 
-Skim this skill in those cases for the value equation framing, then go to `pricing-strategy`.
+Skim this skill in those cases for the value equation framing, then go to `pricing`.
 
 ---
 
@@ -109,7 +111,7 @@ When the user says "my offer isn't converting" or "I want to improve my offer":
 4. **Audit the anatomy** — which of the six components is missing or weak?
 5. **Pick one lever to fix this iteration** — don't rebuild everything. The biggest lever is usually the one currently scoring lowest.
 6. **Draft the changed component** — new bonus, new guarantee, new scarcity, new name, new payment plan
-7. **Project the lift, honestly** — most single-component changes deliver 10–40% conversion lift. Anyone promising 5x is selling something. Two consecutive iterations on different levers can stack to 2–3x.
+7. **Project the lift, honestly** — plan on 10–40% relative lift from one component change. Multiply the lifts, don't add them: +20% then +30% = `1.20 × 1.30 = 1.56` (2% → 3.12%, +1.12 percentage points). Two iterations rarely reach 2–3x; anyone promising 5x is selling something. Confirm the combined offer with a test (see ab-testing).
 
 ---
 
@@ -143,25 +145,11 @@ Use specific numbers, named customers, concrete outcomes, real timelines. Specif
 
 ## Related Skills
 
-- **pricing-strategy** — for price levels, tier structure, value metric, packaging, freemium
+- **pricing** — for price levels, tier structure, value metric, packaging, freemium
 - **copywriting** — for the page that presents the offer
-- **conversion-optimization** — for optimizing the conversion path the offer travels through
-- **launch-strategy** — for the moment you ship the offer
-- **paywall-upgrade-cro** — for in-app upgrade-prompt versions of an offer
+- **cro** — for optimizing the conversion path the offer travels through
+- **launch** — for the moment you ship the offer
+- **paywalls** — for in-app upgrade-prompt versions of an offer
 - **sales-enablement** — for the deck and one-pager that carry the offer into a sales conversation
-- **email-sequence** — for the email sequence that warms up the offer
+- **emails** — for the email sequence that warms up the offer
 - **marketing-psychology** — for the cognitive biases that make offers land or bounce
-
----
-
-## Reference guides
-
-Additional depth for this skill (load on demand):
-- `references/bonus-stacking.md`
-- `references/examples.md`
-- `references/guarantee-design.md`
-- `references/offer-anatomy.md`
-- `references/offer-formats.md`
-- `references/saas-offers.md`
-- `references/scarcity-urgency.md`
-- `references/value-equation.md`

@@ -230,7 +230,7 @@ UGC-style creative is consistently the highest-performing ad format on Meta and 
 ## Related Skills
 
 - **influencer-marketing**: When UGC creators overlap with influencer strategy
-- **ppc-advertising**: Using UGC creative in paid social campaigns (if `aak-ads` is enabled, prefer `/aak-ads:ads` for paid media)
+- **ads**: Using UGC creative in paid social campaigns (if `aak-ads` is enabled, prefer `/aak-ads:ads` for paid media)
 - **marketing-plan**: UGC as core DTC acquisition and retention tool
 - **branding-expert**: Ensure UGC aligns with brand communication standards
 - **product-marketing**: Foundation context for all brand work

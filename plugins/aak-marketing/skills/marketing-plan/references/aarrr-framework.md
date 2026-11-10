@@ -1,10 +1,3 @@
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
-> **⚠️ Plan-internal primer.** This is a plan-internal AARRR primer for *sequencing plan
-> sections*. The kit's general AARRR/growth methodology lives in the `growth-hacking` skill — use
-> that for standalone growth work; this file only serves the marketing-plan document.
->
-> Upstream content is preserved verbatim below.
-
 # AARRR Framework — Primer for Plan Sequencing
 
 AARRR (Dave McClure's "pirate metrics") is the spine of every plan produced by this skill. This doc is the primer + the decision rules for when each stage gets prioritized.

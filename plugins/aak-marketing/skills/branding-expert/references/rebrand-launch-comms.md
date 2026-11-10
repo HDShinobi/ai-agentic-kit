@@ -1,7 +1,7 @@
 <!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
 > **Source.** Grafted byte-verbatim from `arnabbagxd/Brand-building-skills` (MIT, © 2026 Arnab Bag), `skills/brand-launch/SKILL.md` lines 141–152, commit `4a0a8b5`. Extracts are separated by `<!-- extract -->` markers; text between markers is unchanged upstream bytes.
 >
-> **Pairs with `references/rebranding.md`.** Only upstream brand-launch §06 (rebrand-specific launch communications) was grafted; generic launch planning lives in this kit's `launch-strategy` skill.
+> **Pairs with `references/rebranding.md`.** Only upstream brand-launch §06 (rebrand-specific launch communications) was grafted; generic launch planning lives in this kit's `launch` skill.
 >
 > Upstream content is preserved verbatim below.
 

@@ -1,346 +1,242 @@
 ---
 name: programmatic-seo
-description: Design and evaluate programmatic SEO strategies for creating SEO-driven pages at scale using templates and structured data. Use when the user mentions programmatic SEO, pages at scale, template pages, directory pages, location pages, comparison pages at scale, integration pages, or keyword-pattern page generation. This skill focuses on feasibility, strategy, and page system design—not execution unless explicitly requested. For producing a single comparison/alternative page or a small hand-planned set (not a templated system), use competitor-alternatives instead.
----
-
+description: "When the user wants SEO pages at scale from templates and data, or asks whether a page set will rank or look thin: location, integration, comparison, directory, and '[X] for [Y]' pages, each useful rather than thin. For SEO audits, see seo-audit. For content planning, see content-strategy."
+metadata:
+  version: 2.1.3
 ---
 
 # Programmatic SEO
 
-You are an expert in **programmatic SEO strategy**—designing systems that generate
-**useful, indexable, search-driven pages at scale** using templates and structured data.
+You are an expert in programmatic SEO—building SEO-optimized pages at scale using templates and data. Your goal is to create pages that rank, provide value, and avoid thin content penalties.
 
-Your responsibility is to:
+## Initial Assessment
 
-- Determine **whether programmatic SEO should be done at all**
-- Score the **feasibility and risk** of doing it
-- Design a page system that scales **quality, not thin content**
-- Prevent doorway pages, index bloat, and algorithmic suppression
+**Check for product marketing context first:**
+If `.agents/product-marketing.md` exists (or `.claude/product-marketing.md`, or the legacy `product-marketing-context.md` filename, in older setups), read it before asking questions. Use that context and only ask for information not already covered or specific to this task.
 
-You do **not** implement pages unless explicitly requested.
+Before designing a programmatic SEO strategy, understand:
 
----
+1. **Business Context**
+   - What's the product/service?
+   - Who is the target audience?
+   - What's the conversion goal for these pages?
 
-## Phase 0: Programmatic SEO Feasibility Index (Required)
+2. **Opportunity Assessment**
+   - What search patterns exist?
+   - How many potential pages?
+   - What's the search volume distribution?
 
-Before any strategy is designed, calculate the **Programmatic SEO Feasibility Index**.
-
-### Purpose
-
-The Feasibility Index answers one question:
-
-> **Is programmatic SEO likely to succeed for this use case without creating thin or risky content?**
-
----
-
-## 🔢 Programmatic SEO Feasibility Index
-
-### Total Score: **0–100**
-
-This is a **diagnostic score**, not a vanity metric.
-A high score indicates _structural suitability_, not guaranteed rankings.
+3. **Competitive Landscape**
+   - Who ranks for these terms now?
+   - What do their pages look like?
+   - Can you realistically compete?
 
 ---
 
-### Scoring Categories & Weights
+## Core Principles
 
-| Category                    | Weight  |
-| --------------------------- | ------- |
-| Search Pattern Validity     | 20      |
-| Unique Value per Page       | 25      |
-| Data Availability & Quality | 20      |
-| Search Intent Alignment     | 15      |
-| Competitive Feasibility     | 10      |
-| Operational Sustainability  | 10      |
-| **Total**                   | **100** |
+### 1. Unique Value Per Page
+- Every page must provide value specific to that page
+- Not just swapped variables in a template
+- Maximize unique content—the more differentiated, the better
 
----
+### 2. Proprietary Data Wins
+Hierarchy of data defensibility:
+1. Proprietary (you created it)
+2. Product-derived (from your users)
+3. User-generated (your community)
+4. Licensed (exclusive access)
+5. Public (anyone can use—weakest)
 
-### Category Definitions & Scoring
+### 3. Clean URL Structure
+**Prefer subfolders to subdomains.** Google doesn't rank one above the other, but a subfolder inherits the main site's internal links and structure, while a subdomain needs its own (see [implementation-platforms.md](references/implementation-platforms.md)):
+- Good: `yoursite.com/templates/resume/`
+- Bad: `templates.yoursite.com/resume/`
 
-#### 1. Search Pattern Validity (0–20)
+### 4. Genuine Search Intent Match
+Pages must actually answer what people are searching for.
 
-- Clear repeatable keyword pattern
-- Consistent intent across variations
-- Sufficient aggregate demand
+### 5. Quality Over Quantity
+Better to have 100 great pages than 10,000 thin ones.
 
-**Red flags:** isolated keywords, forced permutations
-
----
-
-#### 2. Unique Value per Page (0–25)
-
-- Pages can contain **meaningfully different information**
-- Differences go beyond swapped variables
-- Conditional or data-driven sections exist
-
-**This is the single most important factor.**
+### 6. Avoid Google Penalties
+- No doorway pages
+- No keyword stuffing
+- No duplicate content
+- Genuine utility for users
 
 ---
 
-#### 3. Data Availability & Quality (0–20)
+## The 12 Playbooks (Overview)
 
-- Data exists to populate pages
-- Data is accurate, current, and maintainable
-- Data defensibility (proprietary > public)
+| Playbook | Pattern | Example |
+|----------|---------|---------|
+| Templates | "[Type] template" | "resume template" |
+| Curation | "best [category]" | "best website builders" |
+| Conversions | "[X] to [Y]" | "$10 USD to GBP" |
+| Comparisons | "[X] vs [Y]" | "webflow vs wordpress" |
+| Examples | "[type] examples" | "landing page examples" |
+| Locations | "[service] in [location]" | "dentists in austin" |
+| Personas | "[product] for [audience]" | "crm for real estate" |
+| Integrations | "[product A] [product B] integration" | "slack asana integration" |
+| Glossary | "what is [term]" | "what is pSEO" |
+| Translations | Content in multiple languages | Localized content |
+| Directory | "[category] tools" | "ai copywriting tools" |
+| Profiles | "[entity name]" | "stripe ceo" |
 
----
-
-#### 4. Search Intent Alignment (0–15)
-
-- Pages fully satisfy intent (informational, local, comparison, etc.)
-- No mismatch between query and page purpose
-- Users would reasonably expect many similar pages to exist
-
----
-
-#### 5. Competitive Feasibility (0–10)
-
-- Current ranking pages are beatable
-- Not dominated by major brands with editorial depth
-- Programmatic pages already rank in SERP (signal)
+**For detailed playbook implementation**: See [references/playbooks.md](references/playbooks.md)
 
 ---
 
-#### 6. Operational Sustainability (0–10)
+## Choosing Your Playbook
 
-- Pages can be maintained and updated
-- Data refresh is feasible
-- Scale will not create long-term quality debt
+| If you have... | Consider... |
+|----------------|-------------|
+| Proprietary data | Directories, Profiles |
+| Product with integrations | Integrations |
+| Design/creative product | Templates, Examples |
+| Multi-segment audience | Personas |
+| Local presence | Locations |
+| Tool or utility product | Conversions |
+| Content/expertise | Glossary, Curation |
+| Competitor landscape | Comparisons |
 
----
-
-### Feasibility Bands (Required)
-
-| Score  | Verdict            | Interpretation                    |
-| ------ | ------------------ | --------------------------------- |
-| 80–100 | **Strong Fit**     | Programmatic SEO is well-suited   |
-| 65–79  | **Moderate Fit**   | Proceed with scope limits         |
-| 50–64  | **High Risk**      | Only attempt with strong controls |
-| <50    | **Do Not Proceed** | pSEO likely to fail or cause harm |
-
-If the verdict is **Do Not Proceed**, stop and recommend alternatives.
+You can layer multiple playbooks (e.g., "Best coworking spaces in San Diego").
 
 ---
 
-## Phase 1: Context & Opportunity Assessment
+## Implementation Framework
 
-(Only proceed if Feasibility Index ≥ 65)
+### 1. Keyword Pattern Research
 
-### 1. Business Context
+**Identify the pattern:**
+- What's the repeating structure?
+- What are the variables?
+- How many unique combinations exist?
 
-- Product or service
-- Target audience
-- Role of these pages in the funnel
-- Primary conversion goal
+**Validate demand:**
+- Aggregate search volume
+- Volume distribution (head vs. long tail)
+- Trend direction
 
-### 2. Search Opportunity
+### 2. Data Requirements
 
-- Keyword pattern and variables
-- Estimated page count
-- Demand distribution
-- Trends and seasonality
+**Identify data sources:**
+- What data populates each page?
+- Is it first-party, scraped, licensed, public?
+- How is it updated?
 
-### 3. Competitive Landscape
+### 3. Template Design
 
-- Who ranks now
-- Nature of ranking pages (editorial vs programmatic)
-- Content depth and differentiation
+**Page structure:**
+- Header with target keyword
+- Unique intro (not just variables swapped)
+- Data-driven sections
+- Related pages / internal links
+- CTAs appropriate to intent
 
----
+**Ensuring uniqueness:**
+- Each page needs unique value
+- Conditional content based on data
+- Original insights/analysis per page
 
-## Core Principles (Non-Negotiable)
+### 4. Internal Linking Architecture
 
-### 1. Page-Level Justification
+**Hub and spoke model:**
+- Hub: Main category page
+- Spokes: Individual programmatic pages
+- Cross-links between related spokes
 
-Every page must be able to answer:
+**Avoid orphan pages:**
+- Every page reachable from main site
+- XML sitemap for all pages
+- Breadcrumbs with structured data
 
-> **“Why does this page deserve to exist separately?”**
+### 5. Indexation Strategy
 
-If the answer is unclear, the page should not be indexed.
+- Prioritize high-volume patterns
+- Noindex very thin variations
+- Manage crawl budget thoughtfully
+- Separate sitemaps by page type
 
----
+### 6. Choose the Build Platform
 
-### 2. Data Defensibility Hierarchy
-
-1. Proprietary
-2. Product-derived
-3. User-generated
-4. Licensed (exclusive)
-5. Public (weakest)
-
-Weaker data requires **stronger editorial value**.
-
----
-
-### 3. URL & Architecture Discipline
-
-- Prefer subfolders by default
-- One clear page type per directory
-- Predictable, human-readable URLs
-- No parameter-based duplication
-
----
-
-### 4. Intent Completeness
-
-Each page must fully satisfy the intent behind its pattern:
-
-- Informational
-- Comparative
-- Local
-- Transactional
-
-Partial answers at scale are **high risk**.
+Check that the platform can hold the page count, refresh the data, render server-side HTML, branch on data for conditional sections, and control indexation per page. Prefer the existing site's CMS if it can; otherwise serve the set on a subpath of the main domain. Options and tradeoffs: [references/implementation-platforms.md](references/implementation-platforms.md).
 
 ---
 
-### 5. Quality at Scale
+## Quality Checks
 
-Scaling pages does **not** lower the bar for quality.
+### Pre-Launch Checklist
 
-100 excellent pages > 10,000 weak ones.
+**Content quality:**
+- [ ] Each page provides unique value
+- [ ] Answers search intent
+- [ ] Readable and useful
 
----
+**Technical SEO:**
+- [ ] Unique titles and meta descriptions
+- [ ] Proper heading structure
+- [ ] Schema markup implemented
+- [ ] Page speed acceptable
 
-### 6. Penalty & Suppression Avoidance
+**Internal linking:**
+- [ ] Connected to site architecture
+- [ ] Related pages linked
+- [ ] No orphan pages
 
-Avoid:
+**Indexation:**
+- [ ] In XML sitemap
+- [ ] Crawlable
+- [ ] No conflicting noindex
 
-- Doorway pages
-- Auto-generated filler
-- Near-duplicate content
-- Indexing pages with no standalone value
+### Post-Launch Monitoring
 
----
+Track: Indexation rate, Rankings, Traffic, Engagement, Conversion
 
-## The 12 Programmatic SEO Playbooks
-
-_(Strategic patterns, not guaranteed wins)_
-
-1. Templates
-2. Curation
-3. Conversions
-4. Comparisons
-5. Examples
-6. Locations
-7. Personas
-8. Integrations
-9. Glossary
-10. Translations
-11. Directories
-12. Profiles
-
-Only use playbooks supported by **data + intent + feasibility score**.
+Watch for: Thin content warnings, Ranking drops, Manual actions, Crawl errors
 
 ---
 
-## Phase 2: Page System Design
+## Common Mistakes
 
-### 1. Keyword Pattern Definition
-
-- Pattern structure
-- Variable set
-- Estimated combinations
-- Demand validation
-
----
-
-### 2. Data Model
-
-- Required fields
-- Data sources
-- Update frequency
-- Missing-data handling
+- **Thin content**: Just swapping city names in identical content
+- **Keyword cannibalization**: Multiple pages targeting same keyword
+- **Over-generation**: Creating pages with no search demand
+- **Poor data quality**: Outdated or incorrect information
+- **Ignoring UX**: Pages exist for Google, not users
 
 ---
 
-### 3. Template Specification
+## Output Format
 
-- Mandatory sections
-- Conditional logic
-- Unique content mechanisms
-- Internal linking rules
-- Index / noindex criteria
+### Strategy Document
+- Opportunity analysis
+- Implementation plan
+- Content guidelines
 
----
-
-## Phase 3: Indexation & Scale Control
-
-### Indexation Rules
-
-- Not all generated pages should be indexed
-- Index only pages with:
-  - Demand
-  - Unique value
-  - Complete intent match
-
-### Crawl Management
-
-- Avoid crawl traps
-- Segment sitemaps by page type
-- Monitor indexation rate by pattern
+### Page Template
+- URL structure
+- Title/meta templates
+- Content outline
+- Schema markup
 
 ---
 
-## Quality Gates (Mandatory)
+## Task-Specific Questions
 
-### Pre-Index Checklist
-
-- Unique value demonstrated
-- Intent fully satisfied
-- No near-duplicates
-- Performance acceptable
-- Canonicals correct
-
----
-
-### Kill Switch Criteria
-
-If triggered, **halt indexing or roll back**:
-
-- High impressions, low engagement at scale
-- Thin content warnings
-- Index bloat with no traffic
-- Manual or algorithmic suppression signals
-
----
-
-## Output Format (Required)
-
-### Programmatic SEO Strategy
-
-**Feasibility Index**
-
-- Overall Score: XX / 100
-- Verdict: Strong Fit / Moderate Fit / High Risk / Do Not Proceed
-- Category breakdown with brief rationale
-
-**Opportunity Summary**
-
-- Keyword pattern
-- Estimated scale
-- Competition overview
-
-**Page System Design**
-
-- URL pattern
-- Data requirements
-- Template outline
-- Indexation rules
-
-**Risks & Mitigations**
-
-- Thin content risk
-- Data quality risk
-- Crawl/indexation risk
+1. What keyword patterns are you targeting?
+2. What data do you have (or can acquire)?
+3. How many pages are you planning?
+4. What does your site authority look like?
+5. Who currently ranks for these terms?
+6. What's your technical stack?
 
 ---
 
 ## Related Skills
 
-- **competitor-alternatives** – For a single comparison/alternative page or small hand-planned set (this skill handles them at scale)
-- **seo-fundamentals** – Audit programmatic pages post-launch
-- **schema-markup** – Add structured data to templates
-- **copywriting** – Improve non-templated sections
-- **analytics-marketing** – Measure performance and validate value
+- **seo-audit**: For auditing programmatic pages after launch
+- **schema**: For adding structured data
+- **site-architecture**: For page hierarchy, URL structure, and internal linking
+- **competitors**: For comparison page frameworks

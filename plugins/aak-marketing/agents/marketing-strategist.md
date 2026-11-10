@@ -45,14 +45,14 @@ Use this agent when you need to:
 
 ## Skills Used
 
-- content-marketing
-- social-media-expert
+- content-strategy
+- social
 - email-marketing
-- growth-hacking
-- analytics-marketing
+- marketing-ideas
+- analytics
 - branding-expert
 - brand-naming
 - brand-architecture
 - brand-measurement
 - brand-packaging
-- ppc-advertising
+- ads

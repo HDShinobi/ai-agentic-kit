@@ -93,5 +93,5 @@ Format: "If we [change], then [metric] will [improve] because [reason]"
 ## Skills Used
 
 - conversion-optimization
-- analytics-marketing
-- growth-hacking
+- analytics
+- marketing-ideas

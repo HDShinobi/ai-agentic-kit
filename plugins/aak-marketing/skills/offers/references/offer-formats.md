@@ -195,11 +195,11 @@ You sell a tool with tiered subscriptions.
 
 ### What to watch
 
-- **Pricing tier > offer construction** — for self-serve SaaS, packaging and value metric do more work than guarantees and bonuses. Use the `pricing-strategy` skill.
+- **Pricing tier > offer construction** — for self-serve SaaS, packaging and value metric do more work than guarantees and bonuses. Use the `pricing` skill.
 - **Free trial design IS offer design** — length, gated features, credit-card-required vs not, automatic conversion. Each is an offer decision.
-- **Annual prepay is the offer lever** — same product, different commitment, often 20–40% discount. Many SaaS conversion lifts come from improving the annual offer, not the monthly.
+- **Annual prepay is the offer lever** — same product, different commitment, priced 20–40% below monthly. That is a standing price for a longer commitment, not the acquisition discount [saas-offers.md](saas-offers.md) warns against. Many SaaS conversion lifts come from improving the annual offer, not the monthly.
 
-For SaaS, this skill is supplemental. Read [`pricing-strategy`](../../pricing-strategy/SKILL.md) first.
+For SaaS, this skill is supplemental. Read [`pricing`](../../pricing/SKILL.md) first.
 
 ---
 

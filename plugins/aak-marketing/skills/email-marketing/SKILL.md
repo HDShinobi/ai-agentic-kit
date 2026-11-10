@@ -1,6 +1,6 @@
 ---
 name: email-marketing
-description: Email marketing strategy — campaigns, newsletter optimization, list segmentation, and deliverability best practices. For building multi-step drip/nurture/lifecycle email flows, see email-sequence.
+description: Email marketing strategy — campaigns, newsletter optimization, list segmentation, and deliverability best practices. For building multi-step drip/nurture/lifecycle email flows, see emails.
 allowed-tools: Read, Glob, Grep
 ---
 

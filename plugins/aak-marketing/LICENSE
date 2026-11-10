@@ -32,25 +32,27 @@ third-party license text. Sources include:
 - MiniMax-AI/skills (https://github.com/MiniMax-AI/skills), Copyright (c) 2026
   MiniMax, MIT — source of the `minimax-pdf` skill.
 - Remotion Dev Skills (https://github.com/remotion-dev/skills) — source of
-  `remotion-best-practices`, `video-automation`, `tutorial-video-expert`.
-- vibeship-spawner-skills, Apache License 2.0 — source of the
-  `viral-generator-builder` skill (see that skill's LICENSE for the full text).
+  `remotion-best-practices`.
 - ai-marketing-claude (https://github.com/zubair-trabzada/ai-marketing-claude),
   Copyright (c) 2026 Zubair Trabzada, MIT — source of the `client-proposal` skill.
 - agentkits-marketing (https://github.com/aitytech/agentkits-marketing),
-  Copyright (c) AityTech, MIT — source of the `schema-markup`, `form-cro`,
-  `free-tool-strategy`, `copy-editing`, and `email-sequence` skills.
+  Copyright (c) AityTech, MIT — source of the `form-cro` skill and of reference
+  guides kept under "Kit additions" in `schema`, `free-tools`, `competitors`,
+  `pricing`, `cro`, `emails`, `seo-audit`, and `ab-testing`, plus the ideas and
+  levers merged into the pre-1.0.0 `marketing-ideas` / `marketing-psychology`
+  bodies kept under their Kit additions.
 - marketingskills (https://github.com/coreyhaines31/marketingskills),
-  Copyright (c) Corey Haines, MIT — source of the `product-marketing`,
-  `sales-enablement`, `revops`, `churn-prevention`, `public-relations`,
-  `co-marketing`, `site-architecture`, `offers`, `customer-research`,
-  `cold-email`, `lead-magnets`, `marketing-plan`, and `marketing-council` skills.
+  Copyright (c) Corey Haines, MIT — source of all 53 skills that carry an
+  upstream marketingskills name (vendored verbatim since aak-marketing 1.0.0;
+  see NOTICE). Upstream `copywriting` adapts material from Profound's
+  `improved-copywriting` and `humanizer` skills
+  (https://github.com/retieedra-profound/skills-marketing-library, MIT).
 - Brand-building-skills (https://github.com/arnabbagxd/Brand-building-skills),
   Copyright (c) 2026 Arnab Bag, MIT — source of the `brand-naming`,
   `brand-architecture`, `brand-measurement`, `brand-packaging`, `brand-manifesto`,
   `personal-brand`, `ugc-strategy`, and `whatsapp-marketing` skills, and of grafted
-  reference guides in `branding-expert`, `influencer-marketing`, `competitor-teardown`,
-  `app-store-optimization`, `ppc-advertising`, `marketing-plan`, `email-marketing`,
+  reference guides in `branding-expert`, `influencer-marketing`, `competitor-profiling`,
+  `aso`, `ads`, `marketing-plan`, `email-marketing`,
   `co-marketing`, and `sales-enablement`.
 
 See the NOTICE file at the repository root for the full third-party license text.

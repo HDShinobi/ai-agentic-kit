@@ -40,10 +40,10 @@ The 13-section plan structure stays consistent across client types. What changes
 - Tier upgrades, seat expansion, usage-based add-ons
 
 ### Skills emphasis
-- `cold-email`, `programmatic-seo`, `competitor-alternatives`, `seo-fundamentals`, `geo-fundamentals`
-- `ppc-advertising` weighted toward LinkedIn + Google
-- `email-marketing` for trial nurture + lifecycle
-- `pricing-strategy` for tier optimization
+- `cold-email`, `programmatic-seo`, `competitors`, `seo-audit`, `ai-seo`
+- `ads` weighted toward LinkedIn + Google
+- `emails` for trial nurture + lifecycle
+- `pricing` for tier optimization
 
 ### Tier-1 budget priority
 - SEO + content > everything else
@@ -93,10 +93,10 @@ The 13-section plan structure stays consistent across client types. What changes
 - In-app upsells
 
 ### Skills emphasis
-- `onboarding-cro`, `paywall-upgrade-cro`, `email-marketing`
-- `ppc-advertising`, `ad-creative-variations` (heavy creative iteration)
-- `referral-program`
-- `pricing-strategy` for annual default + tier consolidation
+- `onboarding`, `paywalls`, `emails`
+- `ads`, `ad-creative` (heavy creative iteration)
+- `referrals`
+- `pricing` for annual default + tier consolidation
 
 ### Tier-1 budget priority
 - ASO first (highest organic leverage)
@@ -143,11 +143,11 @@ The 13-section plan structure stays consistent across client types. What changes
 - Annual plan default for software
 
 ### Skills emphasis
-- `seo-fundamentals` for Shopify product pages
-- `email-marketing` for both hardware post-purchase and software lifecycle
-- `referral-program` with gifting layer
-- `pricing-strategy` for blended-bundle math
-- `ppc-advertising` with creative-heavy Meta presence
+- `seo-audit` for Shopify product pages
+- `emails` for both hardware post-purchase and software lifecycle
+- `referrals` with gifting layer
+- `pricing` for blended-bundle math
+- `ads` with creative-heavy Meta presence
 
 ### Tier-1 budget priority
 - Shopify product page optimization
@@ -196,8 +196,8 @@ The 13-section plan structure stays consistent across client types. What changes
 ### Skills emphasis
 - `programmatic-seo` for city pages, vertical pages
 - `cold-email` for supply-side recruitment
-- `referral-program` for both sides
-- `pricing-strategy` for take-rate decisions
+- `referrals` for both sides
+- `pricing` for take-rate decisions
 
 ### Tier-1 budget priority
 - Programmatic SEO build for one side
@@ -244,8 +244,8 @@ The 13-section plan structure stays consistent across client types. What changes
 
 ### Skills emphasis
 - `programmatic-seo` for docs
-- Less emphasis on traditional `ppc-advertising`
-- Heavy `content-marketing` + technical content
+- Less emphasis on traditional `ads`
+- Heavy `content-strategy` + technical content
 - `cold-email` to engineering leads at target companies
 
 ### Tier-1 budget priority
@@ -294,7 +294,7 @@ The 13-section plan structure stays consistent across client types. What changes
 
 ### Skills emphasis
 - Light traditional marketing
-- Heavy `product-marketing`, `sales-enablement`, `pricing-strategy`
+- Heavy `product-marketing`, `sales-enablement`, `pricing`
 - `cold-email` to specific researchers / practitioners
 - PR + investor marketing
 
@@ -342,10 +342,10 @@ The 13-section plan structure stays consistent across client types. What changes
 - Subscription option for repeat purchases
 
 ### Skills emphasis
-- `ppc-advertising` + `ad-creative-variations` (heavy weight)
-- `email-marketing` for post-purchase + abandoned cart
-- `referral-program` with gifting
-- `pricing-strategy` for bundles + subscription option
+- `ads` + `ad-creative` (heavy weight)
+- `emails` for post-purchase + abandoned cart
+- `referrals` with gifting
+- `pricing` for bundles + subscription option
 
 ### Tier-1 budget priority
 - Shopify storefront optimization

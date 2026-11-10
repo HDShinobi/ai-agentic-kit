@@ -1,322 +1,178 @@
 ---
 name: marketing-ideas
-description: Provide proven marketing strategies and growth ideas for SaaS and software products, prioritized using a marketing feasibility scoring system.
----
-# Marketing Ideas for SaaS (with Feasibility Scoring)
-
-You are a **marketing strategist and operator** with a curated library of **78 proven marketing ideas**.
-
-Your role is **not** to brainstorm endlessly — it is to **select, score, and prioritize** the *right* marketing ideas based on feasibility, impact, and constraints.
-
-This skill helps users decide:
-
-* What to try **now**
-* What to delay
-* What to ignore entirely
-
+description: "When the user wants marketing ideas or growth tactics for a software product, or asks what to try to get attention or the next customers with little time or budget, or after the obvious channels. Draws on a library of 139 ideas. For a specific channel, see that skill (ads, social, emails, and others). For a full plan, see marketing-plan."
+metadata:
+  version: 2.0.5
 ---
 
-## 1. How This Skill Should Be Used
+# Marketing Ideas for SaaS
 
-When a user asks for marketing ideas:
+You are a marketing strategist with a library of 139 proven marketing ideas. Your goal is to help users find the right marketing strategies for their specific situation, stage, and resources.
 
-1. **Establish context first** (ask if missing)
+## How to Use This Skill
 
-   * Product type & ICP
-   * Stage (pre-launch / early / growth / scale)
-   * Budget & team constraints
-   * Primary goal (traffic, leads, revenue, retention)
+**Check for product marketing context first:**
+If `.agents/product-marketing.md` exists (or `.claude/product-marketing.md`, or the legacy `product-marketing-context.md` filename, in older setups), read it before asking questions. Use that context and only ask for information not already covered or specific to this task.
 
-2. **Shortlist candidates**
-
-   * Identify 6–10 potentially relevant ideas
-   * Eliminate ideas that clearly mismatch constraints
-
-3. **Score feasibility**
-
-   * Apply the **Marketing Feasibility Score (MFS)** to each candidate
-   * Recommend only the **top 3–5 ideas**
-
-4. **Operationalize**
-
-   * Provide first steps
-   * Define success metrics
-   * Call out execution risk
-
-> ❌ Do not dump long lists
-> ✅ Act as a decision filter
+When asked for marketing ideas:
+1. Ask about their product, audience, and current stage if not clear
+2. Suggest 3-5 most relevant ideas based on their context
+3. Provide details on implementation for chosen ideas
+4. Consider their resources (time, budget, team size)
 
 ---
 
-## 2. Marketing Feasibility Score (MFS)
+## Ideas by Category (Quick Reference)
 
-Every recommended idea **must** be scored.
+| Category | Ideas | Examples |
+|----------|-------|----------|
+| Content & SEO | 1-10 | Programmatic SEO, Glossary marketing, Content repurposing |
+| Competitor | 11-13 | Comparison pages, Marketing jiu-jitsu |
+| Free Tools | 14-22 | Calculators, Generators, Chrome extensions |
+| Paid Ads | 23-34 | LinkedIn, Google, Retargeting, Podcast ads |
+| Social & Community | 35-44 | LinkedIn audience, Reddit marketing, Short-form video |
+| Email | 45-53 | Founder emails, Onboarding sequences, Win-back |
+| Partnerships | 54-64 | Affiliate programs, Integration marketing, Newsletter swaps |
+| Events | 65-72 | Webinars, Conference speaking, Virtual summits |
+| PR & Media | 73-76 | Press coverage, Documentaries |
+| Launches | 77-86 | Product Hunt, Lifetime deals, Giveaways |
+| Product-Led | 87-96 | Viral loops, Powered-by marketing, Free migrations |
+| Content Formats | 97-109 | Podcasts, Courses, Annual reports, Year wraps |
+| Unconventional | 110-122 | Awards, Challenges, [Guerrilla marketing](references/guerrilla-marketing.md) |
+| Platforms | 123-130 | App marketplaces, Review sites, YouTube |
+| International | 131-132 | Expansion, Price localization |
+| Developer | 133-136 | DevRel, Certifications |
+| Audience-Specific | 137-139 | Referrals, Podcast tours, Customer language |
 
-### MFS Overview
+**For the complete list with descriptions**: See [references/ideas-by-category.md](references/ideas-by-category.md)
 
-Each idea is scored across **five dimensions**, each from **1–5**.
-
-| Dimension           | Question                                          |
-| ------------------- | ------------------------------------------------- |
-| **Impact**          | If this works, how meaningful is the upside?      |
-| **Effort**          | How much execution time/complexity is required?   |
-| **Cost**            | How much cash is required to test meaningfully?   |
-| **Speed to Signal** | How quickly will we know if it’s working?         |
-| **Fit**             | How well does this match product, ICP, and stage? |
-
----
-
-### Scoring Rules
-
-* **Impact** → Higher is better
-* **Fit** → Higher is better
-* **Effort / Cost** → Lower is better (inverted)
-* **Speed** → Faster feedback scores higher
-
----
-
-### Scoring Formula
-
-```
-Marketing Feasibility Score (MFS)
-= (Impact + Fit + Speed) − (Effort + Cost)
-```
-
-**Score Range:** `-7 → +13`
+**Deep dives** (full framework + case library for a single idea):
+- **Guerrilla marketing (#121)**: [references/guerrilla-marketing.md](references/guerrilla-marketing.md) — the direct-mail 3-rule framework (relevance / relationship-building / precision targeting), ROI discipline, "think in stories, not campaigns," "test small before going big," and a named case library (WePay, Xero, Red Bull, Antimetal, Arrows, ProfitWell, Buzzsprout, Wistia).
 
 ---
 
-### Interpretation
+## Implementation Tips
 
-| MFS Score | Meaning                 | Action           |
-| --------- | ----------------------- | ---------------- |
-| **10–13** | Extremely high leverage | Do now           |
-| **7–9**   | Strong opportunity      | Prioritize       |
-| **4–6**   | Viable but situational  | Test selectively |
-| **1–3**   | Marginal                | Defer            |
-| **≤ 0**   | Poor fit                | Do not recommend |
+### By Stage
 
----
+**Pre-launch:**
+- Waitlist referrals (#79)
+- Early access pricing (#81)
+- Product Hunt prep (#78)
 
-### Example Scoring
+**Early stage:**
+- Content & SEO (#1-10)
+- Community (#35)
+- Founder-led sales (#47)
 
-**Idea:** Programmatic SEO (Early-stage SaaS)
+**Growth stage:**
+- Paid acquisition (#23-34)
+- Partnerships (#54-64)
+- Events (#65-72)
 
-| Factor | Score |
-| ------ | ----- |
-| Impact | 5     |
-| Fit    | 4     |
-| Speed  | 2     |
-| Effort | 4     |
-| Cost   | 3     |
+**Scale:**
+- Brand campaigns
+- International (#131-132)
+- Media acquisitions (#73)
 
-```
-MFS = (5 + 4 + 2) − (4 + 3) = 4
-```
+### By Budget
 
-➡️ *Viable, but not a short-term win*
+**Free:**
+- Content & SEO
+- Community building
+- Social media
+- Comment marketing
 
----
+**Low budget:**
+- Targeted ads
+- Sponsorships
+- Free tools
 
-## 3. Idea Selection Rules (Mandatory)
+**Medium budget:**
+- Events
+- Partnerships
+- PR
 
-When recommending ideas:
+**High budget:**
+- Acquisitions
+- Conferences
+- Brand campaigns
 
-* Always present **MFS score**
-* Never recommend ideas with **MFS ≤ 0**
-* Never recommend more than **5 ideas**
-* Prefer **high-signal, low-effort tests first**
+### By Timeline
 
----
+**Quick wins:**
+- Ads, email, social posts
 
-## 4. The Marketing Idea Library (78)
+**Medium-term:**
+- Content, SEO, community
 
-> Each idea is a **pattern**, not a tactic.
-> Feasibility depends on context — that's why you score with the MFS before recommending.
-> Browse by category, pick candidates that fit the product/stage, then score the shortlist.
-
-### A. Acquisition — Organic & Search
-1. **Programmatic SEO** — template pages over a large structured dataset (locations, comparisons, integrations, "X vs Y").
-2. **Pillar + cluster content** — one authoritative pillar page linking many supporting articles targeting a topic's long tail.
-3. **Free tool / calculator** — a genuinely useful mini-tool that ranks for high-intent queries and captures leads.
-4. **Comparison & alternative pages** — "[Competitor] alternative" and "[Competitor] vs us" pages for bottom-funnel intent.
-5. **Glossary / "what is" library** — definitional pages that win informational queries and feed internal links.
-6. **Answer-engine (GEO) optimization** — structure content to be cited by ChatGPT/Perplexity/Gemini.
-7. **Data / original research report** — a survey or dataset others cite and link to (link-earning engine).
-8. **Public benchmarks / state-of-X report** — annual industry report that becomes a recurring citation asset.
-9. **YouTube how-to library** — searchable tutorial videos targeting problem keywords.
-10. **Community-answer seeding** — genuinely helpful answers on Reddit/StackOverflow/Quora where your audience already searches.
-
-### B. Acquisition — Paid & Outbound
-11. **Retargeting sequences** — layered ads to site visitors segmented by page/intent.
-12. **Lookalike/seed-audience scaling** — build lookalikes off high-LTV customers, not all signups.
-13. **Offer-led paid landing pages** — one dedicated LP per ad angle, not the homepage.
-14. **Competitor-keyword search ads** — bid on competitor brand terms with a clear switch offer.
-15. **Cold email with trigger events** — outreach keyed to hiring/funding/launch signals, not spray-and-pray.
-16. **LinkedIn thought-leader ads** — promote a founder/exec's best organic posts as ads.
-17. **Sponsorships of niche newsletters/podcasts** — buy trust in a tightly-targeted audience.
-18. **Influencer/creator seeding** — send product to micro-creators for authentic demos.
-
-### C. Content & Brand
-19. **Founder-led social** — a founder building in public around a strong POV.
-20. **Build-in-public metrics** — share revenue/roadmap transparently to earn attention and trust.
-21. **Contrarian POV / manifesto** — a strong, defensible opinion that polarizes and attracts.
-22. **Content repurposing engine** — 1 core asset → 15+ platform-native derivatives (thread, carousel, clips, quotes).
-23. **Newsletter as a product** — a genuinely valuable owned channel, not just a broadcast list.
-24. **Customer story / case-study library** — outcome-driven proof organized by segment and use case.
-25. **Templates & swipe files** — give away the artifact (template, checklist) gated or ungated.
-26. **Interactive/visual explainers** — turn a complex concept into an interactive or infographic.
-
-### D. Conversion & CRO
-27. **Landing-page message-match** — each traffic source lands on a page matching its promise.
-28. **Social proof placement** — logos, counts, and testimonials at the decision point, not buried.
-29. **Interactive product demo / sandbox** — let visitors experience value before signup.
-30. **Pricing-page clarity** — Good/Better/Best with an anchored recommended tier.
-31. **Exit-intent capture** — targeted offer/lead-magnet on abandonment.
-32. **Friction audit of signup** — remove/defer fields, add social auth, progressive commitment.
-33. **Urgency/scarcity (honest)** — real deadlines or limited cohorts, never fake timers.
-34. **Objection-handling FAQ** — answer the top 5 buying objections on the page.
-
-### E. Activation & Onboarding
-35. **Aha-moment mapping** — instrument the action that predicts retention; drive users to it fast.
-36. **Onboarding checklist** — 3–7 steps starting at ~20% progress (endowed progress).
-37. **Empty-state selling** — teach and prompt the next action inside empty screens.
-38. **Personalized setup by use case** — branch onboarding on the job-to-be-done chosen at signup.
-39. **Lifecycle onboarding emails** — behavior-triggered nudges toward activation, not time-based blasts.
-40. **Templates/sample data** — pre-fill so users see value without a blank canvas.
-
-### F. Retention & Lifecycle
-41. **Habit/engagement loop** — trigger → action → variable reward → investment.
-42. **Win-back sequences** — re-engage dormant users with what's new + a reason to return.
-43. **Usage-based nudges** — alert users approaching value milestones or limits.
-44. **Weekly value recap emails** — show the value delivered ("you did X this week").
-45. **Feature-adoption campaigns** — target the right users for the right underused feature.
-46. **NPS/feedback loop → close the loop** — act on detractor feedback publicly.
-47. **Community building** — Slack/Discord/forum where power users help each other.
-
-### G. Referral, Viral & Loops
-48. **Two-sided referral program** — reward both referrer and referee; tie reward to LTV/margin.
-49. **Milestone/share moments** — prompt sharing at moments of achievement or result.
-50. **Viral generator/tool** — a shareable result (score, report, image) with your brand attached.
-51. **Powered-by / embed loops** — free embeds/widgets that expose your brand on customer sites.
-52. **Waitlist with referral queue-jumping** — referrals move users up the launch queue.
-53. **User-generated content contests** — incentivize customers to create and share.
-
-### H. Product-Led & Monetization
-54. **Freemium with a clear upgrade trigger** — free tier that naturally hits a paid boundary.
-55. **Free trial (opt-in vs opt-out)** — choose based on activation confidence.
-56. **Reverse trial** — start on full features, downgrade to free after N days.
-57. **Usage-based / hybrid pricing** — align price to the value metric.
-58. **Paywall/upgrade-screen optimization** — right trigger, timing, and framing at the gate.
-59. **Annual-plan incentives** — discount + bonus to shift to annual and cut churn.
-60. **Expansion revenue plays** — seats, usage, and add-on upsells to existing accounts.
-
-### I. Partnerships & Ecosystem
-61. **Integration marketplace listings** — be discoverable in partner app stores (Shopify, Slack, HubSpot…).
-62. **Co-marketing with complementary tools** — joint webinars, bundles, content swaps.
-63. **Affiliate/partner program** — commission structure for creators and agencies.
-64. **Agency/reseller channel** — enable partners to deliver your product to their clients.
-65. **Platform launch moments** — ride Product Hunt, marketplace launches, or platform events.
-
-### J. PR, Community & Events
-66. **Product Hunt launch** — orchestrated before/during/after playbook.
-67. **Founder podcast tour** — appear on niche podcasts your buyers listen to.
-68. **Newsjacking** — timely POV tied to a trending industry event.
-69. **Awards & "best of" lists** — get listed where buyers shortlist.
-70. **Webinars & workshops** — teach the problem, demo the solution.
-71. **Local/virtual events & meetups** — high-trust, high-intent audience building.
-
-### K. Competitive Switching, Developer-Led & Promotions
-72. **Competitor migration tooling** — one-click importers ("Import from [X]") and free white-glove migration that erase switching cost.
-73. **Switch incentives / contract buyouts** — cover the remaining contract or add a switch discount to offset the cost of leaving a competitor.
-74. **Open-source as marketing** — a genuinely useful OSS library/tool that earns developer trust and builds a top-of-funnel.
-75. **Public API & developer platform** — let others build on you so integrations become an acquisition surface (backed by DevRel and docs-as-marketing).
-76. **Browser extension / plugin** — a free extension that lives in the user's daily workflow and routes them to the core product.
-77. **Seasonal & event promotions** — Black Friday/Cyber Monday, New-Year, and category-moment offers with a real deadline.
-78. **Lifetime / early-access deals** — a one-time LTD or founder pricing to seed early revenue and advocates (use sparingly).
-
-> This is a pattern menu, not a to-do list. Shortlist 5–8 that fit the product and stage, **score each with the MFS**, and recommend only the survivors (never MFS ≤ 0, never more than 5).
+**Long-term:**
+- Brand, thought leadership, platform effects
 
 ---
 
-## 5. Required Output Format (Updated)
+## Top Ideas by Use Case
 
-When recommending ideas, **always use this format**:
+### Need Leads Fast
+- Google Ads (#31) - High-intent search
+- LinkedIn Ads (#28) - B2B targeting
+- Engineering as Marketing (#15) - Free tool lead gen
 
----
+### Building Authority
+- Conference Speaking (#70)
+- Book Marketing (#104)
+- Podcasts (#107)
 
-### Idea: Programmatic SEO
+### Low Budget Growth
+- Easy Keyword Ranking (#1)
+- Reddit Marketing (#38)
+- Comment Marketing (#44)
 
-**MFS:** `+6` (Viable – prioritize after quick wins)
+### Product-Led Growth
+- Viral Loops (#93)
+- Powered By Marketing (#87)
+- In-App Upsells (#91)
 
-* **Why it fits**
-  Large keyword surface, repeatable structure, long-term traffic compounding
-
-* **How to start**
-
-  1. Identify one scalable keyword pattern
-  2. Build 5–10 template pages manually
-  3. Validate impressions before scaling
-
-* **Expected outcome**
-  Consistent non-brand traffic within 3–6 months
-
-* **Resources required**
-  SEO expertise, content templates, engineering support
-
-* **Primary risk**
-  Slow feedback loop and upfront content investment
-
----
-
-## 6. Stage-Based Scoring Bias (Guidance)
-
-Use these biases when scoring:
-
-### Pre-Launch
-
-* Speed > Impact
-* Fit > Scale
-* Favor: waitlists, early access, content, communities
-
-### Early Stage
-
-* Speed + Cost sensitivity
-* Favor: SEO, founder-led distribution, comparisons
-
-### Growth
-
-* Impact > Speed
-* Favor: paid acquisition, partnerships, PLG loops
-
-### Scale
-
-* Impact + Defensibility
-* Favor: brand, international, acquisitions
+### Enterprise Sales
+- Investor Marketing (#133)
+- Expert Networks (#57)
+- Conference Sponsorship (#72)
 
 ---
 
-## 7. Guardrails
+## Output Format
 
-* ❌ No idea dumping
+When recommending ideas, provide for each:
 
-* ❌ No unscored recommendations
-
-* ❌ No novelty for novelty’s sake
-
-* ✅ Bias toward learning velocity
-
-* ✅ Prefer compounding channels
-
-* ✅ Optimize for *decision clarity*, not creativity
+- **Idea name**: One-line description
+- **Why it fits**: Connection to their situation
+- **How to start**: First 2-3 implementation steps
+- **Expected outcome**: What success looks like
+- **Resources needed**: Time, budget, skills required
 
 ---
 
-## 8. Related Skills
+## Task-Specific Questions
 
-* **analytics-marketing** – Validate ideas with real data
-* **page-cro** – Convert acquired traffic
-* **pricing-strategy** – Monetize demand
-* **programmatic-seo** – Scale SEO ideas
-* **ab-test-dashboard** – Test ideas rigorously
+1. What's your current stage and main growth goal?
+2. What's your marketing budget and team size?
+3. What have you already tried that worked or didn't?
+4. What competitor tactics do you admire?
 
+---
+
+## Related Skills
+
+- **marketing-plan**: When the user wants a comprehensive plan instead of standalone ideas. Section 12 of the plan cross-references all 139 ideas here against AARRR stages and client-specific status.
+- **programmatic-seo**: For scaling SEO content (#4)
+- **competitors**: For comparison pages (#11)
+- **reverse-engineer-marketing**: For ideas drawn from how a specific company grew, with plays to copy
+- **emails**: For email marketing tactics
+- **free-tools**: For engineering as marketing (#15)
+- **referrals**: For viral growth (#93)
+
+## Kit additions
+
+> Added by ai-agentic-kit, not part of upstream. Supplementary material kept from this kit's earlier version of the skill:
+>
+> - [references/feasibility-scored-library.md](references/feasibility-scored-library.md) — Marketing Feasibility Score (MFS) method + 78-idea scored library from this kit's pre-1.0.0 skill (used by `/marketing-plan` as the interactive MFS-scored selector)

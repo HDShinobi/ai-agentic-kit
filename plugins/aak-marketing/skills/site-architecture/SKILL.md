@@ -1,6 +1,8 @@
 ---
 name: site-architecture
-description: When the user wants to plan, map, or restructure their website's page hierarchy, navigation, URL structure, or internal linking. Also use when the user mentions "sitemap," "site map," "visual sitemap," "site structure," "page hierarchy," "information architecture," "IA," "navigation design," "URL structure," "breadcrumbs," "internal linking strategy," "website planning," "what pages do I need," "how should I organize my site," or "site navigation." Use this whenever someone is planning what pages a website should have and how they connect. NOT for XML sitemaps (that's technical SEO — see seo-fundamentals). For SEO audits, see seo-fundamentals. For structured data, see schema-markup.
+description: "When the user wants to plan or restructure a website, or asks which pages they need or where something belongs: hierarchy, navigation, URL structure, internal linking, website builders and migrations. Not XML sitemaps (see seo-audit). For structured data, see schema."
+metadata:
+  version: 2.1.3
 ---
 
 # Site Architecture
@@ -23,6 +25,7 @@ Gather this context (ask if not provided):
 - New site or restructuring an existing one?
 - If restructuring: what's broken? (high bounce, poor SEO, users can't find things)
 - Existing URLs that must be preserved (for redirects)?
+- What platform is it on, and is a platform change on the table? (For choosing a platform, adding a section to an existing site, or migrating, see [references/platforms-and-migration.md](references/platforms-and-migration.md).)
 
 ### 3. Site Type
 - SaaS marketing site
@@ -347,18 +350,10 @@ Mermaid diagram showing page relationships and navigation zones. Use `graph TD` 
 
 ## Related Skills
 
-- **content-marketing**: For planning what content to create and topic clusters
+- **content-strategy**: For planning what content to create and topic clusters
 - **programmatic-seo**: For building SEO pages at scale with templates and data
-- **seo-fundamentals**: For technical SEO, on-page optimization, and indexation issues
-- **conversion-optimization**: For optimizing individual pages for conversion
-- **schema-markup**: For implementing breadcrumb and site navigation structured data
-- **competitor-teardown**: For comparison page frameworks and URL patterns
-
----
-
-## Reference guides
-
-Additional depth for this skill (load on demand):
-- `references/mermaid-templates.md`
-- `references/navigation-patterns.md`
-- `references/site-type-templates.md`
+- **seo-audit**: For technical SEO, on-page optimization, and indexation issues
+- **cro**: For optimizing individual pages for conversion
+- **schema**: For implementing breadcrumb and site navigation structured data
+- **competitors**: For comparison page frameworks and URL patterns
+- **launch**: For site go-live QA after a build or migration

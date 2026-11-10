@@ -15,16 +15,16 @@ Optimize a site/page for search and AI-answer engines. Work through the relevant
 What's the target (site, section, or specific page) and the goal (rankings, organic traffic, AI-search citations, technical fixes)?
 
 ## Step 2: Audit
-- **Technical**: crawlability, indexation, sitemaps, structured data (schema), Core Web Vitals (LCP/INP/CLS). → skill `seo-fundamentals`.
-- **On-page**: titles, meta, headings, internal links, E-E-A-T signals. → skill `seo-fundamentals`.
-- **AI-search (GEO)**: is the content structured to be cited by ChatGPT/Perplexity/Gemini? → skill `geo-fundamentals`.
+- **Technical**: crawlability, indexation, sitemaps, structured data (schema), Core Web Vitals (LCP/INP/CLS). → skill `seo-audit`.
+- **On-page**: titles, meta, headings, internal links, E-E-A-T signals. → skill `seo-audit`.
+- **AI-search (GEO)**: is the content structured to be cited by ChatGPT/Perplexity/Gemini? → skill `ai-seo`.
 
 ## Step 3: Keyword & content strategy
-- Intent-mapped keyword research, clustering, gaps, long-tail. → skill `keyword-research-deep`.
+- Intent-mapped keyword research, clustering, gaps, long-tail. → skill `seo-audit` (`references/keyword-research.md`).
 - At scale (templated pages over a dataset)? Assess feasibility first. → skill `programmatic-seo`.
 
 ## Step 4: Prioritize & report
 Rank findings by impact × effort; output an actionable list (Issue → Impact → Fix → Priority). For a styled PDF, hand off to `/aak-marketing:report`.
 
 ## Skills used
-`seo-fundamentals`, `geo-fundamentals`, `keyword-research-deep`, `programmatic-seo` — all in this plugin.
+`seo-audit`, `ai-seo`, `programmatic-seo` — all in this plugin.

@@ -25,7 +25,7 @@ note the `marketing-plan` skill's own Section 12 draws from its internal 139-ide
 while the `marketing-ideas` skill is the interactive MFS-scored selector — use whichever the
 current step calls for),
 sequence the work stage-by-stage, and hand each stage to its owner skill
-(`product-marketing`, `offers`, `pricing-strategy`, `content-marketing`, `sales-enablement`,
+(`product-marketing`, `offers`, `pricing`, `content-strategy`, `sales-enablement`,
 `revops`, `churn-prevention`, …). Produce the plan document in-conversation (no filesystem
 writes or external publishing unless the user explicitly asks).
 

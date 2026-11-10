@@ -1,6 +1,8 @@
 ---
 name: marketing-council
-description: "When the user wants multiple expert perspectives on a marketing question — a simulated board of advisors staffed by legendary marketers (Seth Godin, David Ogilvy, Eugene Schwartz, April Dunford, Rory Sutherland, Alex Hormozi, Byron Sharp, and more). Also use when the user mentions 'marketing council,' 'board of advisors,' 'advisory board,' 'what would Seth Godin say,' 'what would Ogilvy think,' 'channel Hormozi,' 'have the council review,' 'marketing mentors,' or asks how a famous marketer would approach their problem. The council gives each advisor's take through their documented frameworks, surfaces where they disagree, and synthesizes a recommendation. For executing the winning direction, hand off to product-marketing, offers, copywriting, ppc-advertising, or the relevant skill."
+description: "When the user wants several expert takes on a marketing decision, or asks what a famous marketer would say about it: a simulated board (Seth Godin, David Ogilvy, April Dunford, Byron Sharp, and more), each grounded in their documented frameworks, where they disagree, and a recommendation. To execute, hand off to the relevant skill."
+metadata:
+  version: 1.0.3
 ---
 
 # Marketing Council
@@ -149,11 +151,11 @@ Users can extend the bench ("add my own advisor"). Create a dossier following th
 
 ## Related Skills
 
-- **product-marketing**: When Dunford's take wins — execute the positioning work
-- **offers** / **pricing-strategy**: When Hormozi/Halbert direction wins — build the offer
+- **positioning** / **product-marketing**: When Dunford's take wins — execute the positioning work
+- **offers** / **pricing**: When Hormozi/Halbert direction wins — build the offer
 - **copywriting** / **copy-editing**: When the council reviewed copy — execute revisions
-- **ppc-advertising** / **ad-creative-variations**: When the debate was media or creative strategy (if `aak-ads` is enabled, prefer `/aak-ads:ads` for paid media)
-- **content-marketing** / **social-media-expert**: When Handley/Vaynerchuk direction wins
-- **branding-expert** / **marketing-psychology**: For Sharp's availability work and Sutherland's behavioral mechanics
-- **ab-test-dashboard**: When the disagreement map says "test it" — Hopkins would insist
+- **ads** / **ad-creative**: When the debate was media or creative strategy
+- **content-strategy** / **social**: When Handley/Vaynerchuk direction wins
+- **brand-strategy** / **marketing-psychology**: For Sharp's availability work and Sutherland's behavioral mechanics
+- **ab-testing**: When the disagreement map says "test it" — Hopkins would insist
 - **deep-research**: For the live research pass, when installed

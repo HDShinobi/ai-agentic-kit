@@ -57,9 +57,9 @@ Use this agent when you need to:
 
 ## Skills Used
 
-- growth-hacking
-- analytics-marketing
+- marketing-ideas
+- analytics
 - conversion-optimization
-- marketing-automation
+- marketing-loops
 - whatsapp-marketing
 - ugc-strategy

@@ -2,7 +2,7 @@
 
 The rest of the offers library skews services, courses, and coaching. This reference covers the SaaS case specifically: why discounting is the wrong acquisition lever, and four worked offers that stack risk-reversal, bonuses, and scarcity for a software business.
 
-Read this alongside [offer-formats.md](offer-formats.md#self-serve-saas). For price level and tier structure, the `pricing-strategy` skill still does the heavier lifting — this covers the *offer* wrapped around the price.
+Read this alongside [offer-formats.md](offer-formats.md#self-serve-saas). For price level and tier structure, the `pricing` skill still does the heavier lifting — this covers the *offer* wrapped around the price.
 
 ---
 

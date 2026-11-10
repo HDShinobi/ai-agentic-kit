@@ -8,7 +8,7 @@
 > `.agents/product-marketing.md` (created by the `product-marketing` skill).
 >
 > Where the text says "Use the brand-launch skill for detailed launch planning", use this kit's
-> `launch-strategy` skill plus `references/rebrand-launch-comms.md` (the rebrand-specific launch section).
+> `launch` skill plus `references/rebrand-launch-comms.md` (the rebrand-specific launch section).
 >
 > Upstream content is preserved verbatim below.
 
