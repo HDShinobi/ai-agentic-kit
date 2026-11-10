@@ -1,6 +1,8 @@
 ---
 name: marketing-plan
-description: When the user needs a comprehensive marketing plan for a client, a company they advise, or their own product. Also use when the user mentions "marketing plan," "growth plan," "GTM plan," "go-to-market plan," "AARRR plan," "90-day marketing plan," "12-month marketing roadmap," "fractional CMO plan," or "fCMO plan." Triggers on producing the plan DOCUMENT — sequencing a scored audit into an action plan, an fCMO/GTM/growth roadmap. Generates an exhaustive 13-section plan structured by AARRR (Acquisition, Activation, Retention, Referral, Revenue), customized to the client's current budget, team, and stage, mapped to future funding milestones, cross-referenced with an internal 139-idea library and an embedded 17-section current-state audit rubric, with a full marketing operations stack showing which skills and MCP/API integrations execute each part. Outputs a Notion-paste-ready markdown document. For launch EXECUTION see launch-strategy; for AARRR growth methodology see growth-hacking; for interactive idea selection see marketing-ideas. For positioning and ICP context before planning, see product-marketing. For stage-specific deep work, see onboarding-cro, signup-flow-cro, email-marketing, referral-program, pricing-strategy.
+description: "When the user wants a full marketing or go-to-market plan for a client, an advised company, or their own product, or asks how to sequence or prioritize several initiatives with a fixed team and budget: channels, budget, team, goals across AARRR, market sizing. For positioning first, see product-marketing. For ideas only, see marketing-ideas."
+metadata:
+  version: 1.2.5
 ---
 
 <!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
@@ -10,31 +12,24 @@ description: When the user needs a comprehensive marketing plan for a client, a 
 > `progress.md` state machine, and "publish to a shared repo" steps below are optional
 > conveniences — treat them as opt-in, never as automatic behavior.
 >
-> **⚠️ The 139-idea library is vendored inside this skill.** In this kit the full 139-idea
-> library is at `references/idea-library.md`, so every idea number in `references/idea-cross-reference.md`
-> and Section 12 resolves *inside* this skill. The separate `marketing-ideas` skill (78 ideas +
-> MFS feasibility scoring, a different lineage) stays the interactive idea-selection tool — Section 12
-> uses the internal library, not `marketing-ideas`.
->
 > **⚠️ Illustrative claims.** The "a small team + tooling replaces a 15–20-person marketing org"
 > productivity framing is the upstream author's, and `references/example-quietude.md` is a worked
 > example from that author's engagement — its client names, metrics, and numbers are illustrative,
 > not verified.
 >
-> **⚠️ Skill-name & tooling wiring.** Cross-referenced skill names have been re-pointed to this
-> kit's namespace. Four upstream skill names have **no home in this kit** — fall back to the
-> underlying tactic named in each row:
+> **⚠️ Tooling wiring.** Four upstream skill names in `references/ops-stack-mapping.md` and
+> `references/plan-template.md` have **no home in this kit** — fall back to the underlying tactic:
 >
 > | Upstream token | Fall back to |
 > |---|---|
-> | `typefully` | social scheduling — hand off to `social-media-expert` / `content-marketing` |
+> | `typefully` | social scheduling — hand off to `social` / `content-strategy` |
 > | `copycraft` | long-form copy — hand off to `copywriting` |
-> | `website-copy` | landing/website copy — hand off to `copywriting` + `conversion-optimization` |
-> | `marketing-website-design` | site/page design — hand off to `conversion-optimization` + `page-cro` |
+> | `website-copy` | landing/website copy — hand off to `copywriting` + `cro` |
+> | `marketing-website-design` | site/page design — hand off to `cro` |
 >
-> For paid media, `ppc-advertising` is this kit's generalist skill; **prefer `aak-ads` when that
-> plugin is enabled.** MCP/API tool rows below (Ahrefs, GA4, Stripe, Customer.io, Dub, Shopify,
-> App Store Connect, etc.) are external tooling, wired per client if available — never assumed present.
+> For paid media, `ads` is this plugin's generalist skill; **prefer `aak-ads` when that plugin is
+> enabled.** MCP/API tool rows (Ahrefs, GA4, Stripe, Customer.io, Dub, Shopify, App Store Connect,
+> etc.) are external tooling, wired per client if available — never assumed present.
 >
 > Upstream content is preserved verbatim below.
 
@@ -54,7 +49,7 @@ Invoke this skill when:
 - The user explicitly asks for a "marketing plan," "growth plan," "GTM plan," "fCMO plan," "AARRR plan," or "90-day + 12-month marketing roadmap"
 - An existing scored audit (from any prior current-state assessment) needs to be sequenced into an action plan
 
-**Do not use** when the user wants a tactical execution document for a single channel (use the channel-specific skill instead — `email-marketing`, `ppc-advertising`, `seo-fundamentals`, `onboarding-cro`, etc.), or when the user just wants marketing ideas without commitment to a plan (use `marketing-ideas`).
+**Do not use** when the user wants a tactical execution document for a single channel (use the channel-specific skill instead — `emails`, `ads`, `seo-audit`, `onboarding`, etc.), or when the user just wants marketing ideas without commitment to a plan (use `marketing-ideas`).
 
 ## How this skill is invoked
 
@@ -68,6 +63,8 @@ Examples:
 - `/marketing-plan` (will prompt for client name)
 
 On invocation, the skill reads `~/marketing-plans/{client-slug}/progress.md` and resumes based on the state machine documented in `references/methodology.md` Step 1.1.2 (fresh → INIT → REVIEW → FINALIZE → finalized). Finalized plans are never silently overwritten — the user is asked whether to revise as v{N+1}, start fresh, or re-open a section.
+
+**Path safety.** Build `{client-slug}` only by slugifying the client name to lowercase `[a-z0-9-]` (strip everything else); reject `..`, `/`, and absolute paths, and never read or write outside `~/marketing-plans/`. On a shared machine this keeps one client's plan — and their data — from leaking into another client's context.
 
 ## The three phases
 
@@ -127,6 +124,11 @@ Full primer in `references/aarrr-framework.md`. Quick rule:
 
 Brand and content are **cross-cutting**, not their own AARRR stage — they serve every stage.
 
+When the plan defines stage metrics, every rate divides matching closed
+windows: an activation rate counts only cohorts whose observation window has
+ended (a trial still inside its window is pending, not failed — keep it out of
+the denominator and label it pending).
+
 ## Marketing as investing — the north-star framing
 
 AARRR gives the plan its *structure*. This gives it its *spine*. Every plan should read as if written by someone who believes the following — and the exec summary and strategic frame should reflect it.
@@ -153,6 +155,8 @@ Before planning *how* to market, sanity-check *what* is being marketed. Score th
 
 Use it as a **strategic gate in Section 2 (Strategic frame)**: name which quadrant the product sits in. Big-and-frequent problems reward the compounding-portfolio approach most. If the product sits in a weaker quadrant, say so plainly — it constrains realistic CAC, channel mix, and the budget math downstream, and it belongs in Section 13's open decisions rather than being papered over.
 
+When the gate raises "is this market big enough?", size it with `references/market-sizing.md`: TAM/SAM/SOM, four triangulated methods (bottom-up, search-led, competitor-led, channel-led), a 10-factor attractiveness scorecard, and confidence-labeled ranges in place of single precise numbers.
+
 ## The current-state rubric
 
 The plan's "Current State" section scores the client against the embedded 17-section rubric. Full rubric in `references/current-state-rubric.md` — it's the source of truth, not a derivative of any external skill.
@@ -163,7 +167,7 @@ If the user already has a separately scored audit, ingest those scores directly 
 
 1. **`marketing-ideas`** — 139 proven marketing tactics. Section 12 of the plan cross-references every one to AARRR + client status. Detail in `references/idea-cross-reference.md`.
 2. **`product-marketing`** — Sets up the foundational `.agents/product-marketing.md` context file (positioning, ICP, voice). Read this first; Section 2 (Strategic frame) builds on it.
-3. **AARRR-stage-specific skills** — `onboarding-cro`, `signup-flow-cro`, `email-marketing`, `referral-program`, `pricing-strategy`, etc. The "Marketing operations stack" (Section 11) maps these to AARRR stages.
+3. **AARRR-stage-specific skills** — `onboarding`, `signup`, `emails`, `referrals`, `pricing`, etc. The "Marketing operations stack" (Section 11) maps these to AARRR stages.
 
 The plan is **opinionated about which skills serve which stages.** Full mapping in `references/ops-stack-mapping.md`.
 
@@ -297,13 +301,13 @@ The full schema for `progress.md` and the resumption decision tree live in `refe
 - **`product-marketing`** — Run first. Captures positioning, ICP, voice in `.agents/product-marketing.md` so every section of the plan references the same foundation.
 - **`marketing-ideas`** — Source of the 139 tactics in Section 12.
 - **`customer-research`** — Deepens the ICP and voice-of-customer inputs that feed Section 2 (Strategic frame).
-- **`onboarding-cro`** — Deep work on Section 5 (Activation).
-- **`email-marketing`** — Deep work on Section 6 (Retention) + onboarding emails in Section 5.
-- **`referral-program`** — Deep work on Section 7 (Referral).
-- **`pricing-strategy`** — Deep work on Section 8 (Revenue).
-- **`seo-fundamentals`** / **`geo-fundamentals`** / **`programmatic-seo`** — Deep work on the SEO portion of Section 4 (Acquisition).
-- **`ppc-advertising`** / **`ad-creative-variations`** — Deep work on the paid portion of Section 4 once budget unlocks.
-- **`launch-strategy`** — Deep work on launch moments inside Section 4 / Section 9.
+- **`onboarding`** — Deep work on Section 5 (Activation).
+- **`emails`** — Deep work on Section 6 (Retention) + onboarding emails in Section 5.
+- **`referrals`** — Deep work on Section 7 (Referral).
+- **`pricing`** — Deep work on Section 8 (Revenue).
+- **`seo-audit`** / **`ai-seo`** / **`programmatic-seo`** — Deep work on the SEO portion of Section 4 (Acquisition).
+- **`ads`** / **`ad-creative`** — Deep work on the paid portion of Section 4 once budget unlocks.
+- **`launch`** — Deep work on launch moments inside Section 4 / Section 9.
 
 ## Task-specific questions (used during INIT)
 
@@ -332,24 +336,9 @@ This plan is written for founders who are sharp, busy, and skeptical of marketin
 
 The exec summary should be short enough to read in 60 seconds. The rest should reward deep reading.
 
-## Reference guides
 
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. This section is a kit-added index. -->
+## Kit additions
 
-Bundled with this skill under `references/`:
-
-- **`aarrr-framework.md`** — AARRR primer + stage-prioritization rules (plan-internal).
-- **`budget-planning.md`** — Revenue-based and goal-based budget methods; experimental-budget rule.
-- **`client-types.md`** — Per-archetype variations (B2B SaaS, D2C app, hardware-led, marketplace, dev tool).
-- **`current-state-rubric.md`** — The 17-section current-state scoring lens for Section 3.
-- **`example-quietude.md`** — Canonical worked example (illustrative — see its KIT NOTE).
-- **`funding-stage-unlocks.md`** — Budget/capability tiers by funding stage.
-- **`growth-patterns.md`** — S-curve growth shapes, phase identification, 70/20/10 allocation.
-- **`idea-cross-reference.md`** — The 139 ideas mapped to AARRR stages (numbers resolve to `idea-library.md`).
-- **`idea-library.md`** — The internal 139-idea library (vendored; the number space Section 12 uses).
-- **`measurement-framework.md`** — North-star metric, leading indicators, measurement cadence.
-- **`methodology.md`** — Full INIT → REVIEW → FINALIZE workflow, intake questionnaire, state schema.
-- **`ops-stack-mapping.md`** — Marketing skills + MCP/API tooling mapped to each AARRR stage.
-- **`plan-template.md`** — The full 13-section plan template.
-- **`team-and-agency-model.md`** — Hiring sequence, π-shaped marketer, contractor/agency model.
-- **`d2c-playbook.md`** — D2C deep-dive for the commerce archetype: unit-economics baseline, acquisition funnel, email/SMS flow priority, repeat-purchase mechanics and repurchase benchmarks (kit-grafted; see its KIT NOTE).
+> Added by ai-agentic-kit, not part of upstream. Supplementary material kept from this kit's earlier version of the skill:
+>
+> - [references/d2c-playbook.md](references/d2c-playbook.md) — D2C deep-dive for the commerce archetype: unit-economics baseline, acquisition funnel, email/SMS flow priority, repeat-purchase mechanics and repurchase benchmarks (Brand-building-skills graft)

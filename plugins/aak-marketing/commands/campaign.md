@@ -91,20 +91,20 @@ To share, deploy the static HTML to any static host the user already uses (e.g. 
 
 ## Step 7: Automated video production (optional)
 
-Ask the user whether they want automated video ads (TikTok / Reels / Meta). If yes, use the **`video-automation`** and **`remotion-best-practices`** skills (this plugin):
+Ask the user whether they want automated video ads (TikTok / Reels / Meta). If yes, use the **`video`** and **`remotion-best-practices`** skills (this plugin):
 - Take a natural-language brief (e.g. "a 9:16 TikTok promoting feature X, neon style" or "a 16:9 and a 9:16 cut of this campaign").
 - Build the Remotion composition, preview locally (the skill provides the dev-server command), then render to MP4 (the skill checks for FFmpeg and installs it if missing).
 - Define your own composition IDs per format (e.g. one for 16:9, one for 9:16) — do not reuse example IDs from other projects.
 
 ## Skills used
 
-- `content-marketing`, `copywriting` — messaging & asset copy (Step 3)
-- `page-cro` / `conversion-optimization` — landing pages (Step 3)
+- `content-strategy`, `copywriting` — messaging & asset copy (Step 3)
+- `cro` / `conversion-optimization` — landing pages (Step 3)
 - `email-marketing` — nurture sequences (Step 3)
-- `social-media-expert` — social content (Step 3)
-- `analytics-marketing` — tracking & measurement (Steps 4–5)
+- `social` — social content (Step 3)
+- `analytics` — tracking & measurement (Steps 4–5)
 - `frontend-slides` — presentation deck (Step 6)
-- `video-automation`, `remotion-best-practices` — video ads (Step 7)
+- `video`, `remotion-best-practices` — video ads (Step 7)
 
 ## Vietnamese (vi-VN) output
 

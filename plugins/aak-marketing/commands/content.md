@@ -81,9 +81,9 @@ Polish the content:
 
 ## Skills Used
 
-- content-marketing
-- seo-fundamentals
-- social-media-expert
+- content-strategy
+- seo-audit
+- social
 - email-marketing
 
 ## Vietnamese (vi-VN) output

@@ -1,6 +1,6 @@
 {
   "name": "aak-core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "AI Agentic Kit — foundation: architecture, scaffolding, code-review, safety hook.",
   "author": {
     "name": "HDShinobi"

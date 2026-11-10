@@ -43,6 +43,84 @@ Many skills, agents, and workflows in `plugins/aak-marketing/` are adapted from
 the following upstream projects. Each is credited here; their license terms
 apply to the adapted portions.
 
+  ** aak-marketing 1.0.0 realignment (2026-11-10) — read first. ** The plugin
+  now mirrors coreyhaines31/marketingskills 1:1 by skill NAME: all 53 upstream
+  skills are vendored byte-verbatim from upstream commit
+  9d6d7ce8d18eb155dc2f9762435f097e60cdad7c (SKILL.md bodies, `references/`,
+  `evals/`, `assets/`, `scripts/`, frontmatter incl. `metadata.version`). Skill names
+  used in the historical entries below are superseded as follows:
+  ab-test-dashboard→ab-testing, ad-creative-variations→ad-creative,
+  analytics-marketing→analytics, app-store-optimization→aso,
+  competitor-alternatives→competitors, competitor-teardown→competitor-profiling,
+  content-marketing→content-strategy, email-sequence→emails,
+  free-tool-strategy→free-tools, geo-fundamentals→ai-seo, launch-strategy→launch,
+  onboarding-cro→onboarding, page-cro→cro, paywall-upgrade-cro→paywalls,
+  popup-cro→popups, ppc-advertising→ads, pricing-strategy→pricing,
+  referral-program→referrals, schema-markup→schema, seo-fundamentals→seo-audit,
+  signup-flow-cro→signup, social-media-expert→social, video-marketing→video,
+  lead-gen-scraper→prospecting. Each of these now carries the upstream body;
+  the earlier kit/intermediary bodies were retired. Same-name skills
+  (copywriting, copy-editing, influencer-marketing, programmatic-seo,
+  marketing-ideas, marketing-psychology, and every skill previously vendored from
+  this source) were re-synced to the same commit. Net-new from upstream:
+  attribution, conversion-tracking, link-building, directory-submissions,
+  community-marketing, reverse-engineer-marketing, events, sms, marketing-loops,
+  image. Retired with no successor body (capability covered by the upstream
+  skill in parentheses): competitor-monitor (competitor-profiling),
+  content-repurposing (content-strategy/social), marketing-automation (emails),
+  growth-hacking (marketing-ideas), viral-generator-builder (free-tools),
+  tutorial-video-expert and video-automation (video + remotion-best-practices),
+  keyword-research-deep (seo-audit).
+  Kit material that was NOT a stale copy of upstream is kept byte-verbatim and
+  indexed under a "Kit additions" section appended to the receiving skill:
+  ai-seo ← geo_checker.py (ag-kit); seo-audit ← seo_checker.py + keyword-research
+  (ag-kit / agentkits); content-strategy ← content-pillars + content-calendar;
+  competitor-profiling ← brand-lens; aso ← the Python ASO `toolkit/` (+ its
+  README/HOW_TO_USE, skill-name tokens re-pointed) and store-testing-and-ratings;
+  ads ← google-ads-tactics + meta-ads-tactics; pricing ← saas-pricing-guide;
+  schema ← schema-implementation-guide; free-tools ← engineering-marketing-guide;
+  competitors ← comparison-page-guide; cro ← cro-checklist + element-benchmarks;
+  launch ← launch-checklist template; emails ← agentkits sequence-templates
+  (renamed sequence-templates-extended.md to avoid clobbering upstream's file);
+  influencer-marketing ← outreach-briefs-agreements; sales-enablement ←
+  b2b-brand-abm; co-marketing ← brand-protection; marketing-plan ← d2c-playbook;
+  ab-testing ← agentkits test-design-guide + statistical-guide (formerly in
+  ab-test-dashboard); seo-audit also ← agentkits seo-audit-checklist (formerly in
+  seo-fundamentals); marketing-ideas ← references/feasibility-scored-library.md
+  (the complete pre-1.0.0 kit body: antigravity MFS method + 78-idea library incl.
+  agentkits ideas 72-78); marketing-psychology ← references/plfs-model-library.md
+  (the complete pre-1.0.0 kit body: antigravity PLFS method + model library incl.
+  agentkits levers 46-55). Retired-name tokens inside these kept files were
+  re-pointed to the 1.0.0 names. The per-reference KIT NOTE caveats that 0.x put
+  on upstream reference files were retired (those files are now pure upstream);
+  the Firecrawl/DataForSEO "optional, not shipped" note moved to
+  competitor-profiling's Kit additions, and cross-pointers to kit-only
+  whatsapp-marketing / form-cro / banner-design were added to sms / cro / image.
+  Mechanical wiring only: KIT NOTE preambles on `ads` / `ad-creative` (prefer
+  `aak-ads` when enabled) and `marketing-plan` (in-conversation default,
+  illustrative claims, four upstream tokens with no home here) plus the existing
+  preambles on its example-quietude / current-state-rubric references; the kit's
+  conditional `aak-vietnamese` section on copywriting and content-strategy;
+  relative `tools/` links in link-building and reverse-engineer-marketing
+  re-pointed to the upstream GitHub URLs (the upstream `tools/` registry and its
+  API CLIs are not shipped). The vendored `marketing-plan/references/idea-library.md`
+  copy was dropped — upstream `marketing-ideas` now ships it as
+  `references/ideas-by-category.md`. `reverse-engineer-marketing/scripts/teardown.mjs`
+  only reads public web sources — the target domain (incl. Shopify
+  `/products.json`), Wayback, crt.sh, SEC EDGAR, CFPB and FDIC public APIs,
+  Greenhouse/Lever/Ashby job boards, iTunes lookup/RSS, the GitHub API, npm and
+  pypistats, Optimizely/GrowthBook CDNs, and an optional keyed ScrapeCreators API;
+  it reads the env vars `GITHUB_TOKEN`/`GH_TOKEN`, `SEC_USER_AGENT` and
+  `SCRAPECREATORS_API_KEY`, spawns no processes, and writes only to an explicit `--out` path;
+  `conversion-tracking/scripts/*.py` build/check GTM recipes locally with no network
+  (`check_recipes.py --write` rewrites the local recipe JSON in place). The
+  upstream relative link to `conversion-tracking.md` in
+  ads/references/google-ads-audit-checklist.md was re-pointed to the
+  conversion-tracking skill.
+  Upstream credits Profound's `improved-copywriting` / `humanizer` skills
+  (https://github.com/retieedra-profound/skills-marketing-library, MIT) for
+  material adapted into copywriting.
+
 - antigravity-marketing (https://github.com/nguyenphp/antigravity-marketing),
   Copyright (c) NguyenPHP, MIT (as declared in the project's package.json and
   README). Source of most marketing skills, the 4 marketing agents, and the
@@ -76,13 +154,14 @@ apply to the adapted portions.
   MiniMax, MIT. Source of the `minimax-pdf` skill (styled, local PDF generation).
 
 - Remotion Dev Skills (https://github.com/remotion-dev/skills), by Remotion.
-  Source of `remotion-best-practices`, `video-automation`, `tutorial-video-expert`.
+  Source of `remotion-best-practices` (formerly also `video-automation` and
+  `tutorial-video-expert`, retired in aak-marketing 1.0.0).
 
-- vibeship-spawner-skills, Apache License 2.0. Source of the
-  `viral-generator-builder` skill. Under Apache-2.0, this notice preserves the
+- vibeship-spawner-skills, Apache License 2.0. Formerly the source of the
+  `viral-generator-builder` skill (retired in aak-marketing 1.0.0). Under Apache-2.0, this notice preserves the
   attribution; see the upstream project for the full license text.
 
-- Antigravity Awesome Skills (https://github.com/sickn33/antigravity-awesome-skills),
+- Antigravity Awesome Skills (https://github.com/sickn33/agentic-awesome-skills, formerly antigravity-awesome-skills),
   community-contributed. Origin of several patterns (e.g. `marketing-ideas`,
   the CRO-suite skills, `programmatic-seo`) as bundled via antigravity-marketing.
 

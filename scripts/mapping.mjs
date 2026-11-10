@@ -1,3 +1,5 @@
+// HISTORICAL (pre-aak-marketing 1.0.0): skill names below predate the Corey-name realignment;
+// see scripts/ref-lint.mjs RETIRED for the current mapping. Not part of the validation build.
 // kind: "agent" | "skill" | "command"; each entry names the source basename → target plugin
 export const AGENTS = {
   "documentation-writer": "aak-core", "product-manager": "aak-core", "product-owner": "aak-core",

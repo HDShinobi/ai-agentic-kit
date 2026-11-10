@@ -170,7 +170,7 @@ Week-by-week breakdown of the ships in the first quarter.
 Quarter-by-quarter outcome state (Q1 / Q2 / Q3 / Q4).
 
 ### Skills + tools
-- **Skills:** list relevant marketing-skills repo skills (`seo-fundamentals`, `geo-fundamentals`, `ppc-advertising`, `social-media-expert`, `competitor-alternatives`, etc.)
+- **Skills:** list relevant marketing-skills repo skills (`seo-audit`, `ai-seo`, `ads`, `social`, `competitors`, etc.)
 - **MCPs / APIs:** list connections (Ahrefs API, GA4 MCP, Typefully MCP, Stripe MCP for LTV math, etc.)
 
 ---
@@ -191,7 +191,7 @@ Quarter-by-quarter outcome state (Q1 / Q2 / Q3 / Q4).
 - Paywall + pricing review (often Activation × Revenue)
 
 ### Skills + tools
-`onboarding-cro`, `signup-flow-cro`, `paywall-upgrade-cro`, `copywriting`, `marketing-website-design`, `ab-test-dashboard`, etc.
+`onboarding`, `signup`, `paywalls`, `copywriting`, `marketing-website-design`, `ab-testing`, etc.
 
 ---
 
@@ -211,7 +211,7 @@ Quarter-by-quarter outcome state (Q1 / Q2 / Q3 / Q4).
 - Annual plan default tests (cross-references to Revenue)
 
 ### Skills + tools
-`email-marketing`, `churn-prevention`, `copywriting`, `paywall-upgrade-cro`, etc.
+`emails`, `churn-prevention`, `copywriting`, `paywalls`, etc.
 
 ---
 
@@ -231,7 +231,7 @@ Quarter-by-quarter outcome state (Q1 / Q2 / Q3 / Q4).
 - Gifting flows (for consumer / hardware)
 
 ### Skills + tools
-`referral-program`, `social-media-expert`, `email-marketing` (for ambassador lifecycle), `copywriting`, etc.
+`referrals`, `social`, `emails` (for ambassador lifecycle), `copywriting`, etc.
 
 ---
 
@@ -265,7 +265,7 @@ Required table:
 These feed the budget math in Section 10. If any of these are unknown, flag in Section 13 as top open decision.
 
 ### Skills + tools
-`pricing-strategy`, `paywall-upgrade-cro`, `sales-enablement`, `revops`, `ab-test-dashboard`, etc.
+`pricing`, `paywalls`, `sales-enablement`, `revops`, `ab-testing`, etc.
 
 ---
 

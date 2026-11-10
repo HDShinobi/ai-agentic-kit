@@ -1,6 +1,6 @@
 ---
 name: form-cro
-description: When the user wants to optimize any form that is NOT signup/registration — including lead capture forms, contact forms, demo request forms, application forms, survey forms, or checkout forms. Also use when the user mentions "form optimization," "lead form conversions," "form friction," "form fields," "form completion rate," or "contact form." For signup/registration forms, see signup-flow-cro. For popups containing forms, see popup-cro. Triggers on: form optimization, lead form, contact form, demo request, form fields, form completion rate, form friction, form conversions.
+description: When the user wants to optimize any form that is NOT signup/registration — including lead capture forms, contact forms, demo request forms, application forms, survey forms, or checkout forms. Also use when the user mentions "form optimization," "lead form conversions," "form friction," "form fields," "form completion rate," or "contact form." For signup/registration forms, see signup. For popups containing forms, see popups. Triggers on: form optimization, lead form, contact form, demo request, form fields, form completion rate, form friction, form conversions.
 ---
 
 # Form CRO
@@ -419,10 +419,10 @@ If you need more context:
 
 ## Related Skills
 
-- **signup-flow-cro**: For account creation forms
-- **popup-cro**: For forms inside popups/modals
-- **page-cro**: For the page containing the form
-- **ab-test-dashboard**: For testing form changes
+- **signup**: For account creation forms
+- **popups**: For forms inside popups/modals
+- **cro**: For the page containing the form
+- **ab-testing**: For testing form changes
 
 ---
 

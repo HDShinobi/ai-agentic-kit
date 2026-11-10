@@ -87,7 +87,7 @@ Create actionable report:
 
 ## Skills Used
 
-- analytics-marketing
-- growth-hacking
+- analytics
+- attribution
 - conversion-optimization
 - minimax-pdf

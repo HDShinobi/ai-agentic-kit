@@ -107,7 +107,7 @@ Present your analysis of the client's current marketing. This is where audit dat
 **Structure:**
 1. **Current State Overview** -- What they're doing now and how it's performing
 2. **Opportunities Identified** -- Specific areas where improvement is possible
-3. **Competitive Landscape** -- How they compare to competitors (from the `competitor-teardown` skill if available)
+3. **Competitive Landscape** -- How they compare to competitors (from the `competitor-profiling` skill if available)
 4. **Key Challenges** -- Obstacles that need to be addressed
 5. **Market Context** -- Industry trends and benchmarks
 

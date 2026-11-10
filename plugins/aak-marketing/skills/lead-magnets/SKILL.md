@@ -1,6 +1,8 @@
 ---
 name: lead-magnets
-description: When the user wants to create, plan, or optimize a lead magnet for email capture or lead generation. Also use when the user mentions "lead magnet," "gated content," "content upgrade," "downloadable," "ebook," "cheat sheet," "checklist," "template download," "opt-in," "freebie," "PDF download," "resource library," "content offer," "email capture content," "Notion template," "spreadsheet template," or "what should I give away for emails." Use this for planning what to create and how to distribute it. For interactive tools as lead magnets, see free-tool-strategy. For writing the actual content, see copywriting. For the email sequence after capture, see email-sequence.
+description: "When the user wants to plan or improve a lead magnet, or asks what to give away for emails or how much to ask in return (gating, form fields): checklists, templates, ebooks, gated guides, content upgrades. For interactive tools, see free-tools. For the follow-up sequence, see emails. For popups that capture emails, see popups."
+metadata:
+  version: 2.1.4
 ---
 
 # Lead Magnets
@@ -82,6 +84,8 @@ Gather this context (ask if not provided):
 
 **For detailed creation guidance per format**: See [references/format-guide.md](references/format-guide.md)
 
+**Agent skills as a lead magnet**: a course, webinar series, podcast, or newsletter archive you own can ship as an installable agent skill. See [references/content-to-skill.md](references/content-to-skill.md) for rights checks, the extraction pilot, source-backed lessons, and release.
+
 ---
 
 ## Matching Lead Magnets to Buyer Stage
@@ -114,7 +118,7 @@ Goal: Help implement. Remove friction to purchase.
 | Template | "Ready-to-Use Sales Email Templates" |
 | Free trial | "14-Day Free Trial" |
 | Implementation guide | "Migration Checklist: Switch in 30 Minutes" |
-| ROI calculator | "Calculate Your Savings" (→ see **free-tool-strategy**) |
+| ROI calculator | "Calculate Your Savings" (→ see **free-tools**) |
 
 ---
 
@@ -145,8 +149,8 @@ Rule of thumb: Ask for the minimum needed. Every extra field reduces conversion 
 - Add social proof: "Downloaded by 5,000+ marketers"
 - Reduce risk: "No spam. Unsubscribe anytime."
 
-**For form optimization**: See **conversion-optimization** skill
-**For popup implementation**: See **popup-cro** skill
+**For form optimization**: See **cro** skill
+**For popup implementation**: See **popups** skill
 
 ---
 
@@ -161,7 +165,7 @@ Rule of thumb: Ask for the minimum needed. Every extra field reduces conversion 
 5. **Form** — Minimal fields, clear CTA button
 6. **FAQ** — Address hesitations (Is it really free? What format?)
 
-**For landing page optimization**: See **conversion-optimization** skill
+**For landing page optimization**: See **cro** skill
 
 ### Delivery Methods
 
@@ -296,21 +300,12 @@ When creating a lead magnet strategy, provide:
 
 ## Related Skills
 
-- **free-tool-strategy**: For interactive tools as lead magnets (calculators, graders, quizzes)
+- **free-tools**: For interactive tools as lead magnets (calculators, graders, quizzes)
 - **copywriting**: For writing the lead magnet content itself
-- **email-sequence**: For nurture sequences after lead capture
-- **conversion-optimization**: For optimizing lead magnet landing pages
-- **popup-cro**: For popup-based lead capture
-- **conversion-optimization**: For optimizing capture forms
-- **content-marketing**: For content planning and topic selection
-- **analytics-marketing**: For measuring lead magnet performance
-- **ppc-advertising**: For paid promotion of lead magnets
-- **social-media-expert**: For social media promotion
-
----
-
-## Reference guides
-
-Additional depth for this skill (load on demand):
-- `references/benchmarks.md`
-- `references/format-guide.md`
+- **emails**: For nurture sequences after lead capture
+- **cro**: For optimizing lead magnet landing pages and capture forms
+- **popups**: For popup-based lead capture
+- **content-strategy**: For content planning and topic selection
+- **analytics**: For measuring lead magnet performance
+- **ads**: For paid promotion of lead magnets
+- **social**: For social media promotion

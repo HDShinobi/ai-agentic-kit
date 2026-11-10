@@ -258,7 +258,7 @@ Held until seed funding lands. Initial test budget: $5–10K/mo split across App
 
 ### Skills + tools
 
-- **Skills:** `seo-fundamentals`, `geo-fundamentals`, `programmatic-seo`, `schema-markup`, `content-marketing`, `competitor-alternatives`, `launch-strategy`, `ppc-advertising`, `ad-creative-variations`, `social-media-expert`, `typefully`, `analytics-marketing`, `copywriting`, `marketing-website-design`, `free-tool-strategy`
+- **Skills:** `seo-audit`, `ai-seo`, `programmatic-seo`, `schema`, `content-strategy`, `competitors`, `launch`, `ads`, `ad-creative`, `social`, `typefully`, `analytics`, `copywriting`, `marketing-website-design`, `free-tools`
 - **MCPs / APIs:** Ahrefs API, DataForSEO API, Typefully MCP (LinkedIn scheduling), GA4 MCP (when wired), GitHub MCP (`quietude-promo` repo work), Notion (knowledge directory), Stripe MCP (LTV / paid-CAC math), `agent-browser` (LinkedIn drafting + testing), `defuddle` (research)
 
 ---
@@ -314,7 +314,7 @@ What's the current trial structure? Length, paywall trigger, intro pricing? When
 
 ### Skills + tools
 
-- **Skills:** `onboarding-cro`, `signup-flow-cro`, `conversion-optimization`, `conversion-optimization`, `paywall-upgrade-cro`, `popup-cro`, `copywriting`, `copy-editing`, `copycraft`, `marketing-website-design`, `ab-test-dashboard`, `marketing-psychology`
+- **Skills:** `onboarding`, `signup`, `cro`, `cro`, `paywalls`, `popups`, `copywriting`, `copy-editing`, `copycraft`, `marketing-website-design`, `ab-testing`, `marketing-psychology`
 - **MCPs / APIs:** App Store Connect (manual + `dev-browser` for screenshot automation), GitHub MCP (`quietude-app` app repo for onboarding code), Figma / Pencil MCP (for onboarding screen design), Customer.io MCP (for any in-app/email coordination), GA4 MCP (activation events)
 
 ---
@@ -373,7 +373,7 @@ Industry pattern: defaulting to annual reduces churn anxiety and improves LTV. T
 
 ### Skills + tools
 
-- **Skills:** `email-marketing`, `churn-prevention`, `copywriting`, `copy-editing`, `paywall-upgrade-cro`, `ab-test-dashboard`
+- **Skills:** `emails`, `churn-prevention`, `copywriting`, `copy-editing`, `paywalls`, `ab-testing`
 - **MCPs / APIs:** **Customer.io MCP** (validated on kickoff — non-technical team can ship flows), Shopify (eye mask buyers as event source), Stripe MCP (subscription state, churn cohort pulls), GA4 MCP (session events, retention curves)
 
 ---
@@ -420,7 +420,7 @@ Hardware referral is rare and powerful. *"Send a friend an Quietude eye mask. Th
 
 ### Skills + tools
 
-- **Skills:** `referral-program`, `social-media-expert`, `copywriting`, `marketing-website-design` (per-ambassador landing pages)
+- **Skills:** `referrals`, `social`, `copywriting`, `marketing-website-design` (per-ambassador landing pages)
 - **MCPs / APIs:** Dub.co (attribution — already in stack), Stripe MCP (commission accounting + payouts), GitHub MCP (landing page deployment in `quietude-promo` or new `quietude-ambassadors` repo), Customer.io MCP (ambassador lifecycle: onboarding, monthly performance digest, payout notification)
 
 ---
@@ -483,7 +483,7 @@ Per seed deck Y10–15 value pool: $100–160M/yr. Not immediate revenue. Belong
 
 ### Skills + tools
 
-- **Skills:** `pricing-strategy`, `paywall-upgrade-cro`, `sales-enablement`, `revops`, `ab-test-dashboard`, `copywriting`
+- **Skills:** `pricing`, `paywalls`, `sales-enablement`, `revops`, `ab-testing`, `copywriting`
 - **MCPs / APIs:** Stripe MCP (pricing tests, subscription analytics, churn cohort, blended CAC math), Customer.io MCP (paywall-related lifecycle), Shopify (eye mask transactions), GA4 MCP (revenue events), Notion (commercial knowledge directory)
 
 ---
@@ -635,11 +635,11 @@ The fCMO's job is to:
 
 | Stage | Primary skills | Supporting skills |
 |---|---|---|
-| **Acquisition** | `seo-fundamentals`, `geo-fundamentals`, `programmatic-seo`, `schema-markup`, `content-marketing`, `competitor-alternatives`, `ppc-advertising`, `ad-creative-variations`, `social-media-expert`, `typefully` | `launch-strategy`, `free-tool-strategy`, `analytics-marketing`, `cold-email`, `copywriting`, `marketing-website-design` |
-| **Activation** | `onboarding-cro`, `signup-flow-cro`, `paywall-upgrade-cro`, `conversion-optimization`, `copywriting`, `copy-editing`, `copycraft` | `marketing-website-design`, `ab-test-dashboard`, `marketing-psychology`, `conversion-optimization`, `popup-cro` |
-| **Retention** | `email-marketing`, `churn-prevention` | `copywriting`, `copy-editing`, `ab-test-dashboard`, `paywall-upgrade-cro` |
-| **Referral** | `referral-program`, `social-media-expert` | `copywriting`, `marketing-website-design`, `email-marketing` |
-| **Revenue** | `pricing-strategy`, `paywall-upgrade-cro`, `sales-enablement`, `revops` | `ab-test-dashboard`, `copywriting` |
+| **Acquisition** | `seo-audit`, `ai-seo`, `programmatic-seo`, `schema`, `content-strategy`, `competitors`, `ads`, `ad-creative`, `social`, `typefully` | `launch`, `free-tools`, `analytics`, `cold-email`, `copywriting`, `marketing-website-design` |
+| **Activation** | `onboarding`, `signup`, `paywalls`, `cro`, `copywriting`, `copy-editing`, `copycraft` | `marketing-website-design`, `ab-testing`, `marketing-psychology`, `cro`, `popups` |
+| **Retention** | `emails`, `churn-prevention` | `copywriting`, `copy-editing`, `ab-testing`, `paywalls` |
+| **Referral** | `referrals`, `social` | `copywriting`, `marketing-website-design`, `emails` |
+| **Revenue** | `pricing`, `paywalls`, `sales-enablement`, `revops` | `ab-testing`, `copywriting` |
 | **Cross-cutting** (brand, intelligence) | `product-marketing`, `customer-research`, `marketing-psychology` | `marketing-ideas`, `diagram-maker` |
 
 ### MCPs / APIs mapped to stages

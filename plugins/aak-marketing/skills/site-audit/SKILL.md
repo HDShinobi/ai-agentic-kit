@@ -369,7 +369,7 @@ Full report saved to: MARKETING-AUDIT.md
 
 ## Cross-Skill Integration
 
-- If `a prior competitor-teardown output` exists in the current directory, incorporate its findings
+- If `a prior competitor-profiling output` exists in the current directory, incorporate its findings
 - If `a prior brand-skill output` exists, use it to contextualize content analysis
 - Reference other available analyses in the executive summary
-- Suggest follow-up commands: `/aak-marketing:content`, `conversion-optimization`, `competitor-teardown` for deeper dives
+- Suggest follow-up commands: `/aak-marketing:content`, `conversion-optimization`, `competitor-profiling` for deeper dives

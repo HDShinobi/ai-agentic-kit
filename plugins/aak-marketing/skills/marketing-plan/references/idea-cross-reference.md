@@ -1,12 +1,3 @@
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
-> **⚠️ The 139-idea library is vendored inside this skill** at `references/idea-library.md`, so
-> every idea number below resolves *inside* marketing-plan. Where the upstream text says "the
-> `marketing-ideas` skill catalogs 139…", read it as the internal `references/idea-library.md`.
-> This kit's separate `marketing-ideas` skill (78 ideas + MFS feasibility scoring, a different
-> lineage) stays the interactive idea-selection tool and is NOT the numbering used here.
->
-> Upstream content is preserved verbatim below.
-
 # Idea Cross-Reference — 139 Marketing Ideas Mapped to AARRR
 
 The `marketing-ideas` skill catalogs 139 proven marketing tactics. This doc is the source-of-truth mapping: every idea assigned to a primary AARRR stage, with notes for when it's typically active and what category constraints apply.
@@ -259,14 +250,6 @@ After all five AARRR tables + skip list:
 
 **What this proves:** the plan is roughly X% of the available tactical surface area, not 100%. {appropriate or not for the stage} — as capacity unlocks across Q2 → Q3 → Series A, the cross-reference becomes the inventory to scale activity without losing strategic coherence.
 ```
-
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
-> **⚠️ Upstream-repo maintenance only.** The section below refers to the upstream `marketingskills`
-> repo and its `skills/marketing-ideas/references/ideas-by-category.md` file. In this kit, the
-> library is vendored at `references/idea-library.md`; update *that* file (and this doc) if you
-> re-sync from upstream. These instructions do not describe any live path in this kit.
->
-> Upstream content is preserved verbatim below.
 
 ## How to maintain this doc
 

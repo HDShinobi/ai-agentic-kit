@@ -152,7 +152,7 @@ Each audit script lives inside its owning skill, which usually sits in **another
 | Mobile audit | `mobile-design` · `aak-frontend` | run its mobile audit | platform linters |
 | Schema validate | `database-design` · `aak-backend` | run its schema validator | migration/ORM checks |
 | Security scan | `vulnerability-scanner` · `aak-security` | run its security scan | project's SAST/audit |
-| SEO / GEO check | `seo-fundamentals` / `geo-fundamentals` · `aak-marketing` | run its checker | manual SEO review |
+| SEO / GEO check | `seo-audit` / `ai-seo` · `aak-marketing` | run its checker | manual SEO review |
 | Lighthouse / perf | `performance-profiling` · `aak-quality` | run its Lighthouse audit | `lighthouse` CLI |
 | Test / Playwright | `testing-patterns` / `webapp-testing` · `aak-quality` | run its runner | project's `test` command |
 | Lint / type coverage | `lint-and-validate` · `aak-quality` | run its lint/type check | project's linter/type-checker |

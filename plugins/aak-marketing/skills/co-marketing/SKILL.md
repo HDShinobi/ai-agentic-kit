@@ -1,6 +1,8 @@
 ---
 name: co-marketing
-description: "When the user wants to find co-marketing partners, plan joint campaigns, or brainstorm partnership opportunities. Use when the user says 'co-marketing,' 'partner marketing,' 'joint campaign,' 'who should we partner with,' 'integration marketing,' 'cross-promotion,' 'collaborate with another company,' 'partnership ideas,' or 'co-brand.' For customer referral programs, see referral-program. For launch-specific partnerships, see launch-strategy."
+description: "When the user wants co-marketing partners or joint campaigns, or asks whether a partner fits, a size mismatch matters, or how to split work and leads: integration partners, cross-promotion, co-branded content, joint webinars. For referral programs, see referrals. For launch partnerships, see launch. For running the event, see events."
+metadata:
+  version: 2.0.6
 ---
 
 You are a co-marketing strategist who helps SaaS companies identify ideal partners and brainstorm high-impact joint campaigns.
@@ -93,7 +95,7 @@ Co-marketing is one of **five partnership types**. Know the taxonomy so you rout
 
 Standout moves: **integrations** as a decision factor (83% of enterprise buyers), Calendly's staged ladder (calendar → sales → marketing); **affiliate** power law (20% of affiliates drive 80% of revenue) and buyout clauses (~12× monthly commission); **permissionless co-marketing** (Notion building templates for Airbnb/Amazon/Tesla to ride their brand — no contract needed); App Store distribution (Grammarly 0→10M).
 
-For the full taxonomy — build patterns, economics, examples, and how to choose where to start — see **[references/partnership-types.md](references/partnership-types.md)**. (Affiliate program *mechanics* live in the referral-program skill; keep affiliate work here at the partnership-strategy level.)
+For the full taxonomy — build patterns, economics, examples, and how to choose where to start — see **[references/partnership-types.md](references/partnership-types.md)**. (Affiliate program *mechanics* live in the referrals skill; keep affiliate work here at the partnership-strategy level.)
 
 ---
 
@@ -290,27 +292,26 @@ Would you be open to a quick call to explore?
 
 ## Tool Integrations
 
-For implementation, see the tools registry. Key tools for co-marketing:
+For implementation, see the [tools registry](https://github.com/coreyhaines31/marketingskills/blob/main/tools/REGISTRY.md). Key tools for co-marketing:
 
 | Tool | Best For | Guide |
 |------|----------|-------|
-| **Crossbeam** | Account overlap with partners | crossbeam.md |
-| **Introw** | Partner program management, deal registration | introw.md |
-| **PartnerStack** | Partner and affiliate program management | partnerstack.md |
+| **Crossbeam** | Account overlap with partners | [crossbeam.md](https://github.com/coreyhaines31/marketingskills/blob/main/tools/integrations/crossbeam.md) |
+| **Introw** | Partner program management, deal registration | [introw.md](https://github.com/coreyhaines31/marketingskills/blob/main/tools/integrations/introw.md) |
+| **PartnerStack** | Partner and affiliate program management | [partnerstack.md](https://github.com/coreyhaines31/marketingskills/blob/main/tools/integrations/partnerstack.md) |
 
 ---
 
 ## Related Skills
 
-- **referral-program** — For customer referral and affiliate programs (customers referring customers)
-- **launch-strategy** — For product launches with partners; covers co-marketing as a "borrowed channel"
-- **content-marketing** — For content planning including co-created content
+- **referrals** — For customer referral and affiliate programs (customers referring customers)
+- **launch** — For product launches with partners; covers co-marketing as a "borrowed channel"
+- **content-strategy** — For content planning including co-created content
 - **sales-enablement** — For partner-facing collateral and enablement materials
 
----
 
-## Reference guides
+## Kit additions
 
-Additional depth for this skill (load on demand):
-- `references/partnership-types.md`
-- `references/brand-protection.md` — brand protection in partnerships: brand-usage rules for partners, approvals, morality/exit clause, and red flags.
+> Added by ai-agentic-kit, not part of upstream. Supplementary material kept from this kit's earlier version of the skill:
+>
+> - [references/brand-protection.md](references/brand-protection.md) — brand protection in partnerships: brand-usage rules for partners, approvals, morality/exit clause, and red flags (Brand-building-skills graft)

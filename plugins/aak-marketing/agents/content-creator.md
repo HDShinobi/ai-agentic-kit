@@ -61,9 +61,9 @@ Use this agent when you need to:
 
 ## Skills Used
 
-- content-marketing
-- seo-fundamentals
-- social-media-expert
+- content-strategy
+- seo-audit
+- social
 - email-marketing
 - branding-expert
 - brand-manifesto

@@ -1,6 +1,6 @@
 ---
 name: conversion-optimization
-description: CRO entry point & method — research, hypothesis, and prioritization (ICE/PIE) that apply across ALL surfaces. Routes surface-specific work to the specialized CRO skills, and hands off A/B test design, sample sizing, execution, significance analysis, and reporting to ab-test-dashboard. Use this to start any conversion problem; use the specialized skill for a specific surface.
+description: CRO entry point & method — research, hypothesis, and prioritization (ICE/PIE) that apply across ALL surfaces. Routes surface-specific work to the specialized CRO skills, and hands off A/B test design, sample sizing, execution, significance analysis, and reporting to ab-testing. Use this to start any conversion problem; use the specialized skill for a specific surface.
 allowed-tools: Read, Glob, Grep
 ---
 
@@ -18,11 +18,11 @@ Pick the specialized skill for the surface being optimized; use this skill for t
 
 | Surface being optimized | Use skill |
 |-------------------------|-----------|
-| An individual marketing page (home, landing, pricing, feature, blog) | **`page-cro`** |
-| Popups / modals / slide-in banners | **`popup-cro`** |
-| Signup / registration / trial-activation flow | **`signup-flow-cro`** |
-| Post-signup onboarding / activation / first-run | **`onboarding-cro`** |
-| In-product paywall / upgrade / feature-gate | **`paywall-upgrade-cro`** |
+| An individual marketing page (home, landing, pricing, feature, blog) | **`cro`** |
+| Popups / modals / slide-in banners | **`popups`** |
+| Signup / registration / trial-activation flow | **`signup`** |
+| Post-signup onboarding / activation / first-run | **`onboarding`** |
+| In-product paywall / upgrade / feature-gate | **`paywalls`** |
 | Cross-surface method, or you're not sure which surface yet | **this skill** (below) |
 
 ---
@@ -164,7 +164,7 @@ Pick the specialized skill for the surface being optimized; use this skill for t
 |--------|---------|
 | **Sample size** | Statistical significance |
 | **Duration** | 1-2 full business cycles |
-| **Visitors/variation** | Size properly via ab-test-dashboard (power + MDE) — not a fixed rule of thumb |
+| **Visitors/variation** | Size properly via ab-testing (power + MDE) — not a fixed rule of thumb |
 
 ### Statistical Significance
 

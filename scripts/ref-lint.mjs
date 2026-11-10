@@ -18,19 +18,46 @@ const PLUGINS = join(ROOT, 'plugins');
 // Retired/renamed skill names that must never appear as a cross-reference again.
 // Map each to its live replacement (for a helpful message). Extend when a skill is renamed.
 const RETIRED = {
-  'ab-test-setup': 'ab-test-dashboard',
-  'seo-audit': 'seo-fundamentals',
-  'analytics-tracking': 'analytics-marketing',
-  'competitor-teardown-agent': 'competitor-teardown',
-  'competitor-monitor-alert': 'competitor-monitor',
-  'content-repurposing-pipeline': 'content-repurposing',
-  // coreyhaines source skill-names grafted-from (unambiguous hyphenated tokens only;
-  // bare prose words like signup/paywalls/popups are intentionally NOT listed).
-  'ai-seo': 'geo-fundamentals',
-  'ab-testing': 'ab-test-dashboard',
-  'content-strategy': 'content-marketing',
-  'free-tools': 'free-tool-strategy',
-  'competitor-profiling': 'competitor-teardown',
+  'ab-test-setup': 'ab-testing',
+  'analytics-tracking': 'analytics',
+  'competitor-teardown-agent': 'competitor-profiling',
+  'competitor-monitor-alert': 'competitor-profiling',
+  'content-repurposing-pipeline': 'content-strategy',
+  // aak-marketing 1.0.0 adopted coreyhaines/marketingskills names; the kit's former
+  // names are retired (unambiguous hyphenated tokens only).
+  'ab-test-dashboard': 'ab-testing',
+  'ad-creative-variations': 'ad-creative',
+  'analytics-marketing': 'analytics',
+  'app-store-optimization': 'aso',
+  'competitor-alternatives': 'competitors',
+  'competitor-teardown': 'competitor-profiling',
+  'competitor-monitor': 'competitor-profiling',
+  'content-marketing': 'content-strategy',
+  'email-sequence': 'emails',
+  'free-tool-strategy': 'free-tools',
+  'geo-fundamentals': 'ai-seo',
+  'launch-strategy': 'launch',
+  'onboarding-cro': 'onboarding',
+  'page-cro': 'cro',
+  'paywall-upgrade-cro': 'paywalls',
+  'popup-cro': 'popups',
+  'ppc-advertising': 'ads',
+  'pricing-strategy': 'pricing',
+  'referral-program': 'referrals',
+  'schema-markup': 'schema',
+  'seo-fundamentals': 'seo-audit',
+  'signup-flow-cro': 'signup',
+  'social-media-expert': 'social',
+  'video-marketing': 'video',
+  'lead-gen-scraper': 'prospecting',
+  'growth-hacking': 'marketing-ideas',
+  'marketing-automation': 'emails',
+  'keyword-research-deep': 'seo-audit',
+  'viral-generator-builder': 'free-tools',
+  'tutorial-video-expert': 'video',
+  'video-automation': 'video',
+  // NOTE: 'content-repurposing' is intentionally NOT listed — upstream marketing-loops
+  // uses it as a loop name, not a skill reference.
 };
 
 function walk(dir, out = []) {

@@ -1,3 +1,5 @@
+// HISTORICAL (pre-aak-marketing 1.0.0): skill names below predate the Corey-name realignment;
+// see scripts/ref-lint.mjs RETIRED for the current mapping. Not part of the validation build.
 // One-time importer: adopt curated marketing skills into aak-marketing VERBATIM,
 // normalizing only frontmatter (drop dead fields, merge when_to_use, strip Agent/Antigravity
 // tools, strip ckm: name prefix) and flagging cross-references for a manual link-audit.

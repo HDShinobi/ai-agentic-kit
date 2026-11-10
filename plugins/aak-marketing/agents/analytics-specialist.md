@@ -65,7 +65,7 @@ Use this agent when you need to:
 
 ## Skills Used
 
-- analytics-marketing
-- growth-hacking
+- analytics
+- attribution
 - conversion-optimization
 - brand-measurement
