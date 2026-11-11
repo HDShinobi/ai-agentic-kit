@@ -1,9 +1,5 @@
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
-> **Source.** Grafted byte-verbatim from `arnabbagxd/Brand-building-skills` (MIT, © 2026 Arnab Bag), `skills/email-marketing/SKILL.md` lines 45–73, commit `4a0a8b5`. Extracts are separated by `<!-- extract -->` markers; text between markers is unchanged upstream bytes.
->
+<!-- kit -->
 > **⚠️ Complements this skill's playbook** with list-building specifics: lead-magnet types, opt-in placement and timing, and list hygiene from day one. Pop-up timing and discount examples are directional.
->
-> Upstream content is preserved verbatim below.
 
 ### 01 — LIST BUILDING STRATEGY
 

@@ -287,8 +287,8 @@ Claims checked per asset, status counts (current / changed / unverifiable / over
 - **sales-enablement**: For battle cards and internal sales collateral, decks, and objection docs
 
 
-## Kit additions
+## Additional resources
 
-> Added by ai-agentic-kit, not part of upstream. Supplementary material kept from this kit's earlier version of the skill:
+> Supplementary material:
 >
 > - [references/comparison-page-guide.md](references/comparison-page-guide.md) — comparison / alternative page research guide

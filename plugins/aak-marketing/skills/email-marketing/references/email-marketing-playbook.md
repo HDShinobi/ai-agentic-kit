@@ -1,7 +1,5 @@
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
+<!-- kit -->
 > **⚠️ Note (this kit):** This playbook lists benchmark open/click rates **by email type** (welcome, newsletter, etc.); the email-marketing SKILL.md body gives flatter aggregate bands. Not contradictory — prefer the per-type figures here when the type is known, aggregate bands for mixed/unknown sends.
->
-> Upstream content is preserved verbatim below.
 
 # Email Marketing Playbook
 

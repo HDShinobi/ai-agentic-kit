@@ -171,8 +171,8 @@ When recommending ideas, provide for each:
 - **free-tools**: For engineering as marketing (#15)
 - **referrals**: For viral growth (#93)
 
-## Kit additions
+## Additional resources
 
-> Added by ai-agentic-kit, not part of upstream. Supplementary material kept from this kit's earlier version of the skill:
+> Supplementary material:
 >
 > - [references/feasibility-scored-library.md](references/feasibility-scored-library.md) — Marketing Feasibility Score (MFS) method + 78-idea scored library from this kit's pre-1.0.0 skill (used by `/marketing-plan` as the interactive MFS-scored selector)

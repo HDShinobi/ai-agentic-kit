@@ -4,11 +4,9 @@ description: "Router for all Remotion skills. Triggers on: Remotion, video in Re
 version: 4.0.542
 ---
 
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
+<!-- kit -->
 > **Remotion licensing.** Remotion is under the Remotion License — companies with more than 3
-> employees need a Company License (remotion.pro). This kit vendors the skill text as-is; see NOTICE.
->
-> Upstream content is preserved verbatim below.
+> employees need a Company License (remotion.pro). See NOTICE.
 
 ## Preserve user changes
 
@@ -121,14 +119,14 @@ For Remotion license information, FAQs, terms, or buying a license, load [Remoti
 
 To upgrade Remotion, related packages, compatible Mediabunny packages, and installed Remotion Agent Skills, load [Remotion Upgrade](./remotion-upgrade/REFERENCE.md).
 
-<!-- KIT ADDITIONS — added by ai-agentic-kit, NOT upstream. -->
-## Kit additions
+<!-- kit -->
+## Additional resources
 
 Legacy rules from the pre-4.0.542 flat layout whose topics have no counterpart in the current
-upstream tree. Preserved byte-for-byte; load them when relevant:
+rule set. Load them when relevant:
 
 - [Charts and data visualization](./references/legacy-rules/charts.md) — bar, pie, line and stock chart patterns
 - [Text animations](./references/legacy-rules/text-animations.md) — typography and text animation patterns
 - [Can decode](./references/legacy-rules/can-decode.md) — check whether the browser can decode a video with Mediabunny
 - [Extract frames](./references/legacy-rules/extract-frames.md) — extract frames at timestamps with Mediabunny
-- Updates to this vendored copy arrive with the `aak-marketing` plugin version. In `remotion-upgrade/REFERENCE.md`, skip the `npx skills update …` step — it would install upstream's separate top-level skills into the project instead of updating this copy.
+- Updates to this skill arrive with the `aak-marketing` plugin version. In `remotion-upgrade/REFERENCE.md`, skip the `npx skills update …` step — it would install separate top-level Remotion skills into the project instead of updating this one.

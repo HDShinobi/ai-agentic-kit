@@ -1,7 +1,5 @@
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
+<!-- kit -->
 > **⚠️ Correction (this kit):** the line below, "Statistical Significance … Probability that result is not due to chance," is the common misstatement. More precisely: 95% confidence means α = 5% — at most a 5% chance of a false positive when there is truly no difference (NOT "95% chance the result is real"). Read significance this way throughout.
->
-> Upstream content is preserved verbatim below.
 
 # A/B Testing Statistical Guide
 

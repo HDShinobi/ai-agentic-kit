@@ -454,8 +454,8 @@ When facing a marketing challenge, consider:
 - **pricing-page optimization**: See cro for pricing psychology
 - **ab-testing**: Test psychological hypotheses
 
-## Kit additions
+## Additional resources
 
-> Added by ai-agentic-kit, not part of upstream. Supplementary material kept from this kit's earlier version of the skill:
+> Supplementary material:
 >
 > - [references/plfs-model-library.md](references/plfs-model-library.md) — Psychological Leverage & Feasibility Score (PLFS) method + scored mental-model library (incl. consumer-behavior levers 46–55) from this kit's pre-1.0.0 skill

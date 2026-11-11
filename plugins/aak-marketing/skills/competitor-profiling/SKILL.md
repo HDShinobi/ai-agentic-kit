@@ -442,9 +442,9 @@ Only ask if not answered by context or input:
 - **marketing-plan**: For sizing the market (TAM/SAM/SOM) with its market-sizing reference, including competitor-led estimates
 
 
-## Kit additions
+## Additional resources
 
-> Added by ai-agentic-kit, not part of upstream. Supplementary material kept from this kit's earlier version of the skill:
+> Supplementary material:
 >
-> - [references/brand-lens.md](references/brand-lens.md) — an optional brand-identity analysis mode: per-competitor positioning, personality, voice and owned territory; a two-axis competitive brand map (Brand-building-skills graft)
+> - [references/brand-lens.md](references/brand-lens.md) — an optional brand-identity analysis mode: per-competitor positioning, personality, voice and owned territory; a two-axis competitive brand map
 > - **Tooling note:** Firecrawl and DataForSEO (named in `references/tool-reference.md`) are OPTIONAL external MCP servers, not shipped with this kit. If unavailable, substitute the built-in WebFetch/WebSearch tools for scraping and skip the SEO-metrics phase, noting "insufficient data" in the profile.

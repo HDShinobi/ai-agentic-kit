@@ -41,7 +41,7 @@ precedence over the config for that run, but never edits the file:
 
 `codex:gpt-5.6-terra` and `claude:opus` above are illustrative CLI:model
 pairs, not a mandated choice — bind each role to whatever `cli`/`model` you
-actually have installed and authenticated (Golden Rule #1: this kit
+actually have installed and authenticated (this kit
 hardcodes no project's model). Timeout and workspace policy are **not**
 overridable per-run — those stay config-first in `.aak/delivery.yml`, where
 reproducibility matters more than one-off convenience.
@@ -52,7 +52,7 @@ reproducibility matters more than one-off convenience.
   dispatch. Say so and stop; do not guess a config or silently fall back to
   another workflow.
 - **A role's `cli` binary is absent** — that role degrades to a Claude Task
-  subagent instead of failing the run (Golden Rule #1: a Claude-only install
+  subagent instead of failing the run (a Claude-only install
   still completes every role, just without a heterogeneous model for it).
   Preflight's other outcomes (e.g. a configured-but-unauthenticated CLI)
   follow SKILL.md §2 — this command does not repeat that table.

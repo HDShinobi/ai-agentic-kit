@@ -1,7 +1,5 @@
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
+<!-- kit -->
 > **⚠️ Scope (this kit):** This skill OWNS researching and producing individual comparison/alternative pages (or a small, hand-planned set). The "## Templates for Scale", "### Database Structure (Programmatic)", and "### Auto-Generation Logic" sections below describe the **data model and requirements to feed `programmatic-seo`** for at-scale generation — they are inputs to that skill, NOT a scale-generation engine owned here. For generating a large templated page system, hand off to `programmatic-seo`.
->
-> Upstream content is preserved verbatim below.
 
 # Competitor Comparison & Alternative Page Guide
 

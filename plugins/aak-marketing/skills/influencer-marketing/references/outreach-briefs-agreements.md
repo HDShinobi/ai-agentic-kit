@@ -1,12 +1,8 @@
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
-> **Source.** Grafted byte-verbatim from `arnabbagxd/Brand-building-skills` (MIT, © 2026 Arnab Bag), `skills/influencer-marketing/SKILL.md` lines 111–136, 140–187, 191–214, 246–261, commit `4a0a8b5`. Extracts are separated by `<!-- extract -->` markers; text between markers is unchanged upstream bytes.
->
+<!-- kit -->
 > **⚠️ Unsourced figures.** The whitelisting surcharge ("Extra 20–50%") and the seeding post-rate
-> ("30–60% of seeded creators…") below are the upstream author's, unsourced — treat them as directional,
+> ("30–60% of seeded creators…") below are unsourced — treat them as directional,
 > not as figures to quote to clients. Contract terms here are a checklist, not legal advice; have
 > agreements reviewed for your jurisdiction.
->
-> Upstream content is preserved verbatim below.
 
 ### 03 — OUTREACH STRATEGY
 

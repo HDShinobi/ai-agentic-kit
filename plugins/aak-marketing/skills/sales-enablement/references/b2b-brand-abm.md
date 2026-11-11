@@ -1,14 +1,10 @@
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
-> **Source.** Grafted byte-verbatim from `arnabbagxd/Brand-building-skills` (MIT, © 2026 Arnab Bag), `skills/b2b-brand-marketing/SKILL.md` lines 61–72, 100–122, 177–194, commit `4a0a8b5`. Extracts are separated by `<!-- extract -->` markers; text between markers is unchanged upstream bytes.
->
+<!-- kit -->
 > **⚠️ B2B brand layer for sales.** Buying-committee messaging map, LinkedIn brand strategy (company
 > page, founder/exec, employee advocacy), and an ABM brand-warmup layer to run before SDR outreach.
-> Two upstream claims are unsourced and should NOT be quoted as fact: the "2–5×" conversion lift from
+> Two claims below are unsourced and should NOT be quoted as fact: the "2–5×" conversion lift from
 > brand warmup, and "1,000 employees × 500 connections = 500K organic reach per post" (naive
 > multiplication that ignores audience overlap and feed decay). The LinkedIn content-mix percentages
 > and posting frequency are directional. Account routing itself lives in `revops`.
->
-> Upstream content is preserved verbatim below.
 
 ### 02 — BUYING COMMITTEE MESSAGING MAP
 

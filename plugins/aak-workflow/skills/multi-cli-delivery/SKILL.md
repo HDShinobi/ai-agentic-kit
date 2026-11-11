@@ -127,8 +127,8 @@ Act on each role's `outcome`:
 - **`dispatch`** — binary and auth both present; proceed.
 - **`degrade`** — the binary is absent (or auth is absent and the role sets
   `on_missing_auth: degrade`): route that role to a Claude Task subagent
-  instead and record the degrade in run notes. This is **Golden Rule #1** in
-  practice — a fresh install with only Claude present still completes every
+  instead and record the degrade in run notes. This way a fresh
+  install with only Claude present still completes every
   role, just without a heterogeneous model for it.
 - **`escalate`** — the binary is present but auth is absent (the default for
   `on_missing_auth`): a configured-but-unauthed CLI signals *intent* to use

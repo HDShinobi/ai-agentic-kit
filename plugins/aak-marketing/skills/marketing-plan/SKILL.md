@@ -5,22 +5,22 @@ metadata:
   version: 1.2.5
 ---
 
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
+<!-- kit -->
 > **⚠️ In-conversation by default — no external mutation.** This skill produces the plan
 > *in the conversation*. Do NOT write files to `~/marketing-plans/…`, create a client folder,
-> or publish to a GitHub repo unless the user explicitly asks. The upstream file-layout,
+> or publish to a GitHub repo unless the user explicitly asks. The file-layout,
 > `progress.md` state machine, and "publish to a shared repo" steps below are optional
 > conveniences — treat them as opt-in, never as automatic behavior.
 >
 > **⚠️ Illustrative claims.** The "a small team + tooling replaces a 15–20-person marketing org"
-> productivity framing is the upstream author's, and `references/example-quietude.md` is a worked
-> example from that author's engagement — its client names, metrics, and numbers are illustrative,
+> productivity framing is an opinion, and `references/example-quietude.md` is a worked
+> example from a real engagement — its client names, metrics, and numbers are illustrative,
 > not verified.
 >
-> **⚠️ Tooling wiring.** Four upstream skill names in `references/ops-stack-mapping.md` and
+> **⚠️ Tooling wiring.** Four skill names in `references/ops-stack-mapping.md` and
 > `references/plan-template.md` have **no home in this kit** — fall back to the underlying tactic:
 >
-> | Upstream token | Fall back to |
+> | Token | Fall back to |
 > |---|---|
 > | `typefully` | social scheduling — hand off to `social` / `content-strategy` |
 > | `copycraft` | long-form copy — hand off to `copywriting` |
@@ -30,8 +30,6 @@ metadata:
 > For paid media, `ads` is this plugin's generalist skill; **prefer `aak-ads` when that plugin is
 > enabled.** MCP/API tool rows (Ahrefs, GA4, Stripe, Customer.io, Dub, Shopify, App Store Connect,
 > etc.) are external tooling, wired per client if available — never assumed present.
->
-> Upstream content is preserved verbatim below.
 
 # Marketing Plan
 
@@ -337,8 +335,8 @@ This plan is written for founders who are sharp, busy, and skeptical of marketin
 The exec summary should be short enough to read in 60 seconds. The rest should reward deep reading.
 
 
-## Kit additions
+## Additional resources
 
-> Added by ai-agentic-kit, not part of upstream. Supplementary material kept from this kit's earlier version of the skill:
+> Supplementary material:
 >
-> - [references/d2c-playbook.md](references/d2c-playbook.md) — D2C deep-dive for the commerce archetype: unit-economics baseline, acquisition funnel, email/SMS flow priority, repeat-purchase mechanics and repurchase benchmarks (Brand-building-skills graft)
+> - [references/d2c-playbook.md](references/d2c-playbook.md) — D2C deep-dive for the commerce archetype: unit-economics baseline, acquisition funnel, email/SMS flow priority, repeat-purchase mechanics and repurchase benchmarks

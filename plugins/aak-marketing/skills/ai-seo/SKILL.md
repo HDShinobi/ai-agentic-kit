@@ -500,8 +500,8 @@ For implementation, see the [tools registry](https://github.com/coreyhaines31/ma
 - **lead-magnets**: For packaging an owned course or content library as an installable agent skill (different from public-site AI visibility)
 
 
-## Kit additions
+## Additional resources
 
-> Added by ai-agentic-kit, not part of upstream. Supplementary material kept from this kit's earlier version of the skill:
+> Supplementary material:
 >
 > - [scripts/geo_checker.py](scripts/geo_checker.py) — `geo_checker.py` — deterministic GEO audit of a page (structured data, author, dates, FAQ)

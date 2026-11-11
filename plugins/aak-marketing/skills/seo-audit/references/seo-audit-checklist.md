@@ -1,10 +1,8 @@
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. Read before using the checklist below. -->
-> **⚠️ Corrections & caveats (this kit):**
-> - **Core Web Vitals:** Google replaced **FID** with **INP** (March 2024). Use **INP < 200ms**; the FID rows below are upstream-original, retained for fidelity only.
+<!-- kit -->
+> **⚠️ Corrections & caveats:**
+> - **Core Web Vitals:** Google replaced **FID** with **INP** (March 2024). Use **INP < 200ms**; the FID rows below are legacy values, kept for reference only.
 > - The "organic converts 14.6% vs 1.7% outbound (HubSpot)" line below is an old, widely-disputed stat — do not cite it as fact.
-> - The "Related Workflows / Agent Assignments / Commands" references below (`crm-workflow.md`, `sales-workflow.md`, `attraction-specialist`, `researcher`, `planner`, `/checklist/seo-weekly`, `/audit/full`) name the **upstream project's** architecture, which does **not** exist in this kit — ignore them. In this kit, drive audits via the SEO/GEO skills and the `/audit` money-loop with this kit's own agents.
->
-> Upstream content is preserved verbatim below.
+> - The "Related Workflows / Agent Assignments / Commands" references below (`crm-workflow.md`, `sales-workflow.md`, `attraction-specialist`, `researcher`, `planner`, `/checklist/seo-weekly`, `/audit/full`) do **not** exist in this kit — ignore them. Drive audits via the SEO/GEO skills and the `/audit` money-loop with this kit's own agents.
 
 # SEO Audit Checklist
 

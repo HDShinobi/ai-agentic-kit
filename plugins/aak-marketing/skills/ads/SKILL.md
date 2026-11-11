@@ -5,12 +5,10 @@ metadata:
   version: 2.7.4
 ---
 
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
+<!-- kit -->
 > **Paid-media overlap.** If the `aak-ads` plugin is enabled, prefer it (`/aak-ads:ads`) for
 > anything that touches an ad account — audits, launches, monitoring, scoring. This skill stays the
 > generalist for planning and judgement calls when `aak-ads` is not installed.
->
-> Upstream content is preserved verbatim below.
 
 # Paid Ads
 
@@ -484,9 +482,9 @@ For tracking setup, see the **conversion-tracking** skill; tool guides: [ga4.md]
 - **ab-testing / cro**: For landing page tests and post-click conversion rates that improve ROAS
 
 
-## Kit additions
+## Additional resources
 
-> Added by ai-agentic-kit, not part of upstream. Supplementary material kept from this kit's earlier version of the skill:
+> Supplementary material:
 >
-> - [references/google-ads-tactics.md](references/google-ads-tactics.md) — Google Ads tactics (Brand-building-skills graft)
-> - [references/meta-ads-tactics.md](references/meta-ads-tactics.md) — Meta Ads tactics (Brand-building-skills graft)
+> - [references/google-ads-tactics.md](references/google-ads-tactics.md) — Google Ads tactics
+> - [references/meta-ads-tactics.md](references/meta-ads-tactics.md) — Meta Ads tactics

@@ -251,14 +251,13 @@ def test_skill_frontmatter_and_no_hardcoded_models():
         assert banned not in text, f"SKILL.md must not hardcode model {banned!r}"
     assert "END OF HANDOFF" in text
 
-# --- Task 12: vendor the dely acceptance-table (references/acceptance.md) + attribution ---
+# --- Task 12: dely acceptance-table (references/acceptance.md); credit lives in root NOTICE ---
 
 def test_acceptance_vendored_with_killer_rules_and_credit():
     acc = PLUGIN_ROOT / "skills" / "multi-cli-delivery" / "references" / "acceptance.md"
     text = acc.read_text(encoding="utf-8").lower()
     assert "counterexample" in text and "instrument" in text
     assert "before and after" in text          # the killer rule survived verbatim
-    assert "dely" in text                       # credit present in the file
     root = PLUGIN_ROOT.parent.parent
     assert "dely" in (root / "NOTICE").read_text(encoding="utf-8").lower()
 

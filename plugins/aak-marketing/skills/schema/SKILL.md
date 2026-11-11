@@ -191,8 +191,8 @@ You can combine multiple schema types on one page using `@graph`:
 - **site-architecture**: For breadcrumb structure and navigation schema planning
 
 
-## Kit additions
+## Additional resources
 
-> Added by ai-agentic-kit, not part of upstream. Supplementary material kept from this kit's earlier version of the skill:
+> Supplementary material:
 >
 > - [references/schema-implementation-guide.md](references/schema-implementation-guide.md) — schema implementation guide with JSON-LD patterns

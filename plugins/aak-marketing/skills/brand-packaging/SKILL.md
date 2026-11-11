@@ -3,15 +3,13 @@ name: brand-packaging
 description: Create a packaging design brief — structure, visual direction, hierarchy, materials, and unboxing experience. Use when the user says "packaging design", "packaging brief", "product packaging", "packaging direction", "label design", "packaging identity", "unboxing experience", "packaging look and feel", "brief my packaging designer", "packaging for my product", "retail packaging", "e-commerce packaging", "what should my packaging look like", or is briefing a designer, agency, or manufacturer on packaging requirements.
 ---
 
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
+<!-- kit -->
 > **⚠️ Shared context file.** This kit's shared positioning/ICP/voice file is
-> `.agents/product-marketing.md` (created by the `product-marketing` skill). Where the upstream text
+> `.agents/product-marketing.md` (created by the `product-marketing` skill). Where the text
 > below says to check `.agents/brand-context.md`, check that file first and, if it is absent, read
-> `.agents/product-marketing.md` instead. "Related Skills" names have been re-pointed to this kit's
+> `.agents/product-marketing.md` instead. "Related Skills" names map to these
 > skills (brand strategy / identity / voice / guidelines / audit → `branding-expert`; positioning,
 > messaging, and brand context → `product-marketing`).
->
-> Upstream content is preserved verbatim below.
 
 # Brand Packaging
 

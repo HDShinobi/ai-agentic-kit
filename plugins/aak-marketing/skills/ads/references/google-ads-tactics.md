@@ -1,12 +1,8 @@
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
-> **Source.** Grafted byte-verbatim from `arnabbagxd/Brand-building-skills` (MIT, © 2026 Arnab Bag), `skills/google-ads/SKILL.md` lines 68, 100–107, 111–150, 154–185, 257, 277–281, commit `4a0a8b5`. Extracts are separated by `<!-- extract -->` markers; text between markers is unchanged upstream bytes.
->
-> **⚠️ Dated framing.** The "2024 recommendation" on match types below reflects the upstream author's
+<!-- kit -->
+> **⚠️ Dated framing.** The "2024 recommendation" on match types below reflects the
 > view at time of writing; Google's match-type and AI-driven campaign behavior (e.g., AI Max, Demand Gen)
-> keeps changing — verify current defaults. Upstream's bidding-threshold and benchmark sections were
-> deliberately NOT grafted. If `aak-ads` is enabled, prefer `/aak-ads:ads` for account audits and launches.
->
-> Upstream content is preserved verbatim below.
+> keeps changing — verify current defaults. Bidding thresholds and benchmarks are
+> deliberately left out. If `aak-ads` is enabled, prefer `/aak-ads:ads` for account audits and launches.
 
 ### 02 — CAMPAIGN TYPES
 

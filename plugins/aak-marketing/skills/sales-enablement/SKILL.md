@@ -427,8 +427,8 @@ For partner sales enablement, see the [tools registry](https://github.com/coreyh
 - **product-marketing**: For foundational positioning and messaging
 
 
-## Kit additions
+## Additional resources
 
-> Added by ai-agentic-kit, not part of upstream. Supplementary material kept from this kit's earlier version of the skill:
+> Supplementary material:
 >
-> - [references/b2b-brand-abm.md](references/b2b-brand-abm.md) — B2B brand layer: buying-committee messaging map, LinkedIn brand strategy, and an ABM brand-warmup sequence before SDR outreach (Brand-building-skills graft)
+> - [references/b2b-brand-abm.md](references/b2b-brand-abm.md) — B2B brand layer: buying-committee messaging map, LinkedIn brand strategy, and an ABM brand-warmup sequence before SDR outreach

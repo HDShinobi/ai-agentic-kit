@@ -360,9 +360,9 @@ Over time, your playbook becomes a library of proven growth patterns specific to
 - **analytics**: For setting up test measurement
 - **copywriting**: For creating variant copy
 
-## Kit additions
+## Additional resources
 
-> Added by ai-agentic-kit, not part of upstream. Supplementary material kept from this kit's earlier version of the skill:
+> Supplementary material:
 >
 > - [references/test-design-guide.md](references/test-design-guide.md) — extended A/B test design guide (agentkits-marketing)
 > - [references/statistical-guide.md](references/statistical-guide.md) — statistical guide: power, MDE, significance (agentkits-marketing; kit correction note on top)

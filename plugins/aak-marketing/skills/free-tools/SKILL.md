@@ -191,8 +191,8 @@ Rate each factor 1-5:
 - **emails**: For nurturing leads from the tool
 
 
-## Kit additions
+## Additional resources
 
-> Added by ai-agentic-kit, not part of upstream. Supplementary material kept from this kit's earlier version of the skill:
+> Supplementary material:
 >
 > - [references/engineering-marketing-guide.md](references/engineering-marketing-guide.md) — engineering-as-marketing guide with tool examples

@@ -1,12 +1,8 @@
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
-> **Source.** Grafted byte-verbatim from `arnabbagxd/Brand-building-skills` (MIT, © 2026 Arnab Bag), `skills/d2c-marketing/SKILL.md` lines 45–61, 65, 81–85, 89–110, 114–129, commit `4a0a8b5`. Extracts are separated by `<!-- extract -->` markers; text between markers is unchanged upstream bytes.
->
+<!-- kit -->
 > **⚠️ D2C deep-dive for Archetype 7.** Supplements `client-types.md` (D2C / commerce archetype) with
 > unit-economics baselines, the D2C acquisition funnel, owned-channel (email + SMS) flow priority, and
 > repeat-purchase mechanics. The LTV:CAC targets, discount levels, and repurchase-rate benchmarks by
-> category below are the upstream author's rules of thumb, unsourced — treat them as directional, not as figures to quote to clients.
->
-> Upstream content is preserved verbatim below.
+> category below are rules of thumb, unsourced — treat them as directional, not as figures to quote to clients.
 
 ### 01 — DTC UNIT ECONOMICS BASELINE
 

@@ -5,9 +5,6 @@ description: Slide-content orchestrator. Routes a deck request through storyline
 
 # Deck: slide-content router
 
-> Authored by ai-agentic-kit (not vendored). The 12 sibling skills it calls are vendored
-> verbatim from `andreworia/claude-powerpoint-skills`; this file sequences and scopes them.
-
 This skill owns the **content** of a deck: the argument, the titles, the pages, and the
 exhibits. It does not draw slides. Rendering is handed off at the end (Step 9).
 
@@ -16,7 +13,7 @@ exhibits. It does not draw slides. Rendering is handed off at the end (Step 9).
 - **In scope:** decks that inform a decision or carry an argument: board packs, client
   readouts, steering-committee and internal updates, recommendation or proposal decks,
   results reviews (for example a campaign or ad-account performance review).
-- The vendored skills are written for board packs. Read "the board" as whoever must
+- The sibling skills are written for board packs. Read "the board" as whoever must
   decide or act on this deck, and "partner" as the most senior reviewer before it goes out.
 - **Sales or pitch decks** (selling to a prospect): if the `aak-marketing` plugin is
   enabled, invoke its `sales-enablement` skill for the deck framework, then return here

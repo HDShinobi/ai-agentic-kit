@@ -1,13 +1,9 @@
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
-> **Source.** Grafted byte-verbatim from `arnabbagxd/Brand-building-skills` (MIT, © 2026 Arnab Bag), `skills/meta-ads/SKILL.md` lines 147–181, 185–207, 211–228, 232–253, commit `4a0a8b5`. Extracts are separated by `<!-- extract -->` markers; text between markers is unchanged upstream bytes.
->
+<!-- kit -->
 > **⚠️ Directional tactics, not benchmarks.** Budget floors ("$20–50/day", "$30–50/day"), scaling
-> increments, the 70/20/10 split, and "UGC outperforms 70% of the time" below are the upstream author's
-> rules of thumb, unsourced — test in the account rather than treating them as thresholds. Upstream's
-> metrics/benchmark section was deliberately NOT grafted. If `aak-ads` is enabled, prefer
+> increments, the 70/20/10 split, and "UGC outperforms 70% of the time" below are
+> rules of thumb, unsourced — test in the account rather than treating them as thresholds. Benchmarks
+> are deliberately left out. If `aak-ads` is enabled, prefer
 > `/aak-ads:ads` for account audits and launches — it is evidence-gated by design.
->
-> Upstream content is preserved verbatim below.
 
 ### 04 — CREATIVE STRATEGY
 

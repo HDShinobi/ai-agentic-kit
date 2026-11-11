@@ -996,7 +996,7 @@ If a single checkbox cannot be honestly ticked, the page is not done. Fix it bef
 
 # APPENDICES - Real Source-Backed Reference Material
 
-The sections below are vendored reference content. They give the agent real install commands, real canonical doc links, and real working starter snippets for each design system named in Section 2. Use them to ground decisions in production reality, not training-data fiction.
+The sections below are reference content. They give the agent real install commands, real canonical doc links, and real working starter snippets for each design system named in Section 2. Use them to ground decisions in production reality, not training-data fiction.
 
 ## Appendix A - Install Commands per Design System
 

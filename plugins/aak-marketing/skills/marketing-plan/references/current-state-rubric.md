@@ -1,9 +1,7 @@
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
+<!-- kit -->
 > **⚠️ Distinct from `site-audit`'s rubric.** This rubric scores a client's *marketing
 > current-state* inside a plan (Section 3). It is NOT the `site-audit` rubric — that one scores a
 > website for the `/audit` money-loop. Two different lenses; do not conflate their scores.
->
-> Upstream content is preserved verbatim below.
 
 # Current State Rubric — 17-Section Scoring Lens
 

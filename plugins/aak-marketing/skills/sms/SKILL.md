@@ -351,8 +351,8 @@ For implementation, see the [tools registry](https://github.com/coreyhaines31/ma
 - **ab-testing**: For SMS-specific test design.
 - **lead-magnets**: For incentivizing opt-in (the "10% off for joining" offer).
 
-## Kit additions
+## Additional resources
 
-> Added by ai-agentic-kit, not part of upstream. Supplementary material kept from this kit's earlier version of the skill:
+> Supplementary material:
 >
 > - For deeper WhatsApp Business playbooks, this kit also ships the `whatsapp-marketing` skill.

@@ -314,9 +314,9 @@ the app's brand maturity tier — they may be deliberate choices for Dominant ap
 - **customer-research**: For understanding user needs and language to inform listing copy
 
 
-## Kit additions
+## Additional resources
 
-> Added by ai-agentic-kit, not part of upstream. Supplementary material kept from this kit's earlier version of the skill:
+> Supplementary material:
 >
-> - [references/store-testing-and-ratings.md](references/store-testing-and-ratings.md) — store-native A/B testing mechanics (Apple PPO, Google Play experiments), description-ranking rules, ratings strategy (Brand-building-skills graft)
+> - [references/store-testing-and-ratings.md](references/store-testing-and-ratings.md) — store-native A/B testing mechanics (Apple PPO, Google Play experiments), description-ranking rules, ratings strategy
 > - [toolkit/](toolkit/README.md) — Python ASO toolkit (`keyword_analyzer.py`, `metadata_optimizer.py`, `aso_scorer.py`, `competitor_analyzer.py`, `review_analyzer.py`, `ab_test_planner.py`, `localization_helper.py`, `launch_checklist.py`); usage in [toolkit/HOW_TO_USE.md](toolkit/HOW_TO_USE.md)

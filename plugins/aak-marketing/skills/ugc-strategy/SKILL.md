@@ -3,19 +3,17 @@ name: ugc-strategy
 description: Build a User Generated Content (UGC) strategy — getting customers to create content, review generation, UGC briefs for creators, social campaigns, contest mechanics, legal rights management, and repurposing UGC in paid ads. Use when the user says "UGC", "user generated content", "get customers to create content", "customer content", "UGC ads", "UGC creators", "organic UGC", "UGC strategy", "how do we get customers to post about us", "brand hashtag", "UGC brief", "influencer UGC", "UGC for ads", "customer photos and videos", or wants to use real customer content to build trust and reduce content production costs.
 ---
 
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
+<!-- kit -->
 > **⚠️ Shared context file.** This kit's shared positioning/ICP/voice file is
-> `.agents/product-marketing.md` (created by the `product-marketing` skill). Where the upstream text
+> `.agents/product-marketing.md` (created by the `product-marketing` skill). Where the text
 > below says to check `.agents/brand-context.md`, check that file first and, if it is absent, read
-> `.agents/product-marketing.md` instead. "Related Skills" names have been re-pointed to this kit's
+> `.agents/product-marketing.md` instead. "Related Skills" names map to these
 > skills (brand strategy / identity / voice / guidelines / audit → `branding-expert`; positioning,
 > messaging, and brand context → `product-marketing`).
 >
-> **⚠️ Unsourced figures.** The consumer-trust statistic and UGC creator rate card below are the
-> upstream author's, unsourced and market-dependent — treat them as directional, not as figures to
+> **⚠️ Unsourced figures.** The consumer-trust statistic and UGC creator rate card below are
+> unsourced and market-dependent — treat them as directional, not as figures to
 > quote to clients.
->
-> Upstream content is preserved verbatim below.
 
 # UGC Strategy
 

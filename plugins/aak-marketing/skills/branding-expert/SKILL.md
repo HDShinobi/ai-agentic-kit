@@ -8,7 +8,7 @@ allowed-tools: Read, Glob, Grep
 
 > Build memorable, consistent brands that connect with audiences.
 
-<!-- KIT NOTE — added by ai-agentic-kit: routing section. The frameworks below are the overview layer. -->
+<!-- kit -->
 ## Brand deep-dive skills (route here when the request goes deeper)
 
 | When the user needs… | Hand off to |
@@ -253,7 +253,7 @@ Because [reason to believe]
 
 ## Reference guides
 
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. This section is a kit-added index. -->
+<!-- kit -->
 
 Additional depth for this skill (load on demand):
 - `references/brand-strategy.md` — full brand-strategy workflow: mode detection, a structured brand questionnaire, and a 12-section brand strategy report (vision, mission, values, audience, personality, voice, competitors, positioning, taglines).
