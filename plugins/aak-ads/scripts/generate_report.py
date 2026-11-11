@@ -32,7 +32,7 @@ from url_utils import resolve_output_path, sanitize_error
 
 # Version stamp shown in PDF header/footer. Keep in sync with
 # .claude-plugin/plugin.json `version`.
-__version__ = "2.1.0"
+__version__ = "2.1.1"
 
 try:
     from reportlab.lib import colors
