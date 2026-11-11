@@ -23,3 +23,7 @@ SOFTWARE.
 Includes material adapted from ag-kit (https://github.com/vudovn/ag-kit),
 Copyright (c) 2026 VUDOVN, MIT License. See the NOTICE file at the repository
 root for the full third-party license text.
+
+The `humanizer` skill is vendored verbatim from blader/humanizer
+(https://github.com/blader/humanizer), Copyright (c) 2025 Siqi Chen, MIT
+License. See the NOTICE file at the repository root for the full license text.

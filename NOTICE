@@ -431,3 +431,81 @@ Two different treatments apply to two different parts of that skill:
   complete, itemized diff.
   Pinned at dely commit 450e874b06a0d4f4ade686b6f371ec9761de1b29 (v0.27.2,
   2026-11-04); previously c2fc1a96dce4eabc5b8c9ee9dafbb66fb371d785.
+
+------------------------------------------------------------------------------
+aak-core — additional third-party source
+------------------------------------------------------------------------------
+
+The `humanizer` skill in `plugins/aak-core/skills/humanizer/` is vendored
+verbatim (Golden Rule #4) from humanizer (https://github.com/blader/humanizer),
+Copyright (c) 2025 Siqi Chen, MIT License. Pinned at commit
+b48c832f0f809c1b5658edbb838c2521b72f2413 (metadata.version 4.0.0, 2026-11-09).
+`SKILL.md` is byte-identical to upstream except one added KIT NOTE block after
+the frontmatter (routes Vietnamese text on to the `aak-vietnamese` skills when
+that plugin is enabled). Upstream packaging files (plugin manifests,
+package.json, agents/openai.yaml, scripts/validate-package.py, README,
+CHANGELOG, AGENTS.md, .github/) are not shipped; they carry no skill substance.
+The upstream skill credits Wikipedia's "Signs of AI writing" (WikiProject AI
+Cleanup) as the source of its patterns. Upstream license text:
+
+MIT License
+
+Copyright (c) 2025 Siqi Chen
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+------------------------------------------------------------------------------
+aak-slides — third-party source
+------------------------------------------------------------------------------
+
+The 12 skills in `plugins/aak-slides/skills/` other than `deck` (action-title-writer,
+board-narrative-scqa, chart-to-message-mapper, chart-type-selection,
+color-encoding-for-data, data-ink-reducer, decision-and-ask-page,
+executive-summary-page, framework-slide-designer, ghost-deck-skeleton,
+partner-review-checklist, waterfall-and-bridge-charts) are vendored verbatim
+(Golden Rule #4) from claude-powerpoint-skills
+(https://github.com/andreworia/claude-powerpoint-skills), Copyright (c) 2026
+Oria, MIT License. Pinned at commit 45f80c2fab1ea7fc4d78b09b3c7c51d0ab4fc44a
+(2026-09-08). Every SKILL.md is byte-identical to upstream (no edits, no KIT
+NOTEs). The upstream README and `.github/` assets (product promotion and demo
+images) are not shipped; they carry no skill substance. The `deck` router skill
+and the `/deck` command are authored by ai-agentic-kit and only sequence and
+scope the vendored skills. Upstream license text:
+
+MIT License
+
+Copyright (c) 2026 Oria
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

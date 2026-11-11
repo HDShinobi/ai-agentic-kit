@@ -342,3 +342,7 @@ For headlines and CTAs, provide 2-3 options:
 ## Vietnamese (vi-VN) output
 
 > If the copy's target language is Vietnamese and the `aak-vietnamese` plugin is enabled, invoke its `vietnamese-*` skills for language correctness (register/pronouns, advertising-law linting, NFC Unicode, ICU plural, VND/date/phone formatting) before finalizing. If it is not enabled, proceed normally.
+
+## AI-tell final pass
+
+> If the `aak-core` plugin's `humanizer` skill is available, run it as a final pass on the finished copy to catch the AI writing patterns this skill does not list (staged openers, forced triads, inflated significance, decorative bold and headings, chatbot residue). It must not change claims, facts, or the offer. When the copy is Vietnamese, run it before the Vietnamese (vi-VN) language pass. If it is not available, proceed normally.
