@@ -31,14 +31,6 @@ third-party license text. Sources include:
   `brand` and `banner-design` skills.
 - MiniMax-AI/skills (https://github.com/MiniMax-AI/skills), Copyright (c) 2026
   MiniMax, MIT — source of the `minimax-pdf` skill.
-- Remotion Dev Skills (https://github.com/remotion-dev/skills) — source of
-  `remotion-best-practices`, vendored from commit
-  1af7e69a2a613437d46095924057970a6a7df40d (2026-11-09, v4.0.542). The upstream repo
-  states no license (GitHub: NOASSERTION). Remotion itself is distributed under the
-  Remotion License (https://github.com/remotion-dev/remotion/blob/main/LICENSE.md),
-  which requires a paid Company License for some organizations. The skill text
-  remains (c) Remotion and is included without a separate license grant. Installers are
-  responsible for complying with Remotion's licensing when using Remotion.
 - ai-marketing-claude (https://github.com/zubair-trabzada/ai-marketing-claude),
   Copyright (c) 2026 Zubair Trabzada, MIT — source of the `client-proposal` skill.
 - agentkits-marketing (https://github.com/aitytech/agentkits-marketing),
@@ -48,9 +40,9 @@ third-party license text. Sources include:
   levers merged into the pre-1.0.0 `marketing-ideas` / `marketing-psychology`
   bodies kept under their Kit additions.
 - marketingskills (https://github.com/coreyhaines31/marketingskills),
-  Copyright (c) Corey Haines, MIT — source of all 53 skills that carry an
+  Copyright (c) Corey Haines, MIT — source of the 52 skills that carry an
   upstream marketingskills name (vendored verbatim since aak-marketing 1.0.0;
-  see NOTICE). Upstream `copywriting` adapts material from Profound's
+  the 53rd, `video`, lives in aak-video since aak-marketing 2.0.0; see NOTICE). Upstream `copywriting` adapts material from Profound's
   `improved-copywriting` and `humanizer` skills
   (https://github.com/retieedra-profound/skills-marketing-library, MIT).
 - Brand-building-skills (https://github.com/arnabbagxd/Brand-building-skills),

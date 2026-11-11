@@ -52,6 +52,11 @@ Many skills, agents, and workflows in `plugins/aak-marketing/` are adapted from
 the following upstream projects. Each is credited here; their license terms
 apply to the adapted portions.
 
+  ** Video split (2026-11-11). ** `video` and `remotion-best-practices` moved
+  unchanged from `plugins/aak-marketing/skills/` to `plugins/aak-video/skills/`
+  (aak-marketing 2.0.0, aak-video 0.1.0). Every attribution below that names
+  either skill now applies to its copy under `plugins/aak-video/`.
+
   ** aak-marketing 1.0.0 realignment (2026-11-10) — read first. ** The plugin
   now mirrors coreyhaines31/marketingskills 1:1 by skill NAME: all 53 upstream
   skills are vendored byte-verbatim from upstream commit
