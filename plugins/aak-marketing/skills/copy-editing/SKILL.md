@@ -489,3 +489,7 @@ Copy editing isn't just for new content. Existing pages decay over time — outd
 | Reviewing and improving existing copy | copy-editing (this skill) |
 | Editing copy you just wrote | copy-editing (this skill) |
 | Structural or strategic page changes | cro |
+
+## AI-tell final pass
+
+> If the `aak-core` plugin's `humanizer` skill is available, run it as a final pass on the finished copy to catch the AI writing patterns this skill does not list (staged openers, forced triads, inflated significance, decorative bold and headings, chatbot residue). It must not change claims, facts, or the offer. When the copy is Vietnamese, run it before the Vietnamese (vi-VN) language pass. If it is not available, proceed normally.

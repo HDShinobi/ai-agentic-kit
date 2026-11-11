@@ -57,6 +57,11 @@
       "name": "aak-ads",
       "source": "./plugins/aak-ads",
       "description": "Paid-media (PPC) operations across 12 ad platforms — source-grounded audits, deterministic scoring, plans, creative, monitoring, experiments, capability-gated (read-only-by-default) changes."
+    },
+    {
+      "name": "aak-slides",
+      "source": "./plugins/aak-slides",
+      "description": "Slide content: storyline, ghost deck, action titles, exec-summary and ask pages, chart exhibits, deck review — one /deck router."
     }
   ]
 }

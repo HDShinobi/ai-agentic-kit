@@ -81,7 +81,7 @@ Local dev without publishing: `claude --plugin-dir ./plugins/aak-core`, then `/r
 
 | Plugin | What it does for you | Agents | Notable skills | Commands |
 |--------|----------------------|--------|----------------|----------|
-| **aak-core** | Scaffold, plan & ship apps — the foundation every project enables (and the only safety hook) | documentation-writer, product-manager, product-owner | app-builder, architecture, clean-code, code-review-graph, design-spec, simplify-code, i18n-localization | `/create`, `/enhance`, `/plan`, `/brainstorm` |
+| **aak-core** | Scaffold, plan & ship apps — the foundation every project enables (and the only safety hook) | documentation-writer, product-manager, product-owner | app-builder, architecture, clean-code, code-review-graph, design-spec, simplify-code, i18n-localization, humanizer (AI-tell removal) | `/create`, `/enhance`, `/plan`, `/brainstorm` |
 | **aak-backend** | Design APIs, model data & deploy to production with an expert on each | backend-specialist, database-architect, devops-engineer | api-patterns, database-design, nodejs-best-practices, python-patterns, rust-pro, mcp-builder, server-management, deployment-procedures | `/deploy`, `/preview` |
 | **aak-frontend** | Build polished, on-brand UIs for web & mobile | frontend-specialist, mobile-developer | frontend-architecture, frontend-design, nextjs-react-expert, tailwind-patterns, web-design-guidelines, mobile-design, ui-ux-pro-max | — |
 | **aak-security** | Find & fix vulnerabilities before attackers do | security-auditor, penetration-tester | vulnerability-scanner, red-team-tactics | — |
@@ -91,6 +91,7 @@ Local dev without publishing: `claude --plugin-dir ./plugins/aak-core`, then `/r
 | **aak-game** | Ship games across engines & platforms | game-developer | game-development (router → 10 platform guides) | — |
 | **aak-workflow** | Systematic process — brainstorm, plan, debug, verify — plus multi-agent orchestration (**skip if you use superpowers**) | project-planner | brainstorming, systematic-debugging, tdd-workflow, plan-writing, verify-changes, parallel-agents, coordinator-mode, intelligent-routing, memory-system, multi-cli-delivery, … | `/orchestrate`, `/coordinate`, `/status`, `/remember`, `/delegate` |
 | **aak-vietnamese** | Write native-quality Vietnamese (vi-VN) a local professional would ship — correct register, advertising-law-safe claims, clean VND/date/Unicode; composes with the content skills | — | vietnamese-landing-copy, vietnamese-business-comms, vietnamese-finance-copy, vietnamese-education-copy, vietnamese-tech-writing | — |
+| **aak-slides** | Write decks that argue one clear story — storyline (SCQA/Pyramid), ghost deck, action titles, exec-summary and ask pages, message-driven charts, partner-grade review | — | deck (router), board-narrative-scqa, ghost-deck-skeleton, action-title-writer, executive-summary-page, decision-and-ask-page, chart-type-selection, chart-to-message-mapper, partner-review-checklist, + 4 chart/framework skills | `/aak-slides:deck plan\|write\|titles\|chart\|review` |
 
 > **Enable only what you need.** Each plugin is self-contained: a command never depends on a skill from a plugin you haven't enabled — where richer cross-plugin capability exists, it is used only if that plugin is enabled, otherwise the work is done inline.
 
