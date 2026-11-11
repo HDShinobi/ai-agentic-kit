@@ -1,0 +1,11 @@
+{
+  "name": "aak-video",
+  "version": "0.1.0",
+  "description": "AI Agentic Kit — video production: choose the approach (screen recording, AI avatar, AI generation, programmatic), script and storyboard, then build and render code-driven video with Remotion (compositions, captions, maps, transitions, render to MP4).",
+  "author": {
+    "name": "HDShinobi"
+  },
+  "homepage": "https://github.com/HDShinobi/ai-agentic-kit",
+  "license": "MIT",
+  "keywords": ["video", "remotion", "programmatic-video", "ai-video", "product-demo", "captions", "render", "mp4"]
+}

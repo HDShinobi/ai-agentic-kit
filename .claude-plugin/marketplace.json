@@ -36,7 +36,7 @@
     {
       "name": "aak-marketing",
       "source": "./plugins/aak-marketing",
-      "description": "Full marketing suite: SEO/GEO, CRO, content, email, growth, analytics, brand, video."
+      "description": "Full marketing suite: SEO/GEO, CRO, content, email, growth, analytics, brand."
     },
     {
       "name": "aak-game",
@@ -62,6 +62,11 @@
       "name": "aak-slides",
       "source": "./plugins/aak-slides",
       "description": "Slide content: storyline, ghost deck, action titles, exec-summary and ask pages, chart exhibits, deck review — one /deck router."
+    },
+    {
+      "name": "aak-video",
+      "source": "./plugins/aak-video",
+      "description": "Video production: pick the approach (recording, AI avatar, AI generation, programmatic), script, then build and render code-driven video with Remotion."
     }
   ]
 }

@@ -349,3 +349,6 @@ Output: Ready-to-publish video
 - **ad-creative**: For paid video ad creative and iteration
 - **copywriting**: For video scripts and messaging
 - **marketing-psychology**: For hooks and persuasion in video
+
+<!-- kit -->
+> `social`, `ad-creative`, `copywriting`, and `marketing-psychology` live in `aak-marketing` — use them if that plugin is enabled; otherwise cover that part inline.
