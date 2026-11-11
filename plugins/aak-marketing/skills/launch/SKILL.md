@@ -385,8 +385,8 @@ If you can read the product repo, generate the week's changelog, announcement dr
 - **sales-enablement**: For launch sales collateral and enablement materials
 
 
-## Kit additions
+## Additional resources
 
-> Added by ai-agentic-kit, not part of upstream. Supplementary material kept from this kit's earlier version of the skill:
+> Supplementary material:
 >
 > - [templates/launch-checklist.md](templates/launch-checklist.md) — launch checklist template

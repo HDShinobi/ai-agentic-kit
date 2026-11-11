@@ -1,26 +1,7 @@
 # Acceptance-table reference
 
-> Vendored verbatim from dely (© Hieu Phung, MIT) under Golden Rule #4 (AI
-> Agentic Kit vendors external artifacts byte-for-byte; see root `NOTICE`).
-> Source: `hieuphung97/dely` `skills/delivery/SKILL.md` §Acceptance (+
-> `skills/delivery/templates/plan.md` §Acceptance), vendored at dely commit
-> `450e874b06a0d4f4ade686b6f371ec9761de1b29`.
->
-> Only phase-name wiring changed, both one-word swaps: dely's `implement` →
-> this kit's `CODE` (in the `templates/plan.md` extract below — "Design
-> fills Counterexample; CODE fills Observed red"); dely's `review` → this
-> kit's `REVIEW` (in the `SKILL.md` extract below — "...will be found at
-> REVIEW"). dely's capitalized `Design` is sentence-initial prose, not a
-> phase heading — it refers to the undispatched, Control-authored planning
-> work that precedes any dispatch. This kit splits that work across Gate 1
-> (human design approval) and the PLAN worker, which is what actually
-> carries the acceptance rows and counterexample in its handoff (see
-> `SKILL.md` §1) — there is no single clean 1:1 mapping, so dely's original
-> wording is left unchanged rather than re-pointed to either alone. Nothing
-> else was added, removed, reordered, or reworded — the "Source:" lines
-> below and this note are the only non-vendored text in this file.
-
-*Source: `hieuphung97/dely` `skills/delivery/SKILL.md` §Acceptance*
+> `Design` below refers to the planning work that precedes any dispatch: Gate 1 (human design
+> approval) plus the PLAN worker (see `SKILL.md` §1).
 
 ### Acceptance
 
@@ -42,7 +23,6 @@ of call sites — names the command that produced it, reports its output, and
 enumerates rather than samples. Naming the command is not the measurement;
 the command must have been run.
 
-*Source: `hieuphung97/dely` `skills/delivery/templates/plan.md` §Acceptance*
 
 ## Acceptance
 

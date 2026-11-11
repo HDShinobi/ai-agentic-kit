@@ -35,7 +35,7 @@ def probe(binding: RoleBinding, secrets: Mapping[str, str], *,
     binary = which(binary_name)
     if binary is None:
         return PreflightResult("degrade",
-            f"{binding.cli}: binary absent — degrade to {binding.cli}→subagent (Golden Rule #1)")
+            f"{binding.cli}: binary absent — degrade to {binding.cli}→subagent (Claude-only fallback)")
     if _auth_present(binding, secrets, env):
         return PreflightResult("dispatch", f"{binding.cli}: binary + auth present")
     if on_missing_auth == "degrade":

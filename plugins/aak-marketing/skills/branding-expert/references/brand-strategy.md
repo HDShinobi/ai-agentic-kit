@@ -1,14 +1,10 @@
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
-> **Source.** Grafted byte-verbatim from `arnabbagxd/Brand-building-skills` (MIT, © 2026 Arnab Bag), `skills/brand-strategy/SKILL.md` lines 7–279, commit `4a0a8b5`. Extracts are separated by `<!-- extract -->` markers; text between markers is unchanged upstream bytes.
->
-> **⚠️ Reference, not a separate skill.** This was a standalone upstream skill; in this kit it is a
-> deep-dive reference loaded by `branding-expert` (the brand hub). Its upstream frontmatter and "Related
-> Skills" list were not carried over — `branding-expert`'s routing table replaces them. Where the text
+<!-- kit -->
+> **⚠️ Reference, not a separate skill.** This is a deep-dive
+> reference loaded by `branding-expert` (the brand hub). `branding-expert`'s routing table
+> lists the related skills. Where the text
 > says to check `.agents/brand-context.md`, check that file first and, if absent, read this kit's shared
 > `.agents/product-marketing.md` (created by the `product-marketing` skill).
 > **⚠️ Regional default.** Two lines assume an Indian market ("Indian and/or international" competitors) — apply them to whatever home vs. international market the brand operates in.
->
-> Upstream content is preserved verbatim below.
 
 # Brand Strategist Skill
 

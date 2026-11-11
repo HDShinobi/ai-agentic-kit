@@ -310,8 +310,8 @@ For implementation, see the [tools registry](https://github.com/coreyhaines31/ma
 - **sales-enablement** — For partner-facing collateral and enablement materials
 
 
-## Kit additions
+## Additional resources
 
-> Added by ai-agentic-kit, not part of upstream. Supplementary material kept from this kit's earlier version of the skill:
+> Supplementary material:
 >
-> - [references/brand-protection.md](references/brand-protection.md) — brand protection in partnerships: brand-usage rules for partners, approvals, morality/exit clause, and red flags (Brand-building-skills graft)
+> - [references/brand-protection.md](references/brand-protection.md) — brand protection in partnerships: brand-usage rules for partners, approvals, morality/exit clause, and red flags

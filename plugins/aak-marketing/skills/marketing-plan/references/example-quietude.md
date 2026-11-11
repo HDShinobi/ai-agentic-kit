@@ -1,10 +1,8 @@
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
-> **⚠️ Illustrative worked example.** This is a worked example from the upstream author's own
+<!-- kit -->
+> **⚠️ Illustrative worked example.** This is a worked example from an
 > fCMO engagement. Its client names, domains, funnel numbers, budgets, and metrics are
 > illustrative and not independently verified — use it for structure, tone, and depth, not as a
 > source of real figures. `quietude-*` and similar tokens here are example-only labels, not kit skills.
->
-> Upstream content is preserved verbatim below.
 
 # Example — Quietude Marketing Plan v1
 

@@ -3,15 +3,13 @@ name: brand-measurement
 description: Define KPIs, metrics, and tracking systems to measure brand health, awareness, perception, and equity over time. Use when the user says "brand measurement", "brand metrics", "how do we measure the brand", "brand KPIs", "brand health tracking", "brand awareness metrics", "brand equity measurement", "is our brand working", "brand ROI", "brand performance", "brand tracking", "brand health score", "prove brand value", "brand dashboard", or needs to show stakeholders whether brand investment is delivering results.
 ---
 
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
+<!-- kit -->
 > **⚠️ Shared context file.** This kit's shared positioning/ICP/voice file is
-> `.agents/product-marketing.md` (created by the `product-marketing` skill). Where the upstream text
+> `.agents/product-marketing.md` (created by the `product-marketing` skill). Where the text
 > below says to check `.agents/brand-context.md`, check that file first and, if it is absent, read
-> `.agents/product-marketing.md` instead. "Related Skills" names have been re-pointed to this kit's
+> `.agents/product-marketing.md` instead. "Related Skills" names map to these
 > skills (brand strategy / identity / voice / guidelines / audit → `branding-expert`; positioning,
 > messaging, and brand context → `product-marketing`).
->
-> Upstream content is preserved verbatim below.
 
 # Brand Measurement
 

@@ -1,7 +1,5 @@
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
+<!-- kit -->
 > **⚠️ Note (this kit):** The "Point System" engagement-scoring block below is an illustrative template, not this kit's scoring standard. Lead/engagement scoring is not owned by email-marketing — use the kit's own prioritization skills; treat these numbers as a starting point only.
->
-> Upstream content is preserved verbatim below.
 
 # Email Segmentation
 

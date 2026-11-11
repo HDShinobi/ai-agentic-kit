@@ -5,12 +5,10 @@ metadata:
   version: 2.12.5
 ---
 
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
+<!-- kit -->
 > **Paid-media overlap.** If the `aak-ads` plugin is enabled, prefer it (`/aak-ads:ads`) for
 > account-level creative work (`/aak-ads:ads create`) and platform-spec validation. This skill stays the
 > generalist for planning and judgement calls when `aak-ads` is not installed.
->
-> Upstream content is preserved verbatim below.
 
 # Ad Creative
 

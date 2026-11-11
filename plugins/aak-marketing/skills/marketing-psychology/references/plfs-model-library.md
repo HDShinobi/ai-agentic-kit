@@ -1,9 +1,6 @@
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
-> **Kit addition.** This is the complete body of this kit's pre-1.0.0 `marketing-psychology` skill (antigravity-marketing lineage: Psychological Leverage & Feasibility Score (PLFS), mandatory selection rules, canonical model library incl. agentkits group G levers 46–55, journey-based bias, ethical guardrails), kept
-> verbatim when the skill was re-aligned to coreyhaines31/marketingskills in aak-marketing 1.0.0.
-> Use it when you want mental models scored by leverage and feasibility (PLFS); the parent SKILL.md (upstream) remains the primary guide.
->
-> Prior content is preserved verbatim below.
+<!-- kit -->
+> **Extended library.** Psychological Leverage & Feasibility Score (PLFS), mandatory selection rules, canonical model library (levers 1–55), journey-based bias, ethical guardrails.
+> Use it when you want mental models scored by leverage and feasibility (PLFS); the parent SKILL.md remains the primary guide.
 
 # Marketing Psychology & Mental Models
 

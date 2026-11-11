@@ -3,21 +3,19 @@ name: whatsapp-marketing
 description: Build a WhatsApp marketing strategy — WhatsApp Business setup, broadcast campaigns, automated flows, customer service, drip sequences, and conversational marketing. Use when the user says "WhatsApp marketing", "WhatsApp Business", "WhatsApp campaigns", "WhatsApp broadcasts", "WhatsApp automation", "WhatsApp drip", "market on WhatsApp", "WhatsApp for business", "WhatsApp chatbot", "WhatsApp customer service", "WhatsApp API", "messaging marketing India", or wants to use WhatsApp as a marketing and customer communication channel. Especially relevant for brands in India, the Middle East, Southeast Asia, Brazil, and Africa.
 ---
 
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
+<!-- kit -->
 > **⚠️ Shared context file.** This kit's shared positioning/ICP/voice file is
-> `.agents/product-marketing.md` (created by the `product-marketing` skill). Where the upstream text
+> `.agents/product-marketing.md` (created by the `product-marketing` skill). Where the text
 > below says to check `.agents/brand-context.md`, check that file first and, if it is absent, read
-> `.agents/product-marketing.md` instead. "Related Skills" names have been re-pointed to this kit's
+> `.agents/product-marketing.md` instead. "Related Skills" names map to these
 > skills (brand strategy / identity / voice / guidelines / audit → `branding-expert`; positioning,
 > messaging, and brand context → `product-marketing`).
 >
 > **⚠️ Unsourced figures & regional tooling.** The open/response-rate figures, benchmark table, and
-> platform-cost table below are the upstream author's, unsourced and time-sensitive — treat them as
+> platform-cost table below are unsourced and time-sensitive — treat them as
 > directional, not as benchmarks to quote to clients. The named BSP tools (Wati, AiSensy, Interakt,
 > Zoko) are India-centric; verify current Meta WhatsApp Business pricing and local providers. In
 > markets where another messenger dominates (e.g. Zalo in Vietnam), adapt the playbook to that channel.
->
-> Upstream content is preserved verbatim below.
 
 # WhatsApp Marketing
 

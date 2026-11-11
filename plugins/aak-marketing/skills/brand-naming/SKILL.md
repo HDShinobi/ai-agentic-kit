@@ -3,15 +3,13 @@ name: brand-naming
 description: Full brand naming workflow for founders, agencies, and businesses. Use this skill whenever the user says "help me name this brand", "brand naming", "I need a name for", "name ideas for", "what should I call my brand/company/product", "naming a startup", "brand name suggestions", "help with naming", or shares a brand brief and asks for name options. Also triggers when the user shares existing name options and asks for feedback, evaluation, ranking, or scoring of those names. Auto-detects whether to run the full generation workflow or the evaluation workflow based on what the user provides. Always use this skill for any brand or product naming task — even if the user just casually mentions needing a name.
 ---
 
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
+<!-- kit -->
 > **⚠️ Shared context file.** This kit's shared positioning/ICP/voice file is
-> `.agents/product-marketing.md` (created by the `product-marketing` skill). Where the upstream text
+> `.agents/product-marketing.md` (created by the `product-marketing` skill). Where the text
 > below says to check `.agents/brand-context.md`, check that file first and, if it is absent, read
-> `.agents/product-marketing.md` instead. "Related Skills" names have been re-pointed to this kit's
+> `.agents/product-marketing.md` instead. "Related Skills" names map to these
 > skills (brand strategy / identity / voice / guidelines / audit → `branding-expert`; positioning,
 > messaging, and brand context → `product-marketing`).
->
-> Upstream content is preserved verbatim below.
 
 # Brand Naming Skill
 

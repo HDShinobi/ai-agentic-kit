@@ -209,8 +209,8 @@ For Telegram channels, the vetting options (the public preview with a manual rea
 - **social** — organic content strategy the partnerships plug into
 
 
-## Kit additions
+## Additional resources
 
-> Added by ai-agentic-kit, not part of upstream. Supplementary material kept from this kit's earlier version of the skill:
+> Supplementary material:
 >
-> - [references/outreach-briefs-agreements.md](references/outreach-briefs-agreements.md) — cold-outreach formula and rules, a full influencer brief template, an agreement checklist (usage rights, whitelisting, exclusivity, kill fee, morality clause), and a gifting/seeding program (Brand-building-skills graft)
+> - [references/outreach-briefs-agreements.md](references/outreach-briefs-agreements.md) — cold-outreach formula and rules, a full influencer brief template, an agreement checklist (usage rights, whitelisting, exclusivity, kill fee, morality clause), and a gifting/seeding program

@@ -110,7 +110,5 @@ accepted result.
 
 ---
 
-Handoff format and status/disposition taxonomy adapted from the dely
-protocol (© Hieu Phung, MIT); re-authored. (The acceptance-table discipline
-`Contract coverage` refers to is vendored separately, byte-for-byte, in
-`references/acceptance.md`.)
+The acceptance-table discipline `Contract coverage` refers to is in
+`references/acceptance.md`.

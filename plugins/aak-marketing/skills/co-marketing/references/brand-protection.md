@@ -1,9 +1,5 @@
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
-> **Source.** Grafted byte-verbatim from `arnabbagxd/Brand-building-skills` (MIT, © 2026 Arnab Bag), `skills/brand-partnerships/SKILL.md` lines 207–221, commit `4a0a8b5`. Extracts are separated by `<!-- extract -->` markers; text between markers is unchanged upstream bytes.
->
+<!-- kit -->
 > **⚠️ Complements the agreement outline in this skill** with brand-protection terms for partners: brand-usage rules, approval rights, a morality/exit clause, and red flags to watch. A checklist, not legal advice.
->
-> Upstream content is preserved verbatim below.
 
 ### 07 — BRAND PROTECTION IN PARTNERSHIPS
 

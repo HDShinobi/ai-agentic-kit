@@ -198,9 +198,9 @@ When enrichment controls the next step after a lead form, use the [revops inboun
 For detailed form CRO guidance — including field optimization, multi-step forms, error handling, and form-specific experiments — see [references/form.md](references/form.md).
 
 
-## Kit additions
+## Additional resources
 
-> Added by ai-agentic-kit, not part of upstream. Supplementary material kept from this kit's earlier version of the skill:
+> Supplementary material:
 >
 > - [references/cro-checklist.md](references/cro-checklist.md) — page CRO checklist
 > - [references/element-benchmarks.md](references/element-benchmarks.md) — page element conversion benchmarks

@@ -25,7 +25,7 @@ CLI changes its interface, then bring this table in sync.
 
 `<model>` and `<prompt-file>` are placeholders filled in per dispatch from
 the role's binding and the workspace-local prompt file — never a literal
-model name baked into the adapter (Golden Rule #1: this kit ships no
+model name baked into the adapter (this kit ships no
 hardcoded model list). Neither `claude` nor `codex` takes a `<prompt-file>`
 CLI argument at all — both read the prompt from stdin, so the dispatcher
 pipes the prompt file's bytes into the child's stdin for them instead (see

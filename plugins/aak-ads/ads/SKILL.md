@@ -3,10 +3,8 @@ name: ads
 description: "Operate professional paid advertising across Google, Meta, YouTube, LinkedIn, TikTok, Microsoft, Apple, Amazon, Reddit, Pinterest, Snapchat, and X. Use for account intake, source-grounded audits, strategy, budget and measurement planning, creative production, experiments, reporting, monitoring, and explicitly approved campaign changes. Also trigger on PPC, paid social, retail media, attribution, tracking, landing pages, cross-platform conversion totals, negative keywords or search terms, beta-feature scoring, stale platform claims, API-token or credential setup, campaign deletion, and safe Claude Ads installation or uninstall."
 ---
 
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
-> The optional `ads-cockpit` companion (`/ads-cockpit`) mentioned below is **not shipped** in this kit — see "## Kit additions" at the end.
->
-> Upstream content is preserved verbatim below.
+<!-- kit -->
+> The optional `ads-cockpit` companion (`/ads-cockpit`) mentioned below is **not shipped** in this kit — see "## Additional resources" at the end.
 
 # Claude Ads
 
@@ -363,13 +361,11 @@ Before delivery:
 Do not append promotional copy to machine-readable or client-facing deliverables.
 Community links may appear only when the operator explicitly enables branding.
 
-## Kit additions
+## Additional resources
 
-> Added by ai-agentic-kit, not part of upstream.
->
 > - **`ads-cockpit` companion is not shipped in this kit.** The `claude_ads_core.cockpit` core,
 >   its schemas and `control-plane/COCKPIT.md` are included, so Cockpit indexes can still be
->   produced. The optional workbench mod itself lives upstream at
+>   produced. The optional workbench mod itself is available at
 >   `https://github.com/AgriciDaniel/claude-ads/tree/v2.1.0/mods/claude-ads-cockpit`; install it
 >   from there only if the user explicitly asks for Cockpit. Otherwise treat `/ads-cockpit` as
 >   unavailable and do not suggest it.

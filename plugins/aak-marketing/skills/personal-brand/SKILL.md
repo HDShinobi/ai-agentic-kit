@@ -3,15 +3,13 @@ name: personal-brand
 description: Build a personal brand strategy for founders, executives, creators, and consultants. Use when the user says "personal brand", "personal branding", "build my brand", "founder brand", "executive brand", "I want to be known for", "grow my personal brand", "LinkedIn presence", "creator brand", "consultant brand", "personal brand strategy", "position myself", "what should I be known for", or wants to establish credibility, grow an audience, or become a recognized voice in their industry.
 ---
 
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
+<!-- kit -->
 > **⚠️ Shared context file.** This kit's shared positioning/ICP/voice file is
-> `.agents/product-marketing.md` (created by the `product-marketing` skill). Where the upstream text
+> `.agents/product-marketing.md` (created by the `product-marketing` skill). Where the text
 > below says to check `.agents/brand-context.md`, check that file first and, if it is absent, read
-> `.agents/product-marketing.md` instead. "Related Skills" names have been re-pointed to this kit's
+> `.agents/product-marketing.md` instead. "Related Skills" names map to these
 > skills (brand strategy / identity / voice / guidelines / audit → `branding-expert`; positioning,
 > messaging, and brand context → `product-marketing`).
->
-> Upstream content is preserved verbatim below.
 
 # Personal Brand
 

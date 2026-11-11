@@ -1,17 +1,13 @@
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
-> **Source.** Grafted byte-verbatim from `arnabbagxd/Brand-building-skills` (MIT, © 2026 Arnab Bag), `skills/aso/SKILL.md` lines 102, 117–121, 159, 169–173, 186–207, commit `4a0a8b5`. Extracts are separated by `<!-- extract -->` markers; text between markers is unchanged upstream bytes.
->
+<!-- kit -->
 > **⚠️ Platform mechanics change.** Apple Product Page Optimization and Google Play Store Listing
-> Experiments limits (treatment counts, durations, splits) and review-prompt rules are as stated by the
-> upstream author at time of writing — verify against current App Store Connect / Play Console docs
+> Experiments limits (treatment counts, durations, splits) and review-prompt rules were accurate
+> at time of writing — verify against current App Store Connect / Play Console docs
 > before planning a test. Complements this skill's `ab_test_planner.py`.
 >
-> **⚠️ Two upstream inaccuracies (kept verbatim below, corrected here).** (1) There is no
+> **⚠️ Two inaccuracies in the text below (corrected here).** (1) There is no
 > "SKStoreReviewRequestAPI": the iOS API is StoreKit's `SKStoreReviewController.requestReview` /
 > SwiftUI `requestReview` action. (2) Apple shows the system rating prompt at most **three times per
 > 365 days** per user (not once) — and the system may decline to show it, so never tie UX to it appearing.
->
-> Upstream content is preserved verbatim below.
 
 ### 03 — DESCRIPTION OPTIMIZATION
 

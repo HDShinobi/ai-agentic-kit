@@ -1,12 +1,8 @@
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
-> **Source.** Grafted byte-verbatim from `arnabbagxd/Brand-building-skills` (MIT, © 2026 Arnab Bag), `skills/competitor-branding/SKILL.md` lines 29–133, commit `4a0a8b5`. Extracts are separated by `<!-- extract -->` markers; text between markers is unchanged upstream bytes.
->
+<!-- kit -->
 > **⚠️ Optional brand-identity mode.** Use this lens when the question is how competitors *brand*
 > themselves (positioning statement, personality, voice, territory, visual patterns, messaging clichés,
-> white space) rather than their site/SEO/ads mechanics. "Related Skills" in the upstream skill map to
+> white space) rather than their site/SEO/ads mechanics. "Related Skills" map to
 > this kit's `branding-expert` (brand positioning/identity) and `product-marketing`.
->
-> Upstream content is preserved verbatim below.
 
 ## Analysis Framework
 

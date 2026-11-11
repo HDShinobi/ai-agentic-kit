@@ -497,9 +497,9 @@ Same format as above
 - **analytics**: For measuring SEO performance
 
 
-## Kit additions
+## Additional resources
 
-> Added by ai-agentic-kit, not part of upstream. Supplementary material kept from this kit's earlier version of the skill:
+> Supplementary material:
 >
 > - [scripts/seo_checker.py](scripts/seo_checker.py) — `seo_checker.py` — deterministic on-page SEO check of a project (`python scripts/seo_checker.py <project_path>`)
 > - [references/keyword-research.md](references/keyword-research.md) — systematic keyword research and prioritization process

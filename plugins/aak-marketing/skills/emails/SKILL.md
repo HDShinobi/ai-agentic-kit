@@ -342,8 +342,8 @@ For implementation, see the [tools registry](https://github.com/coreyhaines31/ma
 - **revops**: For lifecycle stages that trigger email sequences
 
 
-## Kit additions
+## Additional resources
 
-> Added by ai-agentic-kit, not part of upstream. Supplementary material kept from this kit's earlier version of the skill:
+> Supplementary material:
 >
 > - [references/sequence-templates-extended.md](references/sequence-templates-extended.md) — extended drip-sequence templates

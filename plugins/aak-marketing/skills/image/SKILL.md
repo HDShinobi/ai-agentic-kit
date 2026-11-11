@@ -339,8 +339,8 @@ Generate OG images programmatically for pages with dynamic content (blog posts, 
 - **aso**: For app store screenshot specs and optimization
 - **directory-submissions**: For Product Hunt gallery images and directory listing visuals
 
-## Kit additions
+## Additional resources
 
-> Added by ai-agentic-kit, not part of upstream. Supplementary material kept from this kit's earlier version of the skill:
+> Supplementary material:
 >
 > - For banner and ad-graphic layout design, this kit also ships the `banner-design` skill.

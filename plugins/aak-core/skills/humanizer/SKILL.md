@@ -10,7 +10,7 @@ metadata:
   version: "4.0.0"
 ---
 
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
+<!-- kit -->
 > When the text is Vietnamese (vi-VN) and the `aak-vietnamese` plugin is enabled, run this skill first for structure-level AI tells, then invoke the matching `vietnamese-*` skill for language correctness (translationese, register/pronouns, terminology, NFC). If it is not enabled, proceed normally.
 
 # Humanizer: remove AI writing patterns

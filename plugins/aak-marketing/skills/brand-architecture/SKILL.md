@@ -3,15 +3,13 @@ name: brand-architecture
 description: Define how multiple brands, sub-brands, and product lines relate to each other under one organization. Use when the user says "brand architecture", "sub-brand", "brand portfolio", "master brand", "house of brands", "branded house", "product naming system", "how do our brands relate", "parent brand", "brand hierarchy", "brand family", "we have multiple products and need a naming system", "brand extension", "new product launch under existing brand", or when a company has grown beyond a single brand and needs a system to manage brand relationships.
 ---
 
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
+<!-- kit -->
 > **⚠️ Shared context file.** This kit's shared positioning/ICP/voice file is
-> `.agents/product-marketing.md` (created by the `product-marketing` skill). Where the upstream text
+> `.agents/product-marketing.md` (created by the `product-marketing` skill). Where the text
 > below says to check `.agents/brand-context.md`, check that file first and, if it is absent, read
-> `.agents/product-marketing.md` instead. "Related Skills" names have been re-pointed to this kit's
+> `.agents/product-marketing.md` instead. "Related Skills" names map to these
 > skills (brand strategy / identity / voice / guidelines / audit → `branding-expert`; positioning,
 > messaging, and brand context → `product-marketing`).
->
-> Upstream content is preserved verbatim below.
 
 # Brand Architecture
 

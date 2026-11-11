@@ -295,8 +295,8 @@ The AI-readiness fixes are usually high-impact, low-effort (put prices in text, 
 - **sales-enablement**: For proposal templates and pricing presentations
 
 
-## Kit additions
+## Additional resources
 
-> Added by ai-agentic-kit, not part of upstream. Supplementary material kept from this kit's earlier version of the skill:
+> Supplementary material:
 >
 > - [references/saas-pricing-guide.md](references/saas-pricing-guide.md) — SaaS pricing research guide (value metrics, tiers, benchmarks)

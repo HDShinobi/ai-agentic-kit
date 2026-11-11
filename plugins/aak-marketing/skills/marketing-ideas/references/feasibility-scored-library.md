@@ -1,9 +1,6 @@
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. -->
-> **Kit addition.** This is the complete body of this kit's pre-1.0.0 `marketing-ideas` skill (antigravity-marketing lineage: Marketing Feasibility Score (MFS), selection rules, 78-idea library incl. agentkits ideas 72–78, stage-based scoring bias), kept
-> verbatim when the skill was re-aligned to coreyhaines31/marketingskills in aak-marketing 1.0.0.
-> Use it when you want ideas scored and filtered by feasibility (MFS); the parent SKILL.md (upstream) remains the primary guide.
->
-> Prior content is preserved verbatim below.
+<!-- kit -->
+> **Extended library.** Marketing Feasibility Score (MFS), selection rules, 78-idea library, stage-based scoring bias.
+> Use it when you want ideas scored and filtered by feasibility (MFS); the parent SKILL.md remains the primary guide.
 
 # Marketing Ideas for SaaS (with Feasibility Scoring)
 

@@ -1,9 +1,7 @@
-<!-- KIT NOTE — added by ai-agentic-kit, NOT upstream. Read before using the data below. -->
-> **⚠️ Corrections & caveats (this kit):**
-> - **Core Web Vitals:** Google replaced **FID** with **INP** (Interaction to Next Paint) in March 2024. Use **INP < 200ms** as the "good" threshold; the FID rows below are upstream-original, retained only for fidelity — do not report FID as a current metric.
+<!-- kit -->
+> **⚠️ Corrections & caveats:**
+> - **Core Web Vitals:** Google replaced **FID** with **INP** (Interaction to Next Paint) in March 2024. Use **INP < 200ms** as the "good" threshold; the FID rows below are legacy values, kept for reference only — do not report FID as a current metric.
 > - **CTA / page-speed lift figures** (e.g. "+90%", "each 1s = 7%") are illustrative single-case results, **not guaranteed or universal** — treat them as directional and context-dependent, consistent with cro's rule of never guaranteeing conversion lifts.
->
-> Upstream content is preserved verbatim below.
 
 # Page Element Benchmarks & Optimization Data
 

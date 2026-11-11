@@ -444,9 +444,9 @@ Visual or structured representation of how content interconnects.
 - **launch**: For the ORB channel-type playbook and launch-day distribution
 
 
-## Kit additions
+## Additional resources
 
-> Added by ai-agentic-kit, not part of upstream. Supplementary material kept from this kit's earlier version of the skill:
+> Supplementary material:
 >
 > - [references/content-pillars.md](references/content-pillars.md) — pillar-cluster content model
 > - [templates/content-calendar.md](templates/content-calendar.md) — a 30-day content calendar (pillar mix, weekly structure, repurposing workflow) to fill in
